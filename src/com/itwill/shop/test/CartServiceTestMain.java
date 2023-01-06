@@ -1,6 +1,6 @@
-package com.itwill.shop.product.test;
+package com.itwill.shop.test;
 
-public class ProductDaoTestMain {
+public class CartServiceTestMain {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
