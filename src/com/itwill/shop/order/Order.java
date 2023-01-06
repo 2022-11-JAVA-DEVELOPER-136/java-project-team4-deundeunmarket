@@ -22,8 +22,9 @@ public class Order {
 	private int o_price;
 	private String o_address;
 	private String o_loc;
+	private String o_payment;
 	/*********FK**********/
-	private String userid;
-	/******List<OrderItem> 포함 (order 1개에 order_item 여러개 있으니 컬렉션으로)******/
+	private String m_id;
+	/******List<OrderItem> 포함 ******/
 	private List<OrderItem> orderItemList;
 }
