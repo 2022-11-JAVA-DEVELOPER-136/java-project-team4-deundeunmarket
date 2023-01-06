@@ -27,19 +27,21 @@ DROP SEQUENCE product_p_no_SEQ;
 
 CREATE SEQUENCE product_p_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
+
 CREATE TABLE orders(
 		o_no                          		NUMBER(10)		 NULL ,
 		o_desc                        		VARCHAR2(1000)		 NULL ,
 		o_date                        		DATE		 DEFAULT sysdate		 NULL ,
 		o_price                       		NUMBER(10)		 NULL ,
-		m_id                          		VARCHAR2(50)		 NULL ,
 		o_loc                         		VARCHAR2(500)		 NULL ,
-		o_payment                     		VARCHAR2(50)		 NULL 
+		o_payment                     		VARCHAR2(50)		 NULL ,
+		m_id                          		VARCHAR2(50)		 NULL 
 );
 
 DROP SEQUENCE orders_o_no_SEQ;
 
 CREATE SEQUENCE orders_o_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
+
 
 CREATE TABLE cart(
 		cart_no                       		NUMBER(10)		 NULL ,
@@ -51,6 +53,7 @@ CREATE TABLE cart(
 DROP SEQUENCE cart_cart_no_SEQ;
 
 CREATE SEQUENCE cart_cart_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
+
 
 CREATE TABLE order_item(
 		oi_no                         		NUMBER(10)		 NULL ,
@@ -78,4 +81,3 @@ ALTER TABLE cart ADD CONSTRAINT IDX_cart_FK1 FOREIGN KEY (p_no) REFERENCES produ
 ALTER TABLE order_item ADD CONSTRAINT IDX_order_item_PK PRIMARY KEY (oi_no);
 ALTER TABLE order_item ADD CONSTRAINT IDX_order_item_FK0 FOREIGN KEY (p_no) REFERENCES product (p_no);
 ALTER TABLE order_item ADD CONSTRAINT IDX_order_item_FK1 FOREIGN KEY (o_no) REFERENCES orders (o_no) on delete cascade;
-

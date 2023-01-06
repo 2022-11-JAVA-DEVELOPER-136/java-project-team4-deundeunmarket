@@ -34,11 +34,11 @@ insert into cart(cart_no, cart_qty, m_id, p_no) values(cart_cart_no_SEQ.nextval,
 order insert
 */
 --sy0
-insert into orders(o_no, o_desc, o_date, o_price, m_id, o_loc, o_payment) values(orders_o_no_SEQ.nextval, 'o_desc', sysdate, 80000, 'sy0', '문 앞에 놔주세요', 'o_payment');
+insert into orders(o_no, o_desc, o_date, o_price, o_loc, o_payment, m_id) values(orders_o_no_SEQ.nextval, 'o_desc', sysdate, 80000, '문 앞에 놔주세요', 'o_payment', 'sy0');
 insert into order_item(oi_no, oi_qty, p_no, o_no) values(order_item_oi_no_SEQ.nextval, 1, 1, orders_o_no_SEQ.currval);
 insert into order_item(oi_no, oi_qty, p_no, o_no) values(order_item_oi_no_SEQ.nextval, 2, 2, orders_o_no_SEQ.currval);
 
 --sy1
-insert into orders(o_no, o_desc, o_date, o_price, m_id, o_loc, o_payment) values(orders_o_no_SEQ.nextval, 'o_desc', sysdate, 90000, 'sy1', '벨 울리지 말아주세요', 'o_payment');
+insert into orders(o_no, o_desc, o_date, o_price, o_loc, o_payment, m_id) values(orders_o_no_SEQ.nextval, 'o_desc', sysdate, 90000, '벨 울리지 말아주세요', 'o_payment', 'sy1');
 insert into order_item(oi_no, oi_qty, p_no, o_no) values(order_item_oi_no_SEQ.nextval, 3, 3, orders_o_no_SEQ.currval);
 insert into order_item(oi_no, oi_qty, p_no, o_no) values(order_item_oi_no_SEQ.nextval, 4, 4, orders_o_no_SEQ.currval);
