@@ -1,6 +1,6 @@
-package com.itwill.shop.member.test;
+package com.itwill.shop.test;
 
-public class MemberDaoTestMain {
+public class MemberServiceTestMain {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
