@@ -1,4 +1,4 @@
-package com.itwill.shop.cart.test;
+package com.itwill.shop.test;
 
 public class CartServiceTestMain {
 
