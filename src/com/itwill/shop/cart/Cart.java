@@ -13,7 +13,7 @@ public class Cart {
 	private int cart_no;
 	private int cart_qty;
 	/************FK*************/
-	private String userid; 
+	private String m_id; 
 	/************FK Product 포함*************/
 	private Product product;
 }
