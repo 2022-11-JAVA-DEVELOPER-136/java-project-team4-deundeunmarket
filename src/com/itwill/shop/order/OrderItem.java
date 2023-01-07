@@ -13,8 +13,8 @@ import com.itwill.shop.product.Product;
 public class OrderItem {
 	private int oi_no;
 	private int oi_qty;
-	/********FK********/
-	private int o_no;
-	/*******FK Product 포함*******/
+	/******Product포함******/
 	private Product product;
+	/*******FK********/
+	private int o_no;
 }
