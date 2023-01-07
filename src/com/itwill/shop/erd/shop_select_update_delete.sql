@@ -5,9 +5,9 @@ select * from member where m_id='sy1';
 select * from member where m_id='sy2';
 
 --회원정보 수정(update pk)
-update member set m_pass='1111',m_name='nxxx' where m_id='sy0';
-update member set m_pass='2222',m_name='nyyy' where m_id='sy1';
-update member set m_pass='3333',m_name='nzzz' where m_id='sy2';
+update member set m_pass='1111',m_name='nxxx', m_phone='000-0000-0000', m_bday='1992/02/12', m_email='g@gmail.com', m_address='부산' where m_id='sy0';
+update member set m_pass='2222',m_name='nyyy', m_phone='111-1111-1111', m_bday='1993/02/12', m_email='k@gmail.com', m_address='인천' where m_id='sy1';
+update member set m_pass='3333',m_name='nzzz', m_phone='222-2222-2222', m_bday='1994/02/12', m_email='l@gmail.com', m_address='대구' where m_id='sy2';
 
 --회원정보 삭제(delete pk)
 delete member where  m_id='sy0';
