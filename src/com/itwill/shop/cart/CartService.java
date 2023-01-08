@@ -12,10 +12,10 @@ public class CartService {
  * 카트 추가 or 수정 - addCart
  */
 	public int addCart(Cart cart) throws Exception {
-		if(cartDao.countByProductNo(cart.getM_id(),cart.getProduct().getP_no())>0) {
+		if (cartDao.countByProductNo(cart.getM_id(), cart.getProduct().getP_no()) > 0) {
 			return cartDao.updateByProductNo(cart);
-		}else {
-		return cartDao.insert(cart);
+		} else {
+			return cartDao.insert(cart);
 		}
 	}
 /*
@@ -24,13 +24,11 @@ public class CartService {
 	public int updateCart(Cart cart) throws Exception {
 		return cartDao.updateByCartNo(cart);
 	}
-		
-		
 /*
  * 카트 전체보기 - getCartItemByUserId
  */
-	public List<Cart> getCartItemByUserId(String m_id) throws Exception {
-		return cartDao.findByM_Id(m_id);
+	public List<Cart> getCartItemByMemberId(String m_id) throws Exception {
+		return cartDao.findByMemberId(m_id);
 	}
 /*
  * 카트 아이템 1개 보기 - getCartItemByCartNo
@@ -47,9 +45,8 @@ public class CartService {
 /*
  * 카트 전체 삭제 - deleteCartItemByUserId
  */
-	
-	public int deleteCartItemByUserId(String m_id) throws Exception {
-		return cartDao.deleteByUserId(m_id);
+	public int deleteCartItemByMemberId(String m_id) throws Exception {
+		return cartDao.deleteByMemberId(m_id);
 	}
 	
 }
