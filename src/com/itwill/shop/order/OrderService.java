@@ -64,16 +64,17 @@ public class OrderService {
 		String o_desc = "";
 		
 		orderItemList.add(orderItem);
-		if(oi_qty>=2) {
-			o_desc = orderItemList.get(0).getProduct().getP_name()+" 외 "+(oi_qty-1)+"개";
-		} else if(oi_qty==1) {
+		if (oi_qty >= 2) {
+			o_desc = orderItemList.get(0).getProduct().getP_name() + " 외 " + (oi_qty - 1) + "개";
+		} else if (oi_qty == 1) {
 			o_desc = orderItemList.get(0).getProduct().getP_name();
 		}
 		Order newOrder = new Order(0,
 								   o_desc,
 								   null,
-								   oi_qty*orderItemList.get(0).getProduct().getP_price(),
-								   member.getM_address(),
+								   oi_qty * orderItemList.get(0).getProduct().getP_price(),
+								   member.getM_address(), // 회원가입시 작성되는 주소
+								   //order.getO_address(), 주문시 작성되는 주소 존재
 								   order.getO_loc(),
 								   order.getO_payment(),
 								   order.getM_id());
@@ -89,7 +90,7 @@ public class OrderService {
 		Member member = memberDao.findByPrimaryKey(order.getM_id());
 		List<Cart> cartList = cartDao.findByMemberId(order.getM_id());
 		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
-		int o_price = 0;
+		int o_tot_price = 0;
 		int oi_total_count = 0;
 		String o_desc = "";
 		int rowCount = 0;
@@ -97,15 +98,16 @@ public class OrderService {
 		for (Cart cart : cartList) {
 			OrderItem orderItem = new OrderItem(0, cart.getCart_qty(), cart.getProduct(), 0);
 			orderItemList.add(orderItem);
-			o_price += orderItem.getOi_qty()*orderItem.getProduct().getP_price();
+			o_tot_price += orderItem.getOi_qty()*orderItem.getProduct().getP_price();
 			oi_total_count += orderItem.getOi_qty();
 		}
-		if(orderItemList.size()>=2) {
-			o_desc = orderItemList.get(0).getProduct().getP_name()+" 외 "+(oi_total_count-1)+"개";
-		} else if(orderItemList.size()==1) {
+		if (orderItemList.size() >= 2) {
+			o_desc = orderItemList.get(0).getProduct().getP_name() + " 외 " + (oi_total_count - 1) + "개";
+		} else if (orderItemList.size() == 1) {
 			o_desc = orderItemList.get(0).getProduct().getP_name();
 		}
-		Order newOrder = new Order(0, o_desc, null, o_price, member.getM_address(), order.getO_loc(), order.getO_payment(), order.getM_id());
+		//order.getO_address() 주문시 작성되는 주소 존재
+		Order newOrder = new Order(0, o_desc, null, o_tot_price, member.getM_address(), order.getO_loc(), order.getO_payment(), order.getM_id());
 		newOrder.setOrderItemList(orderItemList);
 		rowCount = orderDao.insert(newOrder);
 		cartDao.deleteByMemberId(order.getM_id());
@@ -119,24 +121,25 @@ public class OrderService {
 		
 		Member member = memberDao.findByPrimaryKey(order.getM_id());
 		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
-		int o_price = 0;
+		int o_tot_price = 0;
 		int oi_total_count = 0;
 		String o_desc = "";
 		int rowCount = 0;
 		
-		for(int i=0; i<cart_no_StrArray.length; i++) {
+		for (int i = 0; i < cart_no_StrArray.length; i++) {
 			Cart cart = cartDao.findByCartNo(Integer.parseInt(cart_no_StrArray[i]));
 			OrderItem orderItem = new OrderItem(0, cart.getCart_qty(), cart.getProduct(), 0);
 			orderItemList.add(orderItem);
-			o_price += orderItem.getOi_qty()*orderItem.getProduct().getP_price();
+			o_tot_price += orderItem.getOi_qty() * orderItem.getProduct().getP_price();
 			oi_total_count += orderItem.getOi_qty();
 		}
-		if(orderItemList.size()>=2) {
-			o_desc = orderItemList.get(0).getProduct().getP_name()+" 외 "+(oi_total_count-1)+"개";
-		} else if(orderItemList.size()==1) {
+		if (orderItemList.size() >= 2) {
+			o_desc = orderItemList.get(0).getProduct().getP_name() + " 외 " + (oi_total_count - 1) + "개";
+		} else if (orderItemList.size() == 1) {
 			o_desc = orderItemList.get(0).getProduct().getP_name();
 		}
-		Order newOrder = new Order(0, o_desc, null, o_price, member.getM_address(), order.getO_loc(), order.getO_payment(), order.getM_id());
+		//order.getO_address() 주문시 작성되는 주소 존재
+		Order newOrder = new Order(0, o_desc, null, o_tot_price, member.getM_address(), order.getO_loc(), order.getO_payment(), order.getM_id());
 		newOrder.setOrderItemList(orderItemList);
 		rowCount = orderDao.insert(newOrder);
 		for(int i=0; i<cart_no_StrArray.length; i++) {

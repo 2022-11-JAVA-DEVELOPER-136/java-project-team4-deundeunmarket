@@ -26,12 +26,14 @@ public class OrderServiceTestMain {
 		/*
 		 * 주문 목록 보기 - orderList
 		 */
+		System.out.println("orderList");
 		System.out.println(orderService.orderList("sy0"));
 		
 		/*
 		 * 주문상세보기 - orderDetail
 		 */
-		System.out.println(orderService.orderDetail("sy0", 3));
+		System.out.println("orderDetail");
+		System.out.println(orderService.orderDetail("sy0", 1));
 		
 		/*
 		 * 상품에서 직접 주문 - orderCreate
@@ -50,6 +52,7 @@ public class OrderServiceTestMain {
 		/*
 		 * 카트에서 선택 주문 - orderCreate 오버로딩 (선택)
 		 */
+		//Exception in thread "main" java.lang.NullPointerException
 		order = new Order(0, null, null, 0, null, "벨 울려주세요", "카드", "sy1");
 		String[] cart_no_StrArray = {"3", "4", "7", "8"};
 		rowCount = orderService.orderCreate(order, cart_no_StrArray);

@@ -8,10 +8,10 @@ public class ProductServiceTestMain {
 		ProductService productService = new ProductService();
 		
 		System.out.println("1.상품리스트 한개");
-		System.out.println(productService.findByPrimaryKey(2));
+		System.out.println(productService.productDetail(2));
 		
 		System.out.println("2.상품리스트 전체보기");
-		System.out.println(productService.findAll());
+		System.out.println(productService.productList());
 	}
 
 }

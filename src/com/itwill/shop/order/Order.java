@@ -123,6 +123,6 @@ public class Order {
 	public String toString() {
 		return "Order [o_no=" + o_no + ", o_desc=" + o_desc + ", o_date=" + o_date + ", o_price=" + o_price
 				+ ", o_address=" + o_address + ", o_loc=" + o_loc + ", o_payment=" + o_payment + ", m_id=" + m_id
-				+ ", orderItemList=" + orderItemList + "]";
+				+ ", orderItemList=" + orderItemList + "]\n";
 	}
 }

@@ -43,7 +43,7 @@ public class MemberDao {
 		
 		int rowCount=pstmt.executeUpdate();
 		pstmt.close();
-		con.close();
+		dataSource.close(con);
 		return rowCount;
 	}
 	/*
@@ -63,7 +63,7 @@ public class MemberDao {
 		
 		int rowCount = pstmt.executeUpdate();
 		pstmt.close();
-		con.close();
+		dataSource.close(con);
 		return rowCount;
 	}
 	
@@ -79,7 +79,7 @@ public class MemberDao {
 		
 		int rowCount = pstmt.executeUpdate();
 		pstmt.close();
-		con.close();
+		dataSource.close(con);
 		return rowCount;
 	}
 	
@@ -105,6 +105,9 @@ public class MemberDao {
 					rs.getString("m_address")
 					);
 		}
+		rs.close();
+		pstmt.close();
+		dataSource.close(con);
 		return member;
 	}
 		/*
@@ -132,10 +135,9 @@ public class MemberDao {
 								memberList.add(member);
 					} while (rs.next());	
 			}
-	
 			rs.close();
 			pstmt.close();
-			con.close();
+			dataSource.close(con);
 			return memberList;
 	}
 	/*
@@ -143,76 +145,36 @@ public class MemberDao {
 	 */
 			
 	public int countByMemberId(String m_id) throws Exception {
-		Connection con=dataSource.getConnection();
-		PreparedStatement pstmt=con.prepareStatement(MemberSQL.MEMBER_SELECT_BY_M_ID_COUNT);
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(MemberSQL.MEMBER_SELECT_BY_M_ID_COUNT);
 		pstmt.setString(1, m_id);
-		ResultSet rs=pstmt.executeQuery();
+		ResultSet rs = pstmt.executeQuery();
 		rs.next();
-		int memberCount=rs.getInt(1);
+		int memberCount = rs.getInt(1);
+		rs.close();
+		pstmt.close();
+		dataSource.close(con);
 		return memberCount;
-		
 	}	
-			
-	
-	
 
 	/*
 	 * 인자로 넘겨받는 비밀번호를 가진 사용자가 존재하는지 여부를 판별
 	 */
 	
 	public int countByMemberPw(String m_pass) throws Exception {
-		Connection con=dataSource.getConnection();
-		PreparedStatement pstmt=con.prepareStatement(MemberSQL.MEMBER_SELECT_BY_M_PASS_COUNT);
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(MemberSQL.MEMBER_SELECT_BY_M_PASS_COUNT);
 		pstmt.setString(1, m_pass);
-		ResultSet rs=pstmt.executeQuery();
+		ResultSet rs = pstmt.executeQuery();
 		rs.next();
-		int memberCount=rs.getInt(1);
+		int memberCount = rs.getInt(1);
+		rs.close();
+		pstmt.close();
+		dataSource.close(con);
 		return memberCount;
-}	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-			
-			
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+}
 	
 	
 	
