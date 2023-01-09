@@ -11,6 +11,12 @@ public class MemberJoinPanel_최민영 extends JPanel {
 	 * Create the panel.
 	 */
 	public MemberJoinPanel_최민영() {
+		setLayout(null);
+		
+		JPanel memberJoinPannel = new JPanel();
+		memberJoinPannel.setBounds(0, 0, 360, 540);
+		add(memberJoinPannel);
+		memberJoinPannel.setLayout(null);
 		
 
 	}
