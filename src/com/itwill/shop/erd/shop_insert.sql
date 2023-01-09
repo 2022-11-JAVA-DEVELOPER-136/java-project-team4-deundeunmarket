@@ -1,23 +1,23 @@
 /*
 member insert
 */
-insert into member(m_id, m_pass, m_name, m_phone, m_bday, m_email, m_address) values('sy0', '0000', 'ê¹€ì„¸ì˜', '010-0000-0000', sysdate, 'sy0@gmail.com', 'ì„œìš¸ì‹œ ì†¡íŒŒêµ¬');
-insert into member(m_id, m_pass, m_name, m_phone, m_bday, m_email, m_address) values('sy1', '1111', 'ê¹€ì„¸ì¼', '010-1111-1111', sysdate, 'sy1@gmail.com', 'ì„œìš¸ì‹œ ê°•ë‚¨êµ¬');
-insert into member(m_id, m_pass, m_name, m_phone, m_bday, m_email, m_address) values('sy2', '2222', 'ê¹€ì„¸ì´', '010-2222-2222', sysdate, 'sy2@gmail.com', 'ì„œìš¸ì‹œ ì„œì´ˆêµ¬');
+insert into member(m_id, m_pass, m_name, m_phone, m_bday, m_email, m_address) values('sy0', '0000', '±è¼¼¿µ', '010-0000-0000', sysdate, 'sy0@gmail.com', '¼­¿ï½Ã ¼ÛÆÄ±¸');
+insert into member(m_id, m_pass, m_name, m_phone, m_bday, m_email, m_address) values('sy1', '1111', '±è¼¼ÀÏ', '010-1111-1111', sysdate, 'sy1@gmail.com', '¼­¿ï½Ã °­³²±¸');
+insert into member(m_id, m_pass, m_name, m_phone, m_bday, m_email, m_address) values('sy2', '2222', '±è¼¼ÀÌ', '010-2222-2222', sysdate, 'sy2@gmail.com', '¼­¿ï½Ã ¼­ÃÊ±¸');
 
 /*
 product insert
 */
-insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, 'ë‹­ë„ë¦¬íƒ•', 10000, '/images/ë‹­ë„ë¦¬íƒ•.jpg', 'ìƒí’ˆì„¤ëª…1');
-insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, 'ë–¡ë³¶ì´', 10000, '/images/ë–¡ë³¶ì´.jpg', 'ìƒí’ˆì„¤ëª…2');
-insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, 'ë§‰êµ­ìˆ˜', 10000, '/images/ë§‰êµ­ìˆ˜.jpg', 'ìƒí’ˆì„¤ëª…3');
-insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, 'ì‚¼ì„ ì§¬ë½•', 10000, '/images/ì‚¼ì„ ì§¬ë½•.jpg', 'ìƒí’ˆì„¤ëª…4');
-insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, 'ìƒ¤ë¸Œìƒ¤ë¸Œ', 10000, '/images/ìƒ¤ë¸Œìƒ¤ë¸Œ.jpg', 'ìƒí’ˆì„¤ëª…5');
-insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, 'ìŠ¤í…Œì´í¬', 10000, '/images/ìŠ¤í…Œì´í¬.jpg', 'ìƒí’ˆì„¤ëª…6');
-insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, 'ìš°ë™', 10000, '/images/ìš°ë™.jpg', 'ìƒí’ˆì„¤ëª…7');
-insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, 'ì „ë³µë²„í„°ë°¥', 10000, '/images/ì „ë³µë²„í„°ë°¥.jpg', 'ìƒí’ˆì„¤ëª…8');
-insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, 'ì¹¼êµ­ìˆ˜', 10000, '/images/ì¹¼êµ­ìˆ˜.jpg', 'ìƒí’ˆì„¤ëª…9');
-insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, 'í¬ë¦¼íŒŒìŠ¤íƒ€', 10000, '/images/í¬ë¦¼íŒŒìŠ¤íƒ€.jpg', 'ìƒí’ˆì„¤ëª…10');
+insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '´ßµµ¸®ÅÁ', 10000, '/images/´ßµµ¸®ÅÁ_ÀÛÀº.jpg', '¹°¶±°ú °¨ÀÚ¼öÁ¦ºñ¸¦ ´õÇØ Ç³¼ºÇÏ°Ô');
+insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '¶±ººÀÌ', 10000, '/images/¶±ººÀÌ_ÀÛÀº.jpg', 'ÀÚ²Ù »ı°¢³ª´Â ¸ÅÄŞ ´ŞÄŞÇÔ');
+insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '¸·±¹¼ö', 10000, '/images/¸·±¹¼ö_ÀÛÀº.jpg', '¸ÅÄŞÇÑ ¼Ò½º¿Í µ¿Ä¡¹Ì À°¼öÀÇ Á¶È­');
+insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '»ï¼±Â«»Í', 10000, '/images/»ï¼±Â«»Í_ÀÛÀº.jpg', 'ÇØ»ê¹°ÀÌ ÇªÁüÇÑ ¹é¸®ÇâÀÇ »ï¼±Â«»Í!');
+insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '»şºê»şºê', 10000, '/images/»şºê»şºê_ÀÛÀº.jpg', '¸ÅÀåÀÇ ³ëÇÏ¿ì·Î ¿Ï¼º');
+insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '½ºÅ×ÀÌÅ©', 10000, '/images/½ºÅ×ÀÌÅ©_ÀÛÀº.jpg', 'ÂÌ±êÇÑ ½Ä°¨, Ç³ºÎÇÑ À°Áó');
+insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '¿ìµ¿', 10000, '/images/¿ìµ¿_ÀÛÀº.jpg', 'Áı¿¡¼­ ¸Àº¸´Â ÀÎ±â ¸Ş´º');
+insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, 'Àüº¹¹öÅÍ¹ä', 10000, '/images/Àüº¹¹öÅÍ¹ä_ÀÛÀº.jpg', 'ÄÚ ³¡À» Âî¸£´Â °í¼ÒÇÑ Ç³¹Ì');
+insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, 'Ä®±¹¼ö', 10000, '/images/Ä®±¹¼ö_ÀÛÀº.jpg', '¿Â °¡Á·ÀÌ Áñ±â´Â ÇªÁüÇÑ Ä®±¹¼ö');
+insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, 'Å©¸²ÆÄ½ºÅ¸', 10000, '/images/Å©¸²ÆÄ½ºÅ¸_ÀÛÀº.jpg', '¸ÅÄŞÇÑ ¸Å·ÂÀÇ Å©¸² ÆÄ½ºÅ¸');
 
 /*
 cart insert
@@ -34,11 +34,11 @@ insert into cart(cart_no, cart_qty, m_id, p_no) values(cart_cart_no_SEQ.nextval,
 order insert
 */
 --sy0
-insert into orders(o_no, o_desc, o_date, o_price, o_address, o_loc, o_payment, m_id) values(orders_o_no_SEQ.nextval, 'o_desc', sysdate, 80000, 'ì„œìš¸ì‹œ ê°•ë‚¨êµ¬','ë¬¸ ì•ì— ë†”ì£¼ì„¸ìš”', 'o_payment', 'sy0');
+insert into orders(o_no, o_desc, o_date, o_price, o_address, o_loc, o_payment, m_id) values(orders_o_no_SEQ.nextval, 'o_desc', sysdate, 80000, '¼­¿ï½Ã °­³²±¸','¹® ¾Õ¿¡ ³öÁÖ¼¼¿ä', 'o_payment', 'sy0');
 insert into order_item(oi_no, oi_qty, p_no, o_no) values(order_item_oi_no_SEQ.nextval, 1, 1, orders_o_no_SEQ.currval);
 insert into order_item(oi_no, oi_qty, p_no, o_no) values(order_item_oi_no_SEQ.nextval, 2, 2, orders_o_no_SEQ.currval);
 
 --sy1
-insert into orders(o_no, o_desc, o_date, o_price, o_address, o_loc, o_payment, m_id) values(orders_o_no_SEQ.nextval, 'o_desc', sysdate, 90000, 'ì„œìš¸ì‹œ ê°•ë‚¨êµ¬','ë²¨ ìš¸ë¦¬ì§€ ë§ì•„ì£¼ì„¸ìš”', 'o_payment', 'sy1');
+insert into orders(o_no, o_desc, o_date, o_price, o_address, o_loc, o_payment, m_id) values(orders_o_no_SEQ.nextval, 'o_desc', sysdate, 90000, '¼­¿ï½Ã °­³²±¸','º§ ¿ï¸®Áö ¸»¾ÆÁÖ¼¼¿ä', 'o_payment', 'sy1');
 insert into order_item(oi_no, oi_qty, p_no, o_no) values(order_item_oi_no_SEQ.nextval, 3, 3, orders_o_no_SEQ.currval);
 insert into order_item(oi_no, oi_qty, p_no, o_no) values(order_item_oi_no_SEQ.nextval, 4, 4, orders_o_no_SEQ.currval);

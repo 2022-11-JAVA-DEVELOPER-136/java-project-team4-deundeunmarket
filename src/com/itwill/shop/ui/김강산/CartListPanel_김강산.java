@@ -154,7 +154,7 @@ public class CartListPanel_김강산 extends JPanel {
 		cartPanel.setLayout(null);
 		
 		productImgBtn = new JButton("");
-		productImgBtn.setIcon(new ImageIcon(CartListPanel_김강산.class.getResource("/images/떡볶이.jpg")));
+		productImgBtn.setIcon(new ImageIcon(CartListPanel_김강산.class.getResource("/images/떡볶이_작은.jpg")));
 		productImgBtn.setBackground(Color.WHITE);
 		productImgBtn.setBounds(19, 10, 97, 65);
 		cartPanel.add(productImgBtn);
