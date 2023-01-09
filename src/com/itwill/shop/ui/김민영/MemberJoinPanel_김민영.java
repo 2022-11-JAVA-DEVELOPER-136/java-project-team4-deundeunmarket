@@ -66,9 +66,6 @@ public class MemberJoinPanel_김민영 extends JPanel {
 		이메일.setBounds(53, 358, 57, 15);
 		memberJoinPanel.add(이메일);
 		
-		JLabel 배송지 = new JLabel("배송지");
-		배송지.setBounds(53, 408, 57, 15);
-		memberJoinPanel.add(lblNewLabel_6);
 		
 		passTF = new JPasswordField();
 		passTF.setBounds(166, 108, 156, 18);
