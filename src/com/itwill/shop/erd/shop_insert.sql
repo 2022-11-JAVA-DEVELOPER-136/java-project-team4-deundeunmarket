@@ -1,23 +1,23 @@
 /*
 member insert
 */
-insert into member(m_id, m_pass, m_name, m_phone, m_bday, m_email, m_address) values('sy0', '0000', '�輼��', '010-0000-0000', sysdate, 'sy0@gmail.com', '����� ���ı�');
-insert into member(m_id, m_pass, m_name, m_phone, m_bday, m_email, m_address) values('sy1', '1111', '�輼��', '010-1111-1111', sysdate, 'sy1@gmail.com', '����� ������');
-insert into member(m_id, m_pass, m_name, m_phone, m_bday, m_email, m_address) values('sy2', '2222', '�輼��', '010-2222-2222', sysdate, 'sy2@gmail.com', '����� ���ʱ�');
+insert into member(m_id, m_pass, m_name, m_phone, m_bday, m_email, m_address) values('sy0', '0000', '김세영', '010-0000-0000', sysdate, 'sy0@gmail.com', '서울시 송파구');
+insert into member(m_id, m_pass, m_name, m_phone, m_bday, m_email, m_address) values('sy1', '1111', '김세일', '010-1111-1111', sysdate, 'sy1@gmail.com', '서울시 강남구');
+insert into member(m_id, m_pass, m_name, m_phone, m_bday, m_email, m_address) values('sy2', '2222', '김세이', '010-2222-2222', sysdate, 'sy2@gmail.com', '서울시 서초구');
 
 /*
 product insert
 */
-insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '�ߵ�����', 10000, '/images/�ߵ�����_����.jpg', '������ ���ڼ����� ���� ǳ���ϰ�');
-insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '������', 10000, '/images/������_����.jpg', '�ڲ� �������� ���� ������');
-insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '������', 10000, '/images/������_����.jpg', '������ �ҽ��� ��ġ�� ������ ��ȭ');
-insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '�Ｑ«��', 10000, '/images/�Ｑ«��_����.jpg', '�ػ깰�� Ǫ���� �鸮���� �Ｑ«��!');
-insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '�������', 10000, '/images/�������_����.jpg', '������ ���Ͽ�� �ϼ�');
-insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '������ũ', 10000, '/images/������ũ_����.jpg', '�̱��� �İ�, ǳ���� ����');
-insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '�쵿', 10000, '/images/�쵿_����.jpg', '������ ������ �α� �޴�');
-insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '�������͹�', 10000, '/images/�������͹�_����.jpg', '�� ���� ��� ����� ǳ��');
-insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, 'Į����', 10000, '/images/Į����_����.jpg', '�� ������ ���� Ǫ���� Į����');
-insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, 'ũ���Ľ�Ÿ', 10000, '/images/ũ���Ľ�Ÿ_����.jpg', '������ �ŷ��� ũ�� �Ľ�Ÿ');
+insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '밀키트1', 10000, 'default.jpg', '상품설명1');
+insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '밀키트2', 10000, 'default.jpg', '상품설명2');
+insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '밀키트3', 10000, 'default.jpg', '상품설명3');
+insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '밀키트4', 10000, 'default.jpg', '상품설명4');
+insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '밀키트5', 10000, 'default.jpg', '상품설명5');
+insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '밀키트6', 10000, 'default.jpg', '상품설명6');
+insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '밀키트7', 10000, 'default.jpg', '상품설명7');
+insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '밀키트8', 10000, 'default.jpg', '상품설명8');
+insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '밀키트9', 10000, 'default.jpg', '상품설명9');
+insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '밀키트10', 10000, 'default.jpg', '상품설명10');
 
 /*
 cart insert
