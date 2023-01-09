@@ -102,19 +102,18 @@ public class OrderCreatePanel_김민선 extends JPanel {
 					String o_loc = (String) orderLocCB.getSelectedItem();
 					
 					Order newOrder = new Order(0, o_name, null, null, 0, o_address, o_loc, o_payment, loginMember.getM_id());
-					int isCreated;
 					List<Cart> findCart = cartService.getCartItemByMemberId(loginMember.getM_id());
+					int isCreated;
 					isCreated = orderService.orderCreate(newOrder);
 					if (findCart.size() > 0 && isCreated >= 1) {
 						JOptionPane.showMessageDialog(null, "주문이 완료되었습니다.");
 						// 주문 성공 시 주문 상세보기 화면으로 전환
 						// 주문 상세보기 화면 활성화
-					} else {
-						JOptionPane.showMessageDialog(null, "주문 실패");
-					}
+					} 
 					
 				} catch (Exception e1) {
-					e1.printStackTrace();
+					e1.getMessage();
+					JOptionPane.showMessageDialog(null, "장바구니가 비어있습니다.");
 				}
 			 
 			}
