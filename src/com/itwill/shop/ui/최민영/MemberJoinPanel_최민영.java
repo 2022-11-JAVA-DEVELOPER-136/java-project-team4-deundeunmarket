@@ -21,6 +21,8 @@ import java.awt.event.ActionEvent;
 public class MemberJoinPanel_최민영 extends JPanel {
 	/*********1.MemberService멤버필드선언*****/
 	private MemberService memberService;
+	
+	
 
 	private JTextField idTF;
 	private JPasswordField passwordTF;
@@ -34,8 +36,9 @@ public class MemberJoinPanel_최민영 extends JPanel {
 
 	/**
 	 * Create the panel.
+	 * @throws Exception 
 	 */
-	public MemberJoinPanel_최민영() {
+	public MemberJoinPanel_최민영() throws Exception {
 		setLayout(null);
 		
 		JPanel memberJoinPannel = new JPanel();
@@ -117,8 +120,7 @@ public class MemberJoinPanel_최민영 extends JPanel {
 					String passwordc=new String(passCheckTF.getPassword());
 					String name=nameTF.getText();
 					String phone=phoneTF.getText();
-					String bday_ = bdayTF.getText();
-					Date bday = new java.text.SimpleDateFormat("yyyy/MM/dd").parse(bday_);
+					String bday = bdayTF.getText();
 					String email = emailTF.getText();
 					String address = addressTF.getText();
 					
@@ -128,7 +130,7 @@ public class MemberJoinPanel_최민영 extends JPanel {
 						return;
 					}
 					
-					Member newMember = new Member(id, password, name, phone, bday, email, address);
+					Member newMember = new Member(id, password, name, phone, new SimpleDateFormat("yyyy/MM/dd").parse(bday), email, address);
 					boolean isAdd = memberService.addMember(newMember);
 					
 					if (isAdd==true) {
@@ -141,6 +143,7 @@ public class MemberJoinPanel_최민영 extends JPanel {
 					
 					
 				}catch (Exception e1) {
+					e1.printStackTrace();
 					System.out.println("회원가입-->"+e1.getMessage());
 				}
 				
@@ -181,6 +184,12 @@ public class MemberJoinPanel_최민영 extends JPanel {
 		pwCheckbtn.setBounds(251, 144, 97, 23);
 		memberJoinPannel.add(pwCheckbtn);
 		
+		
+		memberService=new MemberService();
 
 	}
+	
+	
+	
+	
 }

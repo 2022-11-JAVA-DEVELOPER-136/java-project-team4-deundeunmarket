@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import com.itwill.shop.member.Member;
 import com.itwill.shop.member.MemberService;
 
 import javax.swing.JButton;
@@ -14,9 +15,14 @@ import java.awt.Color;
 import javax.swing.JPasswordField;
 
 public class MemberLoginPanel_최민영 extends JPanel {
-	private JTextField loginIdTF;
 	/*********1.MemberService멤버필드선언*****/
 	private MemberService memberService;
+	/*************로그인한회원****************/
+	private Member loginMember=null;
+	
+	
+	
+	private JTextField loginIdTF;
 	private JButton loginBtn;
 	private JButton joinBtn;
 	private JPasswordField loginPassTF;
@@ -25,8 +31,9 @@ public class MemberLoginPanel_최민영 extends JPanel {
 
 	/**
 	 * Create the panel.
+	 * @throws Exception 
 	 */
-	public MemberLoginPanel_최민영() {
+	public MemberLoginPanel_최민영() throws Exception {
 		setForeground(Color.WHITE);
 		setLayout(null);
 		
@@ -67,7 +74,7 @@ public class MemberLoginPanel_최민영 extends JPanel {
 					String pass=new String(loginPassTF.getPassword());
 					
 					int result = memberService.logIn(id, pass);
-					if(result==0) {
+					if(result==1) {
 						//로그인성공
 						JOptionPane.showMessageDialog(null, "로그인 성공");
 						loginIdTF.setText("");
@@ -94,6 +101,40 @@ public class MemberLoginPanel_최민영 extends JPanel {
 		loginPassTF = new JPasswordField();
 		loginPassTF.setBounds(145, 265, 116, 21);
 		memberLoginPanel.add(loginPassTF);
+		
+		
+		memberService=new MemberService();
+		
+		
 
+	}
+	/**************로그인성공시 호출할메쏘드***************/
+	private void loginProcess(String id) throws Exception{
+		/***********로그인성공시 해야할일***********
+			 1.로그인성공한 멤버객체 멤버필드에저장
+			 2.MemberMainFrame타이틀변경
+			 3.로그인,회원가입탭 불활성화
+			   로그인,회원가입 메뉴아이템 불활성화
+			   로그아웃 메뉴아이템 활성화
+			 4.회원정보보기 화면전환
+		 ********************************************/
+		//1.로그인성공한 멤버객체 멤버필드에저장
+		this.loginMember = memberService.memberDetail(id);
+	/*	
+		//2.MemberMainFrame타이틀변경
+		setTitle(id+" 님 로그인");
+		// 3.로그인,회원가입탭 불활성화
+		memberTabbedPane.setEnabledAt(1, false);
+		memberTabbedPane.setEnabledAt(2, false);
+		memberTabbedPane.setEnabledAt(3, true);
+		loginMenuItem.setEnabled(false);
+		joinMenuItem.setEnabled(false);
+		logoutMenuItem.setEnabled(true); */
+		
+	/*	
+		// 4.회원정보보기 화면전환
+		memberTabbedPane.setSelectedIndex(3);
+		displayMemberInfo(this.loginMember);
+		updateFormEnable(false); */ 
 	}
 }
