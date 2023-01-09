@@ -29,14 +29,18 @@ public class ShopMainFrame_김강산 extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws Exception 
 	 */
-	public ShopMainFrame_김강산() {
+	public ShopMainFrame_김강산() throws Exception {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 412, 589);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		
+		CartListPanel_김강산 cartListPanel_김강산 = new CartListPanel_김강산();
+		contentPane.add(cartListPanel_김강산, BorderLayout.CENTER);
 	}
 
 }
