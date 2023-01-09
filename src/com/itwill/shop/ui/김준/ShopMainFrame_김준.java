@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JTabbedPane;
 
 public class ShopMainFrame_김준 extends JFrame {
 
@@ -29,14 +30,20 @@ public class ShopMainFrame_김준 extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws Exception 
 	 */
-	public ShopMainFrame_김준() {
+	public ShopMainFrame_김준() throws Exception {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 361, 640);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		
+		ProductListPanel_김준 productListPanel_김준 = new ProductListPanel_김준();
+		contentPane.add(productListPanel_김준, BorderLayout.CENTER);
+		
+
 	}
 
 }
