@@ -90,6 +90,8 @@ public class MemberDetailPanel_김민영 extends JPanel {
 		memberInfoPanel.add(infoEmailTF);
 		
 		JLabel 주소 = new JLabel("주소");
+		주소.setBounds(90, 422, 57, 15);
+		memberInfoPanel.add(주소);
 		
 		infoAddressTF = new JTextField();
 		infoAddressTF.setEnabled(false);
