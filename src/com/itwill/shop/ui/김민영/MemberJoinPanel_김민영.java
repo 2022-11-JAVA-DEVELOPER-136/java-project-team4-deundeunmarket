@@ -15,5 +15,5 @@ import javax.swing.JTextField;
 
 import com.itwill.shop.member.*;
 
-public class MemberLoginPanel_김민영 extends JPanel {
+public class MemberJoinPanel_김민영 extends JPanel {
 }
