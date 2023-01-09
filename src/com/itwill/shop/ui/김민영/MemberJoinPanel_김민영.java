@@ -50,24 +50,24 @@ public class MemberJoinPanel_김민영 extends JPanel {
 		비밀번호.setBounds(53, 109, 57, 15);
 		memberJoinPanel.add(비밀번호);
 		
-		JLabel lblNewLabel_2 = new JLabel("이름");
-		lblNewLabel_2.setBounds(53, 208, 57, 15);
-		memberJoinPanel.add(lblNewLabel_2);
+		JLabel 이름 = new JLabel("이름");
+		이름.setBounds(53, 208, 57, 15);
+		memberJoinPanel.add(이름);
 		
-		JLabel lblNewLabel_3 = new JLabel("전화번호");
-		lblNewLabel_3.setBounds(53, 258, 57, 15);
-		memberJoinPanel.add(lblNewLabel_3);
+		JLabel 전화번호 = new JLabel("전화번호");
+		전화번호.setBounds(53, 258, 57, 15);
+		memberJoinPanel.add(전화번호);
 		
-		JLabel lblNewLabel_4 = new JLabel("생일");
-		lblNewLabel_4.setBounds(53, 308, 57, 15);
-		memberJoinPanel.add(lblNewLabel_4);
+		JLabel 생일 = new JLabel("생일");
+		생일.setBounds(53, 308, 57, 15);
+		memberJoinPanel.add(생일);
 		
-		JLabel lblNewLabel_5 = new JLabel("이메일");
-		lblNewLabel_5.setBounds(53, 358, 57, 15);
-		memberJoinPanel.add(lblNewLabel_5);
+		JLabel 이메일 = new JLabel("이메일");
+		이메일.setBounds(53, 358, 57, 15);
+		memberJoinPanel.add(이메일);
 		
-		JLabel lblNewLabel_6 = new JLabel("배송지");
-		lblNewLabel_6.setBounds(53, 408, 57, 15);
+		JLabel 배송지 = new JLabel("배송지");
+		배송지.setBounds(53, 408, 57, 15);
 		memberJoinPanel.add(lblNewLabel_6);
 		
 		passTF = new JPasswordField();
