@@ -85,7 +85,6 @@ public class OrderCreatePanel_김민선 extends JPanel {
 		add(OrderPriceLB);
 		
 		orderPriceTF = new JTextField();
-		orderPriceTF.setEnabled(false);
 		orderPriceTF.setEditable(false);
 		orderPriceTF.setBounds(170, 384, 136, 21);
 		add(orderPriceTF);

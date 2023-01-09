@@ -31,16 +31,19 @@ public class ShopMainFrame_김민선 extends JFrame {
 	 * Create the frame.
 	 */
 	public ShopMainFrame_김민선() throws Exception{
+		initGUI();
+	}
+	private void initGUI() throws Exception{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 360, 639);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-		setContentPane(contentPane);
+		
+				setContentPane(contentPane);
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
 		
-		OrderCreatePanel_김민선 orderCreatePanel_김민선 = new OrderCreatePanel_김민선();
-		contentPane.add(orderCreatePanel_김민선);
+		OrderDetailPanel_김민선 orderDetailPanel_김민선 = new OrderDetailPanel_김민선();
+		contentPane.add(orderDetailPanel_김민선);
 	}
 
 }
