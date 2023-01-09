@@ -47,7 +47,7 @@ public class CartListPanel_김민선 extends JPanel {
 		
 		JLabel productImageLB = new JLabel("");
 		productImageLB.setHorizontalAlignment(SwingConstants.CENTER);
-		productImageLB.setIcon(new ImageIcon(CartListPanel_김민선.class.getResource("/images/크림파스타.jpg")));
+		productImageLB.setIcon(new ImageIcon(CartListPanel_김민선.class.getResource("/images/product01.jpg")));
 		productImageLB.setBounds(0, 0, 88, 100);
 		cartPanel.add(productImageLB);
 		
