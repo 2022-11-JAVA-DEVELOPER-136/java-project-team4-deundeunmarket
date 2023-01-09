@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.BoxLayout;
+import com.itwill.shop.ui.김준.ProductListPanel_김준;
 
 public class ShopMainFrame_김민선 extends JFrame {
 
