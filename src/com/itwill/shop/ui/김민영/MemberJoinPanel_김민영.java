@@ -25,9 +25,6 @@ public class MemberLoginPanel_김민영 extends JPanel {
 	private JMenuItem logoutMenuItem;
 	private JLabel idMsgLB;
 	
-	
-	
-	private Member loginMember=null;
 	/**
 	 * Create the panel.
 	 */
