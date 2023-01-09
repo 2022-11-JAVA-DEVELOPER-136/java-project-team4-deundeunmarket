@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.FlowLayout;
 import java.awt.Cursor;
+import javax.swing.JTabbedPane;
 
 public class ShopMainFrame extends JFrame {
 
@@ -37,7 +38,7 @@ public class ShopMainFrame extends JFrame {
 	 */
 	public ShopMainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 375, 667);
+		setBounds(100, 100, 360, 640);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -72,8 +73,23 @@ public class ShopMainFrame extends JFrame {
 		globalMemberMenuButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		globalMemberMenuButton.setBorder(null);
 		globalMemberMenuButton.setOpaque(false);
-		globalMemberMenuButton.setIcon(new ImageIcon(ShopMainFrame.class.getResource("/images/든든마켓 화이트50.png")));
+		globalMemberMenuButton.setIcon(new ImageIcon(ShopMainFrame.class.getResource("/images/cart50.png")));
 		globalSouthMenuPanel.add(globalMemberMenuButton);
+		
+		JTabbedPane shopTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		contentPane.add(shopTabbedPane, BorderLayout.CENTER);
+		
+		JTabbedPane productTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		shopTabbedPane.addTab("제품", null, productTabbedPane, null);
+		
+		PopularProductPanel popularProductPanel = new PopularProductPanel();
+		productTabbedPane.addTab("인기제품", null, popularProductPanel, null);
+		
+		JTabbedPane memberTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		shopTabbedPane.addTab("회원", null, memberTabbedPane, null);
+		
+		MemberJoinPanel memberJoinPanel = new MemberJoinPanel();
+		memberTabbedPane.addTab("New tab", null, memberJoinPanel, null);
 	}
 
 }
