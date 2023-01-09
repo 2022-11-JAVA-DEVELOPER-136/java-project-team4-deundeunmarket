@@ -8,11 +8,30 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+
+import com.itwill.shop.cart.Cart;
+import com.itwill.shop.cart.CartService;
+import com.itwill.shop.member.Member;
+import com.itwill.shop.member.MemberService;
+import com.itwill.shop.order.OrderService;
+import com.itwill.shop.product.ProductService;
+
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ProductDetailPanel_김준 extends JPanel {
+	/*
+	 * Service 객체 선언
+	 */
+	private OrderService orderService;
+	private ProductService productService;
+	private CartService cartService;
+	private MemberService memberService;
+	/*
+	 * logInMember 객체 선언
+	 */
+	private Member loginMember = null;
 	private JTextField NameTextField;
 	private JTextField PriceTextField;
 	private JTextField DetailTextField;
@@ -20,7 +39,7 @@ public class ProductDetailPanel_김준 extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public ProductDetailPanel_김준() {
+	public ProductDetailPanel_김준() throws Exception{
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
@@ -76,5 +95,16 @@ public class ProductDetailPanel_김준 extends JPanel {
 		});
 		panel_1.add(CartAddBtn);
 
+		
+		/*
+		 * Service 객체 생성
+		 */
+		orderService = new OrderService();
+		productService = new ProductService();
+		cartService = new CartService();
+		/*
+		 * loginMember 객체 생성
+		 */
+		loginMember = new Member("sy0",null,null,null,null,null,null);
 	}
 }
