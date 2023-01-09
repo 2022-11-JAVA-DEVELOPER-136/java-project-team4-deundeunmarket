@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JTabbedPane;
 
 public class ShopMainFrame_최민영 extends JFrame {
 
@@ -32,11 +33,16 @@ public class ShopMainFrame_최민영 extends JFrame {
 	 */
 	public ShopMainFrame_최민영() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 486, 664);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		MemberJoinPanel_최민영 memberJoinPanel_최민영 = new MemberJoinPanel_최민영();
+		memberJoinPanel_최민영.setBounds(43, 48, 393, 547);
+		contentPane.add(memberJoinPanel_최민영);
+		
+		
 	}
-
 }

@@ -31,7 +31,7 @@ public class MemberLoginPanel_최민영 extends JPanel {
 		setLayout(null);
 		
 		JPanel memberLoginPanel = new JPanel();
-		memberLoginPanel.setBackground(Color.WHITE);
+		memberLoginPanel.setBackground(Color.LIGHT_GRAY);
 		memberLoginPanel.setBounds(0, 0, 360, 540);
 		add(memberLoginPanel);
 		memberLoginPanel.setLayout(null);
