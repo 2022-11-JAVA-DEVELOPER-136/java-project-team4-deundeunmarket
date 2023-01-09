@@ -43,7 +43,7 @@ public class ShopMainFrame extends JFrame {
 	private void initGUI() {
 		setPreferredSize(new Dimension(360, 640));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 354, 639);
+		setBounds(100, 100, 360, 640);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
