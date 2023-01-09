@@ -128,7 +128,7 @@ public class OrderCreatePanel_김민선 extends JPanel {
 		/*
 		 * loginMember 객체 생성
 		 */
-		loginMember = new Member("sy0",null,null,null,null,null,null);
+		loginMember = new Member("sy1",null,null,null,null,null,null);
 		/*****************************************/
 	}
 	
