@@ -61,11 +61,7 @@ public class OrderService {
 		String o_desc = "";
 		
 		orderItemList.add(orderItem);
-		if (oi_qty >= 2) {
-			o_desc = orderItemList.get(0).getProduct().getP_name() + " 외 " + (oi_qty - 1) + "개";
-		} else if (oi_qty == 1) {
-			o_desc = orderItemList.get(0).getProduct().getP_name();
-		}
+		o_desc = orderItemList.get(0).getProduct().getP_name() + " 외" + (oi_qty - 1) + "개";
 		Order newOrder = new Order(0,
 								   order.getO_name(),
 								   o_desc,
