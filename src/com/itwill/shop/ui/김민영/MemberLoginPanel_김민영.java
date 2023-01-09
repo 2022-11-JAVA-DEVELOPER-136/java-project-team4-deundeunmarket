@@ -34,13 +34,13 @@ public class MemberLoginPanel_김민영 extends JPanel {
 		memberTabbedPane.addTab("회원로그인", null, memberLoginPanel, null);
 		memberLoginPanel.setLayout(null);
 		
-		JLabel passwordLB = new JLabel("아이디");
-		passwordLB.setBounds(72, 276, 57, 15);
-		memberLoginPanel.add(passwordLB);
+		JLabel idLB = new JLabel("아이디");
+		idLB.setBounds(72, 276, 57, 15);
+		memberLoginPanel.add(idLB);
 		
-		JLabel lblNewLabel_6 = new JLabel("패쓰워드");
-		lblNewLabel_6.setBounds(72, 338, 57, 15);
-		memberLoginPanel.add(lblNewLabel_6);
+		JLabel passwordLB = new JLabel("패쓰워드");
+		passwordLB.setBounds(72, 338, 57, 15);
+		memberLoginPanel.add(passwordLB);
 		
 		loginIdTF = new JTextField();
 		loginIdTF.setBounds(172, 273, 116, 21);

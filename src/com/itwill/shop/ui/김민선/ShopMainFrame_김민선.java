@@ -30,7 +30,7 @@ public class ShopMainFrame_김민선 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ShopMainFrame_김민선() {
+	public ShopMainFrame_김민선() throws Exception{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 360, 639);
 		contentPane = new JPanel();
