@@ -38,24 +38,26 @@ public class OrderServiceTestMain {
 		/*
 		 * 상품에서 직접 주문 - orderCreate
 		 */
-		order = new Order(0,"김민선", "밀키트 외 2종", null, 55000, "서울시 강남구","조심히 놔주세요", "현금", "sy2");
+		System.out.println("orderCreate - 상품에서 직접 주문");
+		order = new Order(0, "김민선", null, null, 0, "서울시 강남구", "조심히 놔주세요", "현금", "sy2");
 		rowCount = orderService.orderCreate(order, 1, 1);
 		System.out.println(rowCount+"개의 주문 생성");
 		
 		/*
 		 * 카트에서 주문 - orderCreate 오버로딩
 		 */
-		order = new Order(0,"김민선", "밀키트 외 2종", null, 55000, "서울시 강남구","조심히 놔주세요", "현금", "sy2");
+		System.out.println("orderCreate - 카트에서 주문");
+		order = new Order(0, "김민선", null, null, 0, "서울시 강남구", "조심히 놔주세요", "현금", "sy0");
 		rowCount = orderService.orderCreate(order);
 		System.out.println(rowCount+"개의 주문 생성");
 		
 		/*
 		 * 카트에서 선택 주문 - orderCreate 오버로딩 (선택)
 		 */
-		//Exception in thread "main" java.lang.NullPointerException
-		//order = new Order(0,"김민선", "밀키트 외 2종", null, 55000, "서울시 강남구","조심히 놔주세요", "현금", "sy2");
-		//String[] cart_no_StrArray = {"3", "4", "7", "8"};
-		//rowCount = orderService.orderCreate(order, cart_no_StrArray);
-		//System.out.println(rowCount+"개의 주문 생성");
+		System.out.println("orderCreate - 카트에서 선택 주문");
+		order = new Order(0, "김민선", null, null, 0, "서울시 강남구", "조심히 놔주세요", "현금", "sy1");
+		String[] cart_no_StrArray = {"3", "4"};
+		rowCount = orderService.orderCreate(order, cart_no_StrArray);
+		System.out.println(rowCount+"개의 주문 생성");
 	}
 }
