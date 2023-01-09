@@ -100,12 +100,13 @@ public class OrderCreatePanel_김민선 extends JPanel {
 					String o_address = addressTF.getText();
 					String o_payment = (String) paymentCB.getSelectedItem();
 					String o_loc = (String) orderLocCB.getSelectedItem();
-
-					Order newOrder = new Order(0, o_name, null, null, 0, o_address, o_loc, o_payment, null);
+					
+					Order newOrder = new Order(0, o_name, null, null, 0, o_address, o_loc, o_payment, loginMember.getM_id());
 					int isCreated;
 					isCreated = orderService.orderCreate(newOrder);
 					if (isCreated >= 1) {
 						JOptionPane.showMessageDialog(null, "주문이 완료되었습니다.");
+						// 주문 성공 시 주문 상세보기 화면으로 전환
 					} else {
 						JOptionPane.showMessageDialog(null, "주문실패");
 					}
