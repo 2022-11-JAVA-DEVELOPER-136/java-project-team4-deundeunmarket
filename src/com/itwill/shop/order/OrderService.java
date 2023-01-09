@@ -88,7 +88,7 @@ public class OrderService {
 		List<Cart> cartList = cartDao.findByMemberId(order.getM_id());
 		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 		int o_tot_price = 0;
-		int oi_total_count = 0;
+		int oi_tot_count = 0;
 		String o_desc = "";
 		int rowCount = 0;
 		
@@ -96,13 +96,10 @@ public class OrderService {
 			OrderItem orderItem = new OrderItem(0, cart.getCart_qty(), cart.getProduct(), 0);
 			orderItemList.add(orderItem);
 			o_tot_price += orderItem.getOi_qty()*orderItem.getProduct().getP_price();
-			oi_total_count += orderItem.getOi_qty();
+			oi_tot_count += orderItem.getOi_qty();
 		}
-		if (orderItemList.size() >= 2) {
-			o_desc = orderItemList.get(0).getProduct().getP_name() + " 외 " + (oi_total_count - 1) + "개";
-		} else if (orderItemList.size() == 1) {
-			o_desc = orderItemList.get(0).getProduct().getP_name();
-		}
+		o_desc = orderItemList.get(0).getProduct().getP_name() + " 외" + (oi_tot_count - 1) + "개";
+		
 		Order newOrder = new Order(0, order.getO_name(),o_desc, null, o_tot_price, order.getO_address(), order.getO_loc(), order.getO_payment(), order.getM_id());
 		newOrder.setOrderItemList(orderItemList);
 		rowCount = orderDao.insert(newOrder);
@@ -117,7 +114,7 @@ public class OrderService {
 		
 		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 		int o_tot_price = 0;
-		int oi_total_count = 0;
+		int oi_tot_count = 0;
 		String o_desc = "";
 		int rowCount = 0;
 		
@@ -126,13 +123,9 @@ public class OrderService {
 			OrderItem orderItem = new OrderItem(0, cart.getCart_qty(), cart.getProduct(), 0);
 			orderItemList.add(orderItem);
 			o_tot_price += orderItem.getOi_qty() * orderItem.getProduct().getP_price();
-			oi_total_count += orderItem.getOi_qty();
+			oi_tot_count += orderItem.getOi_qty();
 		}
-		if (orderItemList.size() >= 2) {
-			o_desc = orderItemList.get(0).getProduct().getP_name() + " 외 " + (oi_total_count - 1) + "개";
-		} else if (orderItemList.size() == 1) {
-			o_desc = orderItemList.get(0).getProduct().getP_name();
-		}
+		o_desc = orderItemList.get(0).getProduct().getP_name() + " 외" + (oi_tot_count - 1) + "개";
 		Order newOrder = new Order(0, order.getO_name(), o_desc, null, o_tot_price, order.getO_address(), order.getO_loc(), order.getO_payment(), order.getM_id());
 		newOrder.setOrderItemList(orderItemList);
 		rowCount = orderDao.insert(newOrder);
