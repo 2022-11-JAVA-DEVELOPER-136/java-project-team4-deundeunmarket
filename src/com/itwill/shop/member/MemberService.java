@@ -29,7 +29,7 @@ public class MemberService {
 		 * 0 : 해당하는 아이디 없음 - 로그인 실패 
 		 * 1 : 일치하는 아이디 있음 - 로그인 성공
 		 */
-		int result = 0;
+		int result = -999;
 		if (memberDao.countByMemberId(m_id) == 1) {
 			Member loginMember = memberDao.findByPrimaryKey(m_id);
 			if (loginMember.getM_pass().equals(m_pass)) {
