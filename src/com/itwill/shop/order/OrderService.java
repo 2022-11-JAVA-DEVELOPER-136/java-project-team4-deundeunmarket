@@ -15,13 +15,11 @@ public class OrderService {
 	private OrderDao orderDao;
 	private ProductDao productDao;
 	private CartDao cartDao;
-	private MemberDao memberDao;
 	
 	public OrderService() throws Exception {
 		orderDao = new OrderDao();
 		productDao = new ProductDao();
 		cartDao = new CartDao();
-		memberDao = new MemberDao();
 	}
 	
 	/*
@@ -57,7 +55,6 @@ public class OrderService {
 	 */
 	public int orderCreate(Order order, int p_no, int oi_qty) throws Exception {
 		
-		Member member = memberDao.findByPrimaryKey(order.getM_id());
 		Product product = productDao.findByPrimaryKey(p_no);
 		OrderItem orderItem = new OrderItem(0, oi_qty, product, 0);
 		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
@@ -70,16 +67,17 @@ public class OrderService {
 			o_desc = orderItemList.get(0).getProduct().getP_name();
 		}
 		Order newOrder = new Order(0,
+								   order.getO_name(),
 								   o_desc,
 								   null,
 								   oi_qty * orderItemList.get(0).getProduct().getP_price(),
-								   member.getM_address(), // 회원가입시 작성되는 주소
-								   //order.getO_address(), 주문시 작성되는 주소 존재
+								   order.getO_address(),
 								   order.getO_loc(),
 								   order.getO_payment(),
 								   order.getM_id());
 		newOrder.setOrderItemList(orderItemList);
 		return orderDao.insert(newOrder);
+		
 	}
 	
 	/*
@@ -87,7 +85,6 @@ public class OrderService {
 	 */
 	public int orderCreate(Order order) throws Exception {
 		
-		Member member = memberDao.findByPrimaryKey(order.getM_id());
 		List<Cart> cartList = cartDao.findByMemberId(order.getM_id());
 		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 		int o_tot_price = 0;
@@ -106,8 +103,7 @@ public class OrderService {
 		} else if (orderItemList.size() == 1) {
 			o_desc = orderItemList.get(0).getProduct().getP_name();
 		}
-		//order.getO_address() 주문시 작성되는 주소 존재
-		Order newOrder = new Order(0, o_desc, null, o_tot_price, member.getM_address(), order.getO_loc(), order.getO_payment(), order.getM_id());
+		Order newOrder = new Order(0, order.getO_name(),o_desc, null, o_tot_price, order.getO_address(), order.getO_loc(), order.getO_payment(), order.getM_id());
 		newOrder.setOrderItemList(orderItemList);
 		rowCount = orderDao.insert(newOrder);
 		cartDao.deleteByMemberId(order.getM_id());
@@ -119,7 +115,6 @@ public class OrderService {
 	 */
 	public int orderCreate(Order order, String[] cart_no_StrArray) throws Exception {
 		
-		Member member = memberDao.findByPrimaryKey(order.getM_id());
 		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 		int o_tot_price = 0;
 		int oi_total_count = 0;
@@ -138,8 +133,7 @@ public class OrderService {
 		} else if (orderItemList.size() == 1) {
 			o_desc = orderItemList.get(0).getProduct().getP_name();
 		}
-		//order.getO_address() 주문시 작성되는 주소 존재
-		Order newOrder = new Order(0, o_desc, null, o_tot_price, member.getM_address(), order.getO_loc(), order.getO_payment(), order.getM_id());
+		Order newOrder = new Order(0, order.getO_name(), o_desc, null, o_tot_price, order.getO_address(), order.getO_loc(), order.getO_payment(), order.getM_id());
 		newOrder.setOrderItemList(orderItemList);
 		rowCount = orderDao.insert(newOrder);
 		for(int i=0; i<cart_no_StrArray.length; i++) {

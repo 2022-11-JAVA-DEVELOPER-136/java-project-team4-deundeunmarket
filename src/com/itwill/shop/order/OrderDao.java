@@ -71,12 +71,13 @@ public class OrderDao {
 			con = dataSource.getConnection();
 			con.setAutoCommit(false);
 			pstmt1 = con.prepareStatement(OrderSQL.ORDER_INSERT);
-			pstmt1.setString(1, order.getO_desc());
-			pstmt1.setInt(2, order.getO_price());
-			pstmt1.setString(3, order.getO_address());
-			pstmt1.setString(4, order.getO_loc());
-			pstmt1.setString(5, order.getO_payment());
-			pstmt1.setString(6, order.getM_id());
+			pstmt1.setString(1, order.getO_name());
+			pstmt1.setString(2, order.getO_desc());
+			pstmt1.setInt(3, order.getO_price());
+			pstmt1.setString(4, order.getO_address());
+			pstmt1.setString(5, order.getO_loc());
+			pstmt1.setString(6, order.getO_payment());
+			pstmt1.setString(7, order.getM_id());
 			rowCount = pstmt1.executeUpdate();
 			
 			pstmt2 = con.prepareStatement(OrderSQL.ORDERITEM_INSERT);
@@ -115,6 +116,7 @@ public class OrderDao {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				orderList.add(new Order(rs.getInt("o_no"),
+										rs.getString("o_name"),
 										rs.getString("o_desc"),
 										rs.getDate("o_date"),
 										rs.getInt("o_price"),
@@ -149,6 +151,7 @@ public class OrderDao {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				order = new Order(rs.getInt("o_no"),
+								  rs.getString("o_name"),
 								  rs.getString("o_desc"),
 								  rs.getDate("o_date"),
 								  rs.getInt("o_price"),

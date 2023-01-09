@@ -29,6 +29,7 @@ CREATE SEQUENCE product_p_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 CREATE TABLE orders(
 		o_no                          		NUMBER(10)		 NULL ,
+		o_name                        		VARCHAR2(50)		 NULL ,
 		o_desc                        		VARCHAR2(1000)		 NULL ,
 		o_date                        		DATE		 DEFAULT sysdate		 NULL ,
 		o_price                       		NUMBER(10)		 NULL ,

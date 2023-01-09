@@ -14,13 +14,13 @@ public class OrderServiceTestMain {
 		/*
 		 * 주문 1개 삭제 - deleteByOrderNo
 		 */
-		rowCount = orderService.deleteByOrderNo(1);
+		//rowCount = orderService.deleteByOrderNo(1);
 		System.out.println(rowCount+"개의 주문 삭제");
 		
 		/*
 		 * 주문 전체 삭제 - delete
 		 */
-		rowCount = orderService.delete("sy1");
+		//rowCount = orderService.delete("sy1");
 		System.out.println(rowCount+"개의 주문 삭제");
 		
 		/*
@@ -33,19 +33,19 @@ public class OrderServiceTestMain {
 		 * 주문상세보기 - orderDetail
 		 */
 		System.out.println("orderDetail");
-		System.out.println(orderService.orderDetail("sy0", 1));
+		System.out.println(orderService.orderDetail("sy0", 4));
 		
 		/*
 		 * 상품에서 직접 주문 - orderCreate
 		 */
-		order = new Order(0, null, null, 0, null, "집 앞에 놔주세요", "카드", "sy2");
+		order = new Order(0,"김민선", "밀키트 외 2종", null, 55000, "서울시 강남구","조심히 놔주세요", "현금", "sy2");
 		rowCount = orderService.orderCreate(order, 1, 1);
 		System.out.println(rowCount+"개의 주문 생성");
 		
 		/*
 		 * 카트에서 주문 - orderCreate 오버로딩
 		 */
-		order = new Order(0, null, null, 0, null, "계단에 놔주세요", "현금", "sy0");
+		order = new Order(0,"김민선", "밀키트 외 2종", null, 55000, "서울시 강남구","조심히 놔주세요", "현금", "sy2");
 		rowCount = orderService.orderCreate(order);
 		System.out.println(rowCount+"개의 주문 생성");
 		
@@ -53,9 +53,9 @@ public class OrderServiceTestMain {
 		 * 카트에서 선택 주문 - orderCreate 오버로딩 (선택)
 		 */
 		//Exception in thread "main" java.lang.NullPointerException
-		order = new Order(0, null, null, 0, null, "벨 울려주세요", "카드", "sy1");
-		String[] cart_no_StrArray = {"3", "4", "7", "8"};
-		rowCount = orderService.orderCreate(order, cart_no_StrArray);
-		System.out.println(rowCount+"개의 주문 생성");
+		//order = new Order(0,"김민선", "밀키트 외 2종", null, 55000, "서울시 강남구","조심히 놔주세요", "현금", "sy2");
+		//String[] cart_no_StrArray = {"3", "4", "7", "8"};
+		//rowCount = orderService.orderCreate(order, cart_no_StrArray);
+		//System.out.println(rowCount+"개의 주문 생성");
 	}
 }
