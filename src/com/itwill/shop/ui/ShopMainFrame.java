@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import java.awt.FlowLayout;
 import java.awt.Cursor;
 import javax.swing.JTabbedPane;
+import java.awt.Dimension;
 
 public class ShopMainFrame extends JFrame {
 
@@ -37,12 +38,16 @@ public class ShopMainFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public ShopMainFrame() {
+		initGUI();
+	}
+	private void initGUI() {
+		setPreferredSize(new Dimension(360, 640));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 360, 640);
+		setBounds(100, 100, 354, 639);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-		setContentPane(contentPane);
+		
+				setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel globalNorthMenuPanel = new JPanel();
