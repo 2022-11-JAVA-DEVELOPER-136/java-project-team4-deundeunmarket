@@ -13,6 +13,8 @@ import java.awt.FlowLayout;
 import java.awt.Cursor;
 import javax.swing.JTabbedPane;
 import java.awt.Dimension;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 public class ShopMainFrame extends JFrame {
 
@@ -53,6 +55,13 @@ public class ShopMainFrame extends JFrame {
 		JPanel globalNorthMenuPanel = new JPanel();
 		globalNorthMenuPanel.setBackground(new Color(46, 139, 87));
 		contentPane.add(globalNorthMenuPanel, BorderLayout.NORTH);
+		globalNorthMenuPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		JLabel globalLogoLB = new JLabel("");
+		globalLogoLB.setBorder(null);
+		globalLogoLB.setHorizontalAlignment(SwingConstants.LEFT);
+		globalLogoLB.setIcon(new ImageIcon(ShopMainFrame.class.getResource("/images/든든마켓화이트 상단.png")));
+		globalNorthMenuPanel.add(globalLogoLB);
 		
 		JPanel globalSouthMenuPanel = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) globalSouthMenuPanel.getLayout();
@@ -64,14 +73,14 @@ public class ShopMainFrame extends JFrame {
 		globalSearchMenuButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		globalSearchMenuButton.setBorder(null);
 		globalSearchMenuButton.setOpaque(false);
-		globalSearchMenuButton.setIcon(new ImageIcon(ShopMainFrame.class.getResource("/images/든든마켓 화이트50.png")));
+		globalSearchMenuButton.setIcon(new ImageIcon(ShopMainFrame.class.getResource("/images/search 50.png")));
 		globalSouthMenuPanel.add(globalSearchMenuButton);
 		
 		JButton globalHomeMenuButton = new JButton("");
 		globalHomeMenuButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		globalHomeMenuButton.setOpaque(false);
 		globalHomeMenuButton.setBorder(null);
-		globalHomeMenuButton.setIcon(new ImageIcon(ShopMainFrame.class.getResource("/images/든든마켓 화이트50.png")));
+		globalHomeMenuButton.setIcon(new ImageIcon(ShopMainFrame.class.getResource("/images/home 50.png")));
 		globalSouthMenuPanel.add(globalHomeMenuButton);
 		
 		JButton globalMemberMenuButton = new JButton("");
@@ -96,5 +105,4 @@ public class ShopMainFrame extends JFrame {
 		MemberJoinPanel memberJoinPanel = new MemberJoinPanel();
 		memberTabbedPane.addTab("New tab", null, memberJoinPanel, null);
 	}
-
 }

@@ -39,8 +39,8 @@ public class ShopMainFrame_김민선 extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
 		
-		ProductListPanel_김민선 productListPanel_김민선 = new ProductListPanel_김민선();
-		contentPane.add(productListPanel_김민선);
+		OrderCreatePanel_김민선 orderCreatePanel_김민선 = new OrderCreatePanel_김민선();
+		contentPane.add(orderCreatePanel_김민선);
 	}
 
 }
