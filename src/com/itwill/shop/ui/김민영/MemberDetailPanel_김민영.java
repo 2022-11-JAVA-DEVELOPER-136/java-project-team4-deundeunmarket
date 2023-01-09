@@ -34,9 +34,9 @@ public class MemberDetailPanel_김민영 extends JPanel {
 		memberInfoPanel.setBackground(Color.LIGHT_GRAY);
 		memberInfoPanel.setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("아이디");
-		lblNewLabel_1.setBounds(90, 96, 57, 15);
-		memberInfoPanel.add(lblNewLabel_1);
+		JLabel 아이디 = new JLabel("아이디");
+		아이디.setBounds(90, 96, 57, 15);
+		memberInfoPanel.add(아이디);
 		
 		infoIdTF = new JTextField();
 		infoIdTF.setEnabled(false);
@@ -53,9 +53,9 @@ public class MemberDetailPanel_김민영 extends JPanel {
 		infoPassTF.setBounds(168, 143, 116, 18);
 		memberInfoPanel.add(infoPassTF);
 		
-		JLabel lblNewLabel_2_1 = new JLabel("이름");
-		lblNewLabel_2_1.setBounds(90, 190, 57, 15);
-		memberInfoPanel.add(lblNewLabel_2_1);
+		JLabel 이름 = new JLabel("이름");
+		이름.setBounds(90, 190, 57, 15);
+		memberInfoPanel.add(이름);
 		
 		infoNameTF = new JTextField();
 		infoNameTF.setEditable(false);
@@ -63,9 +63,9 @@ public class MemberDetailPanel_김민영 extends JPanel {
 		infoNameTF.setBounds(168, 187, 116, 21);
 		memberInfoPanel.add(infoNameTF);
 		
-		JLabel lblNewLabel_3_1 = new JLabel("전화번호");
-		lblNewLabel_3_1.setBounds(90, 241, 57, 15);
-		memberInfoPanel.add(lblNewLabel_3_1);
+		JLabel 전화번호 = new JLabel("전화번호");
+		전화번호.setBounds(90, 241, 57, 15);
+		memberInfoPanel.add(전화번호);
 		
 		infoPhoneTF = new JTextField();
 		infoPhoneTF.setEditable(false);
@@ -73,9 +73,9 @@ public class MemberDetailPanel_김민영 extends JPanel {
 		infoPhoneTF.setBounds(168, 238, 116, 21);
 		memberInfoPanel.add(infoPhoneTF);
 		
-		JLabel lblNewLabel_4_1 = new JLabel("생일");
-		lblNewLabel_4_1.setBounds(90, 289, 57, 15);
-		memberInfoPanel.add(lblNewLabel_4_1);
+		JLabel 생일 = new JLabel("생일");
+		생일.setBounds(90, 289, 57, 15);
+		memberInfoPanel.add(생일);
 		
 		infoBdayTF = new JTextField();
 		infoBdayTF.setEnabled(false);
@@ -89,7 +89,7 @@ public class MemberDetailPanel_김민영 extends JPanel {
 		infoEmailTF.setBounds(168, 358, 116, 19);
 		memberInfoPanel.add(infoEmailTF);
 		
-		JLabel lblNewLabel_6_1 = new JLabel("주소");
+		JLabel 주소 = new JLabel("주소");
 		
 		infoAddressTF = new JTextField();
 		infoAddressTF.setEnabled(false);
