@@ -107,8 +107,9 @@ public class OrderCreatePanel_김민선 extends JPanel {
 					if (isCreated >= 1) {
 						JOptionPane.showMessageDialog(null, "주문이 완료되었습니다.");
 						// 주문 성공 시 주문 상세보기 화면으로 전환
+						// 주문 상세보기 화면 활성화
 					} else {
-						JOptionPane.showMessageDialog(null, "주문실패");
+						JOptionPane.showMessageDialog(null, "주문 실패");
 					}
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -131,6 +132,9 @@ public class OrderCreatePanel_김민선 extends JPanel {
 		loginMember = new Member("sy1",null,null,null,null,null,null);
 		/*****************************************/
 	}
+	
+	
+	
 	
 	
 	
