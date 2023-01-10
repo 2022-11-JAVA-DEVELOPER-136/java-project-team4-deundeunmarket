@@ -58,7 +58,7 @@ public class ProductListPanel_김준 extends JPanel {
 		setLayout(null);
 		
 		JScrollPane productListScrollPane = new JScrollPane();
-		productListScrollPane.setBounds(12, 121, 307, 347);
+		productListScrollPane.setBounds(12, 63, 307, 405);
 		add(productListScrollPane);
 		
 		productListPanel = new JPanel();
@@ -70,11 +70,18 @@ public class ProductListPanel_김준 extends JPanel {
 		/********제품패널생성***********/
 		JPanel productPanel = new JPanel();
 		productPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		productPanel.setPreferredSize(new Dimension(125, 280));
+		productPanel.setPreferredSize(new Dimension(125, 310));
 		
 		productPanel.setLayout(null);
 		
 		JLabel productImageLB = new JLabel("");
+		productImageLB.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				
+			}
+		});
 		productImageLB.setVerticalTextPosition(SwingConstants.BOTTOM);
 		productImageLB.setPreferredSize(new Dimension(100, 140));
 		productImageLB.setIcon(new ImageIcon(ProductListPanel_김준.class.getResource("/images/떡볶이_작은.jpg")));
@@ -94,9 +101,14 @@ public class ProductListPanel_김준 extends JPanel {
 		productPriceLB.setBounds(0, 209, 115, 22);
 		productPanel.add(productPriceLB);
 		
-		JLabel productDescLB = new JLabel("<html>자꾸 생각나는 매콤 달콤함<html>\r\n");
-		productDescLB.setBounds(0, 230, 115, 40);
-		productPanel.add(productDescLB);
+		
+		JButton cartBtn = new JButton("담기");
+		cartBtn.setBounds(3, 241, 97, 23);
+		productPanel.add(cartBtn);
+		
+		JButton buyBtn = new JButton("구매하기");
+		buyBtn.setBounds(3, 274, 97, 23);
+		productPanel.add(buyBtn);
 		
 		productListPanel.add(productPanel);
 		/********************************/	
@@ -115,11 +127,17 @@ public class ProductListPanel_김준 extends JPanel {
 		for (Product product : productList) {
 			JPanel productPanel = new JPanel();
 			productPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-			productPanel.setPreferredSize(new Dimension(125, 280));
+			productPanel.setPreferredSize(new Dimension(125, 310));
 			
 			productPanel.setLayout(null);
 			
 			JLabel productImageLB = new JLabel("");
+			productImageLB.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					
+				}
+			});
 			productImageLB.setVerticalTextPosition(SwingConstants.BOTTOM);
 			productImageLB.setPreferredSize(new Dimension(100, 140));
 			productImageLB.setIcon(new ImageIcon(ProductListPanel_김준.class.getResource(product.getP_image())));
@@ -130,7 +148,7 @@ public class ProductListPanel_김준 extends JPanel {
 			productNameLB.setMinimumSize(new Dimension(24, 15));
 			productNameLB.setMaximumSize(new Dimension(24, 15));
 			productNameLB.setPreferredSize(new Dimension(24, 15));
-			productNameLB.setBounds(0, 158, 115, 41);
+			productNameLB.setBounds(0, 158, 125, 41);
 			productPanel.add(productNameLB);
 			productListPanel.add(productPanel);
 			
@@ -139,9 +157,15 @@ public class ProductListPanel_김준 extends JPanel {
 			productPriceLB.setBounds(0, 209, 115, 22);
 			productPanel.add(productPriceLB);
 			
-			JLabel productDescLB = new JLabel("<html>"+ product.getP_desc() +"</html>");
-			productDescLB.setBounds(0, 230, 115, 40);
-			productPanel.add(productDescLB);
+			JButton cartBtn = new JButton("담기");
+			cartBtn.setBounds(3, 241, 97, 23);
+			productPanel.add(cartBtn);
+			
+			JButton buyBtn = new JButton("구매하기");
+			buyBtn.setBounds(3, 274, 97, 23);
+			productPanel.add(buyBtn);
+			
+			
 			
 			productListPanel.add(productPanel);
 		}

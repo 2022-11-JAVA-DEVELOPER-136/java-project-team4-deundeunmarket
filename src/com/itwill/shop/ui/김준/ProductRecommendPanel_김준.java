@@ -56,7 +56,7 @@ public class ProductRecommendPanel_김준 extends JPanel {
 setLayout(null);
 		
 		JScrollPane productListScrollPane = new JScrollPane();
-		productListScrollPane.setBounds(12, 133, 307, 347);
+		productListScrollPane.setBounds(12, 63, 307, 405);
 		add(productListScrollPane);
 		
 		productListPanel = new JPanel();
@@ -68,7 +68,7 @@ setLayout(null);
 		/********제품패널생성***********/
 		JPanel tteokbokkiPanel = new JPanel();
 		tteokbokkiPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		tteokbokkiPanel.setPreferredSize(new Dimension(125, 280));
+		tteokbokkiPanel.setPreferredSize(new Dimension(125, 310));
 		
 		tteokbokkiPanel.setLayout(null);
 		
@@ -92,15 +92,19 @@ setLayout(null);
 		productPriceLB.setBounds(0, 209, 115, 22);
 		tteokbokkiPanel.add(productPriceLB);
 		
-		JLabel productDescLB = new JLabel("<html>자꾸 생각나는 매콤 달콤함<html>\r\n");
-		productDescLB.setBounds(0, 230, 115, 40);
-		tteokbokkiPanel.add(productDescLB);
-		
 		productListPanel.add(tteokbokkiPanel);
+		
+		JButton cartBtn1 = new JButton("담기");
+		cartBtn1.setBounds(3, 241, 97, 23);
+		tteokbokkiPanel.add(cartBtn1);
+		
+		JButton buyBtn1 = new JButton("구매하기");
+		buyBtn1.setBounds(3, 274, 97, 23);
+		tteokbokkiPanel.add(buyBtn1);
 		
 		JPanel creampastaPanel_2 = new JPanel();
 		creampastaPanel_2.setLayout(null);
-		creampastaPanel_2.setPreferredSize(new Dimension(125, 280));
+		creampastaPanel_2.setPreferredSize(new Dimension(125, 310));
 		productListPanel.add(creampastaPanel_2);
 		
 		JLabel productImageLB_2 = new JLabel("");
@@ -122,13 +126,17 @@ setLayout(null);
 		productPriceLB_2.setBounds(0, 209, 115, 22);
 		creampastaPanel_2.add(productPriceLB_2);
 		
-		JLabel productDescLB_2 = new JLabel("<html>매콤한 매력의 크림 파스타<html>\r\n");
-		productDescLB_2.setBounds(0, 230, 115, 40);
-		creampastaPanel_2.add(productDescLB_2);
+		JButton cartBtn2 = new JButton("담기");
+		cartBtn2.setBounds(3, 241, 97, 23);
+		creampastaPanel_2.add(cartBtn2);
+		
+		JButton buyBtn2 = new JButton("구매하기");
+		buyBtn2.setBounds(3, 274, 97, 23);
+		creampastaPanel_2.add(buyBtn2);
 		
 		JPanel steakPanel_3 = new JPanel();
 		steakPanel_3.setLayout(null);
-		steakPanel_3.setPreferredSize(new Dimension(125, 280));
+		steakPanel_3.setPreferredSize(new Dimension(125, 310));
 		productListPanel.add(steakPanel_3);
 		
 		JLabel productImageLB_3 = new JLabel("");
@@ -150,13 +158,17 @@ setLayout(null);
 		productPriceLB_3.setBounds(0, 209, 115, 22);
 		steakPanel_3.add(productPriceLB_3);
 		
-		JLabel productDescLB_3 = new JLabel("<html>쫄깃한 식감, 풍부한 육즙<html>\r\n");
-		productDescLB_3.setBounds(0, 230, 115, 40);
-		steakPanel_3.add(productDescLB_3);
+		JButton cartBtn3 = new JButton("담기");
+		cartBtn3.setBounds(3, 241, 97, 23);
+		steakPanel_3.add(cartBtn3);
+		
+		JButton buyBtn3 = new JButton("구매하기");
+		buyBtn3.setBounds(3, 274, 97, 23);
+		steakPanel_3.add(buyBtn3);
 		
 		JPanel shabuPanel_4 = new JPanel();
 		shabuPanel_4.setLayout(null);
-		shabuPanel_4.setPreferredSize(new Dimension(125, 280));
+		shabuPanel_4.setPreferredSize(new Dimension(125, 310));
 		productListPanel.add(shabuPanel_4);
 		
 		JLabel productImageLB_4 = new JLabel("");
@@ -178,9 +190,13 @@ setLayout(null);
 		productPriceLB_4.setBounds(0, 209, 115, 22);
 		shabuPanel_4.add(productPriceLB_4);
 		
-		JLabel productDescLB_4 = new JLabel("<html>매장의 노하우로 완성<html>\r\n");
-		productDescLB_4.setBounds(0, 230, 115, 40);
-		shabuPanel_4.add(productDescLB_4);
+		JButton cartBtn4 = new JButton("담기");
+		cartBtn4.setBounds(3, 241, 97, 23);
+		shabuPanel_4.add(cartBtn4);
+		
+		JButton buyBtn4 = new JButton("구매하기");
+		buyBtn4.setBounds(3, 274, 97, 23);
+		shabuPanel_4.add(buyBtn4);
 		/********************************/	
 
 		//객체 생성
