@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class MemberDetailPanel_최민영 extends JPanel {
 	/*********1.MemberService멤버필드선언*****/
@@ -31,6 +32,7 @@ public class MemberDetailPanel_최민영 extends JPanel {
 	private JTextField infoAddressTF;
 	private JButton updateFormBtn;
 	private JButton updateBtn;
+	private JLabel infoMsgLB;
 
 	/**
 	 * Create the panel.
@@ -139,6 +141,12 @@ public class MemberDetailPanel_최민영 extends JPanel {
 					String email = infoMailTF.getText();
 					String address = infoAddressTF.getText();
 					
+					if (id.equals("") || password.equals("") || name.equals("") || phone.equals("") || bday.equals("") || email.equals("") || address.equals("")) {
+						infoMsgLB.setText("내용을 입력하십시오.");
+						infoIdTF.requestFocus();
+						return;
+					}
+					
 					Member member=new Member(id, password, name, phone, new SimpleDateFormat("yyyy/MM/dd").parse(bday), email, address);
 					
 					
@@ -169,6 +177,11 @@ public class MemberDetailPanel_최민영 extends JPanel {
 		});
 		deleteBtn.setBounds(222, 458, 97, 23);
 		memberInfoPanel.add(deleteBtn);
+		
+		infoMsgLB = new JLabel("");
+		infoMsgLB.setForeground(Color.RED);
+		infoMsgLB.setBounds(84, 72, 213, 15);
+		memberInfoPanel.add(infoMsgLB);
 		
 		memberService = new MemberService();
 		
