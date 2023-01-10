@@ -207,6 +207,30 @@ public class ShopMainFrame extends JFrame {
 		
 	}
 	
+	 /***********패널변경메쏘드********/
+	/*
+	public void changePanel(int panel_no,Object data) {
+		if(panel_no==PRODUCT_LIST_PANEL) {
+			shopTabbedPane.setSelectedIndex(0);
+			productTabbedPane.setSelectedIndex(0);
+		}else if(panel_no==PRODUCT_DETAIL_PANEL) {
+			Product product=(Product)data;
+			System.out.println("recv product"+product);
+			
+			shopTabbedPane.setSelectedIndex(0);
+			productTabbedPane.setSelectedIndex(1);
+			productDetailPanel.displayProductDetail(product);
+			
+		}else if(panel_no==USER_INFO_PANEL) {
+			shopTabbedPane.setSelectedIndex(1);
+			productTabbedPane.setSelectedIndex(1);
+		}else if(panel_no==USERT_JOIN_PANEL) {
+			shopTabbedPane.setSelectedIndex(1);
+			productTabbedPane.setSelectedIndex(0);
+		}
+		
+	}
+	 */
 	
 	
 	
