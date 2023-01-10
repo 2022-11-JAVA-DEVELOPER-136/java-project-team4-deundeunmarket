@@ -2,6 +2,7 @@ package com.itwill.shop.ui.최민영;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import com.itwill.shop.member.Member;
@@ -121,7 +122,7 @@ public class MemberDetailPanel_최민영 extends JPanel {
 				}
 			}
 		});
-		updateFormBtn.setBounds(38, 458, 91, 23);
+		updateFormBtn.setBounds(12, 458, 91, 23);
 		memberInfoPanel.add(updateFormBtn);
 		
 		updateBtn = new JButton("수정");
@@ -150,8 +151,24 @@ public class MemberDetailPanel_최민영 extends JPanel {
 				
 			}
 		});
-		updateBtn.setBounds(182, 458, 91, 23);
+		updateBtn.setBounds(115, 458, 91, 23);
 		memberInfoPanel.add(updateBtn);
+		
+		JButton deleteBtn = new JButton("회원탈퇴");
+		deleteBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+	try {		
+				String selectedId = infoIdTF.getText();
+				memberService.memberDelete(selectedId);
+				JOptionPane.showMessageDialog(null,"탈퇴가 완료되었습니다.");
+				
+		} catch (Exception e1) {
+					e1.printStackTrace();
+		}
+			}
+		});
+		deleteBtn.setBounds(222, 458, 97, 23);
+		memberInfoPanel.add(deleteBtn);
 		
 		memberService = new MemberService();
 		
@@ -204,7 +221,4 @@ public class MemberDetailPanel_최민영 extends JPanel {
 		
 		
 	}
-	
-	
-	
 }

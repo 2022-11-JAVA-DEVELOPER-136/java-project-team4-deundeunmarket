@@ -20,6 +20,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class OrderCreatePanel_김민선 extends JPanel {
 	/*
@@ -33,15 +34,20 @@ public class OrderCreatePanel_김민선 extends JPanel {
 	 */
 	private Member loginMember = null;
 	/*
+	 * order 객체 선언
+	 */
+	private Order order = null;
+	/*
 	 * Create the panel.
 	 */
 	private JTextField addressTF;
-	private JTextField orderPriceTF;
 	private JTextField nameTF;
 	private JComboBox orderLocCB;
 	private JComboBox paymentCB;
 
 	public OrderCreatePanel_김민선() throws Exception{
+		
+		
 		setLayout(null);
 		
 		JLabel OrderNameLB = new JLabel("받으실 분");
@@ -84,12 +90,6 @@ public class OrderCreatePanel_김민선 extends JPanel {
 		OrderPriceLB.setBounds(49, 387, 87, 15);
 		add(OrderPriceLB);
 		
-		orderPriceTF = new JTextField();
-		orderPriceTF.setEditable(false);
-		orderPriceTF.setBounds(170, 384, 136, 21);
-		add(orderPriceTF);
-		orderPriceTF.setColumns(10);
-		
 		JButton orderCreateBtn = new JButton("주문하기");
 		orderCreateBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -119,6 +119,15 @@ public class OrderCreatePanel_김민선 extends JPanel {
 		});
 		orderCreateBtn.setBounds(87, 451, 176, 40);
 		add(orderCreateBtn);
+		try {
+		JLabel orderTotPriceLB = new JLabel(""+order.getO_price());
+		orderTotPriceLB.setHorizontalAlignment(SwingConstants.TRAILING);
+		orderTotPriceLB.setBounds(170, 387, 136, 15);
+		add(orderTotPriceLB);}
+		catch (Exception e1) {
+			e1.getMessage();
+			System.out.println("주문이 없습니다.");
+		}
 		/*****************************************/
 		/*
 		 * Service 객체 생성
@@ -130,12 +139,11 @@ public class OrderCreatePanel_김민선 extends JPanel {
 		 * loginMember 객체 생성
 		 */
 		loginMember = new Member("sy1",null,null,null,null,null,null);
+		/*
+		 * order 객체 생성
+		 */
+		order = orderService.orderDetail(loginMember.getM_id(), 2);
 		/*****************************************/
+		
 	}
-	
-	
-	
-	
-	
-	
 }

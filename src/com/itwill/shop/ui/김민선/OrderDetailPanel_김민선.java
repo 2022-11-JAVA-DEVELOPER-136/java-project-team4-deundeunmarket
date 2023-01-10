@@ -22,6 +22,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class OrderDetailPanel_김민선 extends JPanel {
 	/*
@@ -36,14 +37,13 @@ public class OrderDetailPanel_김민선 extends JPanel {
 	 */
 	private Member loginMember = null;
 	
-	
-	private JTextField orderNoTF;
-	private JTextField orderPaymentInfoTF;
-	private JTextField orderPriceInfoTF;
-	private JTextField orderNameInfoTF;
-	private JTextField orderAddressInfoTF;
 	private JPanel orderDetailPanel;
 	private JPanel orderPanel;
+	private JLabel orderNoInfoLB2;
+	private JLabel orderPriceInfoLB2;
+	private JLabel orderPaymentInfoLB2;
+	private JLabel orderNameInfoLB2;
+	private JLabel orderAddressInfoLB2;
 
 	/**
 	 * Create the panel.
@@ -60,24 +60,18 @@ public class OrderDetailPanel_김민선 extends JPanel {
 		OrderDetailTitleLB.setBounds(30, 10, 181, 35);
 		add(OrderDetailTitleLB);
 		
-		JLabel OrderNoLB = new JLabel("주문번호");
-		OrderNoLB.setBounds(12, 50, 56, 15);
-		add(OrderNoLB);
-		
-		orderNoTF = new JTextField();
-		orderNoTF.setEditable(false);
-		orderNoTF.setBounds(74, 47, 96, 21);
-		add(orderNoTF);
-		orderNoTF.setColumns(10);
+		JLabel OrderNoInfoLB = new JLabel("주문번호");
+		OrderNoInfoLB.setBounds(12, 50, 56, 15);
+		add(OrderNoInfoLB);
 		
 		JScrollPane orderScrollPanel = new JScrollPane();
-		orderScrollPanel.setBounds(12, 75, 336, 282);
+		orderScrollPanel.setBounds(12, 71, 336, 282);
 		add(orderScrollPanel);
 		
 		orderDetailPanel = new JPanel();
 		orderDetailPanel.setPreferredSize(new Dimension(250, 700));
 		orderScrollPanel.setViewportView(orderDetailPanel);
-		
+		/************제품패널 생성**************/
 		orderPanel = new JPanel();
 		orderPanel.setPreferredSize(new Dimension(300, 100));
 		
@@ -93,32 +87,22 @@ public class OrderDetailPanel_김민선 extends JPanel {
 		orderPanel.add(orderTitleLB);
 		
 		JLabel orderPriceLB = new JLabel("11900원");
-		orderPriceLB.setBounds(238, 75, 50, 15);
+		orderPriceLB.setHorizontalAlignment(SwingConstants.TRAILING);
+		orderPriceLB.setBounds(224, 75, 64, 15);
 		orderPanel.add(orderPriceLB);
 		
 		JLabel orderDescLB = new JLabel("집에서 맛보는 인기 메뉴");
-		orderDescLB.setBounds(108, 36, 176, 15);
+		orderDescLB.setBounds(98, 36, 186, 29);
 		orderPanel.add(orderDescLB);
+		/****************************************/
 		
 		JLabel orderInfoLB = new JLabel("주문정보");
 		orderInfoLB.setBounds(12, 377, 56, 15);
 		add(orderInfoLB);
 		
-		orderPaymentInfoTF = new JTextField();
-		orderPaymentInfoTF.setEditable(false);
-		orderPaymentInfoTF.setBounds(244, 405, 84, 21);
-		add(orderPaymentInfoTF);
-		orderPaymentInfoTF.setColumns(10);
-		
 		JLabel orderPriceInfoLB = new JLabel("주문금액");
 		orderPriceInfoLB.setBounds(12, 408, 56, 15);
 		add(orderPriceInfoLB);
-		
-		orderPriceInfoTF = new JTextField();
-		orderPriceInfoTF.setEditable(false);
-		orderPriceInfoTF.setBounds(74, 405, 96, 21);
-		add(orderPriceInfoTF);
-		orderPriceInfoTF.setColumns(10);
 		
 		JLabel orderPaymentInfoLB = new JLabel("결제방법");
 		orderPaymentInfoLB.setBounds(182, 408, 59, 15);
@@ -128,21 +112,9 @@ public class OrderDetailPanel_김민선 extends JPanel {
 		orderNameInfoLB.setBounds(12, 435, 50, 15);
 		add(orderNameInfoLB);
 		
-		orderNameInfoTF = new JTextField();
-		orderNameInfoTF.setEditable(false);
-		orderNameInfoTF.setBounds(75, 432, 96, 21);
-		add(orderNameInfoTF);
-		orderNameInfoTF.setColumns(10);
-		
 		JLabel orderAddressInfoLB = new JLabel("주소");
 		orderAddressInfoLB.setBounds(12, 460, 50, 15);
 		add(orderAddressInfoLB);
-		
-		orderAddressInfoTF = new JTextField();
-		orderAddressInfoTF.setEditable(false);
-		orderAddressInfoTF.setBounds(75, 457, 253, 21);
-		add(orderAddressInfoTF);
-		orderAddressInfoTF.setColumns(10);
 		
 		JButton orderCancalBtn = new JButton("주문취소");
 		orderCancalBtn.addActionListener(new ActionListener() {
@@ -162,6 +134,26 @@ public class OrderDetailPanel_김민선 extends JPanel {
 		add(orderCancalBtn);
 		
 		orderDetailPanel.add(orderPanel);
+		/************주문정보**************/
+		orderNoInfoLB2 = new JLabel("");
+		orderNoInfoLB2.setBounds(75, 50, 95, 15);
+		add(orderNoInfoLB2);
+		
+		orderPriceInfoLB2 = new JLabel("");
+		orderPriceInfoLB2.setBounds(75, 408, 95, 15);
+		add(orderPriceInfoLB2);
+		
+		orderPaymentInfoLB2 = new JLabel("");
+		orderPaymentInfoLB2.setBounds(243, 408, 85, 15);
+		add(orderPaymentInfoLB2);
+		
+		orderNameInfoLB2 = new JLabel("");
+		orderNameInfoLB2.setBounds(74, 435, 96, 15);
+		add(orderNameInfoLB2);
+		
+		orderAddressInfoLB2 = new JLabel("");
+		orderAddressInfoLB2.setBounds(75, 460, 253, 15);
+		add(orderAddressInfoLB2);
 		
 		/*
 		 * Service 객체 생성
@@ -173,50 +165,48 @@ public class OrderDetailPanel_김민선 extends JPanel {
 		 * loginMember 객체 생성
 		 */
 		loginMember = new Member("sy0",null,null,null,null,null,null);
-		
-		displayOrderDetail();
+		// 메소드 호출
+		displayOrderDetail(6);
 	}
 	
-	public void displayOrderDetail() throws Exception{
+	public void displayOrderDetail(int o_no) throws Exception {
 		List<Order> orderList = orderService.orderList(loginMember.getM_id());
-		//orderDetailPanel.removeAll();
-		
+		/*
 		for (Order order : orderList) {
+			// orderDetailPanel.removeAll();
 			orderPanel = new JPanel();
 			orderPanel.setPreferredSize(new Dimension(300, 100));
-			
+
 			orderPanel.setLayout(null);
-			
+
 			JLabel orderImageLB = new JLabel("");
 			orderImageLB.setIcon(new ImageIcon(OrderDetailPanel_김민선.class.getResource("/images/김치우동_작은.jpg")));
 			orderImageLB.setBounds(0, 0, 86, 100);
 			orderPanel.add(orderImageLB);
-			
-			JLabel orderTitleLB = new JLabel("[투다리] 시그니처 김치우동(2인분)");
+
+			JLabel orderTitleLB = new JLabel(order.getOrderItemList().get(0).getProduct().getP_name());
 			orderTitleLB.setBounds(97, 10, 203, 15);
 			orderPanel.add(orderTitleLB);
-			
-			JLabel orderPriceLB = new JLabel("11900원");
-			orderPriceLB.setBounds(238, 75, 50, 15);
+
+			JLabel orderPriceLB = new JLabel(""+order.getO_price());
+			orderPriceLB.setHorizontalAlignment(SwingConstants.TRAILING);
+			orderPriceLB.setBounds(224, 75, 64, 15);
 			orderPanel.add(orderPriceLB);
-			
-			JLabel orderDescLB = new JLabel("집에서 맛보는 인기 메뉴");
-			orderDescLB.setBounds(108, 36, 176, 15);
+
+			JLabel orderDescLB = new JLabel(order.getO_desc());
+			orderDescLB.setBounds(98, 36, 186, 29);
 			orderPanel.add(orderDescLB);
 		}
+		 */
+		
+		
+		
 	}
 	/*
 	 * 주문 정보 
 	 */
 	private void orderDetailInfo(Order order){
-		//orderNoTF.setText(order.getO_no());
-		orderNameInfoTF.setText(order.getO_name());
-		orderAddressInfoTF.setText(order.getO_address());
-		//orderPriceInfoTF.setText(order.getO_price());
-		orderPaymentInfoTF.setText(order.getO_payment());
+	
 		
 	}
-	
-	
-	
 }

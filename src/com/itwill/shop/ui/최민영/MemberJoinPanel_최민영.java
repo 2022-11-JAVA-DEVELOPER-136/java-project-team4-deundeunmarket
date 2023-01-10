@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.Date;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class MemberJoinPanel_최민영 extends JPanel {
 	/*********1.MemberService멤버필드선언*****/
@@ -35,6 +36,7 @@ public class MemberJoinPanel_최민영 extends JPanel {
 	private JTextField addressTF;
 	private JPasswordField passCheckTF;
 	private JButton pwCheckbtn;
+	private JLabel idMsgLB;
 
 	/**
 	 * Create the panel.
@@ -125,9 +127,9 @@ public class MemberJoinPanel_최민영 extends JPanel {
 					String bday = bdayTF.getText();
 					String email = emailTF.getText();
 					String address = addressTF.getText();
-					
+					/********** 유효성 체크 **************/
 					if (id.equals("")) {
-						JOptionPane.showMessageDialog(null, "아이디를 입력하세요.");
+						idMsgLB.setText("아이디를 입력하세요.");
 						idTF.requestFocus();
 						return;
 					}
@@ -191,12 +193,13 @@ public class MemberJoinPanel_최민영 extends JPanel {
 		pwCheckbtn.setBounds(251, 144, 97, 23);
 		memberJoinPannel.add(pwCheckbtn);
 		
+		idMsgLB = new JLabel("");
+		idMsgLB.setForeground(Color.RED);
+		idMsgLB.setBounds(153, 113, 57, 15);
+		memberJoinPannel.add(idMsgLB);
+		
 		
 		memberService=new MemberService();
 
 	}
-	
-	
-	
-	
 }
