@@ -10,6 +10,7 @@ import com.itwill.shop.cart.CartService;
 import com.itwill.shop.member.Member;
 import com.itwill.shop.member.MemberService;
 import com.itwill.shop.order.OrderService;
+import com.itwill.shop.product.Product;
 import com.itwill.shop.product.ProductService;
 
 import java.awt.BorderLayout;
@@ -41,9 +42,10 @@ public class ShopMainFrame extends JFrame {
 	CartService cartService;
 	ProductService productService;
 	/*
-	 * 2. login Member 객체 선언
+	 * 2. login Member 객체 선언(선택한 product 객체 선언)
 	 */
 	Member loginMember = null;
+	Product selectProduct;
 	
 	private JTabbedPane shopTabbedPane;
 	private PopularProductPanel popularProductPanel;
@@ -171,10 +173,13 @@ public class ShopMainFrame extends JFrame {
 	}// 생성자 끝
 	/***************패널 변경 메소드******************/
 	
-	public void changePanel(int panel_no) {
+	public void changePanel(int panel_no, Object data) {
 		if (panel_no == PRODUCT_POPULAR_PANEL) {
+			Product product = (Product)data;
+			System.out.println("receive product" + product);
 			shopTabbedPane.setSelectedIndex(0);
 			productTabbedPane.setSelectedIndex(0);
+			popularProductPanel.displayPopularProduct(product);
 		} else if (panel_no == PRODUCT_LIST_PANEL) {
 			shopTabbedPane.setSelectedIndex(0);
 			productTabbedPane.setSelectedIndex(1);

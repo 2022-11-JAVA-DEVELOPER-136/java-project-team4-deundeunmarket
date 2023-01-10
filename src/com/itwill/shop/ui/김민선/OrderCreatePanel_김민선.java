@@ -110,7 +110,7 @@ public class OrderCreatePanel_김민선 extends JPanel {
 		orderCreateBtn.setBounds(87, 455, 176, 40);
 		orderCreatePanel.add(orderCreateBtn);
 		
-		JLabel orderTotPriceLB = new JLabel("120000");
+		JLabel orderTotPriceLB = new JLabel(""+orderTotPrice(loginMember.getM_id()));
 		orderTotPriceLB.setHorizontalAlignment(SwingConstants.TRAILING);
 		orderTotPriceLB.setBounds(171, 385, 136, 15);
 		orderCreatePanel.add(orderTotPriceLB);
@@ -136,9 +136,17 @@ public class OrderCreatePanel_김민선 extends JPanel {
 	/*
 	 * 주문 총 금액 메소드
 	 */
-	public void orderTotPrice(String m_id) throws Exception{
+	public int orderTotPrice(String m_id) throws Exception{
 		List<Cart> cartList = cartService.getCartItemByMemberId(m_id);
+		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
+		int o_tot_price = 0;
 		
+		for (Cart cart : cartList) {
+			OrderItem orderItem = new OrderItem(0, cart.getCart_qty(), cart.getProduct(), 0);
+			orderItemList.add(orderItem);
+			o_tot_price += orderItem.getOi_qty()*orderItem.getProduct().getP_price();
+		}
+		return o_tot_price;
 	}
 	/*
 	 public int orderCreate(Order order) throws Exception {

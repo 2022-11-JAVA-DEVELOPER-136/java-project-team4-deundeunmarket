@@ -24,7 +24,7 @@ public class MemberJoinPanel extends JPanel {
 				/*
 				 * 버튼 누르면 화면 전환
 				 */
-				frame.changePanel(frame.PRODUCT_POPULAR_PANEL);
+				frame.changePanel(frame.PRODUCT_POPULAR_PANEL,null);
 			}
 		});
 		btnNewButton.setBounds(54, 342, 97, 23);
@@ -36,7 +36,7 @@ public class MemberJoinPanel extends JPanel {
 				/*
 				 * 버튼 누르면 화면 전환
 				 */
-				frame.changePanel(frame.PRODUCT_LIST_PANEL);
+				frame.changePanel(frame.PRODUCT_LIST_PANEL,null);
 			}
 		});
 		btnNewButton_1.setBounds(186, 342, 97, 23);
