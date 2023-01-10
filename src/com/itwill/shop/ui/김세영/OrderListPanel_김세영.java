@@ -47,6 +47,7 @@ public class OrderListPanel_김세영 extends JPanel {
 		orderListPanel = new JPanel();
 		orderListPanel.setPreferredSize(new Dimension(10, 700));
 		orderListScrollPane.setViewportView(orderListPanel);
+		
 		/**********************주문패널생성**********************/
 		
 		/*
@@ -122,7 +123,9 @@ public class OrderListPanel_김세영 extends JPanel {
 			orderPanel.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					
+					/*
+					 * 마우스로 패널 클릭시 실행할 메소드 기술
+					 */
 					try {
 						
 					} catch (Exception e1) {

@@ -38,6 +38,8 @@ public class OrderDetailPanel_김세영 extends JPanel {
 	 */
 	public OrderDetailPanel_김세영() throws Exception {
 		
+		//Order order = orderService.orderDetail(loginMember.getM_id(), 1);
+		
 		setLayout(null);
 		
 		JScrollPane orderDetailScrollPane = new JScrollPane();
@@ -155,15 +157,24 @@ public class OrderDetailPanel_김세영 extends JPanel {
 		orderCancleButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					orderService.delete(loginMember.getM_id());
-					JOptionPane.showMessageDialog(null, "주문이 취소되었습니다.");
-					// 메인화면으로 화면 전환
+					
+					//1일 지나면 주문취소 불가
+					 
+					long gapDay = (System.currentTimeMillis() - order.getO_date().getTime())/1000/60/60/24;
+					//조건(일수) 변경시 아래의 1을 원하는 일수로 변경
+					if(gapDay <= 1) {
+						orderService.deleteByOrderNo(order.getO_no());
+						JOptionPane.showMessageDialog(null, "주문이 취소되었습니다.");
+						// 메인화면으로 화면 전환
+					} else {
+						JOptionPane.showMessageDialog(null, "주문시각으로부터 "+gapDay+"일 경과하였습니다. (1일 지나면 주문취소 불가)");
+					}
 				} catch (Exception e1) {
 					e1.getMessage();
 				}
 			}
 		});
-		orderCancleButton.setBounds(120, 500, 97, 23);
+		orderCancleButton.setBounds(65, 480, 97, 23);
 		add(orderCancleButton);
 		
 		JLabel o_noLabel = new JLabel("주문번호");
@@ -173,6 +184,30 @@ public class OrderDetailPanel_김세영 extends JPanel {
 		JLabel o_noDisplayLabel = new JLabel(""+order.getO_no());
 		o_noDisplayLabel.setBounds(95, 13, 224, 15);
 		add(o_noDisplayLabel);
+		
+		JLabel o_dateLabel = new JLabel("주문일");
+		o_dateLabel.setBounds(12, 320, 57, 15);
+		add(o_dateLabel);
+		
+		JLabel o_dateDisplayLabel = new JLabel(""+order.getO_date());
+		o_dateDisplayLabel.setHorizontalAlignment(SwingConstants.TRAILING);
+		o_dateDisplayLabel.setBounds(95, 320, 224, 15);
+		add(o_dateDisplayLabel);
+		
+		JButton goBackButton = new JButton("뒤로가기");
+		goBackButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					
+					//뒤로가기 - 주문목록으로 화면전환
+					 
+				} catch (Exception e1) {
+					e1.getMessage();
+				}
+			}
+		});
+		goBackButton.setBounds(198, 480, 97, 23);
+		add(goBackButton);
 		*/
 		/******************************/
 		/*
@@ -312,9 +347,7 @@ public class OrderDetailPanel_김세영 extends JPanel {
 		orderCancleButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					/*
-					 * 1일 지나면 주문취소 불가
-					 */
+					//1일 지나면 주문취소 불가
 					long gapDay = (System.currentTimeMillis() - order.getO_date().getTime())/1000/60/60/24;
 					//조건(일수) 변경시 아래의 1을 원하는 일수로 변경
 					if(gapDay <= 1) {
@@ -322,14 +355,14 @@ public class OrderDetailPanel_김세영 extends JPanel {
 						JOptionPane.showMessageDialog(null, "주문이 취소되었습니다.");
 						// 메인화면으로 화면 전환
 					} else {
-						JOptionPane.showMessageDialog(null, "주문시각으로부터 "+gapDay+"일 경과하였습니다. (1일 지나면 주문취소 불가)");
+						JOptionPane.showMessageDialog(null, "주문시각으로부터 "+gapDay+"일 경과하였습니다.\n(1일 이상 경과시 주문취소 불가)");
 					}
 				} catch (Exception e1) {
 					e1.getMessage();
 				}
 			}
 		});
-		orderCancleButton.setBounds(120, 500, 97, 23);
+		orderCancleButton.setBounds(55, 505, 97, 23);
 		add(orderCancleButton);
 		
 		JLabel o_noLabel = new JLabel("주문번호");
@@ -348,5 +381,18 @@ public class OrderDetailPanel_김세영 extends JPanel {
 		o_dateDisplayLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		o_dateDisplayLabel.setBounds(95, 320, 224, 15);
 		add(o_dateDisplayLabel);
+		
+		JButton goBackButton = new JButton("뒤로가기");
+		goBackButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					//뒤로가기 - 주문목록으로 화면전환
+				} catch (Exception e1) {
+					e1.getMessage();
+				}
+			}
+		});
+		goBackButton.setBounds(183, 505, 97, 23);
+		add(goBackButton);
 	}
 }
