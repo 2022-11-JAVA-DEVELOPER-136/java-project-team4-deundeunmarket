@@ -13,6 +13,10 @@ import java.awt.Dimension;
 public class ShopMainFrame_김준 extends JFrame {
 
 	private JPanel contentPane;
+	private ProductListPanel_김준 productListPanel_김준;
+	private ProductRecommendPanel_김준 productRecommendPanel_김준;
+	private ProductDetailPanel_김준 productDetailPanel_김준;
+	private JTabbedPane tabbedPane;
 
 	/**
 	 * Launch the application.
@@ -42,14 +46,17 @@ public class ShopMainFrame_김준 extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		
-		ProductListPanel_김준 productListPanel_김준 = new ProductListPanel_김준();
+		productListPanel_김준 = new ProductListPanel_김준();
 		tabbedPane.addTab("New tab", null, productListPanel_김준, null);
 		
-		ProductRecommendPanel_김준 productRecommendPanel_김준 = new ProductRecommendPanel_김준();
+		productRecommendPanel_김준 = new ProductRecommendPanel_김준();
 		tabbedPane.addTab("New tab", null, productRecommendPanel_김준, null);
+		
+		productDetailPanel_김준 = new ProductDetailPanel_김준();
+		tabbedPane.addTab("New tab", null, productDetailPanel_김준, null);
 		
 
 	}
