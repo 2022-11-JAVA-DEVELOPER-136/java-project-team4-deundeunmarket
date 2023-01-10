@@ -17,6 +17,9 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.Date;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MemberJoinPanel_최민영 extends JPanel {
 	/*********1.MemberService멤버필드선언*****/
@@ -34,7 +37,8 @@ public class MemberJoinPanel_최민영 extends JPanel {
 	private JTextField emailTF;
 	private JTextField addressTF;
 	private JPasswordField passCheckTF;
-	private JButton pwCheckbtn;
+	private JLabel idMsgLB;
+	private JLabel pwMsgLb;
 
 	/**
 	 * Create the panel.
@@ -125,12 +129,20 @@ public class MemberJoinPanel_최민영 extends JPanel {
 					String bday = bdayTF.getText();
 					String email = emailTF.getText();
 					String address = addressTF.getText();
-					
+					/********** 유효성 체크 **************/
 					if (id.equals("")) {
-						JOptionPane.showMessageDialog(null, "아이디를 입력하세요.");
+						idMsgLB.setText("아이디를 입력하세요.");
 						idTF.requestFocus();
 						return;
 					}
+					
+					if (password.equals("")) {
+						pwMsgLb.setText("비밀번호를 입력하세요.");
+						passwordTF.requestFocus();
+						return;
+					}
+					
+					
 					
 					Member newMember = new Member(id, password, name, phone, new SimpleDateFormat("yyyy/MM/dd").parse(bday), email, address);
 					boolean isAdd = memberService.addMember(newMember);
@@ -141,7 +153,7 @@ public class MemberJoinPanel_최민영 extends JPanel {
 						 memberTabbedPane.setSelectedIndex(1); */
 					}
 					else {
-						JOptionPane.showMessageDialog(null,"이미 사용하고 있는 아이디입니다..");
+						JOptionPane.showMessageDialog(null,"다시 확인바랍니다.");
 						idTF.requestFocus();
 						idTF.setSelectionStart(0);
 						idTF.setSelectionEnd(id.length());
@@ -165,6 +177,28 @@ public class MemberJoinPanel_최민영 extends JPanel {
 		memberJoinPannel.add(memberCancelBtn);
 		
 		passCheckTF = new JPasswordField();
+		passCheckTF.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String password=new String(passwordTF.getPassword());
+				String passwordc=new String(passCheckTF.getPassword());
+				
+				if (password.equals(passwordc)) {
+					JOptionPane.showMessageDialog(null, "일치하는 비밀번호입니다.");
+					passwordTF.requestFocus();
+					passwordTF.setSelectionStart(0);
+					passwordTF.setSelectionEnd(password.length());
+				} else {
+					JOptionPane.showMessageDialog(null, "일치하지않는 비밀번호입니다.");
+					passwordTF.requestFocus();
+					passwordTF.setSelectionStart(0);
+					passwordTF.setSelectionEnd(password.length());
+					return;
+
+				}
+				
+			}
+		});
 		passCheckTF.setBounds(131, 158, 116, 21);
 		memberJoinPannel.add(passCheckTF);
 		
@@ -172,31 +206,48 @@ public class MemberJoinPanel_최민영 extends JPanel {
 		lblNewLabel_7.setBounds(26, 161, 82, 15);
 		memberJoinPannel.add(lblNewLabel_7);
 		
-		pwCheckbtn = new JButton("비밀번호확인");
-		pwCheckbtn.addActionListener(new ActionListener() {
+		idMsgLB = new JLabel("");
+		idMsgLB.setForeground(Color.RED);
+		idMsgLB.setBounds(131, 54, 101, 29);
+		memberJoinPannel.add(idMsgLB);
+		
+		pwMsgLb = new JLabel("");
+		pwMsgLb.setForeground(Color.RED);
+		pwMsgLb.setBounds(247, 130, 101, 15);
+		memberJoinPannel.add(pwMsgLb);
+		
+		JButton duplicateIdBtn = new JButton("중복확인");
+		duplicateIdBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String password=new String(passwordTF.getPassword());
-				String passwordc=new String(passCheckTF.getPassword());
+				String id = idTF.getText();
 				
-				if (password.equals(passwordc)) {
-					JOptionPane.showMessageDialog(null, "일치하는 비밀번호입니다..");
-				} else {
-					JOptionPane.showMessageDialog(null, "일치하지않는 비밀번호입니다.");
-					return;
-
+				boolean isAdd;
+				try {
+					isAdd = memberService.isDuplicateId(id);
+					if(isAdd==false) {
+						JOptionPane.showMessageDialog(null, "사용가능한 아이디입니다.");
+						idTF.requestFocus();
+						idTF.setSelectionStart(0);
+						idTF.setSelectionEnd(id.length());
+				}else {
+					JOptionPane.showMessageDialog(null, "이미 사용하고있는 아이디입니다.");
+					idTF.requestFocus();
+					idTF.setSelectionStart(0);
+					idTF.setSelectionEnd(id.length());
 				}
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 				
 			}
 		});
-		pwCheckbtn.setBounds(251, 144, 97, 23);
-		memberJoinPannel.add(pwCheckbtn);
+		duplicateIdBtn.setBounds(259, 91, 97, 23);
+		memberJoinPannel.add(duplicateIdBtn);
 		
 		
 		memberService=new MemberService();
 
 	}
-	
-	
-	
-	
 }

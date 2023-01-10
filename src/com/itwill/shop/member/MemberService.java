@@ -71,14 +71,14 @@ public class MemberService {
 /*
  * 회원추가 - memberWrite
  */
-	public int memberWrite(Member meber) throws Exception {
-		return memberDao.insert(meber);
+	public int memberWrite(Member member) throws Exception {
+		return memberDao.insert(member);
 	}
 /*
  * 회원정보 수정 - memberUpdate
  */
-	public int memberUpdate(Member meber) throws Exception {
-		return memberDao.update(meber);
+	public int memberUpdate(Member member) throws Exception {
+		return memberDao.update(member);
 	}
 /*
  * 회원아이디로 삭제(회원탈퇴) - memberDelete
