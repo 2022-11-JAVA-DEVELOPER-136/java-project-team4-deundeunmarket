@@ -131,9 +131,9 @@ public class OrderListPanel_김세영 extends JPanel {
 			orderPanel.setLayout(null);
 			
 			JLabel o_noDisplayLabel = new JLabel(""+order.getO_no());
+		
 			o_noDisplayLabel.setBounds(12, 30, 110, 15);
 			orderPanel.add(o_noDisplayLabel);
-			
 			JLabel o_descDisplayLabel = new JLabel(order.getO_desc());
 			o_descDisplayLabel.setBounds(12, 50, 110, 15);
 			orderPanel.add(o_descDisplayLabel);
