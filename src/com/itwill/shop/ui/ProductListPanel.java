@@ -40,8 +40,8 @@ public class ProductListPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				/*
 				 * 화면전환
-				 */
 				frame.changePanel(frame.PRODUCT_POPULAR_PANEL,null);
+				 */
 			}
 		});
 		btnNewButton.setBounds(113, 418, 97, 23);
@@ -95,11 +95,14 @@ public class ProductListPanel extends JPanel {
 		orderPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				/*
 				System.out.println(product);
 				frame.selectProduct = product;
 				frame.changePanel(frame.PRODUCT_POPULAR_PANEL,product);
+				*/
 			}
 		});
+
 		orderPanel.setBackground(Color.WHITE);
 		orderPanel.setLayout(null);
 		orderPanel.setPreferredSize(new Dimension(250, 100));

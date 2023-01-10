@@ -33,8 +33,8 @@ public class PopularProductPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				/*
 				 * 화면전환
-				 */
 				frame.changePanel(frame.PRODUCT_LIST_PANEL,null);
+				 */
 			}
 		});
 		btnNewButton.setBounds(121, 323, 97, 23);
