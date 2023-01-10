@@ -79,18 +79,18 @@ public class ProductListPanel_김준 extends JPanel {
 		productImageLB.setBounds(0, 0, 100, 148);
 		productPanel.add(productImageLB);
 		
-		JLabel ProductNameLB = new JLabel("<html>[석관동 떡볶이] 오리지널 떡볶이<html>\r\n");
-		ProductNameLB.setMinimumSize(new Dimension(24, 15));
-		ProductNameLB.setMaximumSize(new Dimension(24, 15));
-		ProductNameLB.setPreferredSize(new Dimension(24, 15));
-		ProductNameLB.setBounds(102, 10, 145, 41);
-		productPanel.add(ProductNameLB);
+		JLabel productNameLB = new JLabel("<html>[석관동 떡볶이] 오리지널 떡볶이<html>\r\n");
+		productNameLB.setMinimumSize(new Dimension(24, 15));
+		productNameLB.setMaximumSize(new Dimension(24, 15));
+		productNameLB.setPreferredSize(new Dimension(24, 15));
+		productNameLB.setBounds(102, 10, 145, 41);
+		productPanel.add(productNameLB);
 		productListPanel.add(productPanel);
 		
-		JLabel ProductDescLB = new JLabel("<html> 가격 : 12,000 </html>");
-		ProductDescLB.setPreferredSize(new Dimension(96, 30));
-		ProductDescLB.setBounds(102, 52, 140, 41);
-		productPanel.add(ProductDescLB);
+		JLabel productDescLB = new JLabel("<html> 가격 : 12,000 </html>");
+		productDescLB.setPreferredSize(new Dimension(96, 30));
+		productDescLB.setBounds(102, 52, 140, 41);
+		productPanel.add(productDescLB);
 		
 		productListPanel.add(productPanel);
 		/********************************/	
