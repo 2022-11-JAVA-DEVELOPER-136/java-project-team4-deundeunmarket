@@ -7,6 +7,8 @@ import javax.swing.JTextField;
 
 import com.itwill.shop.member.Member;
 import com.itwill.shop.member.MemberService;
+import com.itwill.shop.ui.ProductListPanel;
+import com.itwill.shop.ui.ShopMainFrame;
 
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
@@ -17,11 +19,15 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 
 public class MemberDetailPanel_최민영 extends JPanel {
-	/*********1.MemberService멤버필드선언*****/
+	/*
+	 * 프레임 참조
+	 */
+	ShopMainFrame frame;
+	/*********1.MemberService 멤버필드 선언*****/
 	private MemberService memberService;
-	/*************로그인한회원****************/
+	/************* 로그인 한 회원 ****************/
 	private Member loginMember= new Member("sy3", "3333", "홍길동", "010-1234-5677", null, "test@gmail.com", "화성시");
-	//테스트용 --> 합치고 Member loginMember=null;로 주면된다.
+	//테스트용 --> 합치고 Member loginMember = null;로 주면된다.
 	
 	
 	private JTextField infoIdTF;
@@ -131,6 +137,7 @@ public class MemberDetailPanel_최민영 extends JPanel {
 		deleteBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				delete();
+				frame.changePanel(ShopMainFrame.PANEL_PRODUCT_LIST, null);
 			}
 		});
 		deleteBtn.setBounds(222, 458, 97, 23);
@@ -143,39 +150,34 @@ public class MemberDetailPanel_최민영 extends JPanel {
 		
 		memberService = new MemberService();
 		
-		
-		
-		
 
+	}// 생성자 끝
+	
+	public void setFrame(ShopMainFrame frame) {
+		this.frame = frame;
 	}
-	/************* 수정폼 method **********************/
+
+	/************* 수정폼 method - 회원정보 수정 가능하도록***************/
 	public void updateForm() {
 		try {
-			String btnText=updateFormBtn.getText();
-			if(btnText.equals("수정폼")) {
+			String btnText = updateFormBtn.getText();
+			if (btnText.equals("수정폼")) {
 				updateFormEnable(true);
-			}else if(btnText.equals("수정취소")) {
+			} else if (btnText.equals("수정취소")) {
 				displayMemberInfo(loginMember);
 				updateFormEnable(false);
-			}	
-			}catch (Exception e1) {
-				// TODO: handle exception
 			}
-		
-		
+		} catch (Exception e1) {
+			// TODO: handle exception
+		}
 	}
 	
-	
-	
-	
-	
-	
-	/*************** 수정 method ***************/
+	/*************** 수정 method - 회원정보 수정 완료되도록***************/
 	
 	public void update() {
 		/**************** 회원수정 ***************/
 		try {
-			/******TextField로 부터 데이타얻기*****/
+			/****** TextField로 부터 데이타 얻기 *****/
 			String id = infoIdTF.getText();
 			String password=new String(infoPassTF.getPassword());
 			String name=infoNameTF.getText();
@@ -183,25 +185,26 @@ public class MemberDetailPanel_최민영 extends JPanel {
 			String bday = infoBdayTF.getText();
 			String email = infoMailTF.getText();
 			String address = infoAddressTF.getText();
-			
-			if (id.equals("") || password.equals("") || name.equals("") || phone.equals("") || bday.equals("") || email.equals("") || address.equals("")) {
+
+			if (id.equals("") || password.equals("") || name.equals("") || phone.equals("") || bday.equals("")
+					|| email.equals("") || address.equals("")) {
 				infoMsgLB.setText("내용을 입력하십시오.");
 				infoIdTF.requestFocus();
 				return;
 			}
-			
-			Member member=new Member(id, password, name, phone, new SimpleDateFormat("yyyy/MM/dd").parse(bday), email, address);
-			
-			
+
+			Member member = new Member(id, password, name, phone, new SimpleDateFormat("yyyy/MM/dd").parse(bday), email,
+					address);
+
 			memberService.memberUpdate(member);
 			loginMember = memberService.memberDetail(id);
 			updateFormEnable(false);
-		}catch (Exception e1) {
+		} catch (Exception e1) {
 			System.out.println(e1.getMessage());
 		}
 	}
 	
-	/**************회원탈퇴 method***************************/
+	/************** 회원탈퇴 method ***************************/
 	public void delete() {
 		try {		
 			String selectedId = infoIdTF.getText();
@@ -211,23 +214,14 @@ public class MemberDetailPanel_최민영 extends JPanel {
 				memberService.memberDelete(selectedId);
 				JOptionPane.showMessageDialog(null,"탈퇴가 완료되었습니다.");
 			}else {
-				JOptionPane.showMessageDialog(null,"확인바랍니다.");
+				JOptionPane.showMessageDialog(null, "확인바랍니다.");
 			}
-			
-			
-			
-			
-	} catch (Exception e1) {
-				e1.printStackTrace();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
 	}
-	}
-	
-	
-	
-	
-	
-	
-	/*************회원수정폼활성화 불활성화 method****************/
+
+	/************* 회원 정보 수정폼 활성화 불활성화 method****************/
 	public void updateFormEnable(boolean b) {
 		if(b) {
 			//활성화
@@ -238,7 +232,6 @@ public class MemberDetailPanel_최민영 extends JPanel {
 			infoBdayTF.setEditable(true);
 			infoMailTF.setEditable(true);
 			infoAddressTF.setEditable(true);
-			
 			
 			updateFormBtn.setText("수정취소");
 			updateBtn.setEnabled(true);
@@ -252,14 +245,13 @@ public class MemberDetailPanel_최민영 extends JPanel {
 			infoMailTF.setEditable(true);
 			infoAddressTF.setEditable(false);
 			
-			
 			updateFormBtn.setText("수정폼");
 			updateBtn.setEnabled(false);
 		}
 		
 	}
 	public void displayMemberInfo(Member member) throws Exception {
-		/****회원상세데이타보여주기 method*****/
+		/**** 회원 상세 데이타 보여주기 method*****/
 		infoIdTF.setText(member.getM_id());
 		infoPassTF.setText(member.getM_pass());
 		infoNameTF.setText(member.getM_name());
