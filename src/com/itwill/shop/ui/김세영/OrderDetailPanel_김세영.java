@@ -39,16 +39,12 @@ public class OrderDetailPanel_김세영 extends JPanel {
 		
 		orderService = new OrderService();
 		loginMember = new Member("sy0", null, "김세영", null, null, null, null);
-		Order order = orderService.orderDetail(loginMember.getM_id(), 6);
+		Order order = orderService.orderDetail(loginMember.getM_id(), 1);
 		
 		setLayout(null);
 		
 		JScrollPane orderDetailScrollPane = new JScrollPane();
-<<<<<<< HEAD
 		orderDetailScrollPane.setBounds(12, 38, 312, 132);
-=======
-		orderDetailScrollPane.setBounds(25, -24, 336, 520);
->>>>>>> branch 'master' of https://github.com/2022-11-JAVA-DEVELOPER/java-project-team4-deundeunmarket.git
 		add(orderDetailScrollPane);
 		
 		orderDetailPanel = new JPanel();
@@ -196,7 +192,7 @@ public class OrderDetailPanel_김세영 extends JPanel {
 		/*
 		 * 메소드 사용
 		 */
-		orderDetail(6);
+		orderDetail(1);
 		/******************************/
 	}//생성자 종료
 	
