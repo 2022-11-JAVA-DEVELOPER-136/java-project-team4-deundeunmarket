@@ -18,9 +18,12 @@ import java.awt.BorderLayout;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
+import com.itwill.shop.cart.Cart;
+import com.itwill.shop.cart.CartService;
 import com.itwill.shop.member.Member;
 import com.itwill.shop.product.Product;
 import com.itwill.shop.product.ProductService;
+import com.itwill.shop.ui.ShopMainFrame;
 
 import javax.swing.JComboBox;
 import javax.swing.JButton;
@@ -33,14 +36,18 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.Cursor;
 import java.awt.Rectangle;
 import java.awt.Dimension;
+import java.awt.Color;
 
 public class ProductRecommendPanel_김준 extends JPanel {
+	ShopMainFrame_김준 frame;
 	/*****************************************/
 	// Service 객체 선언
 	ProductService productService;
-
+	CartService cartService;
+	
 	// loginMember 객체선언
 	Member member;
+	Product product;
 	/*****************************************/
 
 	private JLabel ProductListLB;
@@ -51,89 +58,280 @@ public class ProductRecommendPanel_김준 extends JPanel {
 	 * 
 	 * @throws Exception
 	 */
-
+	
+	public void setFrame(ShopMainFrame_김준 frame) throws Exception {
+		this.frame = frame;
+	}
+	
 	public ProductRecommendPanel_김준() throws Exception {
-		setLayout(null);
+		setBackground(new Color(255, 255, 255));
+setLayout(null);
 		
 		JScrollPane productListScrollPane = new JScrollPane();
-		productListScrollPane.setBounds(12, 121, 336, 347);
+		productListScrollPane.setBounds(12, 63, 307, 405);
 		add(productListScrollPane);
 		
 		productListPanel = new JPanel();
+		productListPanel.setBackground(new Color(255, 255, 255));
+		productListPanel.setPreferredSize(new Dimension(10, 570));
 		FlowLayout fl_productListPanel = (FlowLayout) productListPanel.getLayout();
 		fl_productListPanel.setHgap(10);
 		fl_productListPanel.setAlignment(FlowLayout.LEFT);
-		productListPanel.setPreferredSize(new Dimension(10, 500));
 		productListScrollPane.setViewportView(productListPanel);
-		/********제품패널생성***********/
-		JPanel productPanel = new JPanel();
-		productPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		productPanel.setPreferredSize(new Dimension(270, 150));
+		/*******************************제품패널생성***************************************/
+		JPanel tteokbokkiPanel = new JPanel();
+		tteokbokkiPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		tteokbokkiPanel.setPreferredSize(new Dimension(125, 310));
 		
-		productPanel.setLayout(null);
+		tteokbokkiPanel.setLayout(null);
 		
 		JLabel productImageLB = new JLabel("");
+		productImageLB.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.changePanel(frame.PRODUCT_DETAIL_PANEL, new Product(2, "떡볶이", 10000, "/images/떡볶이_작은.jpg", "자꾸 생각나는 매콤 달콤함"));
+			}
+		});
 		productImageLB.setVerticalTextPosition(SwingConstants.BOTTOM);
 		productImageLB.setPreferredSize(new Dimension(100, 140));
-		productImageLB.setIcon(new ImageIcon(ProductRecommendPanel_김준.class.getResource("/images/떡볶이_작은.jpg")));
+		productImageLB.setIcon(new ImageIcon(ProductListPanel_김준.class.getResource("/images/떡볶이_작은.jpg")));
 		productImageLB.setBounds(0, 0, 100, 148);
-		productPanel.add(productImageLB);
+		tteokbokkiPanel.add(productImageLB);
 		
-		JLabel ProductNameLB = new JLabel("<html>[석관동 떡볶이] 오리지널 떡볶이<html>\r\n");
-		ProductNameLB.setMinimumSize(new Dimension(24, 15));
-		ProductNameLB.setMaximumSize(new Dimension(24, 15));
-		ProductNameLB.setPreferredSize(new Dimension(24, 15));
-		ProductNameLB.setBounds(102, 10, 145, 41);
-		productPanel.add(ProductNameLB);
-		productListPanel.add(productPanel);
+		JLabel productNameLB = new JLabel("<html>떡볶이<html>\r\n");
+		productNameLB.setMinimumSize(new Dimension(24, 15));
+		productNameLB.setMaximumSize(new Dimension(24, 15));
+		productNameLB.setPreferredSize(new Dimension(24, 15));
+		productNameLB.setBounds(0, 158, 125, 41);
+		tteokbokkiPanel.add(productNameLB);
+		productListPanel.add(tteokbokkiPanel);
 		
-		JLabel ProductDescLB = new JLabel("<html> 가격 : 12,000 </html>");
-		ProductDescLB.setPreferredSize(new Dimension(96, 30));
-		ProductDescLB.setBounds(102, 52, 140, 41);
-		productPanel.add(ProductDescLB);
+		JLabel productPriceLB = new JLabel("<html> 가격 : 10,000 </html>");
+		productPriceLB.setPreferredSize(new Dimension(96, 30));
+		productPriceLB.setBounds(0, 209, 115, 22);
+		tteokbokkiPanel.add(productPriceLB);
 		
-		productListPanel.add(productPanel);
+		productListPanel.add(tteokbokkiPanel);
+		
+		JButton cartBtn1 = new JButton("담기");
+		cartBtn1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					cartService.addCart(new Cart(0, 1, member.getM_id(), 
+							new Product(2, "떡볶이", 10000, "/images/떡볶이_작은.jpg", "자꾸 생각나는 매콤 달콤함")));
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		cartBtn1.setBounds(3, 241, 97, 23);
+		tteokbokkiPanel.add(cartBtn1);
+		
+		JButton buyBtn1 = new JButton("구매하기");
+		buyBtn1.setBounds(3, 274, 97, 23);
+		tteokbokkiPanel.add(buyBtn1);
+		/***************************************************/
+		JPanel creampastaPanel_2 = new JPanel();
+		creampastaPanel_2.setLayout(null);
+		creampastaPanel_2.setPreferredSize(new Dimension(125, 310));
+		productListPanel.add(creampastaPanel_2);
+		
+		JLabel productImageLB_2 = new JLabel("");
+		productImageLB_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		productImageLB_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.changePanel(frame.PRODUCT_DETAIL_PANEL, new Product(10, "크림파스타", 10000, "/images/크림파스타_작은.jpg", "매콤한 매력의 크림 파스타"));
+			}
+		});
+		productImageLB_2.setIcon(new ImageIcon(ProductRecommendPanel_김준.class.getResource("/images/크림파스타_작은.jpg")));
+		productImageLB_2.setVerticalTextPosition(SwingConstants.BOTTOM);
+		productImageLB_2.setPreferredSize(new Dimension(100, 140));
+		productImageLB_2.setBounds(0, 0, 100, 148);
+		creampastaPanel_2.add(productImageLB_2);
+		
+		JLabel productNameLB_2 = new JLabel("<html>크림파스타<html>\r\n");
+		productNameLB_2.setPreferredSize(new Dimension(24, 15));
+		productNameLB_2.setMinimumSize(new Dimension(24, 15));
+		productNameLB_2.setMaximumSize(new Dimension(24, 15));
+		productNameLB_2.setBounds(0, 158, 125, 41);
+		creampastaPanel_2.add(productNameLB_2);
+		
+		JLabel productPriceLB_2 = new JLabel("<html> 가격 : 10,000 </html>");
+		productPriceLB_2.setPreferredSize(new Dimension(96, 30));
+		productPriceLB_2.setBounds(0, 209, 115, 22);
+		creampastaPanel_2.add(productPriceLB_2);
+		
+		JButton cartBtn2 = new JButton("담기");
+		cartBtn2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					cartService.addCart(new Cart(0, 1, member.getM_id(), 
+							new Product(10, "크림파스타", 10000, "/images/크림파스타_작은.jpg", "매콤한 매력의 크림 파스타")));
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		cartBtn2.setBounds(3, 241, 97, 23);
+		creampastaPanel_2.add(cartBtn2);
+		
+		JButton buyBtn2 = new JButton("구매하기");
+		buyBtn2.setBounds(3, 274, 97, 23);
+		creampastaPanel_2.add(buyBtn2);
+		/***************************************************/
+		JPanel steakPanel_3 = new JPanel();
+		steakPanel_3.setLayout(null);
+		steakPanel_3.setPreferredSize(new Dimension(125, 310));
+		productListPanel.add(steakPanel_3);
+		
+		JLabel productImageLB_3 = new JLabel("");
+		productImageLB_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		productImageLB_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.changePanel(frame.PRODUCT_DETAIL_PANEL, new Product(6, "스테이크", 10000, "/images/스테이크_작은.jpg", "쫄깃한 식감, 풍부한 육즙"));
+			}
+		});
+		productImageLB_3.setIcon(new ImageIcon(ProductRecommendPanel_김준.class.getResource("/images/스테이크_작은.jpg")));
+		productImageLB_3.setVerticalTextPosition(SwingConstants.BOTTOM);
+		productImageLB_3.setPreferredSize(new Dimension(100, 140));
+		productImageLB_3.setBounds(0, 0, 100, 148);
+		steakPanel_3.add(productImageLB_3);
+		
+		JLabel productNameLB_3 = new JLabel("<html>스테이크<html>\r\n");
+		productNameLB_3.setPreferredSize(new Dimension(24, 15));
+		productNameLB_3.setMinimumSize(new Dimension(24, 15));
+		productNameLB_3.setMaximumSize(new Dimension(24, 15));
+		productNameLB_3.setBounds(0, 158, 125, 41);
+		steakPanel_3.add(productNameLB_3);
+		
+		JLabel productPriceLB_3 = new JLabel("<html> 가격 : 10,000 </html>");
+		productPriceLB_3.setPreferredSize(new Dimension(96, 30));
+		productPriceLB_3.setBounds(0, 209, 115, 22);
+		steakPanel_3.add(productPriceLB_3);
+		
+		JButton cartBtn3 = new JButton("담기");
+		cartBtn3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					cartService.addCart(new Cart(0, 1, member.getM_id(), 
+							new Product(6, "스테이크", 10000, "/images/스테이크_작은.jpg", "쫄깃한 식감, 풍부한 육즙")));
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		cartBtn3.setBounds(3, 241, 97, 23);
+		steakPanel_3.add(cartBtn3);
+		
+		JButton buyBtn3 = new JButton("구매하기");
+		buyBtn3.setBounds(3, 274, 97, 23);
+		steakPanel_3.add(buyBtn3);
+		/***************************************************/
+		JPanel shabuPanel_4 = new JPanel();
+		shabuPanel_4.setLayout(null);
+		shabuPanel_4.setPreferredSize(new Dimension(125, 310));
+		productListPanel.add(shabuPanel_4);
+		
+		JLabel productImageLB_4 = new JLabel("");
+		productImageLB_4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		productImageLB_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.changePanel(frame.PRODUCT_DETAIL_PANEL, new Product(5, "샤브샤브", 10000, "/images/샤브샤브_작은.jpg", "매장의 노하우로 완성"));
+			}
+		});
+		productImageLB_4.setIcon(new ImageIcon(ProductRecommendPanel_김준.class.getResource("/images/샤브샤브_작은.jpg")));
+		productImageLB_4.setVerticalTextPosition(SwingConstants.BOTTOM);
+		productImageLB_4.setPreferredSize(new Dimension(100, 140));
+		productImageLB_4.setBounds(0, 0, 100, 148);
+		shabuPanel_4.add(productImageLB_4);
+		
+		JLabel productNameLB_4 = new JLabel("<html>샤브샤브<html>\r\n");
+		productNameLB_4.setPreferredSize(new Dimension(24, 15));
+		productNameLB_4.setMinimumSize(new Dimension(24, 15));
+		productNameLB_4.setMaximumSize(new Dimension(24, 15));
+		productNameLB_4.setBounds(0, 158, 125, 41);
+		shabuPanel_4.add(productNameLB_4);
+		
+		JLabel productPriceLB_4 = new JLabel("<html> 가격 : 10,000 </html>");
+		productPriceLB_4.setPreferredSize(new Dimension(96, 30));
+		productPriceLB_4.setBounds(0, 209, 115, 22);
+		shabuPanel_4.add(productPriceLB_4);
+		
+		JButton cartBtn4 = new JButton("담기");
+		cartBtn4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					cartService.addCart(new Cart(0, 1, member.getM_id(), 
+							new Product(5, "샤브샤브", 10000, "/images/샤브샤브_작은.jpg", "매장의 노하우로 완성")));
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		cartBtn4.setBounds(3, 241, 97, 23);
+		shabuPanel_4.add(cartBtn4);
+		
+		JButton buyBtn4 = new JButton("구매하기");
+		buyBtn4.setBounds(3, 274, 97, 23);
+		shabuPanel_4.add(buyBtn4);
 		/********************************/	
 
 		//객체 생성
 		productService = new ProductService();
+		cartService = new CartService();
+		product = new Product();
 		
 		member = new Member("sy1", null, null, null, null, null, null);
-		productList();
 	}
 	
-	private void productList() throws Exception {
-		List<Product> productList = productService.productList();
-		for (Product product : productList) {
-			JPanel productPanel = new JPanel();
-			productPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-			productPanel.setPreferredSize(new Dimension(270, 150));
+	/*	private void productList() throws Exception {
+			List<Product> productList = productService.productList();
+			productListPanel.removeAll();
 			
-			productPanel.setLayout(null);
+			for (Product product : productList) {
+				JPanel productPanel = new JPanel();
+				productPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				productPanel.setPreferredSize(new Dimension(125, 280));
+				
+				productPanel.setLayout(null);
+				
+				JLabel productImageLB = new JLabel("");
+				productImageLB.setVerticalTextPosition(SwingConstants.BOTTOM);
+				productImageLB.setPreferredSize(new Dimension(100, 140));
+				productImageLB.setIcon(new ImageIcon(ProductListPanel_김준.class.getResource(product.getP_image())));
+				productImageLB.setBounds(0, 0, 100, 148);
+				productPanel.add(productImageLB);
+				
+				JLabel productNameLB = new JLabel(product.getP_name());
+				productNameLB.setMinimumSize(new Dimension(24, 15));
+				productNameLB.setMaximumSize(new Dimension(24, 15));
+				productNameLB.setPreferredSize(new Dimension(24, 15));
+				productNameLB.setBounds(0, 158, 115, 41);
+				productPanel.add(productNameLB);
+				productListPanel.add(productPanel);
+				
+				JLabel productPriceLB = new JLabel("<html>"+ product.getP_price()+"</html>");
+				productPriceLB.setPreferredSize(new Dimension(96, 30));
+				productPriceLB.setBounds(0, 209, 115, 22);
+				productPanel.add(productPriceLB);
+				
+				JLabel productDescLB = new JLabel("<html>"+ product.getP_desc() +"</html>");
+				productDescLB.setBounds(0, 230, 115, 40);
+				productPanel.add(productDescLB);
+				
+				productListPanel.add(productPanel);
+			}
 			
-			JLabel productImageLB = new JLabel("");
-			productImageLB.setVerticalTextPosition(SwingConstants.BOTTOM);
-			productImageLB.setPreferredSize(new Dimension(100, 140));
-			productImageLB.setIcon(new ImageIcon(ProductRecommendPanel_김준.class.getResource(product.getP_image())));
-			productImageLB.setBounds(0, 0, 100, 148);
-			productPanel.add(productImageLB);
 			
-			JLabel ProductNameLB = new JLabel(product.getP_name());
-			ProductNameLB.setMinimumSize(new Dimension(24, 15));
-			ProductNameLB.setMaximumSize(new Dimension(24, 15));
-			ProductNameLB.setPreferredSize(new Dimension(24, 15));
-			ProductNameLB.setBounds(102, 10, 140, 41);
-			productPanel.add(ProductNameLB);
-			productListPanel.add(productPanel);
-			
-			JLabel ProductDescLB = new JLabel("<html>"+ product.getP_price()+"</html>");
-			ProductDescLB.setPreferredSize(new Dimension(96, 30));
-			ProductDescLB.setBounds(102, 52, 140, 41);
-			productPanel.add(ProductDescLB);
-			
-			productListPanel.add(productPanel);
-		}
-		
+		}*/
+	public void ProductDetail(Product product) {
 		
 	}
 }
