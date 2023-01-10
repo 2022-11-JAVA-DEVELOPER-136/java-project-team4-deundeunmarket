@@ -56,44 +56,49 @@ public class ProductDetailPanel_김준 extends JPanel {
 		panel_1.setLayout(null);
 		
 		JLabel NameLB = new JLabel("이름");
-		NameLB.setBounds(38, 58, 57, 15);
+		NameLB.setBounds(38, 265, 57, 15);
 		panel_1.add(NameLB);
 		
 		NameTextField = new JTextField();
 		NameTextField.setEditable(false);
-		NameTextField.setBounds(134, 55, 116, 21);
+		NameTextField.setBounds(134, 262, 116, 21);
 		panel_1.add(NameTextField);
 		NameTextField.setColumns(10);
 		
 		JLabel PriceLB = new JLabel("가격");
-		PriceLB.setBounds(38, 114, 57, 15);
+		PriceLB.setBounds(38, 321, 57, 15);
 		panel_1.add(PriceLB);
 		
 		PriceTextField = new JTextField();
 		PriceTextField.setEditable(false);
-		PriceTextField.setBounds(134, 111, 116, 21);
+		PriceTextField.setBounds(134, 318, 116, 21);
 		panel_1.add(PriceTextField);
 		PriceTextField.setColumns(10);
 		
 		JLabel DeatilLB = new JLabel("설명");
-		DeatilLB.setBounds(38, 159, 57, 15);
+		DeatilLB.setBounds(38, 390, 57, 15);
 		panel_1.add(DeatilLB);
 		
 		DetailTextField = new JTextField();
 		DetailTextField.setEditable(false);
-		DetailTextField.setBounds(134, 156, 116, 21);
+		DetailTextField.setBounds(134, 387, 116, 21);
 		panel_1.add(DetailTextField);
 		DetailTextField.setColumns(10);
 		
 		JButton CartAddBtn = new JButton("담기");
 		CartAddBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		CartAddBtn.setBounds(134, 261, 97, 23);
+		CartAddBtn.setBounds(117, 491, 97, 23);
 		CartAddBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//클릭시 주문으로 이동 or 장바구니에 담겨짐
 			}
 		});
 		panel_1.add(CartAddBtn);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(ProductDetailPanel_김준.class.getResource("/images/떡복이_큰.jpg")));
+		lblNewLabel.setBounds(77, 10, 183, 234);
+		panel_1.add(lblNewLabel);
 
 		
 		/*

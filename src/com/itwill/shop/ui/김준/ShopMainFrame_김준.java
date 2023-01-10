@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
+import java.awt.Rectangle;
+import java.awt.Dimension;
 
 public class ShopMainFrame_김준 extends JFrame {
 
@@ -34,16 +36,15 @@ public class ShopMainFrame_김준 extends JFrame {
 	 */
 	public ShopMainFrame_김준() throws Exception {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 361, 640);
+		setBounds(100, 100, 360, 640);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		ProductListPanel_김준 productListPanel_김준 = new ProductListPanel_김준();
 		contentPane.add(productListPanel_김준, BorderLayout.CENTER);
 		
 
 	}
-
 }
