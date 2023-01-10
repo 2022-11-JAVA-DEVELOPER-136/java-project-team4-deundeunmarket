@@ -26,9 +26,9 @@ public class MemberDetailPanel_최민영 extends JPanel {
 	/*********1.MemberService 멤버필드 선언*****/
 	private MemberService memberService;
 	/************* 로그인 한 회원 ****************/
-	private Member loginMember= new Member("sy3", "3333", "홍길동", "010-1234-5677", null, "test@gmail.com", "화성시");
+	//private Member loginMember= new Member("sy3", "3333", "홍길동", "010-1234-5677", null, "test@gmail.com", "화성시");
 	//테스트용 --> 합치고 Member loginMember = null;로 주면된다.
-
+	private Member loginMember = null;
 	
 	
 	public JTextField infoIdTF;
@@ -41,6 +41,7 @@ public class MemberDetailPanel_최민영 extends JPanel {
 	public JButton updateFormBtn;
 	public JButton updateBtn;
 	public JLabel infoMsgLB;
+	private JLabel memberBdayLB;
 
 	/**
 	 * Create the panel.
@@ -84,35 +85,43 @@ public class MemberDetailPanel_최민영 extends JPanel {
 		memberInfoPanel.add(lblNewLabel_6);
 		
 		infoIdTF = new JTextField();
+		infoIdTF.setEnabled(false);
+		infoIdTF.setEditable(false);
 		infoIdTF.setBounds(132, 108, 96, 21);
 		memberInfoPanel.add(infoIdTF);
 		infoIdTF.setColumns(10);
 		
 		infoPassTF = new JPasswordField();
+		infoPassTF.setEditable(false);
 		infoPassTF.setBounds(132, 153, 96, 21);
 		memberInfoPanel.add(infoPassTF);
 		
 		infoNameTF = new JTextField();
+		infoNameTF.setEditable(false);
 		infoNameTF.setBounds(132, 205, 96, 21);
 		memberInfoPanel.add(infoNameTF);
 		infoNameTF.setColumns(10);
 		
 		infoPhoneTF = new JTextField();
+		infoPhoneTF.setEditable(false);
 		infoPhoneTF.setBounds(132, 255, 96, 21);
 		memberInfoPanel.add(infoPhoneTF);
 		infoPhoneTF.setColumns(10);
 		
 		infoBdayTF = new JTextField();
+		infoBdayTF.setEditable(false);
 		infoBdayTF.setBounds(132, 304, 96, 21);
 		memberInfoPanel.add(infoBdayTF);
 		infoBdayTF.setColumns(10);
 		
 		infoMailTF = new JTextField();
+		infoMailTF.setEditable(false);
 		infoMailTF.setBounds(132, 353, 96, 21);
 		memberInfoPanel.add(infoMailTF);
 		infoMailTF.setColumns(10);
 		
 		infoAddressTF = new JTextField();
+		infoAddressTF.setEditable(false);
 		infoAddressTF.setBounds(132, 404, 96, 21);
 		memberInfoPanel.add(infoAddressTF);
 		infoAddressTF.setColumns(10);
@@ -149,6 +158,10 @@ public class MemberDetailPanel_최민영 extends JPanel {
 		infoMsgLB.setForeground(Color.RED);
 		infoMsgLB.setBounds(84, 72, 213, 15);
 		memberInfoPanel.add(infoMsgLB);
+		
+		memberBdayLB = new JLabel("(예)1999/01/01)");
+		memberBdayLB.setBounds(132, 286, 117, 15);
+		memberInfoPanel.add(memberBdayLB);
 		
 		memberService = new MemberService();
 		
@@ -227,7 +240,7 @@ public class MemberDetailPanel_최민영 extends JPanel {
 		if(b) {
 			//활성화
 			//infoIdTF.setEnabled(true);
-			infoPassTF.setEnabled(true);
+			infoPassTF.setEditable(true);
 			infoNameTF.setEditable(true);
 			infoPhoneTF.setEditable(true);
 			infoBdayTF.setEditable(true);
@@ -241,9 +254,9 @@ public class MemberDetailPanel_최민영 extends JPanel {
 			infoIdTF.setEnabled(false);
 			infoPassTF.setEnabled(false);
 			infoNameTF.setEditable(false);
-			infoPhoneTF.setEditable(true);
-			infoBdayTF.setEditable(true);
-			infoMailTF.setEditable(true);
+			infoPhoneTF.setEditable(false);
+			infoBdayTF.setEditable(false);
+			infoMailTF.setEditable(false);
 			infoAddressTF.setEditable(false);
 			
 			updateFormBtn.setText("수정폼");

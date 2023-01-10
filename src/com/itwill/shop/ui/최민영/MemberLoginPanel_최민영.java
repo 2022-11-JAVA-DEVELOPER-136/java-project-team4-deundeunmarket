@@ -77,6 +77,7 @@ public class MemberLoginPanel_최민영 extends JPanel {
 		loginBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				login();
+				frame.changePanel(ShopMainFrame.PANEL_PRODUCT_LIST, null);
 			}
 		});
 		loginBtn.setBounds(193, 358, 97, 23);
@@ -123,7 +124,7 @@ public class MemberLoginPanel_최민영 extends JPanel {
 				//로그인 성공
 				JOptionPane.showMessageDialog(null, "로그인 성공");
 				loginProcess(id); //로그인 멤버로 넣어줌
-				loginIdTF.setText("");
+				loginIdTF.setText(""); 
 				loginPassTF.setText("");
 			}else {
 				JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 확인하세요");
