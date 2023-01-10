@@ -48,6 +48,8 @@ public class OrderListPanel_김세영 extends JPanel {
 		orderListPanel.setPreferredSize(new Dimension(10, 700));
 		orderListScrollPane.setViewportView(orderListPanel);
 		
+		
+		
 		/**********************주문패널생성**********************/
 		
 		/*
@@ -92,6 +94,14 @@ public class OrderListPanel_김세영 extends JPanel {
 		JLabel o_paymentDisplayLabel = new JLabel("");
 		o_paymentDisplayLabel.setBounds(148, 50, 110, 15);
 		orderPanel.add(o_paymentDisplayLabel);
+		
+		JButton refreshButton = new JButton("새로고침");
+		refreshButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		refreshButton.setBounds(126, 479, 97, 23);
+		add(refreshButton);
 		*/
 		
 		/******************************/
@@ -109,6 +119,7 @@ public class OrderListPanel_김세영 extends JPanel {
 		 * 메소드 사용
 		 */
 		orderList();
+		
 		/******************************/
 	}//생성자 종료
 	
@@ -163,6 +174,27 @@ public class OrderListPanel_김세영 extends JPanel {
 			orderPanel.add(o_paymentDisplayLabel);
 			
 			orderListPanel.add(orderPanel);
+			
+			//새로고침기능 테스트용 버튼. 합칠 때 지우자.
+			JButton refreshButton = new JButton("새로고침");
+			refreshButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					try {
+						displayOrderList();
+					} catch (Exception e1) {
+						e1.getMessage();
+					}
+				}
+			});
+			refreshButton.setBounds(126, 479, 97, 23);
+			add(refreshButton);
 		}
+	}
+	
+	public void displayOrderList() throws Exception {
+		
+		//삭제가 제대로 반영되지 않는다. 뭘 놓치고 있는 걸까?
+		orderListPanel.removeAll();
+		orderList();
 	}
 }
