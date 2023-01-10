@@ -104,6 +104,8 @@ public class ProductListPanel_김준 extends JPanel {
 	
 	private void productList() throws Exception {
 		List<Product> productList = productService.productList();
+		productListPanel.removeAll();
+		
 		for (Product product : productList) {
 			JPanel productPanel = new JPanel();
 			productPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
