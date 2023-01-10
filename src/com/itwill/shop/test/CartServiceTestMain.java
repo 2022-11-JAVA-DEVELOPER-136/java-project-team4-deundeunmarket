@@ -32,6 +32,12 @@ public class CartServiceTestMain {
 		// 카트 전체 삭제- deleteCartItemByUserId
 		System.out.println("deleteCartItemByUserId >> " + cartService.deleteCartItemByMemberId("sy2"));
 
+		// 카트 리스트 가격 총합 -addCartTotal
+		System.out.println("addCartTotal >>"+cartService.addCartListTotal("sy0"));
+		
+		// 카트 내 가격 총합
+		System.out.println("addCartTotal >>"+cartService.addCartTotal(1));
+		
 	}
 
 }

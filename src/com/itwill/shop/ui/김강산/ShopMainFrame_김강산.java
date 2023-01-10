@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 public class ShopMainFrame_김강산 extends JFrame {
 
+
 	private JPanel contentPane;
 
 	/**
@@ -26,11 +27,7 @@ public class ShopMainFrame_김강산 extends JFrame {
 			}
 		});
 	}
-
-	/**
-	 * Create the frame.
-	 * @throws Exception 
-	 */
+	
 	public ShopMainFrame_김강산() throws Exception {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 412, 589);
@@ -42,5 +39,4 @@ public class ShopMainFrame_김강산 extends JFrame {
 		CartListPanel_김강산 cartListPanel_김강산 = new CartListPanel_김강산();
 		contentPane.add(cartListPanel_김강산, BorderLayout.CENTER);
 	}
-
 }
