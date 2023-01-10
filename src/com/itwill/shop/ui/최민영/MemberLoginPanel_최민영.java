@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.JPasswordField;
+import java.awt.Font;
 
 public class MemberLoginPanel_최민영 extends JPanel {
 	/*
@@ -43,25 +44,29 @@ public class MemberLoginPanel_최민영 extends JPanel {
 		setLayout(null);
 		
 		memberLoginPanel = new JPanel();
-		memberLoginPanel.setBackground(Color.LIGHT_GRAY);
+		memberLoginPanel.setBackground(Color.WHITE);
 		memberLoginPanel.setBounds(0, 0, 360, 540);
 		add(memberLoginPanel);
 		memberLoginPanel.setLayout(null);
 		
 		JLabel idLB = new JLabel("아이디");
-		idLB.setBounds(57, 206, 57, 15);
+		idLB.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		idLB.setBounds(69, 121, 57, 15);
 		memberLoginPanel.add(idLB);
 		
 		JLabel passLB = new JLabel("비밀번호");
-		passLB.setBounds(57, 268, 57, 15);
+		passLB.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		passLB.setBounds(69, 170, 57, 15);
 		memberLoginPanel.add(passLB);
 		
 		loginIdTF = new JTextField();
-		loginIdTF.setBounds(145, 203, 116, 21);
+		loginIdTF.setBounds(147, 117, 128, 21);
 		memberLoginPanel.add(loginIdTF);
 		loginIdTF.setColumns(10);
 		
 		joinBtn = new JButton("회원가입");
+		joinBtn.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		joinBtn.setBackground(new Color(240, 255, 240));
 		joinBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/*
@@ -70,21 +75,22 @@ public class MemberLoginPanel_최민영 extends JPanel {
 				frame.changePanel(ShopMainFrame.PANEL_MEMBER_JOIN, null);
 			}
 		});
-		joinBtn.setBounds(47, 358, 97, 23);
+		joinBtn.setBounds(58, 245, 97, 23);
 		memberLoginPanel.add(joinBtn);
 		
 		loginBtn = new JButton("로그인");
+		loginBtn.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		loginBtn.setBackground(new Color(240, 255, 240));
 		loginBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				login();
-				frame.changePanel(ShopMainFrame.PANEL_PRODUCT_LIST, null);
 			}
 		});
-		loginBtn.setBounds(193, 358, 97, 23);
+		loginBtn.setBounds(179, 245, 97, 23);
 		memberLoginPanel.add(loginBtn);
 		
 		loginPassTF = new JPasswordField();
-		loginPassTF.setBounds(145, 265, 116, 21);
+		loginPassTF.setBounds(147, 167, 128, 21);
 		memberLoginPanel.add(loginPassTF);
 		
 		
@@ -107,22 +113,25 @@ public class MemberLoginPanel_최민영 extends JPanel {
 		//2.MemberMainFrame 타이틀 변경
 		frame.setTitle(id + " 님 로그인");
 		// 3.로그인, 회원가입 탭 불 활성화
-		frame.memberTabbedPane.setEnabledAt(0, false);
-		frame.memberTabbedPane.setEnabledAt(1, false);
+		//frame.memberTabbedPane.setEnabledAt(0, false);
+		//frame.memberTabbedPane.setEnabledAt(1, false);
 		// 4.상품 전체보기로 화면전환
-		frame.productTabbedPane.setSelectedIndex(0);
+		//frame.productTabbedPane.setSelectedIndex(2);
+		frame.changePanel(ShopMainFrame.PANEL_MEMBER_INFO, null);
+		frame.memberDetailPanel.displayMemberInfo(loginMember);
+		frame.memberDetailPanel.updateFormEnable(false);
 	}
 	
 	public void login() {
 		/*********** 회원 로그인 method ************/
 		try {
 			String id = loginIdTF.getText();
-			String pass=new String(loginPassTF.getPassword());
+			String pass = new String(loginPassTF.getPassword());
 			
 			int result = memberService.logIn(id, pass);
 			if(result == 1) {
 				//로그인 성공
-				JOptionPane.showMessageDialog(null, "로그인 성공");
+				//JOptionPane.showMessageDialog(null, "로그인 성공");
 				loginProcess(id); //로그인 멤버로 넣어줌
 				loginIdTF.setText(""); 
 				loginPassTF.setText("");

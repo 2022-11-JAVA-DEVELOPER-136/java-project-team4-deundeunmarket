@@ -8,6 +8,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 import java.awt.Component;
 import javax.swing.BoxLayout;
@@ -38,15 +39,23 @@ import java.awt.Cursor;
 import java.awt.Rectangle;
 import java.awt.Dimension;
 import java.awt.Color;
+import java.awt.Font;
 
 public class ProductListPanel_김준 extends JPanel {
-	ShopMainFrame_김준 frame;
+	/*
+	 * 프레임 참조
+	 */
+	ShopMainFrame frame;
 	/*****************************************/
-	// Service 객체 선언
+	/*
+	 * Service 객체 선언
+	 */
 	ProductService productService;
 	CartService cartService;
-	// loginMember 객체선언
-	Member member;
+	/*
+	 * logInMember 객체 선언
+	 */
+	Member loginMember;
 	/*****************************************/
 	
 	private JLabel ProductListLB;
@@ -63,7 +72,7 @@ public class ProductListPanel_김준 extends JPanel {
 		setLayout(null);
 		
 		JScrollPane productListScrollPane = new JScrollPane();
-		productListScrollPane.setBounds(12, 63, 307, 405);
+		productListScrollPane.setBounds(12, 10, 307, 405);
 		add(productListScrollPane);
 		
 		productListPanel = new JPanel();
@@ -73,8 +82,9 @@ public class ProductListPanel_김준 extends JPanel {
 		fl_productListPanel.setHgap(10);
 		fl_productListPanel.setAlignment(FlowLayout.LEFT);
 		productListScrollPane.setViewportView(productListPanel);
-		/********제품패널생성***********/
+		/******** 제품 패널 생성***********/
 		JPanel productPanel = new JPanel();
+		productPanel.setBackground(Color.WHITE);
 		productPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		productPanel.setPreferredSize(new Dimension(125, 310));
 		
@@ -84,47 +94,65 @@ public class ProductListPanel_김준 extends JPanel {
 		productImageLB.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
-				
+				/*
+				 * 이미지 클릭 시 상품상세패널로 이동
+				 */
+				frame.changePanel(ShopMainFrame.PANEL_PRODUCT_DETAIL, null);
 			}
 		});
 		productImageLB.setVerticalTextPosition(SwingConstants.BOTTOM);
 		productImageLB.setPreferredSize(new Dimension(100, 140));
 		productImageLB.setIcon(new ImageIcon(ProductListPanel_김준.class.getResource("/images/떡볶이_작은.jpg")));
-		productImageLB.setBounds(0, 0, 100, 148);
+		productImageLB.setBounds(11, 0, 100, 148);
 		productPanel.add(productImageLB);
 		
 		JLabel productNameLB = new JLabel("<html>[석관동 떡볶이] 오리지널 떡볶이<html>\r\n");
+		productNameLB.setHorizontalTextPosition(SwingConstants.CENTER);
+		productNameLB.setHorizontalAlignment(SwingConstants.CENTER);
+		productNameLB.setFont(new Font("D2Coding", Font.PLAIN, 12));
 		productNameLB.setMinimumSize(new Dimension(24, 15));
 		productNameLB.setMaximumSize(new Dimension(24, 15));
 		productNameLB.setPreferredSize(new Dimension(24, 15));
-		productNameLB.setBounds(0, 158, 125, 41);
+		productNameLB.setBounds(0, 154, 125, 41);
 		productPanel.add(productNameLB);
 		productListPanel.add(productPanel);
 		
 		JLabel productPriceLB = new JLabel("<html> 가격 : 10,000 </html>");
+		productPriceLB.setHorizontalTextPosition(SwingConstants.CENTER);
+		productPriceLB.setHorizontalAlignment(SwingConstants.CENTER);
+		productPriceLB.setFont(new Font("D2Coding", Font.PLAIN, 12));
 		productPriceLB.setPreferredSize(new Dimension(96, 30));
-		productPriceLB.setBounds(0, 209, 115, 22);
+		productPriceLB.setBounds(5, 200, 115, 22);
 		productPanel.add(productPriceLB);
 		
 		
 		JButton cartBtn = new JButton("담기");
+		cartBtn.setBackground(new Color(240, 255, 240));
+		cartBtn.setFont(new Font("D2Coding", Font.PLAIN, 12));
 		cartBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				/*
+				 * 담기 클릭 시 카트에 추가
+				 */
+				//frame.productDetailPanel.clickOrder(product);
 			}
 		});
-		cartBtn.setBounds(3, 241, 97, 23);
+		cartBtn.setBounds(12, 241, 97, 23);
 		productPanel.add(cartBtn);
 		
 		JButton buyBtn = new JButton("구매하기");
+		buyBtn.setBackground(new Color(240, 255, 240));
+		buyBtn.setFont(new Font("D2Coding", Font.PLAIN, 12));
 		buyBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//order화면으로 전환
+				/*
+				 * 구매하기 클릭 시 주문생성 패널로 이동
+				 */
+				frame.changePanel(ShopMainFrame.PANEL_ORDER_CREATE, null);
 			}
 		});
-		buyBtn.setBounds(3, 274, 97, 23);
+		buyBtn.setBounds(12, 274, 97, 23);
 		productPanel.add(buyBtn);
 		
 		productListPanel.add(productPanel);
@@ -134,11 +162,11 @@ public class ProductListPanel_김준 extends JPanel {
 		productService = new ProductService();
 		cartService = new CartService();
 		
-		member = new Member("sy1", null, null, null, null, null, null);
+		loginMember = new Member("sy1", null, null, null, null, null, null);
 		productList();
-	}
+	}// 생성자 끝
 	
-	public void setFrame(ShopMainFrame_김준 frame) throws Exception {
+	public void setFrame(ShopMainFrame frame) throws Exception {
 		this.frame = frame;
 		productList();
 	}
@@ -150,60 +178,94 @@ public class ProductListPanel_김준 extends JPanel {
 		for (Product product : productList) {
 			
 			JPanel productPanel = new JPanel();
+			productPanel.setBackground(Color.WHITE);
 			productPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			productPanel.setPreferredSize(new Dimension(125, 310));
+			productPanel.setLayout(null);
 			
 			JLabel productImageLB = new JLabel("");
 			productImageLB.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					frame.changePanel(frame.PRODUCT_DETAIL_PANEL, product);
+					/*
+					 * 이미지 클릭 시 상품상세패널로 이동
+					 */
+					// "AWT-EventQueue-0" java.lang.NullPointerException
+					frame.changePanel(ShopMainFrame.PANEL_PRODUCT_DETAIL, null);
 				}
 			});
-			productPanel.setLayout(null);
+			
 			productImageLB.setVerticalTextPosition(SwingConstants.BOTTOM);
 			productImageLB.setPreferredSize(new Dimension(100, 140));
 			productImageLB.setIcon(new ImageIcon(ProductListPanel_김준.class.getResource(product.getP_image())));
-			productImageLB.setBounds(0, 0, 100, 148);
+			productImageLB.setBounds(11, 0, 100, 148);
 			productPanel.add(productImageLB);
 			
 			JLabel productNameLB = new JLabel(product.getP_name());
+			productNameLB.setHorizontalTextPosition(SwingConstants.CENTER);
+			productNameLB.setHorizontalAlignment(SwingConstants.CENTER);
+			productNameLB.setFont(new Font("D2Coding", Font.PLAIN, 12));
 			productNameLB.setMinimumSize(new Dimension(24, 15));
 			productNameLB.setMaximumSize(new Dimension(24, 15));
 			productNameLB.setPreferredSize(new Dimension(24, 15));
-			productNameLB.setBounds(0, 158, 125, 41);
+			productNameLB.setBounds(0, 154, 125, 41);
 			productPanel.add(productNameLB);
 			productListPanel.add(productPanel);
 			
 			JLabel productPriceLB = new JLabel("<html>"+ product.getP_price()+"</html>");
+			productPriceLB.setHorizontalTextPosition(SwingConstants.CENTER);
+			productPriceLB.setHorizontalAlignment(SwingConstants.CENTER);
+			productPriceLB.setFont(new Font("D2Coding", Font.PLAIN, 12));
 			productPriceLB.setPreferredSize(new Dimension(96, 30));
-			productPriceLB.setBounds(0, 209, 115, 22);
+			productPriceLB.setBounds(5, 200, 115, 22);
 			productPanel.add(productPriceLB);
 			
 			JButton cartBtn = new JButton("담기");
+			cartBtn.setBackground(new Color(240, 255, 240));
+			cartBtn.setFont(new Font("D2Coding", Font.PLAIN, 12));
 			cartBtn.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
+					/*
+					 * 담기 클릭 시 카트에 추가
+					 */
+					//frame.productDetailPanel.clickOrder(product); 메소드 사용안됨
+					///*
 					try {
-						cartService.addCart(new Cart(0, 1, member.getM_id(), 
+						int isAdd = cartService.addCart(new Cart(0, 1, loginMember.getM_id(), 
 								new Product(product.getP_no(), product.getP_name(), 
 											product.getP_price(), product.getP_image(), 
 											product.getP_desc())));
+						if (isAdd >= 1) {
+							JOptionPane.showMessageDialog(null,"카트에 상품이 담겼습니다.");
+						}
 					} catch (Exception e1) {
 						e1.printStackTrace();
 					}
+					//*/
 				}
 			});
-			cartBtn.setBounds(3, 241, 97, 23);
+			
+			cartBtn.setBounds(12, 241, 97, 23);
 			productPanel.add(cartBtn);
 			
 			JButton buyBtn = new JButton("구매하기");
-			buyBtn.setBounds(3, 274, 97, 23);
+			buyBtn.setBackground(new Color(240, 255, 240));
+			buyBtn.setFont(new Font("D2Coding", Font.PLAIN, 12));
+			buyBtn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					/*
+					 * 구매하기 클릭 시 주문생성 패널로 이동
+					 */
+					//"AWT-EventQueue-0" java.lang.NullPointerException
+					frame.changePanel(ShopMainFrame.PANEL_ORDER_CREATE, null);
+				}
+			});
+			buyBtn.setBounds(12, 274, 97, 23);
 			productPanel.add(buyBtn);
 			
-			
-			
 			productListPanel.add(productPanel);
+			
 		}
 		
 		

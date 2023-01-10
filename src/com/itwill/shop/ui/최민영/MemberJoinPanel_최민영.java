@@ -51,86 +51,103 @@ public class MemberJoinPanel_최민영 extends JPanel {
 	 * @throws Exception 
 	 */
 	public MemberJoinPanel_최민영() throws Exception {
+
+		initGUI();
+	} // 생성자 끝 
+	private void initGUI() throws Exception{
+		setBackground(Color.WHITE);
 		setLayout(null);
 		
 		JPanel memberJoinPannel = new JPanel();
+		memberJoinPannel.setBackground(Color.WHITE);
 		memberJoinPannel.setBounds(0, 0, 360, 540);
 		add(memberJoinPannel);
 		memberJoinPannel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("아이디");
-		lblNewLabel.setBounds(51, 95, 57, 15);
+		lblNewLabel.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel.setBounds(29, 42, 57, 15);
 		memberJoinPannel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("비밀번호");
-		lblNewLabel_1.setBounds(51, 130, 57, 15);
+		lblNewLabel_1.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_1.setBounds(29, 67, 57, 15);
 		memberJoinPannel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("이름");
-		lblNewLabel_2.setBounds(51, 199, 57, 15);
+		lblNewLabel_2.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_2.setBounds(29, 120, 57, 15);
 		memberJoinPannel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("전화번호");
-		lblNewLabel_3.setBounds(51, 241, 57, 15);
+		lblNewLabel_3.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_3.setBounds(29, 145, 57, 15);
 		memberJoinPannel.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("생일");
-		lblNewLabel_4.setBounds(51, 285, 57, 15);
+		lblNewLabel_4.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_4.setBounds(29, 192, 57, 15);
 		memberJoinPannel.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("이메일");
-		lblNewLabel_5.setBounds(51, 333, 57, 15);
+		lblNewLabel_5.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_5.setBounds(29, 217, 57, 15);
 		memberJoinPannel.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("주소");
-		lblNewLabel_6.setBounds(51, 377, 57, 15);
+		lblNewLabel_6.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_6.setBounds(29, 242, 57, 15);
 		memberJoinPannel.add(lblNewLabel_6);
 		
 		idTF = new JTextField();
-		idTF.setBounds(131, 92, 116, 21);
+		idTF.setBounds(108, 39, 116, 21);
 		memberJoinPannel.add(idTF);
 		idTF.setColumns(10);
 		
 		passwordTF = new JPasswordField();
-		passwordTF.setBounds(131, 127, 116, 21);
+		passwordTF.setBounds(108, 65, 116, 21);
 		memberJoinPannel.add(passwordTF);
 		
 		nameTF = new JTextField();
-		nameTF.setBounds(131, 199, 116, 21);
+		nameTF.setBounds(108, 117, 116, 21);
 		memberJoinPannel.add(nameTF);
 		nameTF.setColumns(10);
 		
 		phoneTF = new JTextField();
-		phoneTF.setBounds(131, 238, 116, 21);
+		phoneTF.setBounds(108, 142, 116, 21);
 		memberJoinPannel.add(phoneTF);
 		phoneTF.setColumns(10);
 		
 		bdayTF = new JTextField();
-		bdayTF.setBounds(131, 285, 116, 21);
+		bdayTF.setBounds(108, 189, 116, 21);
 		memberJoinPannel.add(bdayTF);
 		bdayTF.setColumns(10);
 		
 		emailTF = new JTextField();
-		emailTF.setBounds(131, 330, 116, 21);
+		emailTF.setBounds(108, 214, 116, 21);
 		memberJoinPannel.add(emailTF);
 		emailTF.setColumns(10);
 		
 		addressTF = new JTextField();
-		addressTF.setBounds(131, 374, 116, 21);
+		addressTF.setBounds(108, 239, 116, 21);
 		memberJoinPannel.add(addressTF);
 		addressTF.setColumns(10);
 		
 		JButton memberjoinBtn = new JButton("가입");
+		memberjoinBtn.setBackground(new Color(240, 255, 240));
+		memberjoinBtn.setFont(new Font("D2Coding", Font.PLAIN, 12));
 		memberjoinBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					join();
 			}
 		});
-		memberjoinBtn.setBounds(46, 443, 97, 23);
+		memberjoinBtn.setBounds(54, 279, 97, 23);
 		memberJoinPannel.add(memberjoinBtn);
 		
 		
 		JButton memberCancelBtn = new JButton("취소");
+		memberCancelBtn.setBackground(new Color(240, 255, 240));
+		memberCancelBtn.setFont(new Font("D2Coding", Font.PLAIN, 12));
 		memberCancelBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/*
@@ -139,17 +156,18 @@ public class MemberJoinPanel_최민영 extends JPanel {
 				frame.changePanel(ShopMainFrame.PANEL_MEMBER_LOGIN, null);
 			}
 		});
-		memberCancelBtn.setBounds(183, 443, 97, 23);
+		memberCancelBtn.setBounds(163, 279, 97, 23);
 		memberJoinPannel.add(memberCancelBtn);
 		
 		passCheckTF = new JPasswordField();
 		
 		
-		passCheckTF.setBounds(131, 158, 116, 21);
+		passCheckTF.setBounds(108, 91, 116, 21);
 		memberJoinPannel.add(passCheckTF);
 		
 		JLabel lblNewLabel_7 = new JLabel("비밀번호확인");
-		lblNewLabel_7.setBounds(26, 161, 82, 15);
+		lblNewLabel_7.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_7.setBounds(29, 95, 87, 15);
 		memberJoinPannel.add(lblNewLabel_7);
 		
 		idMsgLB = new JLabel("");
@@ -163,6 +181,8 @@ public class MemberJoinPanel_최민영 extends JPanel {
 		memberJoinPannel.add(pwMsgLb);
 		
 		JButton duplicateIdBtn = new JButton("중복확인");
+		duplicateIdBtn.setBackground(new Color(240, 255, 240));
+		duplicateIdBtn.setFont(new Font("D2Coding", Font.PLAIN, 10));
 		duplicateIdBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String id = idTF.getText();
@@ -188,27 +208,28 @@ public class MemberJoinPanel_최민영 extends JPanel {
 				
 			}
 		});
-		duplicateIdBtn.setBounds(259, 91, 97, 23);
+		duplicateIdBtn.setBounds(228, 38, 97, 23);
 		memberJoinPannel.add(duplicateIdBtn);
 		
 		JButton passCheckBtn = new JButton("비밀번호확인");
+		passCheckBtn.setBackground(new Color(240, 255, 240));
 		passCheckBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				passCheck();
 			}
 		});
-		passCheckBtn.setFont(new Font("굴림", Font.PLAIN, 10));
-		passCheckBtn.setBounds(257, 157, 97, 23);
+		passCheckBtn.setFont(new Font("D2Coding", Font.PLAIN, 9));
+		passCheckBtn.setBounds(228, 64, 97, 23);
 		memberJoinPannel.add(passCheckBtn);
 		
 		JLabel lblNewLabel_8 = new JLabel("(예)1999/01/01)");
-		lblNewLabel_8.setBounds(141, 264, 87, 21);
+		lblNewLabel_8.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_8.setBounds(116, 166, 116, 21);
 		memberJoinPannel.add(lblNewLabel_8);
 		
 		
 		memberService=new MemberService();
-
-	} // 생성자 끝 
+	}
 	
 	public void setFrame(ShopMainFrame frame) {
 		this.frame = frame;

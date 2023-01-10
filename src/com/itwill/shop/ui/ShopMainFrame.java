@@ -32,6 +32,9 @@ import com.itwill.shop.ui.김세영.OrderDetailPanel_김세영;
 import java.awt.Toolkit;
 import java.awt.SystemColor;
 import java.awt.Font;
+import com.itwill.shop.ui.김준.ProductListPanel_김준;
+import com.itwill.shop.ui.김준.ProductRecommendPanel_김준;
+import com.itwill.shop.ui.김준.ProductDetailPanel_김준;
 
 public class ShopMainFrame extends JFrame {
 	
@@ -72,6 +75,9 @@ public class ShopMainFrame extends JFrame {
 	public MemberLoginPanel_최민영 memberLoginPanel;
 	public MemberJoinPanel_최민영 memberJoinPanel;
 	public MemberDetailPanel_최민영 memberDetailPanel;
+	public ProductListPanel_김준 productListPanel;
+	public ProductRecommendPanel_김준 productRecommendPanel;
+	public ProductDetailPanel_김준 productDetailPanel;
 	public OrderCreatePanel_김민선 orderCreatePanel;
 	public OrderListPanel_김세영 orderListPanel;
 	public OrderDetailPanel_김세영 orderDetailPanel;
@@ -173,6 +179,15 @@ public class ShopMainFrame extends JFrame {
 		productTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		shopTabbedPane.addTab("상품", null, productTabbedPane, null);
 		
+		productListPanel = new ProductListPanel_김준();
+		productTabbedPane.addTab("상품목록", null, productListPanel, null);
+		
+		productRecommendPanel = new ProductRecommendPanel_김준();
+		productTabbedPane.addTab("추천상품", null, productRecommendPanel, null);
+		
+		productDetailPanel = new ProductDetailPanel_김준();
+		productTabbedPane.addTab("상품상세", null, productDetailPanel, null);
+		
 		
 		cartTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		shopTabbedPane.addTab("장바구니", null, cartTabbedPane, null);
@@ -228,8 +243,11 @@ public class ShopMainFrame extends JFrame {
 			shopTabbedPane.setSelectedIndex(1);
 			productTabbedPane.setSelectedIndex(1);
 		} else if (panel_no == PANEL_PRODUCT_DETAIL) {
+			//Product product = (Product)data;
+			//System.out.println("recv product" + product);
 			shopTabbedPane.setSelectedIndex(1);
 			productTabbedPane.setSelectedIndex(2);
+			//productDetailPanel.displayProductDetail(product);
 		} else if (panel_no == PANEL_CART) {
 			shopTabbedPane.setSelectedIndex(2);
 			cartTabbedPane.setSelectedIndex(0);
@@ -245,8 +263,29 @@ public class ShopMainFrame extends JFrame {
 		}
 
 	}
-	 
 	
+	/*
+	 public void changePanel(int panel_no,Object data) {
+		if(panel_no==PRODUCT_LIST_PANEL) {
+			shopTabbedPane.setSelectedIndex(0);
+			productTabbedPane.setSelectedIndex(0);
+		}else if(panel_no==PRODUCT_DETAIL_PANEL) {
+			Product product=(Product)data;
+			System.out.println("recv product"+product);
+			
+			shopTabbedPane.setSelectedIndex(0);
+			productTabbedPane.setSelectedIndex(1);
+			productDetailPanel.displayProductDetail(product);
+			
+		}else if(panel_no==USER_INFO_PANEL) {
+			shopTabbedPane.setSelectedIndex(1);
+			productTabbedPane.setSelectedIndex(1);
+		}else if(panel_no==USERT_JOIN_PANEL) {
+			shopTabbedPane.setSelectedIndex(1);
+			productTabbedPane.setSelectedIndex(0);
+		}
+		
+	}
+	 */
 	
-
 }

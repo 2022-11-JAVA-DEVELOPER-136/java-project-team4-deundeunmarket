@@ -17,6 +17,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
+import java.awt.SystemColor;
+import javax.swing.border.LineBorder;
+import java.awt.Font;
 
 public class MemberDetailPanel_최민영 extends JPanel {
 	/*
@@ -52,115 +57,131 @@ public class MemberDetailPanel_최민영 extends JPanel {
 		setLayout(null);
 		
 		JPanel memberInfoPanel = new JPanel();
+		memberInfoPanel.setBackground(Color.WHITE);
 		memberInfoPanel.setBounds(0, 0, 360, 540);
 		add(memberInfoPanel);
 		memberInfoPanel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("아이디");
-		lblNewLabel.setBounds(50, 111, 50, 15);
+		lblNewLabel.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel.setBounds(74, 58, 70, 15);
 		memberInfoPanel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("비밀번호");
-		lblNewLabel_1.setBounds(50, 156, 50, 15);
+		lblNewLabel_1.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_1.setBounds(74, 83, 70, 15);
 		memberInfoPanel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("이름");
-		lblNewLabel_2.setBounds(50, 208, 50, 15);
+		lblNewLabel_2.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_2.setBounds(74, 109, 70, 15);
 		memberInfoPanel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("전화번호");
-		lblNewLabel_3.setBounds(50, 255, 50, 15);
+		lblNewLabel_3.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_3.setBounds(74, 134, 70, 15);
 		memberInfoPanel.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("생일");
-		lblNewLabel_4.setBounds(50, 307, 50, 15);
+		lblNewLabel_4.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_4.setBounds(74, 170, 70, 15);
 		memberInfoPanel.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("이메일");
-		lblNewLabel_5.setBounds(50, 356, 50, 15);
+		lblNewLabel_5.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_5.setBounds(74, 195, 70, 15);
 		memberInfoPanel.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("주소");
-		lblNewLabel_6.setBounds(50, 407, 50, 15);
+		lblNewLabel_6.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_6.setBounds(74, 221, 70, 15);
 		memberInfoPanel.add(lblNewLabel_6);
 		
 		infoIdTF = new JTextField();
 		infoIdTF.setEnabled(false);
 		infoIdTF.setEditable(false);
-		infoIdTF.setBounds(132, 108, 96, 21);
+		infoIdTF.setBounds(156, 55, 96, 21);
 		memberInfoPanel.add(infoIdTF);
 		infoIdTF.setColumns(10);
 		
 		infoPassTF = new JPasswordField();
 		infoPassTF.setEditable(false);
-		infoPassTF.setBounds(132, 153, 96, 21);
+		infoPassTF.setBounds(156, 80, 96, 21);
 		memberInfoPanel.add(infoPassTF);
 		
 		infoNameTF = new JTextField();
 		infoNameTF.setEditable(false);
-		infoNameTF.setBounds(132, 205, 96, 21);
+		infoNameTF.setBounds(156, 105, 96, 21);
 		memberInfoPanel.add(infoNameTF);
 		infoNameTF.setColumns(10);
 		
 		infoPhoneTF = new JTextField();
 		infoPhoneTF.setEditable(false);
-		infoPhoneTF.setBounds(132, 255, 96, 21);
+		infoPhoneTF.setBounds(156, 130, 96, 21);
 		memberInfoPanel.add(infoPhoneTF);
 		infoPhoneTF.setColumns(10);
 		
 		infoBdayTF = new JTextField();
 		infoBdayTF.setEditable(false);
-		infoBdayTF.setBounds(132, 304, 96, 21);
+		infoBdayTF.setBounds(156, 168, 96, 21);
 		memberInfoPanel.add(infoBdayTF);
 		infoBdayTF.setColumns(10);
 		
 		infoMailTF = new JTextField();
 		infoMailTF.setEditable(false);
-		infoMailTF.setBounds(132, 353, 96, 21);
+		infoMailTF.setBounds(156, 192, 96, 21);
 		memberInfoPanel.add(infoMailTF);
 		infoMailTF.setColumns(10);
 		
 		infoAddressTF = new JTextField();
 		infoAddressTF.setEditable(false);
-		infoAddressTF.setBounds(132, 404, 96, 21);
+		infoAddressTF.setBounds(156, 217, 96, 21);
 		memberInfoPanel.add(infoAddressTF);
 		infoAddressTF.setColumns(10);
 		
-		updateFormBtn = new JButton("수정폼");
+		updateFormBtn = new JButton("수정하기");
+		updateFormBtn.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		updateFormBtn.setBackground(new Color(240, 255, 240));
+		updateFormBtn.setForeground(Color.BLACK);
 		updateFormBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				updateForm();
 			}
 		});
-		updateFormBtn.setBounds(12, 458, 91, 23);
+		updateFormBtn.setBounds(36, 278, 90, 23);
 		memberInfoPanel.add(updateFormBtn);
 		
-		updateBtn = new JButton("수정");
+		updateBtn = new JButton("수정완료");
+		updateBtn.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		updateBtn.setBackground(new Color(240, 255, 240));
 		updateBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				update();
 			}
 		});
-		updateBtn.setBounds(115, 458, 91, 23);
+		updateBtn.setBounds(128, 278, 90, 23);
 		memberInfoPanel.add(updateBtn);
 		
 		JButton deleteBtn = new JButton("회원탈퇴");
+		deleteBtn.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		deleteBtn.setBackground(new Color(240, 255, 240));
 		deleteBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				delete();
 				frame.changePanel(ShopMainFrame.PANEL_PRODUCT_LIST, null);
 			}
 		});
-		deleteBtn.setBounds(222, 458, 97, 23);
+		deleteBtn.setBounds(221, 278, 90, 23);
 		memberInfoPanel.add(deleteBtn);
 		
 		infoMsgLB = new JLabel("");
 		infoMsgLB.setForeground(Color.RED);
-		infoMsgLB.setBounds(84, 72, 213, 15);
+		infoMsgLB.setBounds(57, 21, 213, 15);
 		memberInfoPanel.add(infoMsgLB);
 		
 		memberBdayLB = new JLabel("(예)1999/01/01)");
-		memberBdayLB.setBounds(132, 286, 117, 15);
+		memberBdayLB.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		memberBdayLB.setBounds(156, 153, 117, 15);
 		memberInfoPanel.add(memberBdayLB);
 		
 		memberService = new MemberService();
@@ -169,13 +190,14 @@ public class MemberDetailPanel_최민영 extends JPanel {
 	}// 생성자 끝
 	
 	public void setFrame(ShopMainFrame frame) {
+		this.frame = frame;
 	}
 
-	/************* 수정폼 method - 회원정보 수정 가능하도록***************/
+	/************* 수정폼(수정하기) method - 회원정보 수정 가능하도록***************/
 	public void updateForm() {
 		try {
 			String btnText = updateFormBtn.getText();
-			if (btnText.equals("수정폼")) {
+			if (btnText.equals("수정하기")) {
 				updateFormEnable(true);
 			} else if (btnText.equals("수정취소")) {
 				displayMemberInfo(loginMember);
@@ -186,16 +208,16 @@ public class MemberDetailPanel_최민영 extends JPanel {
 		}
 	}
 	
-	/*************** 수정 method - 회원정보 수정 완료되도록***************/
+	/*************** 수정완료 method - 회원정보 수정 완료되도록***************/
 	
 	public void update() {
 		/**************** 회원수정 ***************/
 		try {
 			/****** TextField로 부터 데이타 얻기 *****/
 			String id = infoIdTF.getText();
-			String password=new String(infoPassTF.getPassword());
-			String name=infoNameTF.getText();
-			String phone=infoPhoneTF.getText();
+			String password = new String(infoPassTF.getPassword());
+			String name = infoNameTF.getText();
+			String phone = infoPhoneTF.getText();
 			String bday = infoBdayTF.getText();
 			String email = infoMailTF.getText();
 			String address = infoAddressTF.getText();
@@ -259,7 +281,7 @@ public class MemberDetailPanel_최민영 extends JPanel {
 			infoMailTF.setEditable(false);
 			infoAddressTF.setEditable(false);
 			
-			updateFormBtn.setText("수정폼");
+			updateFormBtn.setText("수정하기");
 			updateBtn.setEnabled(false);
 		}
 		

@@ -13,6 +13,7 @@ import com.itwill.shop.order.OrderItem;
 import com.itwill.shop.order.OrderService;
 import com.itwill.shop.product.Product;
 import com.itwill.shop.product.ProductService;
+import com.itwill.shop.ui.ShopMainFrame;
 
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
@@ -23,8 +24,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import java.awt.Color;
+import java.awt.Font;
 
 public class OrderCreatePanel_김민선 extends JPanel {
+	/*
+	 * 프레임 참조
+	 */
+	ShopMainFrame frame;
 	/*
 	 * Service 객체 선언
 	 */
@@ -50,53 +57,63 @@ public class OrderCreatePanel_김민선 extends JPanel {
 		setLayout(null);
 		
 		JPanel orderCreatePanel = new JPanel();
+		orderCreatePanel.setBackground(Color.WHITE);
 		orderCreatePanel.setBounds(0, 0, 360, 540);
 		add(orderCreatePanel);
 		orderCreatePanel.setLayout(null);
 		
 		JLabel OrderNameLB = new JLabel("받으실 분");
-		OrderNameLB.setBounds(50, 94, 57, 15);
+		OrderNameLB.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		OrderNameLB.setBounds(39, 43, 57, 15);
 		orderCreatePanel.add(OrderNameLB);
 		
 		orderNameTF = new JTextField();
 		orderNameTF.setColumns(10);
-		orderNameTF.setBounds(166, 91, 136, 21);
+		orderNameTF.setBounds(160, 40, 136, 21);
 		orderCreatePanel.add(orderNameTF);
 		
 		JLabel OrderAddressLB = new JLabel("배송지");
-		OrderAddressLB.setBounds(50, 152, 57, 15);
+		OrderAddressLB.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		OrderAddressLB.setBounds(39, 70, 57, 15);
 		orderCreatePanel.add(OrderAddressLB);
 		
 		orderAddressTF = new JTextField();
 		orderAddressTF.setColumns(10);
-		orderAddressTF.setBounds(50, 174, 257, 21);
+		orderAddressTF.setBounds(39, 88, 257, 21);
 		orderCreatePanel.add(orderAddressTF);
 		
 		JLabel OrderLocLB = new JLabel("수령장소");
-		OrderLocLB.setBounds(45, 255, 57, 15);
+		OrderLocLB.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		OrderLocLB.setBounds(39, 128, 57, 15);
 		orderCreatePanel.add(OrderLocLB);
 		
 		JLabel OrderPaymentLB = new JLabel("결제수단");
-		OrderPaymentLB.setBounds(45, 322, 57, 15);
+		OrderPaymentLB.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		OrderPaymentLB.setBounds(39, 160, 57, 15);
 		orderCreatePanel.add(OrderPaymentLB);
 		
 		paymentCB = new JComboBox();
+		paymentCB.setFont(new Font("D2Coding", Font.PLAIN, 12));
 		paymentCB.setModel(new DefaultComboBoxModel(new String[] {"카드", "계좌이체"}));
 		paymentCB.setEditable(true);
-		paymentCB.setBounds(171, 318, 136, 23);
+		paymentCB.setBounds(160, 156, 136, 23);
 		orderCreatePanel.add(paymentCB);
 		
 		orderLocCB = new JComboBox();
+		orderLocCB.setFont(new Font("D2Coding", Font.PLAIN, 12));
 		orderLocCB.setModel(new DefaultComboBoxModel(new String[] {"문 앞", "경비실", "택배함"}));
 		orderLocCB.setEditable(true);
-		orderLocCB.setBounds(171, 251, 136, 23);
+		orderLocCB.setBounds(160, 124, 136, 23);
 		orderCreatePanel.add(orderLocCB);
 		
 		JLabel OrderPriceLB = new JLabel("총 결제금액");
-		OrderPriceLB.setBounds(45, 385, 87, 15);
+		OrderPriceLB.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		OrderPriceLB.setBounds(39, 212, 87, 15);
 		orderCreatePanel.add(OrderPriceLB);
 		
 		JButton orderCreateBtn = new JButton("주문하기");
+		orderCreateBtn.setBackground(new Color(240, 255, 240));
+		orderCreateBtn.setFont(new Font("D2Coding", Font.PLAIN, 12));
 		orderCreateBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/*
@@ -109,12 +126,13 @@ public class OrderCreatePanel_김민선 extends JPanel {
 				orderTotPriceLB.setText(""+0);
 			}
 		});
-		orderCreateBtn.setBounds(87, 455, 176, 40);
+		orderCreateBtn.setBounds(77, 279, 176, 40);
 		orderCreatePanel.add(orderCreateBtn);
 		
 		orderTotPriceLB = new JLabel("");
+		orderTotPriceLB.setFont(new Font("D2Coding", Font.PLAIN, 12));
 		orderTotPriceLB.setHorizontalAlignment(SwingConstants.TRAILING);
-		orderTotPriceLB.setBounds(171, 385, 136, 15);
+		orderTotPriceLB.setBounds(160, 212, 136, 15);
 		orderCreatePanel.add(orderTotPriceLB);
 		/*****************************************/
 		/*
@@ -135,7 +153,12 @@ public class OrderCreatePanel_김민선 extends JPanel {
 		orderTotPriceLB.setText(""+orderTotPrice(loginMember.getM_id()));
 		
 		
+	}// 생성자 끝
+	
+	public void setFrame(ShopMainFrame frame) {
+		this.frame = frame;
 	}
+
 	/*
 	 * 주문 총 금액 메소드
 	 */
@@ -173,6 +196,7 @@ public class OrderCreatePanel_김민선 extends JPanel {
 			if (findCart.size() > 0 && isCreated >= 1) {
 				JOptionPane.showMessageDialog(null, "주문이 완료되었습니다.");
 				// 주문 성공 시 주문 상세보기 화면으로 전환
+				frame.changePanel(ShopMainFrame.PANEL_ORDER_DETAIL, null);
 				// 주문 상세보기 화면 활성화
 			}
 		} catch (Exception e1) {
