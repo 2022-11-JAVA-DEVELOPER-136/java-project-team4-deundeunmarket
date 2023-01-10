@@ -2,13 +2,24 @@ package com.itwill.shop.ui.최민영;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.text.SimpleDateFormat;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.itwill.shop.member.Member;
+import com.itwill.shop.member.MemberService;
+
 import javax.swing.JTabbedPane;
 
 public class ShopMainFrame_최민영 extends JFrame {
+	
+	/*********1.MemberService멤버필드선언*****/
+	private MemberService memberService;
+	/*************로그인한회원****************/
+	private Member loginMember;
+	
 
 	private JPanel contentPane;
 
@@ -40,9 +51,9 @@ public class ShopMainFrame_최민영 extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		MemberJoinPanel_최민영 memberJoinPanel_최민영 = new MemberJoinPanel_최민영();
-		memberJoinPanel_최민영.setBounds(12, 23, 435, 581);
-		contentPane.add(memberJoinPanel_최민영);
+		MemberDetailPanel_최민영 memberDetailPanel_최민영 = new MemberDetailPanel_최민영();
+		memberDetailPanel_최민영.setBounds(24, 35, 420, 567);
+		contentPane.add(memberDetailPanel_최민영);
 		
 		
 	}
