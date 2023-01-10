@@ -53,7 +53,7 @@ public class ShopMainFrame_최민영 extends JFrame {
 		contentPane.setLayout(null);
 		
 		MemberDetailPanel_최민영 memberDetailPanel_최민영 = new MemberDetailPanel_최민영();
-		memberDetailPanel_최민영.setBounds(34, 40, 424, 556);
+		memberDetailPanel_최민영.setBounds(41, 42, 264, 541);
 		contentPane.add(memberDetailPanel_최민영);
 		
 		
