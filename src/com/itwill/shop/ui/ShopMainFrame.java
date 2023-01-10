@@ -5,6 +5,13 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.itwill.shop.cart.CartService;
+import com.itwill.shop.member.Member;
+import com.itwill.shop.member.MemberService;
+import com.itwill.shop.order.OrderService;
+import com.itwill.shop.product.ProductService;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JButton;
@@ -19,7 +26,17 @@ import javax.swing.SwingConstants;
 public class ShopMainFrame extends JFrame {
 
 	private JPanel contentPane;
-
+	/*
+	 * 1. Service 객체 선언
+	 */
+	MemberService memberService;
+	OrderService orderService;
+	CartService cartService;
+	ProductService productService;
+	/*
+	 * 2. login Member 객체 선언
+	 */
+	Member loginMember = null;
 	/**
 	 * Launch the application.
 	 */
@@ -39,10 +56,10 @@ public class ShopMainFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ShopMainFrame() {
+	public ShopMainFrame() throws Exception{
 		initGUI();
 	}
-	private void initGUI() {
+	private void initGUI() throws Exception{
 		setPreferredSize(new Dimension(360, 640));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 360, 640);
@@ -104,5 +121,22 @@ public class ShopMainFrame extends JFrame {
 		
 		MemberJoinPanel memberJoinPanel = new MemberJoinPanel();
 		memberTabbedPane.addTab("New tab", null, memberJoinPanel, null);
-	}
+		
+		/*****************************/
+		/*
+		 * 3. Service 객체 생성
+		 */
+		memberService = new MemberService();
+		orderService = new OrderService();
+		cartService = new CartService();
+		productService = new ProductService();
+		/*
+		 * 4. login Member 객체 생성
+		 */
+		
+		/******************************/
+		
+		
+		
+	}// 생성자 끝
 }

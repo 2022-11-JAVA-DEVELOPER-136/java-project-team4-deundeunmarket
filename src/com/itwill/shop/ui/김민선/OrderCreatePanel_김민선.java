@@ -37,66 +37,69 @@ public class OrderCreatePanel_김민선 extends JPanel {
 	 * order 객체 선언
 	 */
 	private Order order = null;
-	/*
-	 * Create the panel.
-	 */
-	private JTextField addressTF;
-	private JTextField nameTF;
-	private JComboBox orderLocCB;
-	private JComboBox paymentCB;
+	
+	private JTextField orderNameTF;
+	private JTextField orderAddressTF;
 
 	public OrderCreatePanel_김민선() throws Exception{
 		
 		
 		setLayout(null);
 		
-		JLabel OrderNameLB = new JLabel("받으실 분");
-		OrderNameLB.setBounds(49, 96, 57, 15);
-		add(OrderNameLB);
+		JPanel orderCreatePanel = new JPanel();
+		orderCreatePanel.setBounds(0, 0, 360, 540);
+		add(orderCreatePanel);
+		orderCreatePanel.setLayout(null);
 		
-		nameTF = new JTextField();
-		nameTF.setBounds(49, 121, 136, 21);
-		add(nameTF);
-		nameTF.setColumns(10);
+		JLabel OrderNameLB = new JLabel("받으실 분");
+		OrderNameLB.setBounds(50, 94, 57, 15);
+		orderCreatePanel.add(OrderNameLB);
+		
+		orderNameTF = new JTextField();
+		orderNameTF.setColumns(10);
+		orderNameTF.setBounds(166, 91, 136, 21);
+		orderCreatePanel.add(orderNameTF);
 		
 		JLabel OrderAddressLB = new JLabel("배송지");
-		OrderAddressLB.setBounds(49, 170, 57, 15);
-		add(OrderAddressLB);
+		OrderAddressLB.setBounds(50, 152, 57, 15);
+		orderCreatePanel.add(OrderAddressLB);
 		
-		addressTF = new JTextField();
-		addressTF.setBounds(49, 195, 257, 21);
-		add(addressTF);
-		addressTF.setColumns(10);
+		orderAddressTF = new JTextField();
+		orderAddressTF.setColumns(10);
+		orderAddressTF.setBounds(50, 174, 257, 21);
+		orderCreatePanel.add(orderAddressTF);
 		
 		JLabel OrderLocLB = new JLabel("수령장소");
-		OrderLocLB.setBounds(49, 257, 57, 15);
-		add(OrderLocLB);
+		OrderLocLB.setBounds(45, 255, 57, 15);
+		orderCreatePanel.add(OrderLocLB);
 		
 		JLabel OrderPaymentLB = new JLabel("결제수단");
-		OrderPaymentLB.setBounds(49, 322, 57, 15);
-		add(OrderPaymentLB);
+		OrderPaymentLB.setBounds(45, 322, 57, 15);
+		orderCreatePanel.add(OrderPaymentLB);
 		
-		paymentCB = new JComboBox();
-		paymentCB.setModel(new DefaultComboBoxModel(new String[] {"카드", "계좌이체", "휴대폰"}));
-		paymentCB.setBounds(170, 318, 136, 23);
-		add(paymentCB);
+		JComboBox paymentCB = new JComboBox();
+		paymentCB.setModel(new DefaultComboBoxModel(new String[] {"카드", "계좌이체"}));
+		paymentCB.setEditable(true);
+		paymentCB.setBounds(171, 318, 136, 23);
+		orderCreatePanel.add(paymentCB);
 		
-		orderLocCB = new JComboBox();
+		JComboBox orderLocCB = new JComboBox();
 		orderLocCB.setModel(new DefaultComboBoxModel(new String[] {"문 앞", "경비실", "택배함"}));
-		orderLocCB.setBounds(170, 253, 136, 23);
-		add(orderLocCB);
+		orderLocCB.setEditable(true);
+		orderLocCB.setBounds(171, 251, 136, 23);
+		orderCreatePanel.add(orderLocCB);
 		
 		JLabel OrderPriceLB = new JLabel("총 결제금액");
-		OrderPriceLB.setBounds(49, 387, 87, 15);
-		add(OrderPriceLB);
+		OrderPriceLB.setBounds(45, 385, 87, 15);
+		orderCreatePanel.add(OrderPriceLB);
 		
 		JButton orderCreateBtn = new JButton("주문하기");
 		orderCreateBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
+
 				try {
-					String o_name = nameTF.getText();
-					String o_address = addressTF.getText();
+					String o_name = orderNameTF.getText();
+					String o_address = orderAddressTF.getText();
 					String o_payment = (String) paymentCB.getSelectedItem();
 					String o_loc = (String) orderLocCB.getSelectedItem();
 					
@@ -114,20 +117,17 @@ public class OrderCreatePanel_김민선 extends JPanel {
 					e1.getMessage();
 					JOptionPane.showMessageDialog(null, "장바구니가 비어있습니다.");
 				}
-			 
+				
+				
 			}
 		});
-		orderCreateBtn.setBounds(87, 451, 176, 40);
-		add(orderCreateBtn);
-		try {
-		JLabel orderTotPriceLB = new JLabel(""+order.getO_price());
+		orderCreateBtn.setBounds(87, 455, 176, 40);
+		orderCreatePanel.add(orderCreateBtn);
+		
+		JLabel orderTotPriceLB = new JLabel("");
 		orderTotPriceLB.setHorizontalAlignment(SwingConstants.TRAILING);
-		orderTotPriceLB.setBounds(170, 387, 136, 15);
-		add(orderTotPriceLB);}
-		catch (Exception e1) {
-			e1.getMessage();
-			System.out.println("주문이 없습니다.");
-		}
+		orderTotPriceLB.setBounds(171, 385, 136, 15);
+		orderCreatePanel.add(orderTotPriceLB);
 		/*****************************************/
 		/*
 		 * Service 객체 생성
@@ -138,11 +138,11 @@ public class OrderCreatePanel_김민선 extends JPanel {
 		/*
 		 * loginMember 객체 생성
 		 */
-		loginMember = new Member("sy1",null,null,null,null,null,null);
+		loginMember = new Member("sy0",null,null,null,null,null,null);
 		/*
 		 * order 객체 생성
 		 */
-		order = orderService.orderDetail(loginMember.getM_id(), 2);
+		order = orderService.orderDetail(loginMember.getM_id(), 1);
 		/*****************************************/
 		
 	}
