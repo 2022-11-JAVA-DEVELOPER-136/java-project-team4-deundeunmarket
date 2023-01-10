@@ -56,7 +56,7 @@ public class CartService {
 		int total = 0;
 		List<Cart> findCartList = cartDao.findByMemberId(m_id);
 		for (Cart cart : findCartList) {
-			total+=cart.getCart_qty()*cart.getProduct().getP_price();
+			total+=cart.getCart_qty()*(cart.getProduct().getP_price());
 		}
 		return total;
 	}
@@ -65,7 +65,7 @@ public class CartService {
 	public int addCartTotal(int cart_no) throws Exception {
 		int total = 0;
 		Cart findCart = cartDao.findByCartNo(cart_no);
-		total = findCart.getCart_qty()*findCart.getProduct().getP_price();
+		total = findCart.getCart_qty()*(findCart.getProduct().getP_price());
 		return total;
 	}
 	

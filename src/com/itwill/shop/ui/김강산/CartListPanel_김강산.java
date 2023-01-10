@@ -129,11 +129,11 @@ public class CartListPanel_김강산 extends JPanel {
 		cartscrollMain.add(northPanel);
 
 		cartAllCB = new JCheckBox("전체선택");
-		cartAllCB.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				cartCB.doClick();
-			}
-		});
+//		cartAllCB.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				cartCB.doClick();
+//			}
+//		});
 		cartAllCB.setBounds(8, 46, 115, 23);
 		northPanel.add(cartAllCB);
 
@@ -152,7 +152,7 @@ public class CartListPanel_김강산 extends JPanel {
 		cartscrollMain.add(cartListScrollPane);
 
 		cartListPanel = new JPanel();
-		cartListPanel.setPreferredSize(new Dimension(10, 500));
+		cartListPanel.setPreferredSize(new Dimension(10, 700));
 		cartListScrollPane.setViewportView(cartListPanel);
 		
 		/**************** cart panel ******************/
@@ -162,11 +162,11 @@ public class CartListPanel_김강산 extends JPanel {
 		cartPanel.setLayout(null);
 
 		productImgBtn = new JButton("");
-		productImgBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// 상세보기 추가
-			}
-		});
+//		productImgBtn.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				// 상세보기 추가
+//			}
+//		});
 		productImgBtn.setIcon(new ImageIcon(CartListPanel_김강산.class.getResource("/images/떡볶이_작은.jpg")));
 		productImgBtn.setBackground(Color.WHITE);
 		productImgBtn.setBounds(19, 10, 97, 65);
@@ -192,8 +192,8 @@ public class CartListPanel_김강산 extends JPanel {
 		cartPanel.add(cartProductAddPrice);
 
 		JComboBox productQty = new JComboBox();
-		productQty.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
-				"11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
+		productQty.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+				"11", "12", "13", "14", "15", "16", "17", "18", "19", "20"}));
 		productQty.setBounds(52, 97, 32, 23);
 		cartPanel.add(productQty);
 
@@ -207,18 +207,19 @@ public class CartListPanel_김강산 extends JPanel {
 
 		// loginMember객체생성
 
-		loginMember = new Member("sy1", null, null, null, null, null, null);
+		loginMember = new Member("sy0", null, null, null, null, null, null);
 		// 메소드 호출
 		displayCartList();
 		
-	}
+	}	
 	JCheckBox[] cartCBArray=null;
 	public void displayCartList() throws Exception {
 		List<Cart> cartList = cartService.getCartItemByMemberId(loginMember.getM_id());
 		cartListPanel.removeAll();
-		cartCBArray = new JCheckBox[cartList.size()];
+//		cartCBArray = new JCheckBox[cartList.size()];
 		for (int i=0;i< cartList.size();i++) {
 			Cart cart=cartList.get(i);
+			
 			cartPanel = new JPanel();
 			cartPanel.setPreferredSize(new Dimension(320, 130));
 			cartPanel.setLayout(null);
@@ -240,7 +241,7 @@ public class CartListPanel_김강산 extends JPanel {
 				public void actionPerformed(ActionEvent e) {
 					try {
 						cartService.deleteCartItemByCartNo(cart.getCart_no());
-						cartListPanel.remove(cart.getCart_no());
+						cartPanel.remove(cart.getCart_no());
 					} catch (Exception e1) {
 						e1.getMessage();
 					}
@@ -252,16 +253,17 @@ public class CartListPanel_김강산 extends JPanel {
 
 			cartCB = new JCheckBox("");
 			cartCB.setBounds(-4, 30, 21, 23);
-			cartCB.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-				}
-			});
+//			cartCB.addActionListener(new ActionListener() {
+//				public void actionPerformed(ActionEvent e) {
+//				}
+//			});
 			cartPanel.add(cartCB);
 			
-			cartCBArray[i]=cartCB;
+//			cartCBArray[i]=cartCB;
 			
 			cartProductDesc = new JLabel();
 			cartProductDesc.setBounds(128, 4, 143, 89);
+			cartProductDesc.setText(cart.getProduct().getP_name() + "\n" + cart.getProduct().getP_desc());
 			cartPanel.add(cartProductDesc);
 
 			cartProductAddPrice = new JLabel("상품금액");
@@ -271,8 +273,8 @@ public class CartListPanel_김강산 extends JPanel {
 
 			JComboBox productQty = new JComboBox();
 			productQty.setBounds(52, 97, 32, 23);
-			productQty.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
-					"10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
+			productQty.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9",
+					"10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"}));
 			cartPanel.add(productQty);
 			productQty.addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent e) {
@@ -282,10 +284,11 @@ public class CartListPanel_김강산 extends JPanel {
 							int iqty = Integer.parseInt(qty);
 							cart.setCart_qty(iqty);
 							cartService.updateCart(cart);
+							
+							cartProductAddPrice.setText(Integer.toString(cartService.addCartTotal(cart.getCart_no()))+"원");
 							cartListTotalLB.setText(addCartListTotal()+"원");
 							finalCartListTotalLB.setText(finalCartListTotal()+"원");
-							cartProductAddPrice.setText(new DecimalFormat("0,000").format(cartService.addCartTotal(cart.getCart_no())));
-							//productQty.setSelectedItem(String.valueOf(iqty));
+//							productQty.setSelectedItem(String.valueOf(iqty));
 						} catch (Exception e2) {
 							// TODO: handle exception
 							e2.printStackTrace();
@@ -293,16 +296,14 @@ public class CartListPanel_김강산 extends JPanel {
 					}
 				}
 			});
-			// 라벨에 추가데이터 삽입
-			cartProductDesc.setText(cart.getProduct().getP_name() + "\n" + cart.getProduct().getP_desc());
-			cartProductAddPrice.setText(new DecimalFormat("0,000").format(cartService.addCartTotal(cart.getCart_no())));
 			
-
+			cartProductAddPrice.setText(Integer.toString(cartService.addCartTotal(cart.getCart_no()))+"원");
+			
+			cartListPanel.add(cartPanel);
+			
 			/*******************/
 
 			
-
-			cartListPanel.add(cartPanel);
 			
 		}
 		
@@ -311,8 +312,9 @@ public class CartListPanel_김강산 extends JPanel {
 	//최종카트 합 메소드
 	
 	public String addCartListTotal() throws Exception{
+		loginMember = new Member("sy0", null, null, null, null, null, null);
 		cartService = new CartService();
-		return Integer.toString(cartService.addCartListTotal("sy1"));
+		return Integer.toString(cartService.addCartListTotal(loginMember.getM_id()));
 		
 	}
 	
