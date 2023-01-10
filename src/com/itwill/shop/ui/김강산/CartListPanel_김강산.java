@@ -189,11 +189,6 @@ public class CartListPanel_김강산 extends JPanel {
 		
 		
 		
-		
-		
-		
-		
-		
 		//서비스 생성자 생성
 		cartService = new CartService();
 		orderService = new OrderService();

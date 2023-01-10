@@ -20,7 +20,7 @@ public class ShopMainFrame_최민영 extends JFrame {
 	/*************로그인한회원****************/
 	private Member loginMember;
 	
-
+	//
 	private JPanel contentPane;
 
 	/**
@@ -52,7 +52,7 @@ public class ShopMainFrame_최민영 extends JFrame {
 		contentPane.setLayout(null);
 		
 		MemberDetailPanel_최민영 memberDetailPanel_최민영 = new MemberDetailPanel_최민영();
-		memberDetailPanel_최민영.setBounds(24, 35, 420, 567);
+		memberDetailPanel_최민영.setBounds(22, 34, 436, 567);
 		contentPane.add(memberDetailPanel_최민영);
 		
 		
