@@ -17,7 +17,20 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 public class ShopMainFrame extends JFrame {
-
+	
+	/*
+	 * Panel상수 선언
+	 */
+	
+	/*
+	 * 1. Service객체 선언
+	 */
+	
+	/*
+	 * 2. login User 선언
+	 */
+	
+	/*********************************************************/
 	private JPanel contentPane;
 
 	/**

@@ -49,27 +49,20 @@ public class OrderListPanel_김세영 extends JPanel {
 		orderListScrollPane.setViewportView(orderListPanel);
 		/**********************주문패널생성**********************/
 		
+		/*
 		JPanel orderPanel = new JPanel();
 		orderPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				/*
-				 * orderPanel을 마우스로 클릭시 상세보기 화면으로 이동
-				 * 
-				 * index 0 -> 주문하기
-				 * index 1 -> 주문목록
-				 * index 2 -> 주문상세보기
-				 */
 				
-				//orderTabbedPane.setSelectedIndex(2);
 				try {
-					//goToOrderDetail();
-				} catch (Exception e2) {
-					// TODO: handle exception
+					
+				} catch (Exception e1) {
+					e1.getMessage();
 				}
 			}
 		});
-		/*
+		
 		orderPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		orderPanel.setPreferredSize(new Dimension(270, 80));
 		orderListPanel.add(orderPanel);
@@ -107,7 +100,7 @@ public class OrderListPanel_김세영 extends JPanel {
 		orderService = new OrderService();
 		
 		/*
-		 * loginMember객체 생성
+		 * loginMember객체 생성. 취합시 ShopMainFrame의 멤버필드에 위치한 loginMember를 가져와서 사용해야 함.
 		 */
 		loginMember = new Member("sy0", null, null, null, null, null, null);
 		/******************************/
@@ -122,18 +115,30 @@ public class OrderListPanel_김세영 extends JPanel {
 	/*
 	 * 메소드 선언
 	 */
-	private void orderList() throws Exception {
+	public void orderList() throws Exception {
 		List<Order> orderList = orderService.orderList(loginMember.getM_id());
 		for (Order order : orderList) {
 			JPanel orderPanel = new JPanel();
+			orderPanel.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					
+					try {
+						
+					} catch (Exception e1) {
+						e1.getMessage();
+					}
+				}
+			});
+			
 			orderPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			orderPanel.setPreferredSize(new Dimension(270, 80));
 			orderPanel.setLayout(null);
 			
 			JLabel o_noDisplayLabel = new JLabel(""+order.getO_no());
-		
 			o_noDisplayLabel.setBounds(12, 30, 110, 15);
 			orderPanel.add(o_noDisplayLabel);
+			
 			JLabel o_descDisplayLabel = new JLabel(order.getO_desc());
 			o_descDisplayLabel.setBounds(12, 50, 110, 15);
 			orderPanel.add(o_descDisplayLabel);
@@ -156,12 +161,5 @@ public class OrderListPanel_김세영 extends JPanel {
 			
 			orderListPanel.add(orderPanel);
 		}
-	}
-	
-	private void goToOrderDetail(JPanel orderPanel) throws Exception {
-		/*
-		 * 패널을 클릭했을 때, 해당 패널의 o_no를 받아와서 다음 메소드에 전달해주고, 해당 order의 상세보기탭으로 전환하는 메소드.
-		 */
-		//orderPanel.disp
 	}
 }
