@@ -18,7 +18,7 @@ public class MemberDetailPanel_최민영 extends JPanel {
 	/*********1.MemberService멤버필드선언*****/
 	private MemberService memberService;
 	/*************로그인한회원****************/
-	private Member loginMember=null;
+	private Member loginMember;
 	
 	
 	private JTextField infoIdTF;
