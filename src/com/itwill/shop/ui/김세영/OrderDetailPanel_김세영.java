@@ -7,6 +7,7 @@ import com.itwill.shop.member.Member;
 import com.itwill.shop.order.Order;
 import com.itwill.shop.order.OrderItem;
 import com.itwill.shop.order.OrderService;
+import com.itwill.shop.product.Product;
 
 import java.awt.Dimension;
 import javax.swing.JLabel;
@@ -15,6 +16,8 @@ import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
 
@@ -394,5 +397,27 @@ public class OrderDetailPanel_김세영 extends JPanel {
 		});
 		goBackButton.setBounds(183, 505, 97, 23);
 		add(goBackButton);
+		
+		//새로고침기능 테스트용 버튼. 합칠 때 지우자.
+		JButton refreshButton = new JButton("새로고침");
+		refreshButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					displayOrderDetail(order);
+				} catch (Exception e1) {
+					e1.getMessage();
+				}
+			}
+		});
+		refreshButton.setBounds(117, 262, 97, 23);
+		add(refreshButton);
+	}
+	
+	public void displayOrderDetail(Order order) throws Exception {
+		
+		//합치고 나면 OrderDetailPanel.removeAll(); 도 가능하지 않을까??
+		orderDetailPanel.removeAll();
+		orderItemList(order.getO_no());
+		orderDetail(order);
 	}
 }

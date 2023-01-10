@@ -7,6 +7,7 @@ import javax.swing.JTextField;
 
 import com.itwill.shop.member.Member;
 import com.itwill.shop.member.MemberService;
+import com.itwill.shop.ui.ShopMainFrame;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -15,20 +16,23 @@ import java.awt.Color;
 import javax.swing.JPasswordField;
 
 public class MemberLoginPanel_최민영 extends JPanel {
-	/*********1.MemberService멤버필드선언*****/
+	/*
+	 * 프레임 참조
+	 */
+	ShopMainFrame frame;
+	/*********1. MemberService 멤버필드 선언 *****/
 	private MemberService memberService;
-	/*************로그인한회원****************/
-	private Member loginMember=null;
 	
+	/*************로그인 한 회원****************/
+	private Member loginMember=null;
 	
 	
 	private JTextField loginIdTF;
 	private JButton loginBtn;
 	private JButton joinBtn;
 	private JPasswordField loginPassTF;
-	public ShopMainFrame_최민영 frame;
-	
-	
+	private JPanel memberLoginPanel;
+
 
 	/**
 	 * Create the panel.
@@ -38,7 +42,7 @@ public class MemberLoginPanel_최민영 extends JPanel {
 		setForeground(Color.WHITE);
 		setLayout(null);
 		
-		JPanel memberLoginPanel = new JPanel();
+		memberLoginPanel = new JPanel();
 		memberLoginPanel.setBackground(Color.LIGHT_GRAY);
 		memberLoginPanel.setBounds(0, 0, 360, 540);
 		add(memberLoginPanel);
@@ -60,7 +64,10 @@ public class MemberLoginPanel_최민영 extends JPanel {
 		joinBtn = new JButton("회원가입");
 		joinBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//회원가입 버튼 클릭시, 회원가입으로 연결되야 한다.!
+				/*
+				 * 회원가입 버튼 클릭 시 회원가입 패널로 이동
+				 */
+				frame.changePanel(ShopMainFrame.PANEL_MEMBER_JOIN, null);
 			}
 		});
 		joinBtn.setBounds(47, 358, 97, 23);
@@ -70,6 +77,7 @@ public class MemberLoginPanel_최민영 extends JPanel {
 		loginBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				login();
+				frame.changePanel(ShopMainFrame.PANEL_PRODUCT_LIST, null);
 			}
 		});
 		loginBtn.setBounds(193, 358, 97, 23);
@@ -84,63 +92,46 @@ public class MemberLoginPanel_최민영 extends JPanel {
 		
 		
 
-	}
+	}// 생성자 끝
 	
-	public void setFrame(ShopMainFrame_최민영 frame) {
+	public void setFrame(ShopMainFrame frame) {
 		this.frame = frame;
 	}
-	
-	/**************로그인성공시 호출할메쏘드***************/
+
+	/**************로그인 성공 시 호출할 메쏘드***************/
+
 	public void loginProcess(String id) throws Exception{
-		/***********로그인성공시 해야할일***********
-			 1.로그인성공한 멤버객체 멤버필드에저장
-			 2.MemberMainFrame타이틀변경
-			 3.로그인,회원가입탭 불활성화
-			   로그인,회원가입 메뉴아이템 불활성화
-			   로그아웃 메뉴아이템 활성화
-			 4.회원정보보기 화면전환
-		 ********************************************/
-		//1.로그인성공한 멤버객체 멤버필드에저장
-		this.loginMember = memberService.memberDetail(id);
-	/*	
-		//2.MemberMainFrame타이틀변경
-		setTitle(id+" 님 로그인");
-		// 3.로그인,회원가입탭 불활성화
-		memberTabbedPane.setEnabledAt(1, false);
-		memberTabbedPane.setEnabledAt(2, false);
-		memberTabbedPane.setEnabledAt(3, true);
-		loginMenuItem.setEnabled(false);
-		joinMenuItem.setEnabled(false);
-		logoutMenuItem.setEnabled(true); */
 		
-	/*	
-		// 4.회원정보보기 화면전환
-		memberTabbedPane.setSelectedIndex(3);
-		displayMemberInfo(this.loginMember);
-		updateFormEnable(false); */ 
+		//1.로그인 성공한 멤버 객체 멤버필드에저장
+		this.loginMember = memberService.memberDetail(id);
+		//2.MemberMainFrame 타이틀 변경
+		frame.setTitle(id + " 님 로그인");
+		// 3.로그인, 회원가입 탭 불 활성화
+		frame.memberTabbedPane.setEnabledAt(0, false);
+		frame.memberTabbedPane.setEnabledAt(1, false);
+		// 4.상품 전체보기로 화면전환
+		frame.productTabbedPane.setSelectedIndex(0);
 	}
 	
 	public void login() {
-		/***********회원로그인 method************/
+		/*********** 회원 로그인 method ************/
 		try {
 			String id = loginIdTF.getText();
 			String pass=new String(loginPassTF.getPassword());
 			
 			int result = memberService.logIn(id, pass);
-			if(result==1) {
-				//로그인성공
+			if(result == 1) {
+				//로그인 성공
 				JOptionPane.showMessageDialog(null, "로그인 성공");
 				loginProcess(id); //로그인 멤버로 넣어줌
-				loginIdTF.setText("");
+				loginIdTF.setText(""); 
 				loginPassTF.setText("");
 			}else {
-				JOptionPane.showMessageDialog(null, "아이디또는 비밀번호를 확인하세요");
+				JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 확인하세요");
 				loginIdTF.setSelectionStart(0);
 				loginIdTF.setSelectionEnd(id.length());
 				loginIdTF.requestFocus();
 			}
-			
-			
 			
 		}catch (Exception e1) {
 			// TODO: handle exception
