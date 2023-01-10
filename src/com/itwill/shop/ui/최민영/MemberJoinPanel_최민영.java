@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 
 import com.itwill.shop.member.Member;
 import com.itwill.shop.member.MemberService;
+import com.itwill.shop.ui.ShopMainFrame;
 
 import java.text.SimpleDateFormat;
 
@@ -17,11 +18,21 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.Date;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.Font;
 
 public class MemberJoinPanel_최민영 extends JPanel {
-	/*********1.MemberService멤버필드선언*****/
+	/*
+	 * 프레임 참조
+	 */
+	ShopMainFrame frame;
+	/*********1.MemberService 멤버필드 선언*****/
 	private MemberService memberService;
 	
+	/*************로그인 한 회원****************/
+	private Member loginMember = null;
 	
 
 	private JTextField idTF;
@@ -32,7 +43,8 @@ public class MemberJoinPanel_최민영 extends JPanel {
 	private JTextField emailTF;
 	private JTextField addressTF;
 	private JPasswordField passCheckTF;
-	private JButton pwCheckbtn;
+	private JLabel idMsgLB;
+	private JLabel pwMsgLb;
 
 	/**
 	 * Create the panel.
@@ -111,53 +123,28 @@ public class MemberJoinPanel_최민영 extends JPanel {
 		JButton memberjoinBtn = new JButton("가입");
 		memberjoinBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				/*********** 회원가입 ************/
-				try {
-					/******TextField로 부터 데이타얻기*****/
-					String id = idTF.getText();
-					String password=new String(passwordTF.getPassword());
-					String passwordc=new String(passCheckTF.getPassword());
-					String name=nameTF.getText();
-					String phone=phoneTF.getText();
-					String bday = bdayTF.getText();
-					String email = emailTF.getText();
-					String address = addressTF.getText();
-					
-					if (id.equals("")) {
-						JOptionPane.showMessageDialog(null, "아이디를 입력하세요.");
-						idTF.requestFocus();
-						return;
-					}
-					
-					Member newMember = new Member(id, password, name, phone, new SimpleDateFormat("yyyy/MM/dd").parse(bday), email, address);
-					boolean isAdd = memberService.addMember(newMember);
-					
-					if (isAdd==true) {
-						JOptionPane.showMessageDialog(null,"회원가입에 성공하셨습니다.");
-					}
-					else {
-						JOptionPane.showMessageDialog(null,"회원가입에 실패하셨습니다.");
-					}
-					
-					
-					
-				}catch (Exception e1) {
-					e1.printStackTrace();
-					System.out.println("회원가입-->"+e1.getMessage());
-				}
-				
-				
+					join();
 			}
 		});
 		memberjoinBtn.setBounds(46, 443, 97, 23);
 		memberJoinPannel.add(memberjoinBtn);
 		
+		
 		JButton memberCancelBtn = new JButton("취소");
+		memberCancelBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/*
+				 * 취소 버튼 클릭 시 로그인 패널로 전환
+				 */
+				frame.changePanel(ShopMainFrame.PANEL_MEMBER_LOGIN, null);
+			}
+		});
 		memberCancelBtn.setBounds(183, 443, 97, 23);
 		memberJoinPannel.add(memberCancelBtn);
 		
 		passCheckTF = new JPasswordField();
+		
+		
 		passCheckTF.setBounds(131, 158, 116, 21);
 		memberJoinPannel.add(passCheckTF);
 		
@@ -165,29 +152,138 @@ public class MemberJoinPanel_최민영 extends JPanel {
 		lblNewLabel_7.setBounds(26, 161, 82, 15);
 		memberJoinPannel.add(lblNewLabel_7);
 		
-		pwCheckbtn = new JButton("비밀번호확인");
-		pwCheckbtn.addActionListener(new ActionListener() {
+		idMsgLB = new JLabel("");
+		idMsgLB.setForeground(Color.RED);
+		idMsgLB.setBounds(131, 54, 101, 29);
+		memberJoinPannel.add(idMsgLB);
+		
+		pwMsgLb = new JLabel("");
+		pwMsgLb.setForeground(Color.RED);
+		pwMsgLb.setBounds(247, 130, 101, 15);
+		memberJoinPannel.add(pwMsgLb);
+		
+		JButton duplicateIdBtn = new JButton("중복확인");
+		duplicateIdBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String password=new String(passwordTF.getPassword());
-				String passwordc=new String(passCheckTF.getPassword());
+				String id = idTF.getText();
 				
-				if (password.equals(passwordc)) {
-					JOptionPane.showMessageDialog(null, "일치하는 비밀번호입니다..");
-				} else {
-					JOptionPane.showMessageDialog(null, "일치하지않는 비밀번호입니다.");
-					return;
-
+				boolean isAdd;
+				try {
+					isAdd = memberService.isDuplicateId(id);
+					if(isAdd==false) {
+						JOptionPane.showMessageDialog(null, "사용 가능한 아이디입니다.");
+						idTF.requestFocus();
+						idTF.setSelectionStart(0);
+						idTF.setSelectionEnd(id.length());
+				}else {
+					JOptionPane.showMessageDialog(null, "이미 사용하고있는 아이디입니다.");
+					idTF.requestFocus();
+					idTF.setSelectionStart(0);
+					idTF.setSelectionEnd(id.length());
+				}
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 				
 			}
 		});
-		pwCheckbtn.setBounds(251, 144, 97, 23);
-		memberJoinPannel.add(pwCheckbtn);
+		duplicateIdBtn.setBounds(259, 91, 97, 23);
+		memberJoinPannel.add(duplicateIdBtn);
+		
+		JButton passCheckBtn = new JButton("비밀번호확인");
+		passCheckBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				passCheck();
+			}
+		});
+		passCheckBtn.setFont(new Font("굴림", Font.PLAIN, 10));
+		passCheckBtn.setBounds(257, 157, 97, 23);
+		memberJoinPannel.add(passCheckBtn);
+		
+		JLabel lblNewLabel_8 = new JLabel("(예)1999/01/01)");
+		lblNewLabel_8.setBounds(141, 264, 87, 21);
+		memberJoinPannel.add(lblNewLabel_8);
 		
 		
 		memberService=new MemberService();
 
+	} // 생성자 끝 
+	
+	public void setFrame(ShopMainFrame frame) {
+		this.frame = frame;
 	}
+
+	/*************회원가입 method***********/
+	public void join() {
+		
+		try {
+			/****** TextField로 부터 데이타얻기 *****/
+			String id = idTF.getText();
+			String password = new String(passwordTF.getPassword());
+			String passwordc = new String(passCheckTF.getPassword());
+			String name = nameTF.getText();
+			String phone = phoneTF.getText();
+			String bday = bdayTF.getText();
+			String email = emailTF.getText();
+			String address = addressTF.getText();
+			/********** 유효성 체크 **************/
+			if (id.equals("")) {
+				idMsgLB.setText("아이디를 입력하세요.");
+				idTF.requestFocus();
+				return;
+			}
+
+			if (password.equals("")) {
+				pwMsgLb.setText("비밀번호를 입력하세요.");
+				passwordTF.requestFocus();
+				return;
+			}
+
+			Member newMember = new Member(id, password, name, phone, new SimpleDateFormat("yyyy/MM/dd").parse(bday),
+					email, address);
+			boolean isAdd = memberService.addMember(newMember);
+
+			if (isAdd == true) {
+				JOptionPane.showMessageDialog(null, "회원가입에 성공하셨습니다.");
+				/*
+				 * 로그인 화면 전환
+				 */
+				frame.memberTabbedPane.setSelectedIndex(0);
+			} else {
+				JOptionPane.showMessageDialog(null, "다시 확인바랍니다.");
+				idTF.requestFocus();
+				idTF.setSelectionStart(0);
+				idTF.setSelectionEnd(id.length());
+			}
+
+		} catch (Exception e1) {
+			e1.printStackTrace();
+			System.out.println("회원가입-->" + e1.getMessage());
+		}
+	}
+	
+	/*******************비밀번호 확인 메쏘드***************/
+	public void passCheck() {
+		String password = new String(passwordTF.getPassword());
+		String passwordc = new String(passCheckTF.getPassword());
+
+		if (password.equals(passwordc)) {
+			JOptionPane.showMessageDialog(null, "일치하는 비밀번호입니다.");
+			passwordTF.requestFocus();
+			passwordTF.setSelectionStart(0);
+			passwordTF.setSelectionEnd(password.length());
+		} else {
+			JOptionPane.showMessageDialog(null, "일치하지 않는 비밀번호입니다.");
+			passwordTF.requestFocus();
+			passwordTF.setSelectionStart(0);
+			passwordTF.setSelectionEnd(password.length());
+			return;
+		}
+		
+	}
+	
+	
 	
 	
 	

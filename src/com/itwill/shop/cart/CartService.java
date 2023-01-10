@@ -49,4 +49,25 @@ public class CartService {
 		return cartDao.deleteByMemberId(m_id);
 	}
 	
+/*
+ * 카트 리스트 가격 총합 - addCartTotal
+ */
+	public int addCartListTotal(String m_id) throws Exception {
+		int total = 0;
+		List<Cart> findCartList = cartDao.findByMemberId(m_id);
+		for (Cart cart : findCartList) {
+			total+=cart.getCart_qty()*(cart.getProduct().getP_price());
+		}
+		return total;
+	}
+	
+//카트 1개 총합
+	public int addCartTotal(int cart_no) throws Exception {
+		int total = 0;
+		Cart findCart = cartDao.findByCartNo(cart_no);
+		total = findCart.getCart_qty()*(findCart.getProduct().getP_price());
+		return total;
+	}
+	
+	
 }

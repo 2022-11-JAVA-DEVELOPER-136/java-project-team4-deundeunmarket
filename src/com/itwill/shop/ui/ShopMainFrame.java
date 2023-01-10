@@ -5,6 +5,14 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.itwill.shop.cart.CartService;
+import com.itwill.shop.member.Member;
+import com.itwill.shop.member.MemberService;
+import com.itwill.shop.order.OrderService;
+import com.itwill.shop.product.Product;
+import com.itwill.shop.product.ProductService;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JButton;
@@ -15,11 +23,58 @@ import javax.swing.JTabbedPane;
 import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import com.itwill.shop.ui.최민영.MemberLoginPanel_최민영;
+import com.itwill.shop.ui.최민영.MemberJoinPanel_최민영;
+import com.itwill.shop.ui.최민영.MemberDetailPanel_최민영;
+import com.itwill.shop.ui.김민선.OrderCreatePanel_김민선;
+import com.itwill.shop.ui.김세영.OrderListPanel_김세영;
+import com.itwill.shop.ui.김세영.OrderDetailPanel_김세영;
+import java.awt.Toolkit;
+import java.awt.SystemColor;
+import java.awt.Font;
 
 public class ShopMainFrame extends JFrame {
-
-	private JPanel contentPane;
-
+	
+	/*********************************************************/
+	/*
+	 * Panel 상수 선언
+	 */
+	public static final int PANEL_MEMBER_LOGIN = 1;
+	public static final int PANEL_MEMBER_JOIN = 2;
+	public static final int PANEL_MEMBER_INFO = 3;
+	public static final int PANEL_PRODUCT_LIST = 4;
+	public static final int PANEL_PRODUCT_RECOMMEND = 5;
+	public static final int PANEL_PRODUCT_DETAIL = 6;
+	public static final int PANEL_CART = 7;
+	public static final int PANEL_ORDER_CREATE = 8;
+	public static final int PANEL_ORDER_LIST = 9;
+	public static final int PANEL_ORDER_DETAIL = 10;
+	
+	/*
+	 * 1. Service 객체 선언
+	 */
+	MemberService memberService;
+	OrderService orderService;
+	CartService cartService;
+	ProductService productService;
+	/*
+	 * 2. login Member 객체 선언(선택한 product 객체 선언)
+	 */
+	Member loginMember = null;
+	Product selectProduct;
+	
+	public JPanel contentPane;
+	public JTabbedPane shopTabbedPane;
+	public JTabbedPane memberTabbedPane;
+	public JTabbedPane productTabbedPane;
+	public JTabbedPane cartTabbedPane;
+	public JTabbedPane orderTabbedPane;
+	public MemberLoginPanel_최민영 memberLoginPanel;
+	public MemberJoinPanel_최민영 memberJoinPanel;
+	public MemberDetailPanel_최민영 memberDetailPanel;
+	public OrderCreatePanel_김민선 orderCreatePanel;
+	public OrderListPanel_김세영 orderListPanel;
+	public OrderDetailPanel_김세영 orderDetailPanel;
 	/**
 	 * Launch the application.
 	 */
@@ -39,10 +94,14 @@ public class ShopMainFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ShopMainFrame() {
+	public ShopMainFrame() throws Exception{
+		setFont(new Font("D2Coding", Font.PLAIN, 12));
+		setBackground(SystemColor.info);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ShopMainFrame.class.getResource("/images/home 타이틀로고.png")));
+		setTitle("든든마켓");
 		initGUI();
 	}
-	private void initGUI() {
+	private void initGUI() throws Exception{
 		setPreferredSize(new Dimension(360, 640));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 360, 640);
@@ -70,39 +129,124 @@ public class ShopMainFrame extends JFrame {
 		contentPane.add(globalSouthMenuPanel, BorderLayout.SOUTH);
 		
 		JButton globalSearchMenuButton = new JButton("");
+		globalSearchMenuButton.setContentAreaFilled(false);
+		globalSearchMenuButton.setBorderPainted(false);
+		globalSearchMenuButton.setOpaque(false);
 		globalSearchMenuButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		globalSearchMenuButton.setBorder(null);
-		globalSearchMenuButton.setOpaque(false);
 		globalSearchMenuButton.setIcon(new ImageIcon(ShopMainFrame.class.getResource("/images/search 50.png")));
 		globalSouthMenuPanel.add(globalSearchMenuButton);
 		
 		JButton globalHomeMenuButton = new JButton("");
-		globalHomeMenuButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		globalHomeMenuButton.setContentAreaFilled(false);
+		globalHomeMenuButton.setBorderPainted(false);
 		globalHomeMenuButton.setOpaque(false);
+		globalHomeMenuButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		globalHomeMenuButton.setBorder(null);
 		globalHomeMenuButton.setIcon(new ImageIcon(ShopMainFrame.class.getResource("/images/home 50.png")));
 		globalSouthMenuPanel.add(globalHomeMenuButton);
 		
 		JButton globalMemberMenuButton = new JButton("");
+		globalMemberMenuButton.setContentAreaFilled(false);
+		globalMemberMenuButton.setBorderPainted(false);
 		globalMemberMenuButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		globalMemberMenuButton.setBorder(null);
 		globalMemberMenuButton.setOpaque(false);
 		globalMemberMenuButton.setIcon(new ImageIcon(ShopMainFrame.class.getResource("/images/cart50.png")));
 		globalSouthMenuPanel.add(globalMemberMenuButton);
 		
-		JTabbedPane shopTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		shopTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(shopTabbedPane, BorderLayout.CENTER);
 		
-		JTabbedPane productTabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		shopTabbedPane.addTab("제품", null, productTabbedPane, null);
-		
-		PopularProductPanel popularProductPanel = new PopularProductPanel();
-		productTabbedPane.addTab("인기제품", null, popularProductPanel, null);
-		
-		JTabbedPane memberTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		memberTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		shopTabbedPane.addTab("회원", null, memberTabbedPane, null);
 		
-		MemberJoinPanel memberJoinPanel = new MemberJoinPanel();
-		memberTabbedPane.addTab("New tab", null, memberJoinPanel, null);
+		memberLoginPanel = new MemberLoginPanel_최민영();
+		memberTabbedPane.addTab("로그인", null, memberLoginPanel, null);
+		
+		memberJoinPanel = new MemberJoinPanel_최민영();
+		memberTabbedPane.addTab("회원가입", null, memberJoinPanel, null);
+		
+		memberDetailPanel = new MemberDetailPanel_최민영();
+		memberTabbedPane.addTab("회원정보", null, memberDetailPanel, null);
+		
+		productTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		shopTabbedPane.addTab("상품", null, productTabbedPane, null);
+		
+		
+		cartTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		shopTabbedPane.addTab("장바구니", null, cartTabbedPane, null);
+		
+		orderTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		shopTabbedPane.addTab("주문", null, orderTabbedPane, null);
+		
+		orderCreatePanel = new OrderCreatePanel_김민선();
+		orderTabbedPane.addTab("주문하기", null, orderCreatePanel, null);
+		
+		orderListPanel = new OrderListPanel_김세영();
+		orderTabbedPane.addTab("주문목록", null, orderListPanel, null);
+		
+		orderDetailPanel = new OrderDetailPanel_김세영();
+		orderTabbedPane.addTab("주문상세", null, orderDetailPanel, null);
+		
+	
+		/***************************************************/
+		/*
+		 * 3. Service 객체 생성
+		 */
+		memberService = new MemberService();
+		orderService = new OrderService();
+		cartService = new CartService();
+		productService = new ProductService();
+		
+		
+		/******* ShopMainFrame 참조를 Panel에 넘겨줌 *******/
+		memberLoginPanel.setFrame(this);
+		memberJoinPanel.setFrame(this);
+		memberDetailPanel.setFrame(this);
+		
+		
+		
+		
+	}// 생성자 끝
+	/***************패널 변경 메소드******************/
+	
+	public void changePanel(int panel_no, Object data) {
+		if (panel_no == PANEL_MEMBER_LOGIN) {
+			shopTabbedPane.setSelectedIndex(0);
+			memberTabbedPane.setSelectedIndex(0);
+		} else if (panel_no == PANEL_MEMBER_JOIN) {
+			shopTabbedPane.setSelectedIndex(0);
+			memberTabbedPane.setSelectedIndex(1);
+		} else if (panel_no == PANEL_MEMBER_INFO) {
+			shopTabbedPane.setSelectedIndex(0);
+			memberTabbedPane.setSelectedIndex(2);
+		} else if (panel_no == PANEL_PRODUCT_LIST) {
+			shopTabbedPane.setSelectedIndex(1);
+			productTabbedPane.setSelectedIndex(0);
+		} else if (panel_no == PANEL_PRODUCT_RECOMMEND) {
+			shopTabbedPane.setSelectedIndex(1);
+			productTabbedPane.setSelectedIndex(1);
+		} else if (panel_no == PANEL_PRODUCT_DETAIL) {
+			shopTabbedPane.setSelectedIndex(1);
+			productTabbedPane.setSelectedIndex(2);
+		} else if (panel_no == PANEL_CART) {
+			shopTabbedPane.setSelectedIndex(2);
+			cartTabbedPane.setSelectedIndex(0);
+		} else if (panel_no == PANEL_ORDER_CREATE) {
+			shopTabbedPane.setSelectedIndex(3);
+			orderTabbedPane.setSelectedIndex(0);
+		} else if (panel_no == PANEL_ORDER_LIST) {
+			shopTabbedPane.setSelectedIndex(3);
+			orderTabbedPane.setSelectedIndex(1);
+		} else if (panel_no == PANEL_ORDER_DETAIL) {
+			shopTabbedPane.setSelectedIndex(3);
+			orderTabbedPane.setSelectedIndex(2);
+		}
+
 	}
+	 
+	
+	
+
 }

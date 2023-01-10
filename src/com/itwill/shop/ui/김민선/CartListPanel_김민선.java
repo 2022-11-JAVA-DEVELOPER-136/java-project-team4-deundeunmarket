@@ -57,10 +57,10 @@ public class CartListPanel_김민선 extends JPanel {
 		productImageLB.setBounds(0, 0, 88, 100);
 		cartPanel.add(productImageLB);
 		
-		JLabel lblNewLabel = new JLabel("[백리향] 삼선짬뽕 밀키트(2인분)");
-		lblNewLabel.setFont(new Font("굴림", Font.PLAIN, 12));
-		lblNewLabel.setBounds(100, 10, 188, 15);
-		cartPanel.add(lblNewLabel);
+		JLabel productTitleLB = new JLabel("[백리향] 삼선짬뽕 밀키트(2인분)");
+		productTitleLB.setFont(new Font("굴림", Font.PLAIN, 12));
+		productTitleLB.setBounds(100, 10, 188, 15);
+		cartPanel.add(productTitleLB);
 		
 		JLabel productPriceLB = new JLabel("11900원");
 		productPriceLB.setBounds(231, 75, 57, 15);
