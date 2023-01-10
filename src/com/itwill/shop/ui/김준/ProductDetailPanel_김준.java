@@ -50,11 +50,8 @@ public class ProductDetailPanel_김준 extends JPanel {
 	private JLabel nameContentLB;
 	private JLabel priceContentLB;
 	private JLabel detailContentLB;
-<<<<<<< HEAD
 	private JButton cartAddBtn;
 	private JButton buyBtn;
-=======
->>>>>>> branch 'master' of https://github.com/2022-11-JAVA-DEVELOPER/java-project-team4-deundeunmarket.git
 
 	/**
 	 * Create the panel.
@@ -84,28 +81,8 @@ public class ProductDetailPanel_김준 extends JPanel {
 		panel_1.add(detailLB);
 		
 		
-<<<<<<< HEAD
 		cartAddBtn = new JButton("담기");
-=======
-		JButton cartAddBtn = new JButton("담기");
-		cartAddBtn.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-						try {
-							cartService.addCart(new Cart(0, 1, loginMember.getM_id(), 
-									new Product(product.getP_no(), product.getP_name(), 
-												product.getP_price(), product.getP_image(), 
-												product.getP_desc())));
-						} catch (Exception e1) {
-							e1.printStackTrace();
-						}
-					}
-			});
-		cartAddBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		cartAddBtn.setBounds(38, 491, 97, 23);
->>>>>>> branch 'master' of https://github.com/2022-11-JAVA-DEVELOPER/java-project-team4-deundeunmarket.git
 		
-<<<<<<< HEAD
 		cartAddBtn.setBounds(38, 491, 97, 23);
 		
 		panel_1.add(cartAddBtn);
@@ -116,17 +93,6 @@ public class ProductDetailPanel_김준 extends JPanel {
 		panel_1.add(imageLB);
 		
 		buyBtn = new JButton("구매하기");
-=======
-		
-		panel_1.add(cartAddBtn);
-		
-		imageLB = new JLabel("");
-		imageLB.setIcon(new ImageIcon(ProductDetailPanel_김준.class.getResource("/images/떡볶이_작은.jpg")));
-		imageLB.setBounds(124, 35, 107, 184);
-		panel_1.add(imageLB);
-		
-		JButton buyBtn = new JButton("구매하기");
->>>>>>> branch 'master' of https://github.com/2022-11-JAVA-DEVELOPER/java-project-team4-deundeunmarket.git
 		buyBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//order구매 화면으로 전환
@@ -155,11 +121,7 @@ public class ProductDetailPanel_김준 extends JPanel {
 		/*
 		 * loginMember 객체 생성
 		 */
-<<<<<<< HEAD
 		loginMember = new Member("sy1",null,null,null,null,null,null);
-=======
-		loginMember = new Member("sy0",null,null,null,null,null,null);
->>>>>>> branch 'master' of https://github.com/2022-11-JAVA-DEVELOPER/java-project-team4-deundeunmarket.git
 		
 	}
 
@@ -172,7 +134,6 @@ public class ProductDetailPanel_김준 extends JPanel {
 		nameContentLB.setText("<html>" + product.getP_name() + "<html>");
 		detailContentLB.setText("<html>" + product.getP_desc() + "<html>");
 		
-<<<<<<< HEAD
 	}
 	
 	public void clickOrder(Product product) {
@@ -191,12 +152,6 @@ public class ProductDetailPanel_김준 extends JPanel {
 			});
 		cartAddBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	}
-=======
-		
-	}
-	
-	
->>>>>>> branch 'master' of https://github.com/2022-11-JAVA-DEVELOPER/java-project-team4-deundeunmarket.git
 	
 	
 	

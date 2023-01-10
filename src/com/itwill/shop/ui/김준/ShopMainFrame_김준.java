@@ -110,10 +110,7 @@ public class ShopMainFrame_김준 extends JFrame {
 			
 			productTabbedPane.setSelectedIndex(2);
 			productDetailPanel_김준.displayProductDetail(product);
-<<<<<<< HEAD
 			productDetailPanel_김준.clickOrder(product);
-=======
->>>>>>> branch 'master' of https://github.com/2022-11-JAVA-DEVELOPER/java-project-team4-deundeunmarket.git
 			
 		}else if(panel_no==PRODUCT_RECOMMEND_PANEL) {
 			Product product=(Product)data;
