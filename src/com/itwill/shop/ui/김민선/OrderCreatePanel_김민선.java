@@ -35,16 +35,14 @@ public class OrderCreatePanel_김민선 extends JPanel {
 	 * logInMember 객체 선언
 	 */
 	private Member loginMember = null;
-	/*
-	 * order 객체 선언
-	 */
-	private Order order = null;
+
 
 	
 	private JTextField orderNameTF;
 	private JTextField orderAddressTF;
 	private JComboBox paymentCB;
 	private JComboBox orderLocCB;
+	private JLabel orderTotPriceLB;
 
 	public OrderCreatePanel_김민선() throws Exception{
 		
@@ -105,12 +103,16 @@ public class OrderCreatePanel_김민선 extends JPanel {
 				 * 주문 생성 메소드 사용
 				 */
 				orderCreate();
+				/*
+				 * 총 주문 금액 0으로 초기화
+				 */
+				orderTotPriceLB.setText(""+0);
 			}
 		});
 		orderCreateBtn.setBounds(87, 455, 176, 40);
 		orderCreatePanel.add(orderCreateBtn);
 		
-		JLabel orderTotPriceLB = new JLabel(""+orderTotPrice(loginMember.getM_id()));
+		orderTotPriceLB = new JLabel("");
 		orderTotPriceLB.setHorizontalAlignment(SwingConstants.TRAILING);
 		orderTotPriceLB.setBounds(171, 385, 136, 15);
 		orderCreatePanel.add(orderTotPriceLB);
@@ -124,13 +126,14 @@ public class OrderCreatePanel_김민선 extends JPanel {
 		/*
 		 * loginMember 객체 생성
 		 */
-		loginMember = new Member("sy0",null,null,null,null,null,null);
-		/*
-		 * order 객체 생성
-		 */
-		//order = orderService.orderDetail(loginMember.getM_id(), 3);
-
+		loginMember = new Member("sy1",null,null,null,null,null,null);
 		/*****************************************/
+		
+		/*
+		 * 주문 총 금액 메소드 사용
+		 */
+		orderTotPriceLB.setText(""+orderTotPrice(loginMember.getM_id()));
+		
 		
 	}
 	/*
@@ -140,40 +143,17 @@ public class OrderCreatePanel_김민선 extends JPanel {
 		List<Cart> cartList = cartService.getCartItemByMemberId(m_id);
 		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 		int o_tot_price = 0;
-		
-		for (Cart cart : cartList) {
-			OrderItem orderItem = new OrderItem(0, cart.getCart_qty(), cart.getProduct(), 0);
-			orderItemList.add(orderItem);
-			o_tot_price += orderItem.getOi_qty()*orderItem.getProduct().getP_price();
+		if (cartList.size() >= 1) {
+			for (Cart cart : cartList) {
+				OrderItem orderItem = new OrderItem(0, cart.getCart_qty(), cart.getProduct(), 0);
+				orderItemList.add(orderItem);
+				o_tot_price += orderItem.getOi_qty() * orderItem.getProduct().getP_price();
+			}
+			return o_tot_price;
+		} else {
+			return o_tot_price;
 		}
-		return o_tot_price;
 	}
-	/*
-	 public int orderCreate(Order order) throws Exception {
-		
-		List<Cart> cartList = cartDao.findByMemberId(order.getM_id());
-		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
-		int o_tot_price = 0;
-		int oi_tot_count = 0;
-		String o_desc = "";
-		int rowCount = 0;
-		
-		for (Cart cart : cartList) {
-			OrderItem orderItem = new OrderItem(0, cart.getCart_qty(), cart.getProduct(), 0);
-			orderItemList.add(orderItem);
-			o_tot_price += orderItem.getOi_qty()*orderItem.getProduct().getP_price();
-			oi_tot_count += orderItem.getOi_qty();
-		}
-		o_desc = orderItemList.get(0).getProduct().getP_name() + " 외" + (oi_tot_count - 1) + "개";
-		
-		Order newOrder = new Order(0, order.getO_name(),o_desc, null, o_tot_price, order.getO_address(), order.getO_loc(), order.getO_payment(), order.getM_id());
-		newOrder.setOrderItemList(orderItemList);
-		rowCount = orderDao.insert(newOrder);
-		cartDao.deleteByMemberId(order.getM_id());
-		return rowCount;
-	}
-	 */
-	
 	
 	/*
 	 * 주문하기 메소드
