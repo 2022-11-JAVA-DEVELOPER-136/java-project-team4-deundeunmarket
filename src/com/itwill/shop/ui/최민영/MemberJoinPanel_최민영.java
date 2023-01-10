@@ -20,6 +20,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Font;
 
 public class MemberJoinPanel_최민영 extends JPanel {
 	/*********1.MemberService멤버필드선언*****/
@@ -129,12 +130,8 @@ public class MemberJoinPanel_최민영 extends JPanel {
 		memberJoinPannel.add(memberCancelBtn);
 		
 		passCheckTF = new JPasswordField();
-		passCheckTF.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				passCheck();
-			}
-		});
+		
+		
 		passCheckTF.setBounds(131, 158, 116, 21);
 		memberJoinPannel.add(passCheckTF);
 		
@@ -181,6 +178,20 @@ public class MemberJoinPanel_최민영 extends JPanel {
 		});
 		duplicateIdBtn.setBounds(259, 91, 97, 23);
 		memberJoinPannel.add(duplicateIdBtn);
+		
+		JButton passCheckBtn = new JButton("비밀번호확인");
+		passCheckBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				passCheck();
+			}
+		});
+		passCheckBtn.setFont(new Font("굴림", Font.PLAIN, 10));
+		passCheckBtn.setBounds(257, 157, 97, 23);
+		memberJoinPannel.add(passCheckBtn);
+		
+		JLabel lblNewLabel_8 = new JLabel("(예)1999/01/01)");
+		lblNewLabel_8.setBounds(141, 264, 87, 21);
+		memberJoinPannel.add(lblNewLabel_8);
 		
 		
 		memberService=new MemberService();
