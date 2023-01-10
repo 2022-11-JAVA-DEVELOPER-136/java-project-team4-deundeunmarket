@@ -42,8 +42,14 @@ public class ShopMainFrame_김준 extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		contentPane.add(tabbedPane, BorderLayout.CENTER);
+		
 		ProductListPanel_김준 productListPanel_김준 = new ProductListPanel_김준();
-		contentPane.add(productListPanel_김준, BorderLayout.CENTER);
+		tabbedPane.addTab("New tab", null, productListPanel_김준, null);
+		
+		ProductRecommendPanel_김준 productRecommendPanel_김준 = new ProductRecommendPanel_김준();
+		tabbedPane.addTab("New tab", null, productRecommendPanel_김준, null);
 		
 
 	}

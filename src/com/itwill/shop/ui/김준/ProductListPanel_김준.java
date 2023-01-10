@@ -89,7 +89,7 @@ public class ProductListPanel_김준 extends JPanel {
 		productPanel.add(productNameLB);
 		productListPanel.add(productPanel);
 		
-		JLabel productPriceLB = new JLabel("<html> 가격 : 12,000 </html>");
+		JLabel productPriceLB = new JLabel("<html> 가격 : 10,000 </html>");
 		productPriceLB.setPreferredSize(new Dimension(96, 30));
 		productPriceLB.setBounds(0, 209, 115, 22);
 		productPanel.add(productPriceLB);

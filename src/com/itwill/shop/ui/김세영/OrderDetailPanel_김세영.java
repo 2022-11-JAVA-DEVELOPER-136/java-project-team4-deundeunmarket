@@ -33,6 +33,8 @@ public class OrderDetailPanel_김세영 extends JPanel {
 	 */
 	public OrderDetailPanel_김세영() throws Exception {
 		
+		orderService = new OrderService();
+		loginMember = new Member("sy0", null, "김세영", null, null, null, null);
 		Order order = orderService.orderDetail(loginMember.getM_id(), 1);
 		
 		setLayout(null);
@@ -47,20 +49,21 @@ public class OrderDetailPanel_김세영 extends JPanel {
 		orderDetailPanel.setLayout(null);
 		
 		/**************주문아이템패널생성****************/
-		
+		/*
 		JPanel orderItemPanel = new JPanel();
 		orderItemPanel.setPreferredSize(new Dimension(290, 110));
 		orderItemPanel.setBounds(12, 35, 293, 95);
 		orderDetailPanel.add(orderItemPanel);
 		orderItemPanel.setLayout(null);
-		/*
+		
 		JLabel p_imageLabel = new JLabel("");
 		p_imageLabel.setIcon(new ImageIcon(OrderDetailPanel_김세영.class.getResource("/images/닭도리탕_작은.jpg")));
 		p_imageLabel.setBounds(12, 10, 87, 73);
 		orderItemPanel.add(p_imageLabel);
-		*/
+		
 		JLabel p_descLabel = new JLabel("p_desc");
-		p_descLabel.setBounds(111, 18, 170, 40);
+		p_descLabel.setVerticalAlignment(SwingConstants.TOP);
+		p_descLabel.setBounds(111, 10, 170, 48);
 		orderItemPanel.add(p_descLabel);
 		
 		JLabel p_priceLabel = new JLabel("p_price");
@@ -89,7 +92,7 @@ public class OrderDetailPanel_김세영 extends JPanel {
 		o_priceLabel.setBounds(12, 165, 57, 15);
 		orderDetailPanel.add(o_priceLabel);
 		
-		JLabel o_priceDisplayLabel = new JLabel("o_price");
+		JLabel o_priceDisplayLabel = new JLabel(""+order.getO_price());
 		o_priceDisplayLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		o_priceDisplayLabel.setBounds(81, 165, 224, 15);
 		orderDetailPanel.add(o_priceDisplayLabel);
@@ -98,7 +101,7 @@ public class OrderDetailPanel_김세영 extends JPanel {
 		o_paymentLabel.setBounds(12, 190, 57, 15);
 		orderDetailPanel.add(o_paymentLabel);
 		
-		JLabel o_paymentDisplayLabel = new JLabel("o_payment");
+		JLabel o_paymentDisplayLabel = new JLabel(order.getO_payment());
 		o_paymentDisplayLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		o_paymentDisplayLabel.setBounds(81, 190, 224, 15);
 		orderDetailPanel.add(o_paymentDisplayLabel);
@@ -111,7 +114,7 @@ public class OrderDetailPanel_김세영 extends JPanel {
 		o_no_2Label.setBounds(12, 255, 57, 15);
 		orderDetailPanel.add(o_no_2Label);
 		
-		JLabel o_noDisplay2Label = new JLabel("o_no");
+		JLabel o_noDisplay2Label = new JLabel(""+order.getO_no());
 		o_noDisplay2Label.setHorizontalAlignment(SwingConstants.TRAILING);
 		o_noDisplay2Label.setBounds(81, 255, 224, 15);
 		orderDetailPanel.add(o_noDisplay2Label);
@@ -120,7 +123,7 @@ public class OrderDetailPanel_김세영 extends JPanel {
 		m_nameLabel.setBounds(12, 280, 57, 15);
 		orderDetailPanel.add(m_nameLabel);
 		
-		JLabel m_nameDisplayLabel = new JLabel("m_name");
+		JLabel m_nameDisplayLabel = new JLabel(loginMember.getM_name());
 		m_nameDisplayLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		m_nameDisplayLabel.setBounds(81, 280, 224, 15);
 		orderDetailPanel.add(m_nameDisplayLabel);
@@ -133,7 +136,7 @@ public class OrderDetailPanel_김세영 extends JPanel {
 		o_nameLabel.setBounds(12, 345, 57, 15);
 		orderDetailPanel.add(o_nameLabel);
 		
-		JLabel o_nameDisplayLabel = new JLabel("o_name");
+		JLabel o_nameDisplayLabel = new JLabel(order.getO_name());
 		o_nameDisplayLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		o_nameDisplayLabel.setBounds(81, 345, 224, 15);
 		orderDetailPanel.add(o_nameDisplayLabel);
@@ -142,7 +145,7 @@ public class OrderDetailPanel_김세영 extends JPanel {
 		o_addressLabel.setBounds(12, 370, 57, 15);
 		orderDetailPanel.add(o_addressLabel);
 		
-		JLabel o_addressDisplayLabel = new JLabel("o_address");
+		JLabel o_addressDisplayLabel = new JLabel(order.getO_address());
 		o_addressDisplayLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		o_addressDisplayLabel.setBounds(81, 370, 224, 15);
 		orderDetailPanel.add(o_addressDisplayLabel);
@@ -151,7 +154,7 @@ public class OrderDetailPanel_김세영 extends JPanel {
 		o_locLabel.setBounds(12, 395, 57, 15);
 		orderDetailPanel.add(o_locLabel);
 		
-		JLabel o_locDisplayLabel = new JLabel("o_loc");
+		JLabel o_locDisplayLabel = new JLabel(order.getO_loc());
 		o_locDisplayLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		o_locDisplayLabel.setBounds(81, 395, 224, 15);
 		orderDetailPanel.add(o_locDisplayLabel);
@@ -160,17 +163,17 @@ public class OrderDetailPanel_김세영 extends JPanel {
 		/*
 		 * Service객체 생성
 		 */
-		orderService = new OrderService();
+		//orderService = new OrderService();
 		
 		/*
 		 * loginMember객체 생성
 		 */
-		loginMember = new Member("sy0", null, null, null, null, null, null);
+		//loginMember = new Member("sy0", null, null, null, null, null, null);
 		/******************************/
 		/*
 		 * 메소드 사용
 		 */
-		
+		orderDetail(1);
 		/******************************/
 	}//생성자 종료
 	
@@ -184,21 +187,24 @@ public class OrderDetailPanel_김세영 extends JPanel {
 			JPanel orderItemPanel = new JPanel();
 			orderItemPanel.setPreferredSize(new Dimension(290, 110));
 			orderItemPanel.setBounds(12, 35, 293, 95);
+			
 			orderItemPanel.setLayout(null);
 			
-			JLabel p_imageLabel = new JLabel("New label");
-			p_imageLabel.setBounds(12, 18, 57, 57);
+			JLabel p_imageLabel = new JLabel("");
+			p_imageLabel.setIcon(new ImageIcon(OrderDetailPanel_김세영.class.getResource(orderItem.getProduct().getP_image())));
+			p_imageLabel.setBounds(12, 10, 87, 73);
 			orderItemPanel.add(p_imageLabel);
 			
-			JLabel p_descLabel = new JLabel("New label");
-			p_descLabel.setBounds(81, 18, 200, 40);
+			JLabel p_descLabel = new JLabel(orderItem.getProduct().getP_desc());
+			p_descLabel.setVerticalAlignment(SwingConstants.TOP);
+			p_descLabel.setBounds(111, 10, 170, 48);
 			orderItemPanel.add(p_descLabel);
 			
-			JLabel p_priceLabel = new JLabel("New label");
-			p_priceLabel.setBounds(81, 68, 100, 15);
+			JLabel p_priceLabel = new JLabel(orderItem.getProduct().getP_price()+"원");
+			p_priceLabel.setBounds(111, 68, 70, 15);
 			orderItemPanel.add(p_priceLabel);
 			
-			JLabel oi_qtyLabel = new JLabel("New label");
+			JLabel oi_qtyLabel = new JLabel(orderItem.getOi_qty()+" 개");
 			oi_qtyLabel.setBounds(193, 68, 57, 15);
 			orderItemPanel.add(oi_qtyLabel);
 			
