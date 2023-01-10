@@ -32,7 +32,7 @@ public class MemberLoginPanel_최민영 extends JPanel {
 	private JButton joinBtn;
 	private JPasswordField loginPassTF;
 	private JPanel memberLoginPanel;
-	
+
 
 	/**
 	 * Create the panel.
@@ -97,8 +97,8 @@ public class MemberLoginPanel_최민영 extends JPanel {
 		this.frame = frame;
 	}
 
-
 	/**************로그인 성공 시 호출할 메쏘드***************/
+
 	public void loginProcess(String id) throws Exception{
 		
 		//1.로그인 성공한 멤버 객체 멤버필드에저장

@@ -28,24 +28,26 @@ public class MemberDetailPanel_최민영 extends JPanel {
 	/************* 로그인 한 회원 ****************/
 	private Member loginMember= new Member("sy3", "3333", "홍길동", "010-1234-5677", null, "test@gmail.com", "화성시");
 	//테스트용 --> 합치고 Member loginMember = null;로 주면된다.
+
 	
 	
-	private JTextField infoIdTF;
-	private JPasswordField infoPassTF;
-	private JTextField infoNameTF;
-	private JTextField infoPhoneTF;
-	private JTextField infoBdayTF;
-	private JTextField infoMailTF;
-	private JTextField infoAddressTF;
-	private JButton updateFormBtn;
-	private JButton updateBtn;
-	private JLabel infoMsgLB;
+	public JTextField infoIdTF;
+	public JPasswordField infoPassTF;
+	public JTextField infoNameTF;
+	public JTextField infoPhoneTF;
+	public JTextField infoBdayTF;
+	public JTextField infoMailTF;
+	public JTextField infoAddressTF;
+	public JButton updateFormBtn;
+	public JButton updateBtn;
+	public JLabel infoMsgLB;
 
 	/**
 	 * Create the panel.
 	 * @throws Exception 
 	 */
 	public MemberDetailPanel_최민영() throws Exception {
+		
 		setLayout(null);
 		
 		JPanel memberInfoPanel = new JPanel();
@@ -154,7 +156,6 @@ public class MemberDetailPanel_최민영 extends JPanel {
 	}// 생성자 끝
 	
 	public void setFrame(ShopMainFrame frame) {
-		this.frame = frame;
 	}
 
 	/************* 수정폼 method - 회원정보 수정 가능하도록***************/
@@ -258,9 +259,10 @@ public class MemberDetailPanel_최민영 extends JPanel {
 		infoPhoneTF.setText(member.getM_phone());
 		member.setM_bday(new SimpleDateFormat("yyyy/MM/dd").parse(infoBdayTF.getText()));
 		infoMailTF.setText(member.getM_email());
-		infoAddressTF.setText(member.getM_address());
-		
-		
-		
+		infoAddressTF.setText(member.getM_address());	
 	}
+	
+	
+	
+	
 }
