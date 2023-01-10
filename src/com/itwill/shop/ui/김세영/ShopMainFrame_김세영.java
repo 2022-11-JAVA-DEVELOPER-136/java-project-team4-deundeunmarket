@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JTabbedPane;
 
 public class ShopMainFrame_김세영 extends JFrame {
 
@@ -30,13 +31,18 @@ public class ShopMainFrame_김세영 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ShopMainFrame_김세영() {
+	public ShopMainFrame_김세영() throws Exception {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 360, 640);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		
+		JTabbedPane orderTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		contentPane.add(orderTabbedPane, BorderLayout.CENTER);
+		
+		OrderListPanel_김세영 orderListPanel_김세영 = new OrderListPanel_김세영();
+		orderTabbedPane.addTab("주문목록", null, orderListPanel_김세영, null);
 	}
-
 }
