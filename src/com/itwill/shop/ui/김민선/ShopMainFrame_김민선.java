@@ -7,6 +7,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.BoxLayout;
 import com.itwill.shop.ui.김준.ProductListPanel_김준;
+import com.itwill.shop.ui.김세영.OrderListPanel_김세영;
+import com.itwill.shop.ui.김강산.CartListPanel_김강산;
+import com.itwill.shop.ui.김세영.OrderDetailPanel_김세영;
 
 public class ShopMainFrame_김민선 extends JFrame {
 
@@ -43,8 +46,8 @@ public class ShopMainFrame_김민선 extends JFrame {
 				setContentPane(contentPane);
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
 		
-		OrderDetailPanel_김민선 orderDetailPanel_김민선 = new OrderDetailPanel_김민선();
-		contentPane.add(orderDetailPanel_김민선);
+		OrderCreatePanel_김민선 orderCreatePanel_김민선 = new OrderCreatePanel_김민선();
+		contentPane.add(orderCreatePanel_김민선);
 	}
 
 }
