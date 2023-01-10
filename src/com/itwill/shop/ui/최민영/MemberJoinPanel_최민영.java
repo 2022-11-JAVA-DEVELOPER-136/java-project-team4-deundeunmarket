@@ -40,6 +40,7 @@ public class MemberJoinPanel_최민영 extends JPanel {
 	private JPasswordField passCheckTF;
 	private JLabel idMsgLB;
 	private JLabel pwMsgLb;
+	public ShopMainFrame_최민영 frame;
 
 	/**
 	 * Create the panel.
@@ -197,6 +198,10 @@ public class MemberJoinPanel_최민영 extends JPanel {
 		memberService=new MemberService();
 
 	}
+	public void setFrame(ShopMainFrame_최민영 frame) {
+		this.frame = frame;
+	}
+	
 	/*************회원가입 method***********/
 	public void join() {
 		/*********** 회원가입 ************/

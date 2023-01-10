@@ -26,6 +26,7 @@ public class MemberLoginPanel_최민영 extends JPanel {
 	private JButton loginBtn;
 	private JButton joinBtn;
 	private JPasswordField loginPassTF;
+	public ShopMainFrame_최민영 frame;
 	
 	
 
@@ -84,6 +85,11 @@ public class MemberLoginPanel_최민영 extends JPanel {
 		
 
 	}
+	
+	public void setFrame(ShopMainFrame_최민영 frame) {
+		this.frame = frame;
+	}
+	
 	/**************로그인성공시 호출할메쏘드***************/
 	public void loginProcess(String id) throws Exception{
 		/***********로그인성공시 해야할일***********

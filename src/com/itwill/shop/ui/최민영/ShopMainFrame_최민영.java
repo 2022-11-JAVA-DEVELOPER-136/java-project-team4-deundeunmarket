@@ -15,13 +15,25 @@ import javax.swing.JTabbedPane;
 
 public class ShopMainFrame_최민영 extends JFrame {
 	
-	/*********1.MemberService멤버필드선언*****/
-	private MemberService memberService;
-	/*************로그인한회원****************/
-	private Member loginMember;
+	/*
+	 * Panel상수
+	 */
+	public static final int  MemberLoginPanel_최민영=1;
+	public static final int  MemberJoinPanel_최민영=2;
+	public static final int  MemberDetailPanel_최민영=3;
 	
-
-	private JPanel contentPane;
+	
+	
+	
+	/*********1.MemberService멤버필드선언*****/
+	public MemberService memberService;
+	/*************로그인한회원****************/
+	public Member loginMember=null;
+	
+	public MemberDetailPanel_최민영 memberDetailPanel;
+	public MemberJoinPanel_최민영 memberJoinPanel;
+	public MemberLoginPanel_최민영 memberLoginPanel;
+	public JPanel contentPane;
 
 	/**
 	 * Launch the application.
@@ -55,10 +67,32 @@ public class ShopMainFrame_최민영 extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		MemberLoginPanel_최민영 memberLoginPanel_최민영 = new MemberLoginPanel_최민영();
-		memberLoginPanel_최민영.setBounds(43, 57, 390, 535);
-		contentPane.add(memberLoginPanel_최민영);
+		/***********서비스객체 생성**************/
+		memberService = new MemberService();
 		
+		/*******ShopMainFrame참조를 Panel에 넘겨줌*******/
+		memberDetailPanel.setFrame(this);
+		memberJoinPanel.setFrame(this);
+		memberLoginPanel.setFrame(this);
+		
+		
+		JTabbedPane memberTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		memberTabbedPane.setBounds(0, 0, 458, 615);
+		contentPane.add(memberTabbedPane);
+		
+		MemberDetailPanel_최민영 memberDetailPanel_최민영 = new MemberDetailPanel_최민영();
+		memberTabbedPane.addTab("New tab", null, memberDetailPanel_최민영, null);
+		
+		MemberLoginPanel_최민영 memberLoginPanel_최민영 = new MemberLoginPanel_최민영();
+		memberTabbedPane.addTab("New tab", null, memberLoginPanel_최민영, null);
+		
+		MemberJoinPanel_최민영 memberJoinPanel_최민영 = new MemberJoinPanel_최민영();
+		memberTabbedPane.addTab("New tab", null, memberJoinPanel_최민영, null);
 		
 	}
+	
+	
+	
+	
+	
 }

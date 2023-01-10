@@ -18,28 +18,31 @@ import java.awt.Color;
 
 public class MemberDetailPanel_최민영 extends JPanel {
 	/*********1.MemberService멤버필드선언*****/
-	private MemberService memberService;
+	public MemberService memberService;
 	/*************로그인한회원****************/
-	private Member loginMember= new Member("sy3", "3333", "홍길동", "010-1234-5677", null, "test@gmail.com", "화성시");
+	//public Member loginMember= new Member("sy3", "3333", "홍길동", "010-1234-5677", null, "test@gmail.com", "화성시");
+	public Member loginMember;
 	//테스트용 --> 합치고 Member loginMember=null;로 주면된다.
 	
 	
-	private JTextField infoIdTF;
-	private JPasswordField infoPassTF;
-	private JTextField infoNameTF;
-	private JTextField infoPhoneTF;
-	private JTextField infoBdayTF;
-	private JTextField infoMailTF;
-	private JTextField infoAddressTF;
-	private JButton updateFormBtn;
-	private JButton updateBtn;
-	private JLabel infoMsgLB;
+	public JTextField infoIdTF;
+	public JPasswordField infoPassTF;
+	public JTextField infoNameTF;
+	public JTextField infoPhoneTF;
+	public JTextField infoBdayTF;
+	public JTextField infoMailTF;
+	public JTextField infoAddressTF;
+	public JButton updateFormBtn;
+	public JButton updateBtn;
+	public JLabel infoMsgLB;
+	public ShopMainFrame_최민영 frame;
 
 	/**
 	 * Create the panel.
 	 * @throws Exception 
 	 */
 	public MemberDetailPanel_최민영() throws Exception {
+		
 		setLayout(null);
 		
 		JPanel memberInfoPanel = new JPanel();
@@ -143,10 +146,9 @@ public class MemberDetailPanel_최민영 extends JPanel {
 		
 		memberService = new MemberService();
 		
-		
-		
-		
-
+	}
+	public void setFrame(ShopMainFrame_최민영 frame) {
+		this.frame = frame;
 	}
 	/************* 수정폼 method **********************/
 	public void updateForm() {
@@ -266,9 +268,10 @@ public class MemberDetailPanel_최민영 extends JPanel {
 		infoPhoneTF.setText(member.getM_phone());
 		member.setM_bday(new SimpleDateFormat("yyyy/MM/dd").parse(infoBdayTF.getText()));
 		infoMailTF.setText(member.getM_email());
-		infoAddressTF.setText(member.getM_address());
-		
-		
-		
+		infoAddressTF.setText(member.getM_address());	
 	}
+	
+	
+	
+	
 }
