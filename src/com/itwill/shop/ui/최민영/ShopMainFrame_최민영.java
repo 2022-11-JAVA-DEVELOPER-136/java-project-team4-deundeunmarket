@@ -20,7 +20,7 @@ public class ShopMainFrame_최민영 extends JFrame {
 	/*************로그인한회원****************/
 	private Member loginMember;
 	
-
+	//
 	private JPanel contentPane;
 
 	/**
