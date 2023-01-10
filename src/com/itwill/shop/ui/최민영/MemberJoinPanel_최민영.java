@@ -22,6 +22,8 @@ public class MemberJoinPanel_최민영 extends JPanel {
 	/*********1.MemberService멤버필드선언*****/
 	private MemberService memberService;
 	
+	/*************로그인한회원****************/
+	private Member loginMember=null;
 	
 
 	private JTextField idTF;
@@ -135,9 +137,14 @@ public class MemberJoinPanel_최민영 extends JPanel {
 					
 					if (isAdd==true) {
 						JOptionPane.showMessageDialog(null,"회원가입에 성공하셨습니다.");
+						/* 로그인화면전환
+						 memberTabbedPane.setSelectedIndex(1); */
 					}
 					else {
-						JOptionPane.showMessageDialog(null,"회원가입에 실패하셨습니다.");
+						JOptionPane.showMessageDialog(null,"이미 사용하고 있는 아이디입니다..");
+						idTF.requestFocus();
+						idTF.setSelectionStart(0);
+						idTF.setSelectionEnd(id.length());
 					}
 					
 					
