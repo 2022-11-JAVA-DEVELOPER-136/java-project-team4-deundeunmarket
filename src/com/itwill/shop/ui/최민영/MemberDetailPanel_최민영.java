@@ -20,7 +20,8 @@ public class MemberDetailPanel_최민영 extends JPanel {
 	/*********1.MemberService멤버필드선언*****/
 	private MemberService memberService;
 	/*************로그인한회원****************/
-	private Member loginMember;
+	private Member loginMember= new Member("sy3", "3333", "홍길동", "010-1234-5677", null, "test@gmail.com", "화성시");
+	//테스트용 --> 합치고 Member loginMember=null;로 주면된다.
 	
 	
 	private JTextField infoIdTF;
@@ -167,8 +168,17 @@ public class MemberDetailPanel_최민영 extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 	try {		
 				String selectedId = infoIdTF.getText();
-				memberService.memberDelete(selectedId);
-				JOptionPane.showMessageDialog(null,"탈퇴가 완료되었습니다.");
+				String pw1 = loginMember.getM_pass();
+				String pw2 = new String(infoPassTF.getPassword()); 
+				if (pw1.equals(pw2)) {
+					memberService.memberDelete(selectedId);
+					JOptionPane.showMessageDialog(null,"탈퇴가 완료되었습니다.");
+				}else {
+					JOptionPane.showMessageDialog(null,"확인바랍니다.");
+				}
+				
+				
+				
 				
 		} catch (Exception e1) {
 					e1.printStackTrace();
