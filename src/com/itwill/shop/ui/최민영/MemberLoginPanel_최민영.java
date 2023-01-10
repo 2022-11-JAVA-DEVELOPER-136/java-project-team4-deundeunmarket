@@ -77,6 +77,7 @@ public class MemberLoginPanel_최민영 extends JPanel {
 					if(result==1) {
 						//로그인성공
 						JOptionPane.showMessageDialog(null, "로그인 성공");
+						loginProcess(id);
 						loginIdTF.setText("");
 						loginPassTF.setText("");
 					}else {
