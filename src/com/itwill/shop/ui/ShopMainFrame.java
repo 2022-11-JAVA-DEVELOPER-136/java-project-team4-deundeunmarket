@@ -26,26 +26,20 @@ import javax.swing.SwingConstants;
 
 public class ShopMainFrame extends JFrame {
 	
+	/*********************************************************/
 	/*
 	 * Panel상수 선언
 	 */
-	
-	/*
-	 * 1. Service객체 선언
-	 */
-	
-	/*
-	 * 2. login User 선언
-	 */
-	
-	/*********************************************************/
-	/*
-	 * Panel상수
-	 */
-	public static final int PRODUCT_LIST_PANEL = 1;
-	public static final int PRODUCT_POPULAR_PANEL = 2;
-	public static final int MEMBER_JOIN_PANEL = 3;
-	public static final int MEMBER_INFO_PANEL = 4;
+	public static final int PANEL_MEMBER_LOGIN = 1;
+	public static final int PANEL_MEMBER_JOIN = 2;
+	public static final int PANEL_MEMBER_INFO = 3;
+	public static final int PANEL_PRODUCT_LIST = 4;
+	public static final int PANEL_PRODUCT_RECOMMEND = 5;
+	public static final int PANEL_PRODUCT_DETAIL = 6;
+	public static final int PANEL_CART = 7;
+	public static final int PANEL_ORDER_CREATE = 8;
+	public static final int PANEL_ORDER_LIST = 9;
+	public static final int PANEL_ORDER_DETAIL = 10;
 	
 	private JPanel contentPane;
 	/*
@@ -188,32 +182,37 @@ public class ShopMainFrame extends JFrame {
 	/***************패널 변경 메소드******************/
 	
 	public void changePanel(int panel_no, Object data) {
-		if (panel_no == PRODUCT_POPULAR_PANEL) {
-			Product product = (Product)data;
-			System.out.println("receive product" + product);
-			shopTabbedPane.setSelectedIndex(0);
-			productTabbedPane.setSelectedIndex(0);
-			popularProductPanel.displayPopularProduct(product);
-		} else if (panel_no == PRODUCT_LIST_PANEL) {
-			shopTabbedPane.setSelectedIndex(0);
-			productTabbedPane.setSelectedIndex(1);
-		} else if (panel_no == MEMBER_JOIN_PANEL) {
-			shopTabbedPane.setSelectedIndex(1);
-			productTabbedPane.setSelectedIndex(1);
-		} else if (panel_no == MEMBER_INFO_PANEL) {
-			shopTabbedPane.setSelectedIndex(1);
-			productTabbedPane.setSelectedIndex(2);
+		if(true) {
+			
+		} else if(true) {
+			
 		}
 		
 	}
+	 /***********패널변경메쏘드********/
+	/*
+	public void changePanel(int panel_no,Object data) {
+		if(panel_no==PRODUCT_LIST_PANEL) {
+			shopTabbedPane.setSelectedIndex(0);
+			productTabbedPane.setSelectedIndex(0);
+		}else if(panel_no==PRODUCT_DETAIL_PANEL) {
+			Product product=(Product)data;
+			System.out.println("recv product"+product);
+			
+			shopTabbedPane.setSelectedIndex(0);
+			productTabbedPane.setSelectedIndex(1);
+			productDetailPanel.displayProductDetail(product);
+			
+		}else if(panel_no==USER_INFO_PANEL) {
+			shopTabbedPane.setSelectedIndex(1);
+			productTabbedPane.setSelectedIndex(1);
+		}else if(panel_no==USERT_JOIN_PANEL) {
+			shopTabbedPane.setSelectedIndex(1);
+			productTabbedPane.setSelectedIndex(0);
+		}
+		
+	}
+	 */
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
