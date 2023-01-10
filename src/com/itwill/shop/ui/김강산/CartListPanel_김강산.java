@@ -14,7 +14,6 @@ import com.itwill.shop.member.Member;
 import com.itwill.shop.order.OrderService;
 import com.itwill.shop.product.ProductService;
 
-import javafx.scene.control.ComboBox;
 
 import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
@@ -32,6 +31,8 @@ import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 
 public class CartListPanel_김강산 extends JPanel {
 	private JCheckBox cartAllCB;
@@ -144,8 +145,16 @@ public class CartListPanel_김강산 extends JPanel {
 		northPanel.add(cartTextLB);
 
 		selectDeleteBtn = new JButton("선택삭제");
+		selectDeleteBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				for (int i = 0; i < selectedCartList.size(); i++) {
+					selectedCartList.remove(i);
+				}
+			}
+		});
 		selectDeleteBtn.setBounds(251, 42, 97, 23);
 		northPanel.add(selectDeleteBtn);
+		
 
 		cartListScrollPane = new JScrollPane();
 		cartListScrollPane.setBounds(0, 85, 354, 310);
@@ -206,13 +215,16 @@ public class CartListPanel_김강산 extends JPanel {
 		productService = new ProductService();
 
 		// loginMember객체생성
-
+		
 		loginMember = new Member("sy0", null, null, null, null, null, null);
 		// 메소드 호출
 		displayCartList();
 		
 	}	
+	
+	private List<Cart> selectedCartList = null;
 	JCheckBox[] cartCBArray=null;
+	
 	public void displayCartList() throws Exception {
 		List<Cart> cartList = cartService.getCartItemByMemberId(loginMember.getM_id());
 		cartListPanel.removeAll();
@@ -234,7 +246,8 @@ public class CartListPanel_김강산 extends JPanel {
 			});
 			productImgBtn.setBounds(19, 10, 97, 65);
 			cartPanel.add(productImgBtn);
-
+			
+			//장바구니 1개 삭제 X버튼
 			exitBtn = new JButton("");
 			exitBtn.setIcon(new ImageIcon(CartListPanel_김강산.class.getResource("/images/close10.png")));
 			exitBtn.addActionListener(new ActionListener() {
@@ -251,25 +264,35 @@ public class CartListPanel_김강산 extends JPanel {
 			exitBtn.setBounds(292, 10, 16, 15);
 			cartPanel.add(exitBtn);
 
+			//체크로 담기
 			cartCB = new JCheckBox("");
 			cartCB.setBounds(-4, 30, 21, 23);
-//			cartCB.addActionListener(new ActionListener() {
-//				public void actionPerformed(ActionEvent e) {
-//				}
-//			});
+			cartCB.addChangeListener(new ChangeListener() {
+				public void stateChanged(ChangeEvent e) {
+					try {
+						selectedCartList.add(cart);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			});
 			cartPanel.add(cartCB);
+		
 			
 //			cartCBArray[i]=cartCB;
 			
 			cartProductDesc = new JLabel();
 			cartProductDesc.setBounds(128, 4, 143, 89);
-			cartProductDesc.setText(cart.getProduct().getP_name() + "\n" + cart.getProduct().getP_desc());
+			cartProductDesc.setText(cart.getProduct().getP_name() + " \n " + cart.getProduct().getP_desc());
 			cartPanel.add(cartProductDesc);
 
 			cartProductAddPrice = new JLabel("상품금액");
 			cartProductAddPrice.setFont(new Font("D2Coding", Font.PLAIN, 14));
 			cartProductAddPrice.setBounds(225, 101, 68, 15);
+			cartProductAddPrice.setText(Integer.toString(cart.getProduct().getP_price())+"원");
 			cartPanel.add(cartProductAddPrice);
+			
 
 			JComboBox productQty = new JComboBox();
 			productQty.setBounds(52, 97, 32, 23);
@@ -285,7 +308,7 @@ public class CartListPanel_김강산 extends JPanel {
 							cart.setCart_qty(iqty);
 							cartService.updateCart(cart);
 							
-							cartProductAddPrice.setText(Integer.toString(cartService.addCartTotal(cart.getCart_no()))+"원");
+//							cartProductAddPrice.setText(Integer.toString(cartService.addCartTotal(cart.getCart_no()))+"원");
 							cartListTotalLB.setText(addCartListTotal()+"원");
 							finalCartListTotalLB.setText(finalCartListTotal()+"원");
 //							productQty.setSelectedItem(String.valueOf(iqty));
@@ -297,13 +320,11 @@ public class CartListPanel_김강산 extends JPanel {
 				}
 			});
 			
-			cartProductAddPrice.setText(Integer.toString(cartService.addCartTotal(cart.getCart_no()))+"원");
+//			cartProductAddPrice.setText(Integer.toString(cartService.addCartTotal(cart.getCart_no()))+"원");
 			
 			cartListPanel.add(cartPanel);
 			
 			/*******************/
-
-			
 			
 		}
 		
@@ -325,5 +346,6 @@ public class CartListPanel_김강산 extends JPanel {
 		
 		
 	}
+	
 	
 }
