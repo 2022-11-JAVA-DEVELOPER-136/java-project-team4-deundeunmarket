@@ -68,32 +68,7 @@ public class MemberLoginPanel_최민영 extends JPanel {
 		loginBtn = new JButton("로그인");
 		loginBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				/***********회원로그인************/
-				try {
-					String id = loginIdTF.getText();
-					String pass=new String(loginPassTF.getPassword());
-					
-					int result = memberService.logIn(id, pass);
-					if(result==1) {
-						//로그인성공
-						JOptionPane.showMessageDialog(null, "로그인 성공");
-						loginProcess(id); //로그인 멤버로 넣어줌
-						loginIdTF.setText("");
-						loginPassTF.setText("");
-					}else {
-						JOptionPane.showMessageDialog(null, "아이디또는 비밀번호를 확인하세요");
-						loginIdTF.setSelectionStart(0);
-						loginIdTF.setSelectionEnd(id.length());
-						loginIdTF.requestFocus();
-					}
-					
-					
-					
-				}catch (Exception e1) {
-					// TODO: handle exception
-				}
-				
-				
+				login();
 			}
 		});
 		loginBtn.setBounds(193, 358, 97, 23);
@@ -110,7 +85,7 @@ public class MemberLoginPanel_최민영 extends JPanel {
 
 	}
 	/**************로그인성공시 호출할메쏘드***************/
-	private void loginProcess(String id) throws Exception{
+	public void loginProcess(String id) throws Exception{
 		/***********로그인성공시 해야할일***********
 			 1.로그인성공한 멤버객체 멤버필드에저장
 			 2.MemberMainFrame타이틀변경
@@ -137,5 +112,32 @@ public class MemberLoginPanel_최민영 extends JPanel {
 		memberTabbedPane.setSelectedIndex(3);
 		displayMemberInfo(this.loginMember);
 		updateFormEnable(false); */ 
+	}
+	
+	public void login() {
+		/***********회원로그인 method************/
+		try {
+			String id = loginIdTF.getText();
+			String pass=new String(loginPassTF.getPassword());
+			
+			int result = memberService.logIn(id, pass);
+			if(result==1) {
+				//로그인성공
+				JOptionPane.showMessageDialog(null, "로그인 성공");
+				loginProcess(id); //로그인 멤버로 넣어줌
+				loginIdTF.setText("");
+				loginPassTF.setText("");
+			}else {
+				JOptionPane.showMessageDialog(null, "아이디또는 비밀번호를 확인하세요");
+				loginIdTF.setSelectionStart(0);
+				loginIdTF.setSelectionEnd(id.length());
+				loginIdTF.requestFocus();
+			}
+			
+			
+			
+		}catch (Exception e1) {
+			// TODO: handle exception
+		}
 	}
 }

@@ -12,6 +12,7 @@ import com.itwill.shop.cart.Cart;
 import com.itwill.shop.cart.CartService;
 import com.itwill.shop.member.Member;
 import com.itwill.shop.order.OrderService;
+import com.itwill.shop.product.Product;
 import com.itwill.shop.product.ProductService;
 
 import javafx.scene.control.ComboBox;
@@ -59,6 +60,8 @@ public class CartListPanel_김강산 extends JPanel {
 	private ProductService productService;
 	private OrderService orderService;
 	private Member loginMember;
+	private JButton calculateBtn;
+	private JComboBox productQty_1;
 
 	/**
 	 * Create the panel.
@@ -186,17 +189,30 @@ public class CartListPanel_김강산 extends JPanel {
 
 		cartProductAddPrice = new JLabel("상품금액");
 		cartProductAddPrice.setFont(new Font("D2Coding", Font.PLAIN, 14));
-		cartProductAddPrice.setBounds(225, 101, 68, 15);
+		cartProductAddPrice.setBounds(226, 79, 68, 15);
 		cartPanel.add(cartProductAddPrice);
 
-		JComboBox productQty = new JComboBox();
-		productQty.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+		productQty_1 = new JComboBox();
+		productQty_1.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
 				"11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
-		productQty.setBounds(52, 97, 32, 23);
-		cartPanel.add(productQty);
+		productQty_1.setBounds(52, 97, 32, 23);
+		cartPanel.add(productQty_1);
 
 		/**********************************************/
 		cartListPanel.add(cartPanel);
+		
+		calculateBtn = new JButton("계산하기");
+		calculateBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Product product = new Product(0, "test", 5000, null, null);
+				productQty_1.getInsets();
+				
+				
+			}
+		});
+		calculateBtn.setBounds(211, 103, 97, 23);
+		cartPanel.add(calculateBtn);
 
 		// 서비스 생성자 생성
 		cartService = new CartService();

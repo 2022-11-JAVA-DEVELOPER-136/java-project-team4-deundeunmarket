@@ -37,6 +37,9 @@ public class ShopMainFrame_최민영 extends JFrame {
 				}
 			}
 		});
+		
+		
+		
 	}
 
 	/**
@@ -52,9 +55,9 @@ public class ShopMainFrame_최민영 extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		MemberDetailPanel_최민영 memberDetailPanel_최민영 = new MemberDetailPanel_최민영();
-		memberDetailPanel_최민영.setBounds(41, 42, 264, 541);
-		contentPane.add(memberDetailPanel_최민영);
+		MemberLoginPanel_최민영 memberLoginPanel_최민영 = new MemberLoginPanel_최민영();
+		memberLoginPanel_최민영.setBounds(43, 57, 390, 535);
+		contentPane.add(memberLoginPanel_최민영);
 		
 		
 	}
