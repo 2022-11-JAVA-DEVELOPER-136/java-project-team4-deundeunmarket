@@ -6,17 +6,45 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.itwill.shop.cart.CartService;
+import com.itwill.shop.member.Member;
+import com.itwill.shop.member.MemberService;
+import com.itwill.shop.order.OrderService;
+import com.itwill.shop.product.Product;
+import com.itwill.shop.product.ProductService;
+
 import javax.swing.JTabbedPane;
 import java.awt.Rectangle;
 import java.awt.Dimension;
+import java.awt.Color;
 
 public class ShopMainFrame_김준 extends JFrame {
-
+	
+	public static final int PRODUCT_LIST_PANEL = 1;
+	public static final int PRODUCT_DETAIL_PANEL = 2;
+	public static final int PRODUCT_RECOMMEND_PANEL = 3;
+	
+	
+	
+	/*
+	 * 1.모든 service 객체 선언
+	 */
+	MemberService memberService;
+	CartService cartService;
+	ProductService productService;
+	OrderService orderService;
+	
+	/*
+	 * 2.login user 객체 선언
+	 */
+	Member loginMember = null;
+	
 	private JPanel contentPane;
 	private ProductListPanel_김준 productListPanel_김준;
 	private ProductRecommendPanel_김준 productRecommendPanel_김준;
 	private ProductDetailPanel_김준 productDetailPanel_김준;
-	private JTabbedPane tabbedPane;
+	private JTabbedPane productTabbedPane;
 
 	/**
 	 * Launch the application.
@@ -46,18 +74,47 @@ public class ShopMainFrame_김준 extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		contentPane.add(tabbedPane, BorderLayout.CENTER);
+		productTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		contentPane.add(productTabbedPane, BorderLayout.CENTER);
 		
 		productListPanel_김준 = new ProductListPanel_김준();
-		tabbedPane.addTab("New tab", null, productListPanel_김준, null);
+		productListPanel_김준.setBackground(new Color(255, 255, 255));
+		productTabbedPane.addTab("New tab", null, productListPanel_김준, null);
 		
 		productRecommendPanel_김준 = new ProductRecommendPanel_김준();
-		tabbedPane.addTab("New tab", null, productRecommendPanel_김준, null);
+		productTabbedPane.addTab("New tab", null, productRecommendPanel_김준, null);
 		
 		productDetailPanel_김준 = new ProductDetailPanel_김준();
-		tabbedPane.addTab("New tab", null, productDetailPanel_김준, null);
+		productTabbedPane.addTab("New tab", null, productDetailPanel_김준, null);
 		
-
+		/**************************************
+		 * 3.Service 객체 생성
+		 **************************************/
+		memberService = new MemberService();
+		productService = new ProductService();
+		orderService = new OrderService();
+		cartService = new CartService();
+		
+		/*******ShopMainFrame참조를 Panel에 넘겨줌*******/
+		productListPanel_김준.setFrame(this);
+		productDetailPanel_김준.setFrame(this);
+		productRecommendPanel_김준.setFrame(this);
 	}
+	
+	/***********패널변경메쏘드********/
+	public void changePanel(int panel_no, Object data) {
+		if(panel_no==PRODUCT_LIST_PANEL) {
+			productTabbedPane.setSelectedIndex(0);
+		}else if(panel_no==PRODUCT_DETAIL_PANEL) {
+			Product product=(Product)data;
+			
+			productTabbedPane.setSelectedIndex(2);
+			productDetailPanel_김준.displayProductDetail(product);
+			
+		}else if(panel_no==PRODUCT_RECOMMEND_PANEL) {
+			Product product=(Product)data;
+			productTabbedPane.setSelectedIndex(1);
+		}
+	}
+	
 }

@@ -16,14 +16,19 @@ import com.itwill.shop.member.MemberService;
 import com.itwill.shop.order.OrderService;
 import com.itwill.shop.product.Product;
 import com.itwill.shop.product.ProductService;
+import com.itwill.shop.ui.ShopMainFrame;
 
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ProductDetailPanel_김준 extends JPanel {
+	ShopMainFrame_김준 frame;
 	/*
 	 * Service 객체 선언
 	 */
@@ -34,119 +39,29 @@ public class ProductDetailPanel_김준 extends JPanel {
 	/*
 	 * logInMember 객체 선언
 	 */
-	private Member loginMember = null;
+	Member loginMember;
 	
 	
 	/*
 	 * Product product
 	 */
 	Product product;
+	private JLabel imageLB;
+	private JLabel nameContentLB;
+	private JLabel priceContentLB;
+	private JLabel detailContentLB;
 
 	/**
 	 * Create the panel.
 	 */
 	public ProductDetailPanel_김준() throws Exception{
 		setLayout(new BorderLayout(0, 0));
-		/*
 		JPanel panel = new JPanel();
 		add(panel, BorderLayout.CENTER);
 		panel.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_1 = new JPanel();
-		panel.add(panel_1, BorderLayout.CENTER);
-		panel_1.setLayout(null);
-		
-		JLabel NameLB = new JLabel("이름");
-		NameLB.setBounds(38, 265, 57, 15);
-		panel_1.add(NameLB);
-		
-		NameTextField = new JTextField();
-		NameTextField.setEditable(false);
-		NameTextField.setBounds(134, 262, 116, 21);
-		panel_1.add(NameTextField);
-		NameTextField.setColumns(10);
-		
-		JLabel PriceLB = new JLabel("가격");
-		PriceLB.setBounds(38, 321, 57, 15);
-		panel_1.add(PriceLB);
-		
-		PriceTextField = new JTextField();
-		PriceTextField.setEditable(false);
-		PriceTextField.setBounds(134, 318, 155, 21);
-		panel_1.add(PriceTextField);
-		PriceTextField.setColumns(10);
-		
-		JLabel DeatilLB = new JLabel("설명");
-		DeatilLB.setBounds(38, 368, 57, 15);
-		panel_1.add(DeatilLB);
-		
-		DetailTextField = new JTextField();
-		DetailTextField.setEditable(false);
-		DetailTextField.setBounds(134, 365, 155, 58);
-		panel_1.add(DetailTextField);
-		DetailTextField.setColumns(10);
-		
-		JButton CartAddBtn = new JButton("담기");
-		CartAddBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		CartAddBtn.setBounds(38, 491, 97, 23);
-		CartAddBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//클릭시 주문으로 이동 or 장바구니에 담겨짐
-			}
-		});
-		panel_1.add(CartAddBtn);
-		
-		JLabel ImageLabel = new JLabel("New label");
-		ImageLabel.setIcon(new ImageIcon(ProductDetailPanel_김준.class.getResource("/images/떡복이_큰.jpg")));
-		ImageLabel.setBounds(77, 10, 183, 234);
-		panel_1.add(ImageLabel);
-		
-		JButton buyBtn = new JButton("구매하기");
-		buyBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		buyBtn.setBounds(192, 491, 97, 23);
-		panel_1.add(buyBtn);
-		
-		JComboBox producrQtyCB = new JComboBox();
-		producrQtyCB.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
-		producrQtyCB.setBounds(134, 433, 32, 23);
-		panel_1.add(producrQtyCB);
-		
-		JLabel lblNewLabel_1 = new JLabel("수량");
-		lblNewLabel_1.setBounds(38, 437, 57, 15);
-		panel_1.add(lblNewLabel_1);
-		*/
-		
-		/*
-		 * Service 객체 생성
-		 */
-		orderService = new OrderService();
-		productService = new ProductService();
-		cartService = new CartService();
-		/*
-		 * loginMember 객체 생성
-		 */
-		loginMember = new Member("sy0",null,null,null,null,null,null);
-		
-		this.product=productService.productDetail(2);
-		setProduct(product);
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-		productDetail(product);
-	}
-
-
-
-	public void productDetail( Product product) {
-		JPanel panel = new JPanel();
-		add(panel, BorderLayout.CENTER);
-		panel.setLayout(new BorderLayout(0, 0));
-		
-		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(255, 255, 255));
 		panel.add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(null);
 		
@@ -165,47 +80,79 @@ public class ProductDetailPanel_김준 extends JPanel {
 		
 		
 		JButton cartAddBtn = new JButton("담기");
+		cartAddBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+						try {
+							cartService.addCart(new Cart(0, 1, loginMember.getM_id(), 
+									new Product(product.getP_no(), product.getP_name(), 
+												product.getP_price(), product.getP_image(), 
+												product.getP_desc())));
+						} catch (Exception e1) {
+							e1.printStackTrace();
+						}
+					}
+			});
 		cartAddBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		cartAddBtn.setBounds(38, 491, 97, 23);
-		cartAddBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//클릭시 주문으로 이동 or 장바구니에 담겨짐
-			}
-		});
+		
+		
 		panel_1.add(cartAddBtn);
 		
-		JLabel imageLB = new JLabel("");
-		imageLB.setIcon(new ImageIcon(ProductDetailPanel_김준.class.getResource(product.getP_image())));
+		imageLB = new JLabel("");
+		imageLB.setIcon(new ImageIcon(ProductDetailPanel_김준.class.getResource("/images/떡볶이_작은.jpg")));
 		imageLB.setBounds(124, 35, 107, 184);
 		panel_1.add(imageLB);
 		
 		JButton buyBtn = new JButton("구매하기");
 		buyBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			}
-		});
+				//order구매 화면으로 전환
+			}	
+		});		
 		buyBtn.setBounds(192, 491, 97, 23);
 		panel_1.add(buyBtn);
 		
-		JComboBox producrQtyCB = new JComboBox();
-		producrQtyCB.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
-		producrQtyCB.setBounds(134, 433, 32, 23);
-		panel_1.add(producrQtyCB);
-		
-		JLabel productQtyLB = new JLabel("수량");
-		productQtyLB.setBounds(38, 437, 57, 15);
-		panel_1.add(productQtyLB);
-		
-		JLabel detailContentLB = new JLabel("<html>"+ product.getP_desc() + "<html>");
-		detailContentLB.setBounds(134, 368, 155, 55);
+		detailContentLB = new JLabel("<html>자꾸 생각나는 매콤 달콤함<html>");
+		detailContentLB.setBounds(134, 354, 155, 55);
 		panel_1.add(detailContentLB);
 		
-		JLabel priceContentLB = new JLabel("<html>"+ product.getP_price() + "<html>");
+		priceContentLB = new JLabel("10,000");
 		priceContentLB.setBounds(134, 321, 116, 15);
 		panel_1.add(priceContentLB);
 		
-		JLabel nameContentLB = new JLabel("<html>"+ product.getP_name() + "<html>");
+		nameContentLB = new JLabel("<html>떡볶이<html>");
 		nameContentLB.setBounds(134, 265, 97, 15);
-		panel_1.add(nameContentLB);
+		panel_1.add(nameContentLB);		
+		/*
+		 * Service 객체 생성
+		 */
+		orderService = new OrderService();
+		productService = new ProductService();
+		cartService = new CartService();
+		/*
+		 * loginMember 객체 생성
+		 */
+		loginMember = new Member("sy0",null,null,null,null,null,null);
+		
 	}
-}
+
+	public void setFrame(ShopMainFrame_김준 frame) {
+		this.frame = frame;
+	}
+	
+	public void displayProductDetail(Product product) {
+		imageLB.setIcon(new ImageIcon(ProductDetailPanel_김준.class.getResource(product.getP_image())));
+		nameContentLB.setText("<html>" + product.getP_name() + "<html>");
+		detailContentLB.setText("<html>" + product.getP_desc() + "<html>");
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+}	

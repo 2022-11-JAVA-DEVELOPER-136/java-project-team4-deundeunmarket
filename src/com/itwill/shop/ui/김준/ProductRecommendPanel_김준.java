@@ -18,9 +18,12 @@ import java.awt.BorderLayout;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
+import com.itwill.shop.cart.Cart;
+import com.itwill.shop.cart.CartService;
 import com.itwill.shop.member.Member;
 import com.itwill.shop.product.Product;
 import com.itwill.shop.product.ProductService;
+import com.itwill.shop.ui.ShopMainFrame;
 
 import javax.swing.JComboBox;
 import javax.swing.JButton;
@@ -33,15 +36,18 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.Cursor;
 import java.awt.Rectangle;
 import java.awt.Dimension;
+import java.awt.Color;
 
-//
 public class ProductRecommendPanel_김준 extends JPanel {
+	ShopMainFrame_김준 frame;
 	/*****************************************/
 	// Service 객체 선언
 	ProductService productService;
-
+	CartService cartService;
+	
 	// loginMember 객체선언
 	Member member;
+	Product product;
 	/*****************************************/
 
 	private JLabel ProductListLB;
@@ -52,8 +58,13 @@ public class ProductRecommendPanel_김준 extends JPanel {
 	 * 
 	 * @throws Exception
 	 */
-
+	
+	public void setFrame(ShopMainFrame_김준 frame) throws Exception {
+		this.frame = frame;
+	}
+	
 	public ProductRecommendPanel_김준() throws Exception {
+		setBackground(new Color(255, 255, 255));
 setLayout(null);
 		
 		JScrollPane productListScrollPane = new JScrollPane();
@@ -61,12 +72,13 @@ setLayout(null);
 		add(productListScrollPane);
 		
 		productListPanel = new JPanel();
+		productListPanel.setBackground(new Color(255, 255, 255));
 		productListPanel.setPreferredSize(new Dimension(10, 570));
 		FlowLayout fl_productListPanel = (FlowLayout) productListPanel.getLayout();
 		fl_productListPanel.setHgap(10);
 		fl_productListPanel.setAlignment(FlowLayout.LEFT);
 		productListScrollPane.setViewportView(productListPanel);
-		/********제품패널생성***********/
+		/*******************************제품패널생성***************************************/
 		JPanel tteokbokkiPanel = new JPanel();
 		tteokbokkiPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		tteokbokkiPanel.setPreferredSize(new Dimension(125, 310));
@@ -77,7 +89,7 @@ setLayout(null);
 		productImageLB.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				System.out.println(1);
 			}
 		});
 		productImageLB.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -102,6 +114,19 @@ setLayout(null);
 		productListPanel.add(tteokbokkiPanel);
 		
 		JButton cartBtn1 = new JButton("담기");
+		cartBtn1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					cartService.addCart(new Cart(0, 1, member.getM_id(), 
+							new Product(product.getP_no(), product.getP_name(), 
+										product.getP_price(), product.getP_image(), 
+										product.getP_desc())));
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		cartBtn1.setBounds(3, 241, 97, 23);
 		tteokbokkiPanel.add(cartBtn1);
 		
@@ -115,10 +140,11 @@ setLayout(null);
 		productListPanel.add(creampastaPanel_2);
 		
 		JLabel productImageLB_2 = new JLabel("");
+		productImageLB_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		productImageLB_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				System.out.println(2);
 			}
 		});
 		productImageLB_2.setIcon(new ImageIcon(ProductRecommendPanel_김준.class.getResource("/images/크림파스타_작은.jpg")));
@@ -153,10 +179,11 @@ setLayout(null);
 		productListPanel.add(steakPanel_3);
 		
 		JLabel productImageLB_3 = new JLabel("");
+		productImageLB_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		productImageLB_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				System.out.println(3);
 			}
 		});
 		productImageLB_3.setIcon(new ImageIcon(ProductRecommendPanel_김준.class.getResource("/images/스테이크_작은.jpg")));
@@ -191,10 +218,11 @@ setLayout(null);
 		productListPanel.add(shabuPanel_4);
 		
 		JLabel productImageLB_4 = new JLabel("");
+		productImageLB_4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		productImageLB_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				System.out.println(4);
 			}
 		});
 		productImageLB_4.setIcon(new ImageIcon(ProductRecommendPanel_김준.class.getResource("/images/샤브샤브_작은.jpg")));
@@ -226,6 +254,8 @@ setLayout(null);
 
 		//객체 생성
 		productService = new ProductService();
+		cartService = new CartService();
+		product = new Product();
 		
 		member = new Member("sy1", null, null, null, null, null, null);
 	}
@@ -270,4 +300,7 @@ setLayout(null);
 			
 			
 		}*/
+	public void ProductDetail(Product product) {
+		
+	}
 }

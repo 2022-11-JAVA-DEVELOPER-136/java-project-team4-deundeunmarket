@@ -14,7 +14,7 @@ insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_
 insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '삼선짬뽕', 10000, '/images/삼선짬뽕_작은.jpg', '해산물이 푸짐한 백리향의 삼선짬뽕!');
 insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '샤브샤브', 10000, '/images/샤브샤브_작은.jpg', '매장의 노하우로 완성');
 insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '스테이크', 10000, '/images/스테이크_작은.jpg', '쫄깃한 식감, 풍부한 육즙');
-insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '우동', 10000, '/images/우동_작은.jpg', '집에서 맛보는 인기 메뉴');
+insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '김치우동', 10000, '/images/김치우동_작은.jpg', '집에서 맛보는 인기 메뉴');
 insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '전복버터밥', 10000, '/images/전복버터밥_작은.jpg', '코 끝을 찌르는 고소한 풍미');
 insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '칼국수', 10000, '/images/칼국수_작은.jpg', '온 가족이 즐기는 푸짐한 칼국수');
 insert into product(p_no, p_name, p_price, p_image, p_desc) values(product_p_no_SEQ.nextval, '크림파스타', 10000, '/images/크림파스타_작은.jpg', '매콤한 매력의 크림 파스타');
