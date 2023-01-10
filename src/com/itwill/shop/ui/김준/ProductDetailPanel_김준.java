@@ -130,7 +130,7 @@ public class ProductDetailPanel_김준 extends JPanel {
 		 */
 		loginMember = new Member("sy0",null,null,null,null,null,null);
 		
-		this.product=productService.productDetail(1);
+		this.product=productService.productDetail(2);
 		setProduct(product);
 	}
 
