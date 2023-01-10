@@ -20,7 +20,7 @@ public class ShopMainFrame_최민영 extends JFrame {
 	/*************로그인한회원****************/
 	private Member loginMember;
 	
-	//
+
 	private JPanel contentPane;
 
 	/**
@@ -44,6 +44,7 @@ public class ShopMainFrame_최민영 extends JFrame {
 	 * @throws Exception 
 	 */
 	public ShopMainFrame_최민영() throws Exception {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 486, 664);
 		contentPane = new JPanel();
@@ -52,7 +53,7 @@ public class ShopMainFrame_최민영 extends JFrame {
 		contentPane.setLayout(null);
 		
 		MemberDetailPanel_최민영 memberDetailPanel_최민영 = new MemberDetailPanel_최민영();
-		memberDetailPanel_최민영.setBounds(22, 34, 436, 567);
+		memberDetailPanel_최민영.setBounds(34, 40, 424, 556);
 		contentPane.add(memberDetailPanel_최민영);
 		
 		
