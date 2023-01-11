@@ -190,8 +190,7 @@ public class ProductListPanel_김준 extends JPanel {
 					/*
 					 * 이미지 클릭 시 상품상세패널로 이동
 					 */
-					// "AWT-EventQueue-0" java.lang.NullPointerException
-					frame.changePanel(ShopMainFrame.PANEL_PRODUCT_DETAIL, null);
+					frame.changePanel(ShopMainFrame.PANEL_PRODUCT_DETAIL, product);
 				}
 			});
 			

@@ -100,6 +100,7 @@ public class ProductListPanel extends JPanel {
 				frame.selectProduct = product;
 				frame.changePanel(frame.PRODUCT_POPULAR_PANEL,product);
 				*/
+				frame.changePanel(ShopMainFrame.PANEL_PRODUCT_DETAIL, product);	
 			}
 		});
 
