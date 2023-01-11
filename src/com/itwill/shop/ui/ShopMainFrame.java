@@ -35,6 +35,9 @@ import java.awt.Font;
 import com.itwill.shop.ui.김준.ProductListPanel_김준;
 import com.itwill.shop.ui.김준.ProductRecommendPanel_김준;
 import com.itwill.shop.ui.김준.ProductDetailPanel_김준;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
+import com.itwill.shop.ui.김강산.CartListPanel_김강산;
 
 public class ShopMainFrame extends JFrame {
 	
@@ -80,7 +83,7 @@ public class ShopMainFrame extends JFrame {
 	public ProductDetailPanel_김준 productDetailPanel;
 	public OrderCreatePanel_김민선 orderCreatePanel;
 	public OrderListPanel_김세영 orderListPanel;
-	public OrderDetailPanel_김세영 orderDetailPanel;
+	public CartListPanel_김강산 cartListPanel;
 	/**
 	 * Launch the application.
 	 */
@@ -165,6 +168,19 @@ public class ShopMainFrame extends JFrame {
 		contentPane.add(shopTabbedPane, BorderLayout.CENTER);
 		
 		memberTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		memberTabbedPane.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				/***********탭이 2번(회원정보)으로 변경 시 회원 정보 보여주기************/
+				int selectedTabIndex = memberTabbedPane.getSelectedIndex();
+				if (selectedTabIndex == 2) {
+					try {
+						memberDetailPanel.displayMemberInfo(loginMember);
+					} catch (Exception e1) {
+						e1.getMessage();
+					}
+				}
+			}
+		});
 		shopTabbedPane.addTab("회원", null, memberTabbedPane, null);
 		
 		memberLoginPanel = new MemberLoginPanel_최민영();
@@ -192,6 +208,9 @@ public class ShopMainFrame extends JFrame {
 		cartTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		shopTabbedPane.addTab("장바구니", null, cartTabbedPane, null);
 		
+		cartListPanel = new CartListPanel_김강산();
+		cartTabbedPane.addTab("나의 장바구니", null, cartListPanel, null);
+		
 		orderTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		shopTabbedPane.addTab("주문", null, orderTabbedPane, null);
 		
@@ -200,9 +219,6 @@ public class ShopMainFrame extends JFrame {
 		
 		orderListPanel = new OrderListPanel_김세영();
 		orderTabbedPane.addTab("주문목록", null, orderListPanel, null);
-		
-		orderDetailPanel = new OrderDetailPanel_김세영();
-		orderTabbedPane.addTab("주문상세", null, orderDetailPanel, null);
 		
 	
 		/***************************************************/
@@ -223,6 +239,7 @@ public class ShopMainFrame extends JFrame {
 		productListPanel.setFrame(this);
 		productDetailPanel.setFrame(this);
 		productRecommendPanel.setFrame(this);
+		cartListPanel.setFrame(this);
 		
 	}// 생성자 끝
 	/***************패널 변경 메소드******************/

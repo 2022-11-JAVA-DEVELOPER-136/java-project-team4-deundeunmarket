@@ -13,6 +13,7 @@ import com.itwill.shop.cart.CartService;
 import com.itwill.shop.member.Member;
 import com.itwill.shop.order.OrderService;
 import com.itwill.shop.product.ProductService;
+import com.itwill.shop.ui.ShopMainFrame;
 
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
@@ -39,6 +40,22 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.event.ChangeEvent;
 
 public class CartListPanel_김강산 extends JPanel {
+	/*
+	 * 프레임 참조
+	 */
+	ShopMainFrame frame;
+	/*
+	 * Service 멤버변수 선언
+	 */
+	private CartService cartService;
+	private ProductService productService;
+	private OrderService orderService;
+	/*
+	 * login member 선언
+	 */
+	private Member loginMember;
+	
+	
 	private JLabel cartTextLB;
 	private JPanel finalPrice;
 	private JButton orderBtn;
@@ -52,14 +69,6 @@ public class CartListPanel_김강산 extends JPanel {
 	private JButton exitBtn;
 	private JLabel cartProductDesc;
 	private JLabel cartProductAddPrice;
-	/*
-	 * Service 멤버변수 선언
-	 */
-
-	private CartService cartService;
-	private ProductService productService;
-	private OrderService orderService;
-	private Member loginMember;
 	private JPanel jp;
 
 	/**
@@ -142,7 +151,7 @@ public class CartListPanel_김강산 extends JPanel {
 		cartscrollMain.add(cartListScrollPane);
 
 		cartListPanel = new JPanel();
-		cartListPanel.setPreferredSize(new Dimension(10, 700));
+		cartListPanel.setPreferredSize(new Dimension(10, 1500));
 		cartListScrollPane.setViewportView(cartListPanel);
 
 		/**************** cart panel ******************/
@@ -203,14 +212,20 @@ public class CartListPanel_김강산 extends JPanel {
 		// 메인 메소드 호출
 		displayCartList();
 
+	}// 생성자 끝
+	
+	public void setFrame(ShopMainFrame frame) {
+		this.frame = frame;
 	}
+	/*
+	 *  카트리스트 보기 메소드
+	 */
 
 	List<Cart> selectedCartList = null;
 	JCheckBox[] cartCBArray = null;
 	private JLabel cartProductName;
 	private JButton F5Btn;
 
-		// 메인 메소드
 
 	public void displayCartList() throws Exception {
 		List<Cart> cartList = cartService.getCartItemByMemberId(loginMember.getM_id());

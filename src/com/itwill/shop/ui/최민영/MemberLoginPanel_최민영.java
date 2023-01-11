@@ -96,8 +96,6 @@ public class MemberLoginPanel_최민영 extends JPanel {
 		
 		memberService=new MemberService();
 		
-		
-
 	}// 생성자 끝
 	
 	public void setFrame(ShopMainFrame frame) {
@@ -112,12 +110,12 @@ public class MemberLoginPanel_최민영 extends JPanel {
 		this.loginMember = memberService.memberDetail(id);
 		//2.MemberMainFrame 타이틀 변경
 		frame.setTitle(id + " 님 로그인");
-		// 3.로그인, 회원가입 탭 불 활성화
-		//frame.memberTabbedPane.setEnabledAt(0, false);
-		//frame.memberTabbedPane.setEnabledAt(1, false);
+		//3. 로그인 탭, 회원가입 탭 불활성화, 회원정보 탭 활성화
+		frame.memberTabbedPane.setEnabledAt(0, false);
+		frame.memberTabbedPane.setEnabledAt(1, false);
+		frame.memberTabbedPane.setEnabledAt(2, true);
 		// 4.상품 전체보기로 화면전환
-		//frame.productTabbedPane.setSelectedIndex(2);
-		frame.changePanel(ShopMainFrame.PANEL_MEMBER_INFO, null);
+		frame.changePanel(ShopMainFrame.PANEL_PRODUCT_LIST, null);
 		frame.memberDetailPanel.displayMemberInfo(loginMember);
 		frame.memberDetailPanel.updateFormEnable(false);
 	}
