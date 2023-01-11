@@ -30,9 +30,9 @@ public class ShopMainFrame_최민영 extends JFrame {
 	/*************로그인한회원****************/
 	public Member loginMember=null;
 	
-	public MemberDetailPanel_최민영 memberDetailPanel;
-	public MemberJoinPanel_최민영 memberJoinPanel;
-	public MemberLoginPanel_최민영 memberLoginPanel;
+	public MemberDetailPanel memberDetailPanel;
+	public MemberJoinPanel memberJoinPanel;
+	public MemberLoginPanel memberLoginPanel;
 	public JPanel contentPane;
 
 	/**
@@ -80,13 +80,13 @@ public class ShopMainFrame_최민영 extends JFrame {
 		memberTabbedPane.setBounds(0, 0, 458, 615);
 		contentPane.add(memberTabbedPane);
 		
-		MemberDetailPanel_최민영 memberDetailPanel_최민영 = new MemberDetailPanel_최민영();
+		MemberDetailPanel memberDetailPanel_최민영 = new MemberDetailPanel();
 		memberTabbedPane.addTab("New tab", null, memberDetailPanel_최민영, null);
 		
-		MemberJoinPanel_최민영 memberJoinPanel_최민영 = new MemberJoinPanel_최민영();
+		MemberJoinPanel memberJoinPanel_최민영 = new MemberJoinPanel();
 		memberTabbedPane.addTab("New tab", null, memberJoinPanel_최민영, null);
 		
-		MemberLoginPanel_최민영 memberLoginPanel_최민영 = new MemberLoginPanel_최민영();
+		MemberLoginPanel memberLoginPanel_최민영 = new MemberLoginPanel();
 		memberTabbedPane.addTab("New tab", null, memberLoginPanel_최민영, null);
 		
 	}

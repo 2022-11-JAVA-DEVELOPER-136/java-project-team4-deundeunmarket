@@ -16,7 +16,7 @@ import java.awt.Color;
 import javax.swing.JPasswordField;
 import java.awt.Font;
 
-public class MemberLoginPanel_최민영 extends JPanel {
+public class MemberLoginPanel extends JPanel {
 	/*
 	 * 프레임 참조
 	 */
@@ -39,7 +39,7 @@ public class MemberLoginPanel_최민영 extends JPanel {
 	 * Create the panel.
 	 * @throws Exception 
 	 */
-	public MemberLoginPanel_최민영() throws Exception {
+	public MemberLoginPanel() throws Exception {
 		setForeground(Color.WHITE);
 		setLayout(null);
 		
@@ -145,6 +145,7 @@ public class MemberLoginPanel_최민영 extends JPanel {
 				frame.loginMember = frame.memberService.memberDetail(id);
 				loginIdTF.setText(""); 
 				loginPassTF.setText("");
+				loginProcess(id);
 			}else {
 				JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 확인하세요");
 				loginIdTF.setSelectionStart(0);

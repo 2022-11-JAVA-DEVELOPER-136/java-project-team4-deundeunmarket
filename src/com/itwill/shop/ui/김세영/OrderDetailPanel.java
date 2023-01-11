@@ -21,7 +21,7 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
 
-public class OrderDetailPanel_김세영 extends JPanel {
+public class OrderDetailPanel extends JPanel {
 	
 	/******************************/
 	/*
@@ -39,7 +39,7 @@ public class OrderDetailPanel_김세영 extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public OrderDetailPanel_김세영() throws Exception {
+	public OrderDetailPanel() throws Exception {
 		
 		orderService = new OrderService();
 		loginMember = new Member("sy0", null, "김세영", null, null, null, null);
@@ -266,7 +266,7 @@ public class OrderDetailPanel_김세영 extends JPanel {
 			orderItemPanel.setLayout(null);
 			
 			JLabel p_imageLabel = new JLabel("");
-			p_imageLabel.setIcon(new ImageIcon(OrderDetailPanel_김세영.class.getResource(orderItem.getProduct().getP_image())));
+			p_imageLabel.setIcon(new ImageIcon(OrderDetailPanel.class.getResource(orderItem.getProduct().getP_image())));
 			p_imageLabel.setBounds(12, 10, 87, 73);
 			orderItemPanel.add(p_imageLabel);
 			

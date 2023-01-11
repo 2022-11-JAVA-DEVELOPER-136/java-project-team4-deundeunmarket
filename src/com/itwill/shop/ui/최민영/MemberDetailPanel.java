@@ -23,7 +23,7 @@ import java.awt.SystemColor;
 import javax.swing.border.LineBorder;
 import java.awt.Font;
 
-public class MemberDetailPanel_최민영 extends JPanel {
+public class MemberDetailPanel extends JPanel {
 	/*
 	 * 프레임 참조
 	 */
@@ -52,7 +52,7 @@ public class MemberDetailPanel_최민영 extends JPanel {
 	 * Create the panel.
 	 * @throws Exception 
 	 */
-	public MemberDetailPanel_최민영() throws Exception {
+	public MemberDetailPanel() throws Exception {
 		
 		setLayout(null);
 		

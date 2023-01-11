@@ -42,7 +42,7 @@ public class ShopMainFrame_김세영 extends JFrame {
 		JTabbedPane orderTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(orderTabbedPane, BorderLayout.CENTER);
 		
-		OrderListPanel_김세영 orderListPanel_김세영 = new OrderListPanel_김세영();
+		OrderListPanel orderListPanel_김세영 = new OrderListPanel();
 		orderTabbedPane.addTab("New tab", null, orderListPanel_김세영, null);
 	}
 }

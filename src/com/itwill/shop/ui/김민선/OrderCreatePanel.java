@@ -27,7 +27,7 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Font;
 
-public class OrderCreatePanel_김민선 extends JPanel {
+public class OrderCreatePanel extends JPanel {
 	/*
 	 * 프레임 참조
 	 */
@@ -51,7 +51,7 @@ public class OrderCreatePanel_김민선 extends JPanel {
 	private JComboBox orderLocCB;
 	private JLabel orderTotPriceLB;
 
-	public OrderCreatePanel_김민선() throws Exception{
+	public OrderCreatePanel() throws Exception{
 		
 		
 		setLayout(null);

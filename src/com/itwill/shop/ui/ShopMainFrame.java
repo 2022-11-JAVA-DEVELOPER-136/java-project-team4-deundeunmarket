@@ -23,21 +23,21 @@ import javax.swing.JTabbedPane;
 import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import com.itwill.shop.ui.최민영.MemberLoginPanel_최민영;
-import com.itwill.shop.ui.최민영.MemberJoinPanel_최민영;
-import com.itwill.shop.ui.최민영.MemberDetailPanel_최민영;
-import com.itwill.shop.ui.김민선.OrderCreatePanel_김민선;
-import com.itwill.shop.ui.김세영.OrderListPanel_김세영;
-import com.itwill.shop.ui.김세영.OrderDetailPanel_김세영;
+import com.itwill.shop.ui.최민영.MemberLoginPanel;
+import com.itwill.shop.ui.최민영.MemberJoinPanel;
+import com.itwill.shop.ui.최민영.MemberDetailPanel;
+import com.itwill.shop.ui.김민선.OrderCreatePanel;
+import com.itwill.shop.ui.김세영.OrderListPanel;
+import com.itwill.shop.ui.김세영.OrderDetailPanel;
 import java.awt.Toolkit;
 import java.awt.SystemColor;
 import java.awt.Font;
-import com.itwill.shop.ui.김준.ProductListPanel_김준;
-import com.itwill.shop.ui.김준.ProductRecommendPanel_김준;
-import com.itwill.shop.ui.김준.ProductDetailPanel_김준;
+import com.itwill.shop.ui.김준.ProductListPanel;
+import com.itwill.shop.ui.김준.ProductRecommendPanel;
+import com.itwill.shop.ui.김준.ProductDetailPanel;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
-import com.itwill.shop.ui.김강산.CartListPanel_김강산;
+import com.itwill.shop.ui.김강산.CartListPanel;
 
 public class ShopMainFrame extends JFrame {
 	
@@ -75,15 +75,15 @@ public class ShopMainFrame extends JFrame {
 	public JTabbedPane productTabbedPane;
 	public JTabbedPane cartTabbedPane;
 	public JTabbedPane orderTabbedPane;
-	public MemberLoginPanel_최민영 memberLoginPanel;
-	public MemberJoinPanel_최민영 memberJoinPanel;
-	public MemberDetailPanel_최민영 memberDetailPanel;
-	public ProductListPanel_김준 productListPanel;
-	public ProductRecommendPanel_김준 productRecommendPanel;
-	public ProductDetailPanel_김준 productDetailPanel;
-	public OrderCreatePanel_김민선 orderCreatePanel;
-	public OrderListPanel_김세영 orderListPanel;
-	private CartListPanel_김강산 cartListPanel;
+	public MemberLoginPanel memberLoginPanel;
+	public MemberJoinPanel memberJoinPanel;
+	public MemberDetailPanel memberDetailPanel;
+	public ProductListPanel productListPanel;
+	public ProductRecommendPanel productRecommendPanel;
+	public ProductDetailPanel productDetailPanel;
+	public OrderCreatePanel orderCreatePanel;
+	public OrderListPanel orderListPanel;
+	public CartListPanel cartListPanel;
 	/**
 	 * Launch the application.
 	 */
@@ -188,41 +188,41 @@ public class ShopMainFrame extends JFrame {
 		});
 		shopTabbedPane.addTab("회원", null, memberTabbedPane, null);
 		
-		memberLoginPanel = new MemberLoginPanel_최민영();
+		memberLoginPanel = new MemberLoginPanel();
 		memberTabbedPane.addTab("로그인", null, memberLoginPanel, null);
 		
-		memberJoinPanel = new MemberJoinPanel_최민영();
+		memberJoinPanel = new MemberJoinPanel();
 		memberTabbedPane.addTab("회원가입", null, memberJoinPanel, null);
 		
-		memberDetailPanel = new MemberDetailPanel_최민영();
+		memberDetailPanel = new MemberDetailPanel();
 		memberTabbedPane.addTab("회원정보", null, memberDetailPanel, null);
 		
 		productTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		shopTabbedPane.addTab("상품", null, productTabbedPane, null);
 		
-		productListPanel = new ProductListPanel_김준();
+		productListPanel = new ProductListPanel();
 		productTabbedPane.addTab("상품목록", null, productListPanel, null);
 		
-		productRecommendPanel = new ProductRecommendPanel_김준();
+		productRecommendPanel = new ProductRecommendPanel();
 		productTabbedPane.addTab("추천상품", null, productRecommendPanel, null);
 		
-		productDetailPanel = new ProductDetailPanel_김준();
+		productDetailPanel = new ProductDetailPanel();
 		productTabbedPane.addTab("상품상세", null, productDetailPanel, null);
 		
 		
 		cartTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		shopTabbedPane.addTab("장바구니", null, cartTabbedPane, null);
 		
-		cartListPanel = new CartListPanel_김강산();
+		cartListPanel = new CartListPanel();
 		cartTabbedPane.addTab("New tab", null, cartListPanel, null);
 		
 		orderTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		shopTabbedPane.addTab("주문", null, orderTabbedPane, null);
 		
-		orderCreatePanel = new OrderCreatePanel_김민선();
+		orderCreatePanel = new OrderCreatePanel();
 		orderTabbedPane.addTab("주문하기", null, orderCreatePanel, null);
 		
-		orderListPanel = new OrderListPanel_김세영();
+		orderListPanel = new OrderListPanel();
 		orderTabbedPane.addTab("주문목록", null, orderListPanel, null);
 		
 	
@@ -242,7 +242,6 @@ public class ShopMainFrame extends JFrame {
 		memberLoginPanel.setFrame(this);
 		memberJoinPanel.setFrame(this);
 		memberDetailPanel.setFrame(this);
-		/***************수정**************/
 		productListPanel.setFrame(this);
 		productDetailPanel.setFrame(this);
 		productRecommendPanel.setFrame(this);
@@ -250,6 +249,47 @@ public class ShopMainFrame extends JFrame {
 		
 		
 	}// 생성자 끝
+	
+	public void changePanel(int panel_no, Object data) {
+		if (panel_no == PANEL_MEMBER_LOGIN) {
+			shopTabbedPane.setSelectedIndex(0);
+			memberTabbedPane.setSelectedIndex(0);
+		} else if (panel_no == PANEL_MEMBER_JOIN) {
+			shopTabbedPane.setSelectedIndex(0);
+			memberTabbedPane.setSelectedIndex(1);
+		} else if (panel_no == PANEL_MEMBER_INFO) {
+			shopTabbedPane.setSelectedIndex(0);
+			memberTabbedPane.setSelectedIndex(2);
+		} else if (panel_no == PANEL_PRODUCT_LIST) {
+			shopTabbedPane.setSelectedIndex(1);
+			productTabbedPane.setSelectedIndex(0);
+		} else if (panel_no == PANEL_PRODUCT_RECOMMEND) {
+			shopTabbedPane.setSelectedIndex(1);
+			productTabbedPane.setSelectedIndex(1);
+		} else if (panel_no == PANEL_PRODUCT_DETAIL) {
+			Product product = (Product)data;
+			//System.out.println("recv product" + product);
+			shopTabbedPane.setSelectedIndex(1);
+			productTabbedPane.setSelectedIndex(2);
+			productDetailPanel.displayProductDetail(product);
+		} else if (panel_no == PANEL_CART) {
+			shopTabbedPane.setSelectedIndex(2);
+			cartTabbedPane.setSelectedIndex(0);
+		} else if (panel_no == PANEL_ORDER_CREATE) {
+			shopTabbedPane.setSelectedIndex(3);
+			orderTabbedPane.setSelectedIndex(0);
+		} else if (panel_no == PANEL_ORDER_LIST) {
+			shopTabbedPane.setSelectedIndex(3);
+			orderTabbedPane.setSelectedIndex(1);
+		} else if (panel_no == PANEL_ORDER_DETAIL) {
+			shopTabbedPane.setSelectedIndex(3);
+			orderTabbedPane.setSelectedIndex(2);
+		}
+
+	}
+
+	
+	
 	/***************패널 변경 메소드******************/
 	/*
 	public void changePanel(int panel_no, Object data) {
@@ -305,43 +345,6 @@ public class ShopMainFrame extends JFrame {
 			cartListPanel.setLoginMember(member);
 		}
 		*/
-	public void changePanel(int panel_no, Object data) {
-		if (panel_no == PANEL_MEMBER_LOGIN) {
-			shopTabbedPane.setSelectedIndex(0);
-			memberTabbedPane.setSelectedIndex(0);
-		} else if (panel_no == PANEL_MEMBER_JOIN) {
-			shopTabbedPane.setSelectedIndex(0);
-			memberTabbedPane.setSelectedIndex(1);
-		} else if (panel_no == PANEL_MEMBER_INFO) {
-			shopTabbedPane.setSelectedIndex(0);
-			memberTabbedPane.setSelectedIndex(2);
-		} else if (panel_no == PANEL_PRODUCT_LIST) {
-			shopTabbedPane.setSelectedIndex(1);
-			productTabbedPane.setSelectedIndex(0);
-		} else if (panel_no == PANEL_PRODUCT_RECOMMEND) {
-			shopTabbedPane.setSelectedIndex(1);
-			productTabbedPane.setSelectedIndex(1);
-		} else if (panel_no == PANEL_PRODUCT_DETAIL) {
-			Product product = (Product)data;
-			//System.out.println("recv product" + product);
-			shopTabbedPane.setSelectedIndex(1);
-			productTabbedPane.setSelectedIndex(2);
-			productDetailPanel.displayProductDetail(product);
-		} else if (panel_no == PANEL_CART) {
-			shopTabbedPane.setSelectedIndex(2);
-			cartTabbedPane.setSelectedIndex(0);
-		} else if (panel_no == PANEL_ORDER_CREATE) {
-			shopTabbedPane.setSelectedIndex(3);
-			orderTabbedPane.setSelectedIndex(0);
-		} else if (panel_no == PANEL_ORDER_LIST) {
-			shopTabbedPane.setSelectedIndex(3);
-			orderTabbedPane.setSelectedIndex(1);
-		} else if (panel_no == PANEL_ORDER_DETAIL) {
-			shopTabbedPane.setSelectedIndex(3);
-			orderTabbedPane.setSelectedIndex(2);
-		}
-
-	}
-
+	
 
 }

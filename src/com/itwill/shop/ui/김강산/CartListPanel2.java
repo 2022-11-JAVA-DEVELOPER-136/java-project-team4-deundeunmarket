@@ -41,7 +41,7 @@ import javax.swing.event.ChangeEvent;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-public class CartListPanel_김강산 extends JPanel {
+public class CartListPanel2 extends JPanel {
 	/*
 	 * 프레임 참조
 	 */
@@ -79,7 +79,7 @@ public class CartListPanel_김강산 extends JPanel {
 
 	// ****************카트리스트패널만들기******************
 
-	public CartListPanel_김강산() throws Exception {
+	public CartListPanel2() throws Exception {
 		
 
 		setLayout(null);
@@ -189,13 +189,13 @@ public class CartListPanel_김강산 extends JPanel {
 				// 상세보기 추가
 			}
 		});
-		productImgBtn.setIcon(new ImageIcon(CartListPanel_김강산.class.getResource("/images/떡볶이_작은.jpg")));
+		productImgBtn.setIcon(new ImageIcon(CartListPanel2.class.getResource("/images/떡볶이_작은.jpg")));
 		productImgBtn.setBackground(Color.WHITE);
 		productImgBtn.setBounds(9, 6, 102, 118);
 		cartPanel.add(productImgBtn);
 
 		exitBtn = new JButton("");
-		exitBtn.setIcon(new ImageIcon(CartListPanel_김강산.class.getResource("/images/close10.png")));
+		exitBtn.setIcon(new ImageIcon(CartListPanel2.class.getResource("/images/close10.png")));
 		exitBtn.setFont(new Font("D2Coding", Font.BOLD, 10));
 		exitBtn.setBounds(292, 10, 16, 15);
 		cartPanel.add(exitBtn);
@@ -282,24 +282,23 @@ public class CartListPanel_김강산 extends JPanel {
 			Cart cart = cartList.get(i);
 			
 			cartPanel = new JPanel();
-			cartPanel.setBackground(Color.WHITE);
 			cartPanel.setPreferredSize(new Dimension(320, 130));
 			cartPanel.setLayout(null);
 
 			productImgBtn = new JButton("");
-			productImgBtn.setIcon(new ImageIcon(CartListPanel_김강산.class.getResource(cart.getProduct().getP_image())));
+			productImgBtn.setIcon(new ImageIcon(CartListPanel2.class.getResource(cart.getProduct().getP_image())));
 			productImgBtn.setBackground(Color.WHITE);
 			productImgBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					// 상품 상세보기 추가
 				}
 			});
-			productImgBtn.setBounds(9, 6, 102, 118);
+			productImgBtn.setBounds(19, 10, 97, 65);
 			cartPanel.add(productImgBtn);
 
 			// 장바구니 1개 삭제 X버튼
 			exitBtn = new JButton("");
-			exitBtn.setIcon(new ImageIcon(CartListPanel_김강산.class.getResource("/images/close10.png")));
+			exitBtn.setIcon(new ImageIcon(CartListPanel2.class.getResource("/images/close10.png")));
 			exitBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					try {
@@ -317,32 +316,28 @@ public class CartListPanel_김강산 extends JPanel {
 			cartPanel.add(exitBtn);
 			
 			cartProductName = new JLabel();
-			cartProductName.setBounds(128, 10, 152, 29);
-			cartProductName.setFont(new Font("D2Coding", Font.PLAIN, 12));
+			cartProductName.setBounds(128, 10, 152, 43);
 			cartProductName.setText(cart.getProduct().getP_name());
 			cartPanel.add(cartProductName);
 
 			cartProductDesc = new JLabel();
-			cartProductDesc.setFont(new Font("D2Coding", Font.PLAIN, 12));
-			cartProductDesc.setBounds(128, 37, 180, 62);
+			cartProductDesc.setFont(new Font("굴림", Font.PLAIN, 11));
+			cartProductDesc.setBounds(128, 10, 192, 79);
 			cartProductDesc.setText(cart.getProduct().getP_desc());
 			cartPanel.add(cartProductDesc);
 
 			cartProductAddPrice = new JLabel("상품금액");
-			cartProductAddPrice.setHorizontalAlignment(SwingConstants.TRAILING);
 			cartProductAddPrice.setFont(new Font("D2Coding", Font.PLAIN, 14));
-			cartProductAddPrice.setBounds(240, 105, 68, 15);
+			cartProductAddPrice.setBounds(225, 101, 68, 15);
 			cartProductAddPrice.setText(Integer.toString(cart.getProduct().getP_price()) + "원");
 			cartPanel.add(cartProductAddPrice);
 
 			JComboBox productQty = new JComboBox();
-			productQty.setBounds(138, 97, 32, 23);
-			productQty.setBackground(new Color(240, 255, 240));
+			productQty.setBounds(52, 97, 32, 23);
 			productQty.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9",
 					"10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
 			productQty.setSelectedItem(Integer.toString(cart.getCart_qty()));
 			cartPanel.add(productQty);
-			
 			productQty.addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent e) {
 					if (e.getStateChange() == ItemEvent.SELECTED) {

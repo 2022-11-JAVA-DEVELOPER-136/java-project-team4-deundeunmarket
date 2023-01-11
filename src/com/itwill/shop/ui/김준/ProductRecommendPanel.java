@@ -39,7 +39,7 @@ import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Font;
 
-public class ProductRecommendPanel_김준 extends JPanel {
+public class ProductRecommendPanel extends JPanel {
 	/*
 	 * 프레임 참조
 	 */
@@ -67,7 +67,7 @@ public class ProductRecommendPanel_김준 extends JPanel {
 	 * @throws Exception
 	 */
 	
-	public ProductRecommendPanel_김준() throws Exception {
+	public ProductRecommendPanel() throws Exception {
 		setBackground(new Color(255, 255, 255));
 setLayout(null);
 		
@@ -102,7 +102,7 @@ setLayout(null);
 		});
 		productImageLB.setVerticalTextPosition(SwingConstants.BOTTOM);
 		productImageLB.setPreferredSize(new Dimension(100, 140));
-		productImageLB.setIcon(new ImageIcon(ProductListPanel_김준.class.getResource("/images/떡볶이_작은.jpg")));
+		productImageLB.setIcon(new ImageIcon(ProductListPanel.class.getResource("/images/떡볶이_작은.jpg")));
 		productImageLB.setBounds(13, 0, 100, 148);
 		tteokbokkiPanel.add(productImageLB);
 		
@@ -177,7 +177,7 @@ setLayout(null);
 				frame.changePanel(ShopMainFrame.PANEL_PRODUCT_DETAIL, new Product(10, "크림파스타", 10000, "/images/크림파스타_작은.jpg", "매콤한 매력의 크림 파스타"));
 			}
 		});
-		productImageLB_2.setIcon(new ImageIcon(ProductRecommendPanel_김준.class.getResource("/images/크림파스타_작은.jpg")));
+		productImageLB_2.setIcon(new ImageIcon(ProductRecommendPanel.class.getResource("/images/크림파스타_작은.jpg")));
 		productImageLB_2.setVerticalTextPosition(SwingConstants.BOTTOM);
 		productImageLB_2.setPreferredSize(new Dimension(100, 140));
 		productImageLB_2.setBounds(12, 0, 100, 148);
@@ -251,7 +251,7 @@ setLayout(null);
 				frame.changePanel(ShopMainFrame.PANEL_PRODUCT_DETAIL, new Product(6, "스테이크", 10000, "/images/스테이크_작은.jpg", "쫄깃한 식감, 풍부한 육즙"));
 			}
 		});
-		productImageLB_3.setIcon(new ImageIcon(ProductRecommendPanel_김준.class.getResource("/images/스테이크_작은.jpg")));
+		productImageLB_3.setIcon(new ImageIcon(ProductRecommendPanel.class.getResource("/images/스테이크_작은.jpg")));
 		productImageLB_3.setVerticalTextPosition(SwingConstants.BOTTOM);
 		productImageLB_3.setPreferredSize(new Dimension(100, 140));
 		productImageLB_3.setBounds(13, 0, 100, 148);
@@ -325,7 +325,7 @@ setLayout(null);
 				frame.changePanel(ShopMainFrame.PANEL_PRODUCT_DETAIL, new Product(5, "샤브샤브", 10000, "/images/샤브샤브_작은.jpg", "매장의 노하우로 완성"));
 			}
 		});
-		productImageLB_4.setIcon(new ImageIcon(ProductRecommendPanel_김준.class.getResource("/images/샤브샤브_작은.jpg")));
+		productImageLB_4.setIcon(new ImageIcon(ProductRecommendPanel.class.getResource("/images/샤브샤브_작은.jpg")));
 		productImageLB_4.setVerticalTextPosition(SwingConstants.BOTTOM);
 		productImageLB_4.setPreferredSize(new Dimension(100, 140));
 		productImageLB_4.setBounds(12, 0, 100, 148);

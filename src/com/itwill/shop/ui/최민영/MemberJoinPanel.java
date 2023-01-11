@@ -23,7 +23,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
 
-public class MemberJoinPanel_최민영 extends JPanel {
+public class MemberJoinPanel extends JPanel {
 	/*
 	 * 프레임 참조
 	 */
@@ -50,7 +50,7 @@ public class MemberJoinPanel_최민영 extends JPanel {
 	 * Create the panel.
 	 * @throws Exception 
 	 */
-	public MemberJoinPanel_최민영() throws Exception {
+	public MemberJoinPanel() throws Exception {
 
 		initGUI();
 	} // 생성자 끝 

@@ -19,7 +19,7 @@ import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class OrderListPanel_김세영 extends JPanel {
+public class OrderListPanel extends JPanel {
 	
 	/******************************/
 	/*
@@ -38,7 +38,7 @@ public class OrderListPanel_김세영 extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public OrderListPanel_김세영() throws Exception {
+	public OrderListPanel() throws Exception {
 		setLayout(null);
 		
 		orderListScrollPane = new JScrollPane();

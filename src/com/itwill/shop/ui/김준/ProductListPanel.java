@@ -43,7 +43,7 @@ import java.awt.Font;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-public class ProductListPanel_김준 extends JPanel {
+public class ProductListPanel extends JPanel {
 	/*
 	 * 프레임 참조
 	 */
@@ -69,7 +69,7 @@ public class ProductListPanel_김준 extends JPanel {
 	 * @throws Exception
 	 */
 
-	public ProductListPanel_김준() throws Exception {
+	public ProductListPanel() throws Exception {
 	
 		setBackground(new Color(255, 255, 255));
 		setLayout(null);
@@ -105,7 +105,7 @@ public class ProductListPanel_김준 extends JPanel {
 		});
 		productImageLB.setVerticalTextPosition(SwingConstants.BOTTOM);
 		productImageLB.setPreferredSize(new Dimension(100, 140));
-		productImageLB.setIcon(new ImageIcon(ProductListPanel_김준.class.getResource("/images/떡볶이_작은.jpg")));
+		productImageLB.setIcon(new ImageIcon(ProductListPanel.class.getResource("/images/떡볶이_작은.jpg")));
 		productImageLB.setBounds(11, 0, 100, 148);
 		productPanel.add(productImageLB);
 		
@@ -208,7 +208,7 @@ public class ProductListPanel_김준 extends JPanel {
 			
 			productImageLB.setVerticalTextPosition(SwingConstants.BOTTOM);
 			productImageLB.setPreferredSize(new Dimension(100, 140));
-			productImageLB.setIcon(new ImageIcon(ProductListPanel_김준.class.getResource(product.getP_image())));
+			productImageLB.setIcon(new ImageIcon(ProductListPanel.class.getResource(product.getP_image())));
 			productImageLB.setBounds(11, 0, 100, 148);
 			productPanel.add(productImageLB);
 			
@@ -269,7 +269,6 @@ public class ProductListPanel_김준 extends JPanel {
 					/*
 					 * 구매하기 클릭 시 주문생성 패널로 이동
 					 */
-					//"AWT-EventQueue-0" java.lang.NullPointerException
 					frame.changePanel(ShopMainFrame.PANEL_ORDER_CREATE, null);
 				}
 			});

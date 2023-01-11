@@ -41,9 +41,9 @@ public class ShopMainFrame_김준 extends JFrame {
 	Member loginMember = null;
 	
 	private JPanel contentPane;
-	private ProductListPanel_김준 productListPanel_김준;
-	private ProductRecommendPanel_김준 productRecommendPanel_김준;
-	private ProductDetailPanel_김준 productDetailPanel_김준;
+	private ProductListPanel productListPanel_김준;
+	private ProductRecommendPanel productRecommendPanel_김준;
+	private ProductDetailPanel productDetailPanel_김준;
 	private JTabbedPane productTabbedPane;
 
 	/**
@@ -77,14 +77,14 @@ public class ShopMainFrame_김준 extends JFrame {
 		productTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(productTabbedPane, BorderLayout.CENTER);
 		
-		productListPanel_김준 = new ProductListPanel_김준();
+		productListPanel_김준 = new ProductListPanel();
 		productListPanel_김준.setBackground(new Color(255, 255, 255));
 		productTabbedPane.addTab("New tab", null, productListPanel_김준, null);
 		
-		productRecommendPanel_김준 = new ProductRecommendPanel_김준();
+		productRecommendPanel_김준 = new ProductRecommendPanel();
 		productTabbedPane.addTab("New tab", null, productRecommendPanel_김준, null);
 		
-		productDetailPanel_김준 = new ProductDetailPanel_김준();
+		productDetailPanel_김준 = new ProductDetailPanel();
 		productTabbedPane.addTab("New tab", null, productDetailPanel_김준, null);
 		
 		/**************************************

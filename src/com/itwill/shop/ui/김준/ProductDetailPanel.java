@@ -30,7 +30,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
 
-public class ProductDetailPanel_김준 extends JPanel {
+public class ProductDetailPanel extends JPanel {
 	/*
 	 * 프레임 참조
 	 */
@@ -61,7 +61,7 @@ public class ProductDetailPanel_김준 extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public ProductDetailPanel_김준() throws Exception{
+	public ProductDetailPanel() throws Exception{
 		setLayout(new BorderLayout(0, 0));
 		JPanel panel = new JPanel();
 		add(panel, BorderLayout.CENTER);
@@ -96,7 +96,7 @@ public class ProductDetailPanel_김준 extends JPanel {
 		panel_1.add(cartAddBtn);
 		
 		imageLB = new JLabel("");
-		imageLB.setIcon(new ImageIcon(ProductDetailPanel_김준.class.getResource("/images/떡복이_큰.jpg")));
+		imageLB.setIcon(new ImageIcon(ProductDetailPanel.class.getResource("/images/떡복이_큰.jpg")));
 		imageLB.setBounds(78, 10, 180, 221);
 		panel_1.add(imageLB);
 		
@@ -153,7 +153,7 @@ public class ProductDetailPanel_김준 extends JPanel {
 	 * 상품 상세보기 메소드
 	 */
 	public void displayProductDetail(Product product) {
-		imageLB.setIcon(new ImageIcon(ProductDetailPanel_김준.class.getResource(product.getP_image())));
+		imageLB.setIcon(new ImageIcon(ProductDetailPanel.class.getResource(product.getP_image())));
 		nameContentLB.setText("<html>" + product.getP_name() + "<html>");
 		detailContentLB.setText("<html>" + product.getP_desc() + "<html>");
 		
