@@ -123,6 +123,7 @@ public class MemberLoginPanel extends JPanel {
 		frame.memberTabbedPane.setEnabledAt(0, false);
 		frame.memberTabbedPane.setEnabledAt(1, false);
 		frame.memberTabbedPane.setEnabledAt(2, true);
+		
 		// 4.상품 전체보기로 화면전환
 		frame.changePanel(ShopMainFrame.PANEL_PRODUCT_LIST, null);
 		//frame.memberDetailPanel.displayMemberInfo(loginMember);

@@ -219,7 +219,7 @@ public class MemberJoinPanel extends JPanel {
 			}
 		});
 		passCheckBtn.setFont(new Font("D2Coding", Font.PLAIN, 9));
-		passCheckBtn.setBounds(228, 64, 97, 23);
+		passCheckBtn.setBounds(228, 90, 97, 23);
 		memberJoinPannel.add(passCheckBtn);
 		
 		JLabel lblNewLabel_8 = new JLabel("(예)1999/01/01)");

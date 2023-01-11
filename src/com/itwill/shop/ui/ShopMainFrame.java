@@ -38,6 +38,9 @@ import com.itwill.shop.ui.김준.ProductDetailPanel;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import com.itwill.shop.ui.김강산.CartListPanel;
+import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ShopMainFrame extends JFrame {
 	
@@ -55,6 +58,7 @@ public class ShopMainFrame extends JFrame {
 	public static final int PANEL_ORDER_CREATE = 8;
 	public static final int PANEL_ORDER_LIST = 9;
 	public static final int PANEL_ORDER_DETAIL = 10;
+	public static final int PANEL_MAIN = 11;
 	
 	/*
 	 * 1. Service 객체 선언
@@ -84,6 +88,8 @@ public class ShopMainFrame extends JFrame {
 	public OrderCreatePanel orderCreatePanel;
 	public OrderListPanel orderListPanel;
 	public CartListPanel cartListPanel;
+	public JPanel mainPanel;
+	public JLabel mainPageLB;
 	/**
 	 * Launch the application.
 	 */
@@ -138,6 +144,12 @@ public class ShopMainFrame extends JFrame {
 		contentPane.add(globalSouthMenuPanel, BorderLayout.SOUTH);
 		
 		JButton globalSearchMenuButton = new JButton("");
+		globalSearchMenuButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				changePanel(PANEL_PRODUCT_LIST, null);
+			}
+		});
 		globalSearchMenuButton.setContentAreaFilled(false);
 		globalSearchMenuButton.setBorderPainted(false);
 		globalSearchMenuButton.setOpaque(false);
@@ -147,6 +159,12 @@ public class ShopMainFrame extends JFrame {
 		globalSouthMenuPanel.add(globalSearchMenuButton);
 		
 		JButton globalHomeMenuButton = new JButton("");
+		globalHomeMenuButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				changePanel(PANEL_MAIN, null);
+			}
+		});
 		globalHomeMenuButton.setContentAreaFilled(false);
 		globalHomeMenuButton.setBorderPainted(false);
 		globalHomeMenuButton.setOpaque(false);
@@ -156,6 +174,12 @@ public class ShopMainFrame extends JFrame {
 		globalSouthMenuPanel.add(globalHomeMenuButton);
 		
 		JButton globalMemberMenuButton = new JButton("");
+		globalMemberMenuButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				changePanel(PANEL_CART, null);
+			}
+		});
 		globalMemberMenuButton.setContentAreaFilled(false);
 		globalMemberMenuButton.setBorderPainted(false);
 		globalMemberMenuButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -200,6 +224,33 @@ public class ShopMainFrame extends JFrame {
 				}
 			}
 		});
+		
+		mainPanel = new JPanel();
+		mainPanel.setBackground(new Color(255, 255, 255));
+		mainPanel.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		shopTabbedPane.addTab("메인", null, mainPanel, null);
+		mainPanel.setLayout(new BorderLayout(0, 0));
+		
+		mainPageLB = new JLabel("");
+		mainPageLB.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (loginMember == null) {
+					changePanel(PANEL_MEMBER_LOGIN, null);
+				} else {
+					changePanel(PANEL_PRODUCT_LIST, null);
+				}
+				
+			}
+		});
+		
+		mainPageLB.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		
+		mainPageLB.setAlignmentX(Component.CENTER_ALIGNMENT);
+		mainPageLB.setHorizontalAlignment(SwingConstants.CENTER);
+		mainPageLB.setHorizontalTextPosition(SwingConstants.CENTER);
+		mainPageLB.setIcon(new ImageIcon(ShopMainFrame.class.getResource("/images/든든마켓 보라.png")));
+		mainPanel.add(mainPageLB, BorderLayout.CENTER);
 		shopTabbedPane.addTab("회원", null, memberTabbedPane, null);
 		
 		memberLoginPanel = new MemberLoginPanel();
@@ -229,7 +280,7 @@ public class ShopMainFrame extends JFrame {
 		shopTabbedPane.addTab("장바구니", null, cartTabbedPane, null);
 		
 		cartListPanel = new CartListPanel();
-		cartTabbedPane.addTab("New tab", null, cartListPanel, null);
+		cartTabbedPane.addTab("나의 장바구니", null, cartListPanel, null);
 		
 		orderTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		shopTabbedPane.addTab("주문", null, orderTabbedPane, null);
@@ -264,7 +315,49 @@ public class ShopMainFrame extends JFrame {
 		
 		
 	}// 생성자 끝
+	public void changePanel(int panel_no, Object data) {
+		if (panel_no == PANEL_MEMBER_LOGIN) {
+			shopTabbedPane.setSelectedIndex(1);
+			memberTabbedPane.setSelectedIndex(0);
+		} else if (panel_no == PANEL_MEMBER_JOIN) {
+			shopTabbedPane.setSelectedIndex(1);
+			memberTabbedPane.setSelectedIndex(1);
+		} else if (panel_no == PANEL_MEMBER_INFO) {
+			shopTabbedPane.setSelectedIndex(1);
+			memberTabbedPane.setSelectedIndex(2);
+		} else if (panel_no == PANEL_PRODUCT_LIST) {
+			shopTabbedPane.setSelectedIndex(2);
+			productTabbedPane.setSelectedIndex(0);
+		} else if (panel_no == PANEL_PRODUCT_RECOMMEND) {
+			shopTabbedPane.setSelectedIndex(2);
+			productTabbedPane.setSelectedIndex(1);
+		} else if (panel_no == PANEL_PRODUCT_DETAIL) {
+			Product product = (Product)data;
+			//System.out.println("recv product" + product);
+			shopTabbedPane.setSelectedIndex(2);
+			productTabbedPane.setSelectedIndex(2);
+			productDetailPanel.displayProductDetail(product);
+		} else if (panel_no == PANEL_CART) {
+			shopTabbedPane.setSelectedIndex(3);
+			cartTabbedPane.setSelectedIndex(0);
+		} else if (panel_no == PANEL_ORDER_CREATE) {
+			shopTabbedPane.setSelectedIndex(4);
+			orderTabbedPane.setSelectedIndex(0);
+		} else if (panel_no == PANEL_ORDER_LIST) {
+			shopTabbedPane.setSelectedIndex(4);
+			orderTabbedPane.setSelectedIndex(1);
+		} else if (panel_no == PANEL_ORDER_DETAIL) {
+			shopTabbedPane.setSelectedIndex(4);
+			orderTabbedPane.setSelectedIndex(2);
+		}else if (panel_no == PANEL_MAIN) {
+			shopTabbedPane.setSelectedIndex(0);
+			orderTabbedPane.setSelectedIndex(0);
+		}
+
+	}
 	
+	
+	/*
 	public void changePanel(int panel_no, Object data) {
 		if (panel_no == PANEL_MEMBER_LOGIN) {
 			shopTabbedPane.setSelectedIndex(0);
@@ -299,9 +392,13 @@ public class ShopMainFrame extends JFrame {
 		} else if (panel_no == PANEL_ORDER_DETAIL) {
 			shopTabbedPane.setSelectedIndex(3);
 			orderTabbedPane.setSelectedIndex(2);
+		}else if (panel_no == PANEL_MAIN) {
+			shopTabbedPane.setSelectedIndex(4);
+			orderTabbedPane.setSelectedIndex(4);
 		}
 
 	}
+	*/
 
 	
 	

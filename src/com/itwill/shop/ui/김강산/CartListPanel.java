@@ -251,6 +251,7 @@ public class CartListPanel extends JPanel {
 
 		// loginMember객체생성
 		
+		
 		//loginMember = frame.memberService.memberDetail(frame.loginMember.getM_id());
 		// 메인 메소드 호출 (수정)
 	
