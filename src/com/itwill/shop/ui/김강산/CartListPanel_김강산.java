@@ -39,21 +39,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.event.ChangeEvent;
 
 public class CartListPanel_김강산 extends JPanel {
-	/*
-	 * 프레임 참조
-	 */
-	ShopMainFrame frame;
-	/*
-	 * Service 멤버변수 선언
-	 */
-	private CartService cartService;
-	private ProductService productService;
-	private OrderService orderService;
-	/*
-	 * login member 선언
-	 */
-	private Member loginMember;
-	private JPanel finalPricePanel;
+	private JLabel cartTextLB;
+	private JPanel finalPrice;
 	private JButton orderBtn;
 	private JLabel finalCartListTotalLB;
 	private JLabel baesongLB;
@@ -88,63 +75,68 @@ public class CartListPanel_김강산 extends JPanel {
 		setLayout(null);
 
 		JPanel cartscrollMain = new JPanel();
-		cartscrollMain.setBackground(Color.WHITE);
 		cartscrollMain.setBounds(0, 0, 360, 540);
 		add(cartscrollMain);
 		cartscrollMain.setLayout(null);
 
 		orderBtn = new JButton("구매하기");
-		orderBtn.setForeground(new Color(255, 255, 255));
-		orderBtn.setBackground(new Color(147, 112, 219));
 		orderBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// 오더창으로 넘어가기
 			}
 		});
-		orderBtn.setFont(new Font("D2Coding", Font.PLAIN, 18));
-		orderBtn.setBounds(77, 342, 169, 33);
+		orderBtn.setFont(new Font("D2Coding", Font.PLAIN, 20));
+		orderBtn.setBounds(12, 478, 336, 52);
 		cartscrollMain.add(orderBtn);
 
-		finalPricePanel = new JPanel();
-		finalPricePanel.setBackground(new Color(240, 255, 240));
-		finalPricePanel.setBounds(7, 261, 317, 75);
-		cartscrollMain.add(finalPricePanel);
-		finalPricePanel.setLayout(null);
+		finalPrice = new JPanel();
+		finalPrice.setBounds(12, 405, 336, 75);
+		cartscrollMain.add(finalPrice);
+		finalPrice.setLayout(null);
 
 		JLabel productTotalPriceTF = new JLabel("상품금액");
-		productTotalPriceTF.setFont(new Font("D2Coding", Font.PLAIN, 12));
-		productTotalPriceTF.setBounds(12, 10, 48, 15);
-		finalPricePanel.add(productTotalPriceTF);
+		productTotalPriceTF.setFont(new Font("굴림", Font.PLAIN, 12));
+		productTotalPriceTF.setBounds(12, 2, 48, 25);
+		finalPrice.add(productTotalPriceTF);
 
 		JLabel baesongbiTF = new JLabel("배송비");
-		baesongbiTF.setFont(new Font("D2Coding", Font.PLAIN, 12));
 		baesongbiTF.setBounds(12, 27, 48, 15);
-		finalPricePanel.add(baesongbiTF);
+		finalPrice.add(baesongbiTF);
 
-		JLabel FinalPriceTF = new JLabel("총 결제금액");
-		FinalPriceTF.setFont(new Font("D2Coding", Font.BOLD, 16));
-		FinalPriceTF.setBounds(12, 44, 98, 23);
-		finalPricePanel.add(FinalPriceTF);
+		JLabel FinalPriceTF = new JLabel("총결제금액");
+		FinalPriceTF.setFont(new Font("D2Coding", Font.BOLD, 14));
+		FinalPriceTF.setBounds(12, 44, 81, 23);
+		finalPrice.add(FinalPriceTF);
 
 		cartListTotalLB = new JLabel("100000원");
-		cartListTotalLB.setFont(new Font("D2Coding", Font.PLAIN, 12));
-		cartListTotalLB.setHorizontalAlignment(SwingConstants.TRAILING);
-		cartListTotalLB.setBounds(195, 10, 108, 15);
+		cartListTotalLB.setHorizontalAlignment(SwingConstants.RIGHT);
+		cartListTotalLB.setBounds(264, 10, 60, 15);
 		cartListTotalLB.setText(addCartListTotal() + "원");
-		finalPricePanel.add(cartListTotalLB);
+		finalPrice.add(cartListTotalLB);
 
+		
 		baesongLB = new JLabel("3000원");
-		baesongLB.setFont(new Font("D2Coding", Font.PLAIN, 12));
-		baesongLB.setHorizontalAlignment(SwingConstants.TRAILING);
-		baesongLB.setBounds(205, 27, 98, 15);
-		finalPricePanel.add(baesongLB);
+		baesongLB.setHorizontalAlignment(SwingConstants.RIGHT);
+		baesongLB.setBounds(276, 27, 48, 15);
+		finalPrice.add(baesongLB);
 
 		finalCartListTotalLB = new JLabel("103000원");
 		finalCartListTotalLB.setFont(new Font("D2Coding", Font.PLAIN, 14));
-		finalCartListTotalLB.setHorizontalAlignment(SwingConstants.TRAILING);
-		finalCartListTotalLB.setBounds(195, 46, 108, 19);
+		finalCartListTotalLB.setHorizontalAlignment(SwingConstants.RIGHT);
+		finalCartListTotalLB.setBounds(243, 44, 81, 19);
 		finalCartListTotalLB.setText(finalCartListTotal() + "원");
-		finalPricePanel.add(finalCartListTotalLB);
+		finalPrice.add(finalCartListTotalLB);
+
+		JPanel northPanel = new JPanel();
+		northPanel.setLayout(null);
+		northPanel.setBounds(0, 0, 360, 75);
+		cartscrollMain.add(northPanel);
+
+		cartTextLB = new JLabel("장바구니");
+		cartTextLB.setHorizontalAlignment(SwingConstants.CENTER);
+		cartTextLB.setFont(new Font("D2Coding", Font.PLAIN, 25));
+		cartTextLB.setBounds(104, 10, 134, 48);
+		northPanel.add(cartTextLB);
 		
 		allCartDelete = new JButton("전체삭제");
 		allCartDelete.addActionListener(new ActionListener() {
@@ -162,20 +154,16 @@ public class CartListPanel_김강산 extends JPanel {
 		
 
 		cartListScrollPane = new JScrollPane();
-		cartListScrollPane.setBackground(Color.WHITE);
-		cartListScrollPane.setBounds(0, 0, 326, 254);
+		cartListScrollPane.setBounds(0, 85, 354, 310);
 		cartscrollMain.add(cartListScrollPane);
 
 		cartListPanel = new JPanel();
-		cartListPanel.setBackground(Color.WHITE);
-		cartListPanel.setPreferredSize(new Dimension(10, 1500));
-
+		cartListPanel.setPreferredSize(new Dimension(10, 700));
 		cartListScrollPane.setViewportView(cartListPanel);
 
 		/**************** cart panel ******************/
 
 		cartPanel = new JPanel();
-		cartPanel.setBackground(Color.WHITE);
 		cartPanel.setPreferredSize(new Dimension(320, 130));
 		cartPanel.setLayout(null);
 
@@ -187,7 +175,7 @@ public class CartListPanel_김강산 extends JPanel {
 		});
 		productImgBtn.setIcon(new ImageIcon(CartListPanel_김강산.class.getResource("/images/떡볶이_작은.jpg")));
 		productImgBtn.setBackground(Color.WHITE);
-		productImgBtn.setBounds(9, 6, 102, 118);
+		productImgBtn.setBounds(19, 10, 97, 65);
 		cartPanel.add(productImgBtn);
 
 		exitBtn = new JButton("");
@@ -197,30 +185,26 @@ public class CartListPanel_김강산 extends JPanel {
 		cartPanel.add(exitBtn);
 
 		cartProductDesc = new JLabel();
-		cartProductDesc.setFont(new Font("D2Coding", Font.PLAIN, 12));
-		cartProductDesc.setBounds(128, 37, 180, 62);
-
+		cartProductDesc.setFont(new Font("굴림", Font.PLAIN, 10));
+		cartProductDesc.setBounds(128, 10, 192, 79);
 		cartPanel.add(cartProductDesc);
 
 		cartProductAddPrice = new JLabel("상품금액");
-		cartProductAddPrice.setHorizontalAlignment(SwingConstants.TRAILING);
 		cartProductAddPrice.setFont(new Font("D2Coding", Font.PLAIN, 14));
-		cartProductAddPrice.setBounds(240, 105, 68, 15);
+		cartProductAddPrice.setBounds(225, 101, 68, 15);
 		cartPanel.add(cartProductAddPrice);
 
 		JComboBox productQty = new JComboBox();
-		productQty.setBackground(new Color(240, 255, 240));
 		productQty.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
 				"11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
-		productQty.setBounds(138, 97, 32, 23);
+		productQty.setBounds(52, 97, 32, 23);
 		cartPanel.add(productQty);
 
 		/**********************************************/
 		cartListPanel.add(cartPanel);
 		
 		cartProductName = new JLabel();
-		cartProductName.setFont(new Font("D2Coding", Font.PLAIN, 12));
-		cartProductName.setBounds(128, 10, 152, 29);
+		cartProductName.setBounds(128, 10, 152, 43);
 		cartPanel.add(cartProductName);
 
 		// 서비스 생성자 생성
