@@ -255,13 +255,6 @@ public class MemberDetailPanel_최민영 extends JPanel {
 	 * 로그아웃시 해야할 일 메소드
 	 */
 	private void logoutProcess() {
-		/***************** 로그아웃 성공시 해야할 일 ********************
-		 1. 로그인 성공한 멤버객체를 멤버필드에서 제거
-		 2. MemberMainFrame 타이틀 변경
-		 3. 로그인 탭, 회원가입 탭 활성화, 회원정보 탭 불활성화, 
-		 	
-		 4. 메인 탭으로 화면 전환
-		 **************************************************************/
 		
 		//1. 로그인 성공한 멤버객체를 멤버필드에서 제거
 		this.loginMember = null;
@@ -271,8 +264,16 @@ public class MemberDetailPanel_최민영 extends JPanel {
 		frame.memberTabbedPane.setEnabledAt(0, true);
 		frame.memberTabbedPane.setEnabledAt(1, true);
 		frame.memberTabbedPane.setEnabledAt(2, false);
-		// 4.상품 전체보기로 화면전환
+		// 4. 상품 전체보기로 화면전환
 		frame.changePanel(ShopMainFrame.PANEL_PRODUCT_LIST, null);
+		// 5. 회원 정보 빈칸 처리
+		infoIdTF.setText("");
+		infoPassTF.setText("");
+		infoNameTF.setText("");
+		infoPhoneTF.setText("");
+		infoBdayTF.setText("");
+		infoMailTF.setText("");
+		infoAddressTF.setText("");	
 		
 	}
 	

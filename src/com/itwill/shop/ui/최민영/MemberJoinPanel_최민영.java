@@ -254,13 +254,11 @@ public class MemberJoinPanel_최민영 extends JPanel {
 				idTF.requestFocus();
 				return;
 			}
-
 			if (password.equals("")) {
 				pwMsgLb.setText("비밀번호를 입력하세요.");
 				passwordTF.requestFocus();
 				return;
 			}
-
 			Member newMember = new Member(id, password, name, phone, new SimpleDateFormat("yyyy/MM/dd").parse(bday),
 					email, address);
 			boolean isAdd = memberService.addMember(newMember);
@@ -271,6 +269,17 @@ public class MemberJoinPanel_최민영 extends JPanel {
 				 * 로그인 화면 전환
 				 */
 				frame.memberTabbedPane.setSelectedIndex(0);
+				/*
+				 * 회원가입 성공 시 회원가입 때 작성한 정보 빈칸 만들기
+				 */
+				idTF.setText(""); 
+				passwordTF.setText("");
+				passCheckTF.setText("");
+				nameTF.setText("");
+				phoneTF.setText("");
+				bdayTF.setText("");
+				emailTF.setText("");
+				addressTF.setText("");
 			} else {
 				JOptionPane.showMessageDialog(null, "다시 확인바랍니다.");
 				idTF.requestFocus();
