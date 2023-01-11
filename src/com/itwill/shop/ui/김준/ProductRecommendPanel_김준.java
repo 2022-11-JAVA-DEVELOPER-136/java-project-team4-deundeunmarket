@@ -54,7 +54,7 @@ public class ProductRecommendPanel_김준 extends JPanel {
 	/*
 	 * logInMember 객체 선언
 	 */
-	Member loginMember;
+	public Member loginMember;
 	Product product;
 	/*****************************************/
 
@@ -365,6 +365,10 @@ setLayout(null);
 	
 	public void setFrame(ShopMainFrame frame) {
 		this.frame = frame;
+	}
+
+	public void setLoginMember(Member loginMember) {
+		this.loginMember = loginMember;
 	}
 
 	/*	private void productList() throws Exception {

@@ -70,11 +70,11 @@ public class ShopMainFrame_최민영 extends JFrame {
 		/***********서비스객체 생성**************/
 		memberService = new MemberService();
 		
-		/*******ShopMainFrame참조를 Panel에 넘겨줌*******/
+		/*******ShopMainFrame참조를 Panel에 넘겨줌*******
 		memberDetailPanel.setFrame(this);
 		memberJoinPanel.setFrame(this);
 		memberLoginPanel.setFrame(this);
-		
+		*/
 		
 		JTabbedPane memberTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		memberTabbedPane.setBounds(0, 0, 458, 615);

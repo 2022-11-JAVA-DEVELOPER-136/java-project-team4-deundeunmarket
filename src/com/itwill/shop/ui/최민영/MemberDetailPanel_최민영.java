@@ -33,7 +33,7 @@ public class MemberDetailPanel_최민영 extends JPanel {
 	/************* 로그인 한 회원 ****************/
 	//private Member loginMember= new Member("sy3", "3333", "홍길동", "010-1234-5677", null, "test@gmail.com", "화성시");
 	//테스트용 --> 합치고 Member loginMember = null;로 주면된다.
-	private Member loginMember = null;
+	public Member loginMember = null;
 	
 	
 	public JTextField infoIdTF;
@@ -203,6 +203,10 @@ public class MemberDetailPanel_최민영 extends JPanel {
 	
 	public void setFrame(ShopMainFrame frame) {
 		this.frame = frame;
+	}
+	
+	public void setLoginMember(Member loginMember) {
+		this.loginMember = loginMember;
 	}
 
 	/************* 수정폼(수정하기) method - 회원정보 수정 가능하도록***************/

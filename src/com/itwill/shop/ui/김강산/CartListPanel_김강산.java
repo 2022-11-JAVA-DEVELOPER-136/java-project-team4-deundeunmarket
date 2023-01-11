@@ -38,6 +38,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.event.ChangeEvent;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class CartListPanel_김강산 extends JPanel {
 	/*
@@ -53,7 +55,7 @@ public class CartListPanel_김강산 extends JPanel {
 	/*
 	 * login member 선언
 	 */
-	private Member loginMember;
+	public Member loginMember;
 	
 	private JPanel finalPricePanel;
 	private JButton orderBtn;
@@ -78,10 +80,17 @@ public class CartListPanel_김강산 extends JPanel {
 	// ****************카트리스트패널만들기******************
 
 	public CartListPanel_김강산() throws Exception {
+		
 
 		setLayout(null);
 
 		JPanel cartListMainPanel = new JPanel();
+		cartListMainPanel.addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentShown(ComponentEvent e) {
+				System.out.println(frame.loginMember);
+			}
+		});
 		cartListMainPanel.setBackground(Color.WHITE);
 		cartListMainPanel.setBounds(0, 0, 360, 540);
 		add(cartListMainPanel);
@@ -144,7 +153,7 @@ public class CartListPanel_김강산 extends JPanel {
 		allCartDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					cartService.deleteCartItemByMemberId(loginMember.getM_id());
+					cartService.deleteCartItemByMemberId(frame.loginMember.getM_id());
 					refresh();
 				} catch (Exception e1) {
 					e1.getMessage();
@@ -233,10 +242,9 @@ public class CartListPanel_김강산 extends JPanel {
 
 		// loginMember객체생성
 
-		//loginMember = new Member("sy0", null, null, null, null, null, null);
-		//frame.loginMember = frame.memberService.memberDetail(loginMember.getM_id());
-		
-		// 메인 메소드 호출
+		loginMember = new Member("sy0", null, null, null, null, null, null);
+		//loginMember = frame.memberService.memberDetail(frame.loginMember.getM_id());
+		// 메인 메소드 호출 (수정)
 		displayCartList();
 
 	}// 생성자 끝
@@ -245,7 +253,9 @@ public class CartListPanel_김강산 extends JPanel {
 		this.frame = frame;
 	}
 
-
+	public void setLoginMember(Member loginMember) {
+		this.loginMember = loginMember;
+	}
 
 	List<Cart> selectedCartList = null;
 	JCheckBox[] cartCBArray = null;
@@ -253,8 +263,16 @@ public class CartListPanel_김강산 extends JPanel {
 	private JButton F5Btn;
 	private JButton allCartDelete;
 
-		// 메인 메소드
-
+	// 메인 메소드
+	/*
+	 * 카트 보여주기 메소드(수정)
+	 */
+	
+	
+	/*
+	 * 카트 보여주기 메소드
+	 */
+	
 	public void displayCartList() throws Exception {
 		List<Cart> cartList = cartService.getCartItemByMemberId(loginMember.getM_id());
 		cartListPanel.removeAll();
@@ -339,24 +357,32 @@ public class CartListPanel_김강산 extends JPanel {
 			});
 
 			cartListPanel.add(cartPanel);
+	 
 
 			/*******************/
 
 		}
 
 	}
+	
+	
 
 	// 메소드 내 메소드
 
-	// 배송비 제외 카트리스트 합계
-
+	// 배송비 제외 카트리스트 합계 (수정)
+	/*
+	public String addCartListTotal() throws Exception {
+		loginMember = new Member("sy0", null, null, null, null, null, null);
+		cartService = new CartService();
+		return Integer.toString(cartService.addCartListTotal(frame.loginMember.getM_id()));
+	}
+	*/
 	public String addCartListTotal() throws Exception {
 		loginMember = new Member("sy0", null, null, null, null, null, null);
 		cartService = new CartService();
 		return Integer.toString(cartService.addCartListTotal(loginMember.getM_id()));
 
 	}
-
 	// 배송비 제외 카트리스트 합계
 
 	public String finalCartListTotal() throws Exception {
@@ -366,10 +392,17 @@ public class CartListPanel_김강산 extends JPanel {
 
 	}
 	
-	// 삭제시 새로고침 기능 추가
+	// 삭제시 새로고침 기능 추가 (수정)
 	public void refresh() throws Exception {
 		cartListTotalLB.setText(addCartListTotal() + "원");
 		finalCartListTotalLB.setText(finalCartListTotal() + "원");
 		displayCartList();
 	}
+	/*
+	 * 	public void refresh() throws Exception {
+		cartListTotalLB.setText(addCartListTotal() + "원");
+		finalCartListTotalLB.setText(finalCartListTotal() + "원");
+		displayCartList();
+	}
+	 */
 }

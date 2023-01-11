@@ -40,6 +40,8 @@ import java.awt.Rectangle;
 import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class ProductListPanel_김준 extends JPanel {
 	/*
@@ -55,7 +57,7 @@ public class ProductListPanel_김준 extends JPanel {
 	/*
 	 * logInMember 객체 선언
 	 */
-	Member loginMember;
+	public Member loginMember;
 	/*****************************************/
 	
 	private JLabel ProductListLB;
@@ -68,6 +70,7 @@ public class ProductListPanel_김준 extends JPanel {
 	 */
 
 	public ProductListPanel_김준() throws Exception {
+	
 		setBackground(new Color(255, 255, 255));
 		setLayout(null);
 		
@@ -127,6 +130,10 @@ public class ProductListPanel_김준 extends JPanel {
 		
 		
 		JButton cartBtn = new JButton("담기");
+		cartBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		cartBtn.setBackground(new Color(240, 255, 240));
 		cartBtn.setFont(new Font("D2Coding", Font.PLAIN, 12));
 		cartBtn.addMouseListener(new MouseAdapter() {
@@ -162,7 +169,8 @@ public class ProductListPanel_김준 extends JPanel {
 		productService = new ProductService();
 		cartService = new CartService();
 		
-		loginMember = new Member("sy1", null, null, null, null, null, null);
+		loginMember = new Member();
+		//loginMember = new Member("sy1", null, null, null, null, null, null);
 		productList();
 	}// 생성자 끝
 	
@@ -171,6 +179,10 @@ public class ProductListPanel_김준 extends JPanel {
 		productList();
 	}
 	
+	public void setLoginMember(Member loginMember) {
+		this.loginMember = loginMember;
+	}
+
 	private void productList() throws Exception {
 		List<Product> productList = productService.productList();
 		productListPanel.removeAll();
@@ -237,6 +249,7 @@ public class ProductListPanel_김준 extends JPanel {
 											product.getP_desc())));
 						if (isAdd >= 1) {
 							JOptionPane.showMessageDialog(null,"카트에 상품이 담겼습니다.");
+							frame.changePanel(ShopMainFrame.PANEL_CART, null);
 						}
 					} catch (Exception e1) {
 						e1.printStackTrace();

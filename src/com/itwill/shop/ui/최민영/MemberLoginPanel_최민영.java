@@ -25,7 +25,7 @@ public class MemberLoginPanel_최민영 extends JPanel {
 	private MemberService memberService;
 	
 	/*************로그인 한 회원****************/
-	private Member loginMember=null;
+	public Member loginMember=null;
 	
 	
 	public JTextField loginIdTF;
@@ -60,6 +60,7 @@ public class MemberLoginPanel_최민영 extends JPanel {
 		memberLoginPanel.add(passLB);
 		
 		loginIdTF = new JTextField();
+		loginIdTF.setText("aaaa");
 		loginIdTF.setBounds(147, 117, 128, 21);
 		memberLoginPanel.add(loginIdTF);
 		loginIdTF.setColumns(10);
@@ -90,6 +91,7 @@ public class MemberLoginPanel_최민영 extends JPanel {
 		memberLoginPanel.add(loginBtn);
 		
 		loginPassTF = new JPasswordField();
+		loginPassTF.setText("aaaa");
 		loginPassTF.setBounds(147, 167, 128, 21);
 		memberLoginPanel.add(loginPassTF);
 		
@@ -102,6 +104,10 @@ public class MemberLoginPanel_최민영 extends JPanel {
 	
 	public void setFrame(ShopMainFrame frame) {
 		this.frame = frame;
+	}
+	
+	public void setLoginMember(Member loginMember) {
+		this.loginMember = loginMember;
 	}
 
 	/**************로그인 성공 시 호출할 메쏘드***************/

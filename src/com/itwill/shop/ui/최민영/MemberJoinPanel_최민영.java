@@ -32,7 +32,7 @@ public class MemberJoinPanel_최민영 extends JPanel {
 	private MemberService memberService;
 	
 	/*************로그인 한 회원****************/
-	private Member loginMember = null;
+	public Member loginMember = null;
 	
 
 	private JTextField idTF;
@@ -229,12 +229,14 @@ public class MemberJoinPanel_최민영 extends JPanel {
 		
 		
 		memberService=new MemberService();
-	}
+	}// 생성자 끝
 	
 	public void setFrame(ShopMainFrame frame) {
 		this.frame = frame;
 	}
-
+	public void setLoginMember(Member loginMember) {
+		this.loginMember = loginMember;
+	}
 	/*************회원가입 method***********/
 	public void join() {
 		
