@@ -60,7 +60,7 @@ public class Product {
 	}
 
 	public String getP_desc() {
-		return p_desc;
+		return "\n"+p_desc;
 	}
 
 	public void setP_desc(String p_desc) {
