@@ -36,7 +36,7 @@ public class ShopMainFrame_김강산 extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		CartListPanel_김강산 cartListPanel_김강산 = new CartListPanel_김강산();
-		contentPane.add(cartListPanel_김강산, BorderLayout.CENTER);
+		CartListPanel_김강산2 cartListPanel_김강산2 = new CartListPanel_김강산2();
+		contentPane.add(cartListPanel_김강산2, BorderLayout.CENTER);
 	}
 }

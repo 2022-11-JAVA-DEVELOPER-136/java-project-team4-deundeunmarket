@@ -38,7 +38,7 @@ import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.event.ChangeEvent;
 
-public class CartListPanel_김강산 extends JPanel {
+public class CartListPanel_김강산2 extends JPanel {
 	private JLabel cartTextLB;
 	private JPanel finalPrice;
 	private JButton orderBtn;
@@ -70,7 +70,7 @@ public class CartListPanel_김강산 extends JPanel {
 
 	// ****************카트리스트패널만들기******************
 
-	public CartListPanel_김강산() throws Exception {
+	public CartListPanel_김강산2() throws Exception {
 
 		setLayout(null);
 
@@ -157,13 +157,13 @@ public class CartListPanel_김강산 extends JPanel {
 				// 상세보기 추가
 			}
 		});
-		productImgBtn.setIcon(new ImageIcon(CartListPanel_김강산.class.getResource("/images/떡볶이_작은.jpg")));
+		productImgBtn.setIcon(new ImageIcon(CartListPanel_김강산2.class.getResource("/images/떡볶이_작은.jpg")));
 		productImgBtn.setBackground(Color.WHITE);
 		productImgBtn.setBounds(19, 10, 97, 65);
 		cartPanel.add(productImgBtn);
 
 		exitBtn = new JButton("");
-		exitBtn.setIcon(new ImageIcon(CartListPanel_김강산.class.getResource("/images/close10.png")));
+		exitBtn.setIcon(new ImageIcon(CartListPanel_김강산2.class.getResource("/images/close10.png")));
 		exitBtn.setFont(new Font("D2Coding", Font.BOLD, 10));
 		exitBtn.setBounds(292, 10, 16, 15);
 		cartPanel.add(exitBtn);
@@ -225,7 +225,7 @@ public class CartListPanel_김강산 extends JPanel {
 			cartPanel.setLayout(null);
 
 			productImgBtn = new JButton("");
-			productImgBtn.setIcon(new ImageIcon(CartListPanel_김강산.class.getResource(cart.getProduct().getP_image())));
+			productImgBtn.setIcon(new ImageIcon(CartListPanel_김강산2.class.getResource(cart.getProduct().getP_image())));
 			productImgBtn.setBackground(Color.WHITE);
 			productImgBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -237,7 +237,7 @@ public class CartListPanel_김강산 extends JPanel {
 
 			// 장바구니 1개 삭제 X버튼
 			exitBtn = new JButton("");
-			exitBtn.setIcon(new ImageIcon(CartListPanel_김강산.class.getResource("/images/close10.png")));
+			exitBtn.setIcon(new ImageIcon(CartListPanel_김강산2.class.getResource("/images/close10.png")));
 			exitBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					try {
