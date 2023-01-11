@@ -64,78 +64,78 @@ public class MemberDetailPanel_최민영 extends JPanel {
 		
 		JLabel lblNewLabel = new JLabel("아이디");
 		lblNewLabel.setFont(new Font("D2Coding", Font.PLAIN, 12));
-		lblNewLabel.setBounds(74, 58, 70, 15);
+		lblNewLabel.setBounds(57, 53, 70, 15);
 		memberInfoPanel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("비밀번호");
 		lblNewLabel_1.setFont(new Font("D2Coding", Font.PLAIN, 12));
-		lblNewLabel_1.setBounds(74, 83, 70, 15);
+		lblNewLabel_1.setBounds(57, 78, 70, 15);
 		memberInfoPanel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("이름");
 		lblNewLabel_2.setFont(new Font("D2Coding", Font.PLAIN, 12));
-		lblNewLabel_2.setBounds(74, 109, 70, 15);
+		lblNewLabel_2.setBounds(57, 104, 70, 15);
 		memberInfoPanel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("전화번호");
 		lblNewLabel_3.setFont(new Font("D2Coding", Font.PLAIN, 12));
-		lblNewLabel_3.setBounds(74, 134, 70, 15);
+		lblNewLabel_3.setBounds(57, 129, 70, 15);
 		memberInfoPanel.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("생일");
 		lblNewLabel_4.setFont(new Font("D2Coding", Font.PLAIN, 12));
-		lblNewLabel_4.setBounds(74, 170, 70, 15);
+		lblNewLabel_4.setBounds(57, 165, 70, 15);
 		memberInfoPanel.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("이메일");
 		lblNewLabel_5.setFont(new Font("D2Coding", Font.PLAIN, 12));
-		lblNewLabel_5.setBounds(74, 195, 70, 15);
+		lblNewLabel_5.setBounds(57, 190, 70, 15);
 		memberInfoPanel.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("주소");
 		lblNewLabel_6.setFont(new Font("D2Coding", Font.PLAIN, 12));
-		lblNewLabel_6.setBounds(74, 221, 70, 15);
+		lblNewLabel_6.setBounds(57, 216, 70, 15);
 		memberInfoPanel.add(lblNewLabel_6);
 		
 		infoIdTF = new JTextField();
 		infoIdTF.setEnabled(false);
 		infoIdTF.setEditable(false);
-		infoIdTF.setBounds(156, 55, 96, 21);
+		infoIdTF.setBounds(132, 47, 138, 21);
 		memberInfoPanel.add(infoIdTF);
 		infoIdTF.setColumns(10);
 		
 		infoPassTF = new JPasswordField();
 		infoPassTF.setEditable(false);
-		infoPassTF.setBounds(156, 80, 96, 21);
+		infoPassTF.setBounds(132, 72, 138, 21);
 		memberInfoPanel.add(infoPassTF);
 		
 		infoNameTF = new JTextField();
 		infoNameTF.setEditable(false);
-		infoNameTF.setBounds(156, 105, 96, 21);
+		infoNameTF.setBounds(132, 97, 138, 21);
 		memberInfoPanel.add(infoNameTF);
 		infoNameTF.setColumns(10);
 		
 		infoPhoneTF = new JTextField();
 		infoPhoneTF.setEditable(false);
-		infoPhoneTF.setBounds(156, 130, 96, 21);
+		infoPhoneTF.setBounds(132, 122, 138, 21);
 		memberInfoPanel.add(infoPhoneTF);
 		infoPhoneTF.setColumns(10);
 		
 		infoBdayTF = new JTextField();
 		infoBdayTF.setEditable(false);
-		infoBdayTF.setBounds(156, 168, 96, 21);
+		infoBdayTF.setBounds(132, 160, 138, 21);
 		memberInfoPanel.add(infoBdayTF);
 		infoBdayTF.setColumns(10);
 		
 		infoMailTF = new JTextField();
 		infoMailTF.setEditable(false);
-		infoMailTF.setBounds(156, 192, 96, 21);
+		infoMailTF.setBounds(132, 184, 138, 21);
 		memberInfoPanel.add(infoMailTF);
 		infoMailTF.setColumns(10);
 		
 		infoAddressTF = new JTextField();
 		infoAddressTF.setEditable(false);
-		infoAddressTF.setBounds(156, 217, 96, 21);
+		infoAddressTF.setBounds(132, 209, 138, 21);
 		memberInfoPanel.add(infoAddressTF);
 		infoAddressTF.setColumns(10);
 		
@@ -148,7 +148,7 @@ public class MemberDetailPanel_최민영 extends JPanel {
 				updateForm();
 			}
 		});
-		updateFormBtn.setBounds(36, 278, 90, 23);
+		updateFormBtn.setBounds(66, 276, 90, 23);
 		memberInfoPanel.add(updateFormBtn);
 		
 		updateBtn = new JButton("수정완료");
@@ -159,7 +159,7 @@ public class MemberDetailPanel_최민영 extends JPanel {
 				update();
 			}
 		});
-		updateBtn.setBounds(128, 278, 90, 23);
+		updateBtn.setBounds(171, 275, 90, 23);
 		memberInfoPanel.add(updateBtn);
 		
 		JButton deleteBtn = new JButton("회원탈퇴");
@@ -171,18 +171,29 @@ public class MemberDetailPanel_최민영 extends JPanel {
 				frame.changePanel(ShopMainFrame.PANEL_PRODUCT_LIST, null);
 			}
 		});
-		deleteBtn.setBounds(221, 278, 90, 23);
+		deleteBtn.setBounds(66, 304, 90, 23);
 		memberInfoPanel.add(deleteBtn);
 		
 		infoMsgLB = new JLabel("");
 		infoMsgLB.setForeground(Color.RED);
-		infoMsgLB.setBounds(57, 21, 213, 15);
+		infoMsgLB.setBounds(48, 21, 222, 22);
 		memberInfoPanel.add(infoMsgLB);
 		
 		memberBdayLB = new JLabel("(예)1999/01/01)");
 		memberBdayLB.setFont(new Font("D2Coding", Font.PLAIN, 12));
-		memberBdayLB.setBounds(156, 153, 117, 15);
+		memberBdayLB.setBounds(153, 145, 117, 15);
 		memberInfoPanel.add(memberBdayLB);
+		
+		JButton logoutBtn = new JButton("로그아웃");
+		logoutBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				logoutProcess();
+			}
+		});
+		logoutBtn.setBackground(new Color(240, 255, 240));
+		logoutBtn.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		logoutBtn.setBounds(171, 304, 90, 23);
+		memberInfoPanel.add(logoutBtn);
 		
 		memberService = new MemberService();
 		
@@ -238,6 +249,31 @@ public class MemberDetailPanel_최민영 extends JPanel {
 		} catch (Exception e1) {
 			System.out.println(e1.getMessage());
 		}
+	}
+
+	/*
+	 * 로그아웃시 해야할 일 메소드
+	 */
+	private void logoutProcess() {
+		/***************** 로그아웃 성공시 해야할 일 ********************
+		 1. 로그인 성공한 멤버객체를 멤버필드에서 제거
+		 2. MemberMainFrame 타이틀 변경
+		 3. 로그인 탭, 회원가입 탭 활성화, 회원정보 탭 불활성화, 
+		 	
+		 4. 메인 탭으로 화면 전환
+		 **************************************************************/
+		
+		//1. 로그인 성공한 멤버객체를 멤버필드에서 제거
+		this.loginMember = null;
+		//2. MemberMainFrame 타이틀 변경
+		frame.setTitle("든든마켓");
+		//3. 로그인 탭, 회원가입 탭 활성화, 회원정보 탭 불활성화
+		frame.memberTabbedPane.setEnabledAt(0, true);
+		frame.memberTabbedPane.setEnabledAt(1, true);
+		frame.memberTabbedPane.setEnabledAt(2, false);
+		// 4.상품 전체보기로 화면전환
+		frame.changePanel(ShopMainFrame.PANEL_PRODUCT_LIST, null);
+		
 	}
 	
 	/************** 회원탈퇴 method ***************************/
@@ -296,8 +332,4 @@ public class MemberDetailPanel_최민영 extends JPanel {
 		infoMailTF.setText(member.getM_email());
 		infoAddressTF.setText(member.getM_address());	
 	}
-	
-	
-	
-	
 }
