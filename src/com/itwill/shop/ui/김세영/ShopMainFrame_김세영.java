@@ -1,4 +1,4 @@
-package com.itwill.shop.ui;
+package com.itwill.shop.ui.김세영;
 
 import java.awt.EventQueue;
 
@@ -232,15 +232,15 @@ public class ShopMainFrame_김세영 extends JFrame {
 		
 		
 		/******* ShopMainFrame 참조를 Panel에 넘겨줌 *******/
-		memberLoginPanel.setFrame(this);
-		memberJoinPanel.setFrame(this);
-		memberDetailPanel.setFrame(this);
+		//memberLoginPanel.setFrame(this);
+		//memberJoinPanel.setFrame(this);
+		//memberDetailPanel.setFrame(this);
 		/***************수정**************/
-		productListPanel.setFrame(this);
-		productDetailPanel.setFrame(this);
-		productRecommendPanel.setFrame(this);
+		//productListPanel.setFrame(this);
+		//productDetailPanel.setFrame(this);
+		//productRecommendPanel.setFrame(this);
 		
-		orderListPanel.setFrame(this);
+		//orderListPanel.setFrame(this);
 		
 	}// 생성자 끝
 	/***************패널 변경 메소드******************/
