@@ -93,6 +93,7 @@ public class CartListPanel extends JPanel {
 		cartListMainPanel.setLayout(null);
 
 		orderBtn = new JButton("구매하기");
+		orderBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		orderBtn.setForeground(new Color(255, 255, 255));
 		orderBtn.setBackground(new Color(147, 112, 219));
 		orderBtn.addActionListener(new ActionListener() {
@@ -225,6 +226,7 @@ public class CartListPanel extends JPanel {
 		cartPanel.add(cartProductName);
 		
 		JButton deleteAllBtn = new JButton("전체삭제");
+		deleteAllBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		deleteAllBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
