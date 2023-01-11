@@ -222,7 +222,7 @@ public class ShopMainFrame extends JFrame {
 		/***************수정**************/
 		productListPanel.setFrame(this);
 		productDetailPanel.setFrame(this);
-		
+		productRecommendPanel.setFrame(this);
 		
 	}// 생성자 끝
 	/***************패널 변경 메소드******************/
