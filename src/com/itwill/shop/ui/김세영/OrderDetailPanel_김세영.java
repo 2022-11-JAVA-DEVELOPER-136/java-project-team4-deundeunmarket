@@ -41,7 +41,9 @@ public class OrderDetailPanel_김세영 extends JPanel {
 	 */
 	public OrderDetailPanel_김세영() throws Exception {
 		
-		//Order order = orderService.orderDetail(loginMember.getM_id(), 1);
+		orderService = new OrderService();
+		loginMember = new Member("sy0", null, "김세영", null, null, null, null);
+		Order order = orderService.orderDetail(loginMember.getM_id(), 8);//1 --> o_no
 		
 		setLayout(null);
 		
@@ -212,27 +214,40 @@ public class OrderDetailPanel_김세영 extends JPanel {
 		goBackButton.setBounds(198, 480, 97, 23);
 		add(goBackButton);
 		*/
+		//새로고침기능 테스트용 버튼. 합칠 때 지우자.
+		JButton refreshButton = new JButton("새로고침");
+		refreshButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					displayOrderDetail(order);
+				} catch (Exception e1) {
+					e1.getMessage();
+				}
+			}
+		});
+		refreshButton.setBounds(117, 262, 97, 23);
+		add(refreshButton);
+		
 		/******************************/
 		/*
 		 * Service객체 생성
 		 */
-		orderService = new OrderService();
+		//orderService = new OrderService();
 		
 		/*
 		 * loginMember객체 생성. 취합시 ShopMainFrame의 멤버필드에 위치한 loginMember를 가져와서 사용해야 함.
 		 */
-		loginMember = new Member("sy0", null, "김세영", null, null, null, null);
+		//loginMember = new Member("sy0", null, "김세영", null, null, null, null);
 		
 		/*
 		 * orderService.orderDetail을 사용해서 다 채워진 order객체 생성. 취합시 OrderListPanel에서 o_no를 받아서 사용해야 함.
 		 */
-		Order order = orderService.orderDetail(loginMember.getM_id(), 1);//1 --> o_no
+		//Order order = orderService.orderDetail(loginMember.getM_id(), 1);//1 --> o_no
 		/******************************/
 		/*
 		 * 메소드 사용
 		 */
-		orderItemList(1);//1 --> o_no
-		orderDetail(order);
+		displayOrderDetail(order);
 		/******************************/
 	}//생성자 종료
 	
@@ -242,6 +257,8 @@ public class OrderDetailPanel_김세영 extends JPanel {
 	 */
 	public void orderItemList(int o_no) throws Exception {
 		Order order = orderService.orderDetail(loginMember.getM_id(), o_no);
+		
+		orderDetailPanel.removeAll();
 		for (OrderItem orderItem : order.getOrderItemList()) {
 			JPanel orderItemPanel = new JPanel();
 			orderItemPanel.setPreferredSize(new Dimension(290, 110));
@@ -397,26 +414,10 @@ public class OrderDetailPanel_김세영 extends JPanel {
 		});
 		goBackButton.setBounds(183, 505, 97, 23);
 		add(goBackButton);
-		
-		//새로고침기능 테스트용 버튼. 합칠 때 지우자.
-		JButton refreshButton = new JButton("새로고침");
-		refreshButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					displayOrderDetail(order);
-				} catch (Exception e1) {
-					e1.getMessage();
-				}
-			}
-		});
-		refreshButton.setBounds(117, 262, 97, 23);
-		add(refreshButton);
 	}
 	
 	public void displayOrderDetail(Order order) throws Exception {
 		
-		//합치고 나면 OrderDetailPanel.removeAll(); 도 가능하지 않을까??
-		orderDetailPanel.removeAll();
 		orderItemList(order.getO_no());
 		orderDetail(order);
 	}

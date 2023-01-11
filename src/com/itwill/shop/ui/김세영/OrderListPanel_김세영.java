@@ -33,6 +33,7 @@ public class OrderListPanel_김세영 extends JPanel {
 	Member loginMember;
 	/******************************/
 	private JPanel orderListPanel;
+	private JScrollPane orderListScrollPane;
 
 	/**
 	 * Create the panel.
@@ -40,7 +41,7 @@ public class OrderListPanel_김세영 extends JPanel {
 	public OrderListPanel_김세영() throws Exception {
 		setLayout(null);
 		
-		JScrollPane orderListScrollPane = new JScrollPane();
+		orderListScrollPane = new JScrollPane();
 		orderListScrollPane.setBounds(32, 31, 292, 414);
 		add(orderListScrollPane);
 		
@@ -51,7 +52,6 @@ public class OrderListPanel_김세영 extends JPanel {
 		
 		
 		/**********************주문패널생성**********************/
-		
 		/*
 		JPanel orderPanel = new JPanel();
 		orderPanel.addMouseListener(new MouseAdapter() {
@@ -71,38 +71,46 @@ public class OrderListPanel_김세영 extends JPanel {
 		orderListPanel.add(orderPanel);
 		orderPanel.setLayout(null);
 		
-		JLabel o_noDisplayLabel = new JLabel("");
+		JLabel o_noDisplayLabel = new JLabel("order.getO_no()");
 		o_noDisplayLabel.setBounds(12, 30, 110, 15);
 		orderPanel.add(o_noDisplayLabel);
 		
-		JLabel o_descDisplayLabel = new JLabel("");
+		JLabel o_descDisplayLabel = new JLabel("order.getO_desc()");
 		o_descDisplayLabel.setBounds(12, 50, 110, 15);
 		orderPanel.add(o_descDisplayLabel);
 		
-		JLabel o_dateDisplayLabel = new JLabel("");
+		JLabel o_dateDisplayLabel = new JLabel("order.getO_date()");
 		o_dateDisplayLabel.setBounds(12, 10, 110, 15);
 		orderPanel.add(o_dateDisplayLabel);
 		
-		JLabel o_addressDisplayLabel = new JLabel("");
+		JLabel o_addressDisplayLabel = new JLabel("order.getO_address()");
 		o_addressDisplayLabel.setBounds(148, 10, 110, 15);
 		orderPanel.add(o_addressDisplayLabel);
 		
-		JLabel o_priceDisplayLabel = new JLabel("");
+		JLabel o_priceDisplayLabel = new JLabel("order.getO_price()");
 		o_priceDisplayLabel.setBounds(148, 30, 110, 15);
 		orderPanel.add(o_priceDisplayLabel);
 		
-		JLabel o_paymentDisplayLabel = new JLabel("");
+		JLabel o_paymentDisplayLabel = new JLabel("order.getO_payment()");
 		o_paymentDisplayLabel.setBounds(148, 50, 110, 15);
 		orderPanel.add(o_paymentDisplayLabel);
+		*/
+		/**********************주문패널종료**********************/
 		
+		//새로고침 테스트용 버튼
 		JButton refreshButton = new JButton("새로고침");
 		refreshButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					orderList();
+				} catch (Exception e1) {
+					e1.getMessage();
+				}
 			}
 		});
 		refreshButton.setBounds(126, 479, 97, 23);
 		add(refreshButton);
-		*/
+		
 		
 		/******************************/
 		/*
@@ -129,6 +137,10 @@ public class OrderListPanel_김세영 extends JPanel {
 	 */
 	public void orderList() throws Exception {
 		List<Order> orderList = orderService.orderList(loginMember.getM_id());
+		orderListPanel = new JPanel();
+		orderListPanel.setPreferredSize(new Dimension(10, 700));
+		orderListScrollPane.setViewportView(orderListPanel);
+		
 		for (Order order : orderList) {
 			JPanel orderPanel = new JPanel();
 			orderPanel.addMouseListener(new MouseAdapter() {
@@ -137,6 +149,7 @@ public class OrderListPanel_김세영 extends JPanel {
 					/*
 					 * 마우스로 패널 클릭시 실행할 메소드 기술
 					 */
+					//frame.changePanel(ShopMainFrame.PANEL_ORDER_DETAIL, order);
 					try {
 						
 					} catch (Exception e1) {
@@ -174,27 +187,6 @@ public class OrderListPanel_김세영 extends JPanel {
 			orderPanel.add(o_paymentDisplayLabel);
 			
 			orderListPanel.add(orderPanel);
-			
-			//새로고침기능 테스트용 버튼. 합칠 때 지우자.
-			JButton refreshButton = new JButton("새로고침");
-			refreshButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					try {
-						displayOrderList();
-					} catch (Exception e1) {
-						e1.getMessage();
-					}
-				}
-			});
-			refreshButton.setBounds(126, 479, 97, 23);
-			add(refreshButton);
 		}
-	}
-	
-	public void displayOrderList() throws Exception {
-		
-		//삭제가 제대로 반영되지 않는다. 뭘 놓치고 있는 걸까?
-		orderListPanel.removeAll();
-		orderList();
 	}
 }
