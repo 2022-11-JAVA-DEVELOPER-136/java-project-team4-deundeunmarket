@@ -98,8 +98,15 @@ public class CartListPanel extends JPanel {
 		orderBtn.setBackground(new Color(147, 112, 219));
 		orderBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// 오더창으로 넘어가기
+				try {
+				/*
+				 * 주문 생성 탭으로 이동 + 주문 총 금액 설정
+				 */
 				frame.changePanel(ShopMainFrame.PANEL_ORDER_CREATE, null);
+				frame.orderCreatePanel.orderTotPriceLB.setText(frame.orderCreatePanel.orderTotPrice(loginMember.getM_id())+"원");
+				} catch (Exception e1) {
+					e1.getMessage();
+				}
 			}
 		});
 		orderBtn.setFont(new Font("D2Coding", Font.PLAIN, 18));
@@ -249,12 +256,6 @@ public class CartListPanel extends JPanel {
 		orderService = new OrderService();
 		productService = new ProductService();
 
-		// loginMember객체생성
-		
-		
-		//loginMember = frame.memberService.memberDetail(frame.loginMember.getM_id());
-		// 메인 메소드 호출 (수정)
-	
 
 	}// 생성자 끝
 	
@@ -268,8 +269,6 @@ public class CartListPanel extends JPanel {
 	private JLabel cartProductName;
 	private JButton F5Btn;
 	private JButton allCartDelete;
-
-	// 메인 메소드
 
 	
 	/*

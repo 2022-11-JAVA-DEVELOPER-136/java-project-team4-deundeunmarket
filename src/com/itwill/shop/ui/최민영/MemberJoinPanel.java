@@ -22,6 +22,8 @@ import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
+import javax.swing.SwingConstants;
+import java.awt.Cursor;
 
 public class MemberJoinPanel extends JPanel {
 	/*
@@ -65,37 +67,37 @@ public class MemberJoinPanel extends JPanel {
 		memberJoinPannel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("아이디");
-		lblNewLabel.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel.setFont(new Font("D2Coding", Font.PLAIN, 13));
 		lblNewLabel.setBounds(29, 42, 57, 15);
 		memberJoinPannel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("비밀번호");
-		lblNewLabel_1.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_1.setFont(new Font("D2Coding", Font.PLAIN, 13));
 		lblNewLabel_1.setBounds(29, 67, 57, 15);
 		memberJoinPannel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("이름");
-		lblNewLabel_2.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_2.setFont(new Font("D2Coding", Font.PLAIN, 13));
 		lblNewLabel_2.setBounds(29, 120, 57, 15);
 		memberJoinPannel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("전화번호");
-		lblNewLabel_3.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_3.setFont(new Font("D2Coding", Font.PLAIN, 13));
 		lblNewLabel_3.setBounds(29, 145, 57, 15);
 		memberJoinPannel.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("생일");
-		lblNewLabel_4.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_4.setFont(new Font("D2Coding", Font.PLAIN, 13));
 		lblNewLabel_4.setBounds(29, 192, 57, 15);
 		memberJoinPannel.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("이메일");
-		lblNewLabel_5.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_5.setFont(new Font("D2Coding", Font.PLAIN, 13));
 		lblNewLabel_5.setBounds(29, 217, 57, 15);
 		memberJoinPannel.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("주소");
-		lblNewLabel_6.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_6.setFont(new Font("D2Coding", Font.PLAIN, 13));
 		lblNewLabel_6.setBounds(29, 242, 57, 15);
 		memberJoinPannel.add(lblNewLabel_6);
 		
@@ -134,20 +136,26 @@ public class MemberJoinPanel extends JPanel {
 		addressTF.setColumns(10);
 		
 		JButton memberjoinBtn = new JButton("가입");
-		memberjoinBtn.setBackground(new Color(240, 255, 240));
-		memberjoinBtn.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		memberjoinBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		memberjoinBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+		memberjoinBtn.setForeground(new Color(255, 255, 255));
+		memberjoinBtn.setBackground(new Color(147, 112, 219));
+		memberjoinBtn.setFont(new Font("D2Coding", Font.PLAIN, 14));
 		memberjoinBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					join();
 			}
 		});
-		memberjoinBtn.setBounds(54, 279, 97, 23);
+		memberjoinBtn.setBounds(54, 289, 97, 23);
 		memberJoinPannel.add(memberjoinBtn);
 		
 		
 		JButton memberCancelBtn = new JButton("취소");
-		memberCancelBtn.setBackground(new Color(240, 255, 240));
-		memberCancelBtn.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		memberCancelBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+		memberCancelBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		memberCancelBtn.setForeground(new Color(255, 255, 255));
+		memberCancelBtn.setBackground(new Color(147, 112, 219));
+		memberCancelBtn.setFont(new Font("D2Coding", Font.PLAIN, 14));
 		memberCancelBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/*
@@ -156,7 +164,7 @@ public class MemberJoinPanel extends JPanel {
 				frame.changePanel(ShopMainFrame.PANEL_MEMBER_LOGIN, null);
 			}
 		});
-		memberCancelBtn.setBounds(163, 279, 97, 23);
+		memberCancelBtn.setBounds(163, 289, 97, 23);
 		memberJoinPannel.add(memberCancelBtn);
 		
 		passCheckTF = new JPasswordField();
@@ -166,7 +174,7 @@ public class MemberJoinPanel extends JPanel {
 		memberJoinPannel.add(passCheckTF);
 		
 		JLabel lblNewLabel_7 = new JLabel("비밀번호확인");
-		lblNewLabel_7.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_7.setFont(new Font("D2Coding", Font.PLAIN, 13));
 		lblNewLabel_7.setBounds(29, 95, 87, 15);
 		memberJoinPannel.add(lblNewLabel_7);
 		
@@ -181,8 +189,11 @@ public class MemberJoinPanel extends JPanel {
 		memberJoinPannel.add(pwMsgLb);
 		
 		JButton duplicateIdBtn = new JButton("중복확인");
-		duplicateIdBtn.setBackground(new Color(240, 255, 240));
-		duplicateIdBtn.setFont(new Font("D2Coding", Font.PLAIN, 10));
+		duplicateIdBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		duplicateIdBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+		duplicateIdBtn.setForeground(Color.WHITE);
+		duplicateIdBtn.setBackground(new Color(147, 112, 219));
+		duplicateIdBtn.setFont(new Font("D2Coding", Font.PLAIN, 12));
 		duplicateIdBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String id = idTF.getText();
@@ -212,13 +223,16 @@ public class MemberJoinPanel extends JPanel {
 		memberJoinPannel.add(duplicateIdBtn);
 		
 		JButton passCheckBtn = new JButton("비밀번호확인");
-		passCheckBtn.setBackground(new Color(240, 255, 240));
+		passCheckBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+		passCheckBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		passCheckBtn.setForeground(Color.WHITE);
+		passCheckBtn.setBackground(new Color(147, 112, 219));
 		passCheckBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				passCheck();
 			}
 		});
-		passCheckBtn.setFont(new Font("D2Coding", Font.PLAIN, 9));
+		passCheckBtn.setFont(new Font("D2Coding", Font.PLAIN, 10));
 		passCheckBtn.setBounds(228, 90, 97, 23);
 		memberJoinPannel.add(passCheckBtn);
 		

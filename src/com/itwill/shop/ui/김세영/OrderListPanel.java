@@ -36,7 +36,7 @@ public class OrderListPanel extends JPanel {
 	/*
 	 * loginMember객체 선언
 	 */
-	Member loginMember;
+	private Member loginMember = null;
 	/******************************/
 	private JPanel orderListPanel;
 	private JScrollPane orderListScrollPane;
@@ -122,19 +122,19 @@ public class OrderListPanel extends JPanel {
 		JButton refreshButton = new JButton("추천 상품 보기");
 		refreshButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		refreshButton.setHorizontalTextPosition(SwingConstants.CENTER);
-		refreshButton.setForeground(new Color(255, 255, 255));
+		refreshButton.setForeground(Color.WHITE);
 		refreshButton.setBackground(new Color(147, 112, 219));
-		refreshButton.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		refreshButton.setFont(new Font("D2Coding", Font.PLAIN, 16));
 		refreshButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{
-					frame.changePanel(ShopMainFrame.PANEL_MAIN, null);
+					frame.changePanel(ShopMainFrame.PANEL_PRODUCT_RECOMMEND, null);
 				}catch (Exception e1) {
 					e1.getMessage();
 				}
 			}
 		});
-		refreshButton.setBounds(37, 318, 232, 28);
+		refreshButton.setBounds(30, 318, 247, 28);
 		add(refreshButton);
 		
 		
@@ -147,12 +147,12 @@ public class OrderListPanel extends JPanel {
 		/*
 		 * loginMember객체 생성. 취합시 ShopMainFrame의 멤버필드에 위치한 loginMember를 가져와서 사용해야 함.
 		 */
-		loginMember = new Member("sy0", null, null, null, null, null, null);
+		//수정!!! loginMember = new Member("sy0", null, null, null, null, null, null);
 		/******************************/
 		/*
 		 * 메소드 사용
 		 */
-		orderList();
+		//orderList();
 		/******************************/
 	}//생성자 종료
 	
@@ -161,7 +161,7 @@ public class OrderListPanel extends JPanel {
 	 * 메소드 선언
 	 */
 	public void orderList() throws Exception {
-		List<Order> orderList = orderService.orderList(loginMember.getM_id());
+		List<Order> orderList = orderService.orderList(frame.loginMember.getM_id());
 		orderListPanel = new JPanel();
 		orderListPanel.setBackground(new Color(255, 255, 255));
 		orderListPanel.setPreferredSize(new Dimension(10, 700));
@@ -225,6 +225,6 @@ public class OrderListPanel extends JPanel {
 	
 	public void setFrame(ShopMainFrame frame) throws Exception {
 		this.frame = frame;
-		orderList();
+		// 수정!!!! orderList();
 	}
 }
