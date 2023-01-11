@@ -19,6 +19,9 @@ import java.awt.event.ActionEvent;
 import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class OrderListPanel extends JPanel {
 	
@@ -37,25 +40,33 @@ public class OrderListPanel extends JPanel {
 	/******************************/
 	private JPanel orderListPanel;
 	private JScrollPane orderListScrollPane;
+	private JLabel o_noDisplayLabel_1;
+	private JLabel o_descDisplayLabel_1;
+	private JLabel o_dateDisplayLabel_1;
+	private JLabel o_addressDisplayLabel_1;
+	private JLabel o_priceDisplayLabel_1;
+	private JLabel o_paymentDisplayLabel_1;
 
 	/**
 	 * Create the panel.
 	 */
 	public OrderListPanel() throws Exception {
+		setBackground(new Color(255, 255, 255));
 		setLayout(null);
 		
 		orderListScrollPane = new JScrollPane();
-		orderListScrollPane.setBounds(32, 31, 292, 414);
+		orderListScrollPane.setBounds(0, 0, 326, 298);
 		add(orderListScrollPane);
 		
 		orderListPanel = new JPanel();
+		orderListPanel.setBackground(new Color(255, 255, 255));
 		orderListPanel.setPreferredSize(new Dimension(10, 700));
 		orderListScrollPane.setViewportView(orderListPanel);
 		
 		
 		
 		/**********************주문패널생성**********************/
-		/*
+		
 		JPanel orderPanel = new JPanel();
 		orderPanel.addMouseListener(new MouseAdapter() {
 			@Override
@@ -74,35 +85,46 @@ public class OrderListPanel extends JPanel {
 		orderListPanel.add(orderPanel);
 		orderPanel.setLayout(null);
 		
-		JLabel o_noDisplayLabel = new JLabel("order.getO_no()");
-		o_noDisplayLabel.setBounds(12, 30, 110, 15);
-		orderPanel.add(o_noDisplayLabel);
+		o_noDisplayLabel_1 = new JLabel("order.getO_no()");
+		o_noDisplayLabel_1.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		o_noDisplayLabel_1.setBounds(12, 30, 110, 15);
+		orderPanel.add(o_noDisplayLabel_1);
 		
-		JLabel o_descDisplayLabel = new JLabel("order.getO_desc()");
-		o_descDisplayLabel.setBounds(12, 50, 110, 15);
-		orderPanel.add(o_descDisplayLabel);
+		o_descDisplayLabel_1 = new JLabel("order.getO_desc()");
+		o_descDisplayLabel_1.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		o_descDisplayLabel_1.setBounds(12, 50, 110, 15);
+		orderPanel.add(o_descDisplayLabel_1);
 		
-		JLabel o_dateDisplayLabel = new JLabel("order.getO_date()");
-		o_dateDisplayLabel.setBounds(12, 10, 110, 15);
-		orderPanel.add(o_dateDisplayLabel);
+		o_dateDisplayLabel_1 = new JLabel("order.getO_date()");
+		o_dateDisplayLabel_1.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		o_dateDisplayLabel_1.setBounds(12, 10, 110, 15);
+		orderPanel.add(o_dateDisplayLabel_1);
 		
-		JLabel o_addressDisplayLabel = new JLabel("order.getO_address()");
-		o_addressDisplayLabel.setBounds(148, 10, 110, 15);
-		orderPanel.add(o_addressDisplayLabel);
+		o_addressDisplayLabel_1 = new JLabel("order.getO_address()");
+		o_addressDisplayLabel_1.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		o_addressDisplayLabel_1.setBounds(148, 10, 110, 15);
+		orderPanel.add(o_addressDisplayLabel_1);
 		
-		JLabel o_priceDisplayLabel = new JLabel("order.getO_price()");
-		o_priceDisplayLabel.setBounds(148, 30, 110, 15);
-		orderPanel.add(o_priceDisplayLabel);
+		o_priceDisplayLabel_1 = new JLabel("order.getO_price()");
+		o_priceDisplayLabel_1.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		o_priceDisplayLabel_1.setBounds(148, 30, 110, 15);
+		orderPanel.add(o_priceDisplayLabel_1);
 		
-		JLabel o_paymentDisplayLabel = new JLabel("order.getO_payment()");
-		o_paymentDisplayLabel.setBounds(148, 50, 110, 15);
-		orderPanel.add(o_paymentDisplayLabel);
-		*/
+		o_paymentDisplayLabel_1 = new JLabel("order.getO_payment()");
+		o_paymentDisplayLabel_1.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		o_paymentDisplayLabel_1.setBounds(148, 50, 110, 15);
+		orderPanel.add(o_paymentDisplayLabel_1);
+		
 		/**********************주문패널종료**********************/
 		
 
 		//새로고침 테스트용 버튼
 		JButton refreshButton = new JButton("새로고침");
+		refreshButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		refreshButton.setHorizontalTextPosition(SwingConstants.CENTER);
+		refreshButton.setForeground(new Color(255, 255, 255));
+		refreshButton.setBackground(new Color(147, 112, 219));
+		refreshButton.setFont(new Font("D2Coding", Font.PLAIN, 12));
 		refreshButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -112,7 +134,7 @@ public class OrderListPanel extends JPanel {
 				}
 			}
 		});
-		refreshButton.setBounds(126, 479, 97, 23);
+		refreshButton.setBounds(103, 318, 125, 28);
 		add(refreshButton);
 		
 		
@@ -141,6 +163,7 @@ public class OrderListPanel extends JPanel {
 	public void orderList() throws Exception {
 		List<Order> orderList = orderService.orderList(loginMember.getM_id());
 		orderListPanel = new JPanel();
+		orderListPanel.setBackground(new Color(255, 255, 255));
 		orderListPanel.setPreferredSize(new Dimension(10, 700));
 		orderListScrollPane.setViewportView(orderListPanel);
 		
@@ -166,28 +189,35 @@ public class OrderListPanel extends JPanel {
 			orderPanel.setLayout(null);
 			
 			JLabel o_noDisplayLabel = new JLabel(""+order.getO_no());
+			o_noDisplayLabel.setFont(new Font("D2Coding", Font.PLAIN, 12));
 			o_noDisplayLabel.setBounds(12, 30, 110, 15);
 			orderPanel.add(o_noDisplayLabel);
 			
 			JLabel o_descDisplayLabel = new JLabel(order.getO_desc());
+			o_descDisplayLabel.setFont(new Font("D2Coding", Font.PLAIN, 12));
 			o_descDisplayLabel.setBounds(12, 50, 110, 15);
 			orderPanel.add(o_descDisplayLabel);
 			
 			JLabel o_dateDisplayLabel = new JLabel(""+order.getO_date());
+			o_dateDisplayLabel.setFont(new Font("D2Coding", Font.PLAIN, 12));
 			o_dateDisplayLabel.setBounds(12, 10, 110, 15);
 			orderPanel.add(o_dateDisplayLabel);
 			
 			JLabel o_addressDisplayLabel = new JLabel(order.getO_address());
+			o_addressDisplayLabel.setFont(new Font("D2Coding", Font.PLAIN, 12));
 			o_addressDisplayLabel.setBounds(148, 10, 110, 15);
 			orderPanel.add(o_addressDisplayLabel);
 			
 			JLabel o_priceDisplayLabel = new JLabel(""+order.getO_price());
+			o_priceDisplayLabel.setFont(new Font("D2Coding", Font.PLAIN, 12));
 			o_priceDisplayLabel.setBounds(148, 30, 110, 15);
 			orderPanel.add(o_priceDisplayLabel);
 			
 			JLabel o_paymentDisplayLabel = new JLabel(order.getO_payment());
+			o_paymentDisplayLabel.setFont(new Font("D2Coding", Font.PLAIN, 12));
 			o_paymentDisplayLabel.setBounds(148, 50, 110, 15);
 			orderPanel.add(o_paymentDisplayLabel);
+
 			
 			orderListPanel.add(orderPanel);
 		}
