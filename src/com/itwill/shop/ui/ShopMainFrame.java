@@ -82,7 +82,6 @@ public class ShopMainFrame extends JFrame {
 	public ProductDetailPanel_김준 productDetailPanel;
 	public OrderCreatePanel_김민선 orderCreatePanel;
 	public OrderListPanel_김세영 orderListPanel;
-	public OrderDetailPanel_김세영 orderDetailPanel;
 	/**
 	 * Launch the application.
 	 */
@@ -215,9 +214,6 @@ public class ShopMainFrame extends JFrame {
 		
 		orderListPanel = new OrderListPanel_김세영();
 		orderTabbedPane.addTab("주문목록", null, orderListPanel, null);
-		
-		orderDetailPanel = new OrderDetailPanel_김세영();
-		orderTabbedPane.addTab("주문상세", null, orderDetailPanel, null);
 		
 	
 		/***************************************************/
