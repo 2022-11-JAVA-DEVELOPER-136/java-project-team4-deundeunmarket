@@ -197,6 +197,7 @@ public class MemberDetailPanel_최민영 extends JPanel {
 		
 		memberService = new MemberService();
 		
+		//frame.loginMember = frame.memberService.memberDetail(loginMember.getM_id());
 
 	}// 생성자 끝
 	
@@ -274,6 +275,8 @@ public class MemberDetailPanel_최민영 extends JPanel {
 		infoBdayTF.setText("");
 		infoMailTF.setText("");
 		infoAddressTF.setText("");	
+		
+	
 		
 	}
 	

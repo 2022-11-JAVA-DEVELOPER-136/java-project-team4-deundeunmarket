@@ -83,16 +83,11 @@ public class ShopMainFrame_최민영 extends JFrame {
 		MemberDetailPanel_최민영 memberDetailPanel_최민영 = new MemberDetailPanel_최민영();
 		memberTabbedPane.addTab("New tab", null, memberDetailPanel_최민영, null);
 		
-		MemberLoginPanel_최민영 memberLoginPanel_최민영 = new MemberLoginPanel_최민영();
-		memberTabbedPane.addTab("New tab", null, memberLoginPanel_최민영, null);
-		
 		MemberJoinPanel_최민영 memberJoinPanel_최민영 = new MemberJoinPanel_최민영();
 		memberTabbedPane.addTab("New tab", null, memberJoinPanel_최민영, null);
 		
+		MemberLoginPanel_최민영 memberLoginPanel_최민영 = new MemberLoginPanel_최민영();
+		memberTabbedPane.addTab("New tab", null, memberLoginPanel_최민영, null);
+		
 	}
-	
-	
-	
-	
-	
 }

@@ -28,11 +28,11 @@ public class MemberLoginPanel_최민영 extends JPanel {
 	private Member loginMember=null;
 	
 	
-	private JTextField loginIdTF;
-	private JButton loginBtn;
-	private JButton joinBtn;
-	private JPasswordField loginPassTF;
-	private JPanel memberLoginPanel;
+	public JTextField loginIdTF;
+	public JButton loginBtn;
+	public JButton joinBtn;
+	public JPasswordField loginPassTF;
+	public JPanel memberLoginPanel;
 
 
 	/**
@@ -96,6 +96,8 @@ public class MemberLoginPanel_최민영 extends JPanel {
 		
 		memberService=new MemberService();
 		
+		//frame.loginMember = frame.memberService.memberDetail(loginMember.getM_id());
+		
 	}// 생성자 끝
 	
 	public void setFrame(ShopMainFrame frame) {
@@ -107,7 +109,8 @@ public class MemberLoginPanel_최민영 extends JPanel {
 	public void loginProcess(String id) throws Exception{
 		
 		//1.로그인 성공한 멤버 객체 멤버필드에저장
-		this.loginMember = memberService.memberDetail(id);
+		frame.loginMember = frame.memberService.memberDetail(id);
+		//mainFrame.loginUser = mainFrame.userService.findUser(userId); 
 		//2.MemberMainFrame 타이틀 변경
 		frame.setTitle(id + " 님 로그인");
 		//3. 로그인 탭, 회원가입 탭 불활성화, 회원정보 탭 활성화
@@ -116,7 +119,8 @@ public class MemberLoginPanel_최민영 extends JPanel {
 		frame.memberTabbedPane.setEnabledAt(2, true);
 		// 4.상품 전체보기로 화면전환
 		frame.changePanel(ShopMainFrame.PANEL_PRODUCT_LIST, null);
-		frame.memberDetailPanel.displayMemberInfo(loginMember);
+		//frame.memberDetailPanel.displayMemberInfo(loginMember);
+		frame.memberDetailPanel.displayMemberInfo(frame.loginMember);
 		frame.memberDetailPanel.updateFormEnable(false);
 	}
 	
@@ -126,11 +130,13 @@ public class MemberLoginPanel_최민영 extends JPanel {
 			String id = loginIdTF.getText();
 			String pass = new String(loginPassTF.getPassword());
 			
-			int result = memberService.logIn(id, pass);
+			//int result = memberService.logIn(id, pass);
+			int result=frame.memberService.logIn(id, pass);
 			if(result == 1) {
 				//로그인 성공
 				//JOptionPane.showMessageDialog(null, "로그인 성공");
-				loginProcess(id); //로그인 멤버로 넣어줌
+				//loginProcess(id); //로그인 멤버로 넣어줌
+				frame.loginMember = frame.memberService.memberDetail(id);
 				loginIdTF.setText(""); 
 				loginPassTF.setText("");
 			}else {
@@ -144,4 +150,31 @@ public class MemberLoginPanel_최민영 extends JPanel {
 			// TODO: handle exception
 		}
 	}
+	/*
+	 * private int userLogin() {
+		int result=0;
+		try {
+			String id=loginIdTF.getText();
+			String password=loginPasswordTF.getText();
+			result=frame.userService.login(id, password);
+			if(result==1) {
+				//로그인 성공시
+				frame.loginUser=frame.userService.findUser(id);
+				frame.setTitle(id+"님 로그인");
+			} else {
+				JOptionPane.showMessageDialog(null,"아이디/비밀번호를 확인하세요.");
+				loginIdTF.setSelectionStart(0);
+				loginIdTF.setSelectionEnd(id.length());
+				loginIdTF.requestFocus();
+			}
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		return result;
+	}
+	 */
+	
+	
+	
+	
 }

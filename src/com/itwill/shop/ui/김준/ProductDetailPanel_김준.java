@@ -136,7 +136,8 @@ public class ProductDetailPanel_김준 extends JPanel {
 		/*
 		 * loginMember 객체 생성
 		 */
-		loginMember = new Member("sy1",null,null,null,null,null,null);
+		//loginMember = new Member("sy1",null,null,null,null,null,null);
+		//frame.loginMember = frame.memberService.memberDetail(loginMember.getM_id());
 		
 	}// 생성자 끝
 

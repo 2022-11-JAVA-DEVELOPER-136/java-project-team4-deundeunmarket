@@ -59,14 +59,14 @@ public class ShopMainFrame extends JFrame {
 	/*
 	 * 1. Service 객체 선언
 	 */
-	MemberService memberService;
-	OrderService orderService;
-	CartService cartService;
-	ProductService productService;
+	public MemberService memberService;
+	public OrderService orderService;
+	public CartService cartService;
+	public ProductService productService;
 	/*
 	 * 2. login Member 객체 선언(선택한 product 객체 선언)
 	 */
-	Member loginMember = null;
+	public Member loginMember = null;
 	Product selectProduct;
 	
 	public JPanel contentPane;
@@ -179,6 +179,11 @@ public class ShopMainFrame extends JFrame {
 						e1.getMessage();
 					}
 				}
+				/************************/
+				if (selectedTabIndex == 0) {
+					memberLoginPanel.loginIdTF.setText("");
+					memberLoginPanel.loginPassTF.setText("");
+				}
 			}
 		});
 		shopTabbedPane.addTab("회원", null, memberTabbedPane, null);
@@ -240,6 +245,10 @@ public class ShopMainFrame extends JFrame {
 		productDetailPanel.setFrame(this);
 		productRecommendPanel.setFrame(this);
 		cartListPanel.setFrame(this);
+		
+		//loginMember = new Member("aaa", null, null, null, null, null, null);
+		loginMember = new Member();
+		
 		
 	}// 생성자 끝
 	/***************패널 변경 메소드******************/
