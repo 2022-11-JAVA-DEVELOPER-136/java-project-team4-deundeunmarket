@@ -265,7 +265,7 @@ public class MemberDetailPanel_최민영 extends JPanel {
 		frame.memberTabbedPane.setEnabledAt(1, true);
 		frame.memberTabbedPane.setEnabledAt(2, false);
 		// 4. 상품 전체보기로 화면전환
-		frame.changePanel(ShopMainFrame.PANEL_PRODUCT_LIST, null);
+		frame.changePanel(ShopMainFrame.PANEL_MEMBER_LOGIN, null);
 		// 5. 회원 정보 빈칸 처리
 		infoIdTF.setText("");
 		infoPassTF.setText("");

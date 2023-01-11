@@ -35,6 +35,8 @@ import java.awt.Font;
 import com.itwill.shop.ui.김준.ProductListPanel_김준;
 import com.itwill.shop.ui.김준.ProductRecommendPanel_김준;
 import com.itwill.shop.ui.김준.ProductDetailPanel_김준;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 
 public class ShopMainFrame extends JFrame {
 	
@@ -165,6 +167,19 @@ public class ShopMainFrame extends JFrame {
 		contentPane.add(shopTabbedPane, BorderLayout.CENTER);
 		
 		memberTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		memberTabbedPane.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				/***********탭이 2번(회원정보)으로 변경 시 회원 정보 보여주기************/
+				int selectedTabIndex = memberTabbedPane.getSelectedIndex();
+				if (selectedTabIndex == 2) {
+					try {
+						memberDetailPanel.displayMemberInfo(loginMember);
+					} catch (Exception e1) {
+						e1.getMessage();
+					}
+				}
+			}
+		});
 		shopTabbedPane.addTab("회원", null, memberTabbedPane, null);
 		
 		memberLoginPanel = new MemberLoginPanel_최민영();
