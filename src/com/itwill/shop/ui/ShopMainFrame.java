@@ -118,7 +118,7 @@ public class ShopMainFrame extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel globalNorthMenuPanel = new JPanel();
-		globalNorthMenuPanel.setBackground(new Color(46, 139, 87));
+		globalNorthMenuPanel.setBackground(new Color(153, 102, 255));
 		contentPane.add(globalNorthMenuPanel, BorderLayout.NORTH);
 		globalNorthMenuPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
@@ -131,7 +131,7 @@ public class ShopMainFrame extends JFrame {
 		JPanel globalSouthMenuPanel = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) globalSouthMenuPanel.getLayout();
 		flowLayout.setHgap(50);
-		globalSouthMenuPanel.setBackground(new Color(46, 139, 87));
+		globalSouthMenuPanel.setBackground(new Color(153, 102, 255));
 		contentPane.add(globalSouthMenuPanel, BorderLayout.SOUTH);
 		
 		JButton globalSearchMenuButton = new JButton("");
