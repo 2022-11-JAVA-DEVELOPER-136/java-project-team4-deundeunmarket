@@ -1,16 +1,11 @@
-ackage com.itwill.shop.ui.김민영;
+package com.itwill.shop.ui.김민영;
 
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-
-import com.itwill.shop.member.Member;
 import com.itwill.shop.member.MemberService;
-import com.itwill.shop.ui.MemberJoinPanel;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JButton;
@@ -27,14 +22,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
 public class ShopMainFrame_김민영 extends JFrame {
-	/*
-	 * Panel상수
-	 */
-	public static final int  PRODUCT_LIST_PANEL=1;
-	public static final int  PRODUCT_DETAIL_PANEL=2;
-	public static final int  USERT_JOIN_PANEL=3;
-	public static final int  USER_INFO_PANEL=4;
-	
 	
 	/************************************
 	 * 1.Service객체선언
@@ -45,13 +32,8 @@ public class ShopMainFrame_김민영 extends JFrame {
 	/**************************************
 	 * 2.login User객체선언(선택한Product객체선언)
 	 *************************************/
-
-
-	
-	
 	private JPanel contentPane;
 	private JTabbedPane shopTabbedPane;
-	private MemberLoginPanel_김민영 memberLoginPanel;
 	private JTabbedPane memberTabbedPane;
 	private JTextField textField;
 	private JPasswordField passwordField;
@@ -366,17 +348,7 @@ public class ShopMainFrame_김민영 extends JFrame {
 		이메일.setBounds(61, 292, 57, 15);
 		memberDetailPanel.add(이메일);
 		
-		/************************************
-		 * 3.Service객체생성
-		 ************************************/
-		memberService=new MemberService();
-
+	
 		
-		/*******ShopMainFrame참조를 Panel에 넘겨줌*******
-		memberDetailPanel.setFrame(this);
-		memberJoinPanel.setFrame(this);
-		memberLoginPanel.setFrame(this);
-		*/
-		
-	}//생성
+	}
 }
