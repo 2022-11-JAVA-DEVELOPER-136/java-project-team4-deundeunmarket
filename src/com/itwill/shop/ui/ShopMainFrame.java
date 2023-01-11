@@ -312,6 +312,7 @@ public class ShopMainFrame extends JFrame {
 		productDetailPanel.setFrame(this);
 		productRecommendPanel.setFrame(this);
 		cartListPanel.setFrame(this);
+		orderCreatePanel.setFrame(this);
 		
 		
 	}// 생성자 끝

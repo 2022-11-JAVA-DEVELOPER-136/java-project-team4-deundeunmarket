@@ -119,7 +119,7 @@ public class OrderListPanel extends JPanel {
 		
 
 		//새로고침 테스트용 버튼
-		JButton refreshButton = new JButton("새로고침");
+		JButton refreshButton = new JButton("추천 상품 보기");
 		refreshButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		refreshButton.setHorizontalTextPosition(SwingConstants.CENTER);
 		refreshButton.setForeground(new Color(255, 255, 255));
@@ -127,14 +127,14 @@ public class OrderListPanel extends JPanel {
 		refreshButton.setFont(new Font("D2Coding", Font.PLAIN, 12));
 		refreshButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					orderList();
-				} catch (Exception e1) {
+				try{
+					frame.changePanel(ShopMainFrame.PANEL_MAIN, null);
+				}catch (Exception e1) {
 					e1.getMessage();
 				}
 			}
 		});
-		refreshButton.setBounds(103, 318, 125, 28);
+		refreshButton.setBounds(37, 318, 232, 28);
 		add(refreshButton);
 		
 		
