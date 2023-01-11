@@ -165,6 +165,20 @@ public class ShopMainFrame extends JFrame {
 		globalSouthMenuPanel.add(globalMemberMenuButton);
 		
 		shopTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		shopTabbedPane.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				
+				
+				if(((JTabbedPane)e.getSource()).getSelectedIndex()==2) {
+					try {
+						cartListPanel.displayCartList();
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
 		contentPane.add(shopTabbedPane, BorderLayout.CENTER);
 		
 		memberTabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -211,6 +225,7 @@ public class ShopMainFrame extends JFrame {
 		
 		
 		cartTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		
 		shopTabbedPane.addTab("장바구니", null, cartTabbedPane, null);
 		
 		cartListPanel = new CartListPanel();
@@ -236,7 +251,7 @@ public class ShopMainFrame extends JFrame {
 		productService = new ProductService();
 		
 		//loginMember = new Member("aaa", null, null, null, null, null, null);
-		loginMember = new Member();
+		
 		
 		/******* ShopMainFrame 참조를 Panel에 넘겨줌 *******/
 		memberLoginPanel.setFrame(this);

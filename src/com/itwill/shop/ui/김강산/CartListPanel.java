@@ -80,23 +80,13 @@ public class CartListPanel extends JPanel {
 	// ****************카트리스트패널만들기******************
 
 	public CartListPanel() throws Exception {
-		addComponentListener(new ComponentAdapter() {
-			@Override
-			public void componentShown(ComponentEvent e) {
-				System.out.println(frame.loginMember);
-			}
-		});
+		
 		
 
 		setLayout(null);
 
 		JPanel cartListMainPanel = new JPanel();
-		cartListMainPanel.addComponentListener(new ComponentAdapter() {
-			@Override
-			public void componentShown(ComponentEvent e) {
-				//System.out.println(frame.loginMember);
-			}
-		});
+		
 		cartListMainPanel.setBackground(Color.WHITE);
 		cartListMainPanel.setBounds(0, 0, 360, 540);
 		add(cartListMainPanel);
@@ -248,11 +238,10 @@ public class CartListPanel extends JPanel {
 		productService = new ProductService();
 
 		// loginMember객체생성
-
-		loginMember = new Member("sy0", null, null, null, null, null, null);
+		
 		//loginMember = frame.memberService.memberDetail(frame.loginMember.getM_id());
 		// 메인 메소드 호출 (수정)
-		displayCartList();
+	
 
 	}// 생성자 끝
 	
@@ -260,10 +249,7 @@ public class CartListPanel extends JPanel {
 		this.frame = frame;
 	}
 
-	public void setLoginMember(Member loginMember) {
-		this.loginMember = loginMember;
-	}
-
+	
 	List<Cart> selectedCartList = null;
 	JCheckBox[] cartCBArray = null;
 	private JLabel cartProductName;
@@ -278,7 +264,9 @@ public class CartListPanel extends JPanel {
 	 */
 	
 	public void displayCartList() throws Exception {
-		List<Cart> cartList = cartService.getCartItemByMemberId(loginMember.getM_id());
+		System.out.println(">>> displayCartList:"+frame.loginMember);
+		List<Cart> cartList = cartService.getCartItemByMemberId(frame.loginMember.getM_id());
+		System.out.println(cartList);
 		cartListPanel.removeAll();
 		cartCBArray = new JCheckBox[cartList.size()];
 

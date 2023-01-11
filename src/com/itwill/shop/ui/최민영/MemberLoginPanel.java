@@ -142,7 +142,7 @@ public class MemberLoginPanel extends JPanel {
 				//로그인 성공
 				//JOptionPane.showMessageDialog(null, "로그인 성공");
 				//loginProcess(id); //로그인 멤버로 넣어줌
-				frame.loginMember = frame.memberService.memberDetail(id);
+				
 				loginIdTF.setText(""); 
 				loginPassTF.setText("");
 				loginProcess(id);
