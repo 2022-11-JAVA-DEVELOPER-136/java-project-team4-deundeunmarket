@@ -149,6 +149,14 @@ setLayout(null);
 		
 		JButton buyBtn1 = new JButton("구매하기");
 		buyBtn1.setBackground(new Color(240, 255, 240));
+		buyBtn1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/*
+				 * 구매하기 클릭 시 주문생성 패널로 이동
+				 */
+				frame.changePanel(ShopMainFrame.PANEL_ORDER_CREATE, null);
+			}
+		});
 		buyBtn1.setBounds(14, 274, 97, 23);
 		tteokbokkiPanel.add(buyBtn1);
 		/***************************************************/
@@ -215,6 +223,14 @@ setLayout(null);
 		
 		JButton buyBtn2 = new JButton("구매하기");
 		buyBtn2.setBackground(new Color(240, 255, 240));
+		buyBtn2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/*
+				 * 구매하기 클릭 시 주문생성 패널로 이동
+				 */
+				frame.changePanel(ShopMainFrame.PANEL_ORDER_CREATE, null);
+			}
+		});
 		buyBtn2.setBounds(15, 274, 97, 23);
 		creampastaPanel_2.add(buyBtn2);
 		/***************************************************/
@@ -281,6 +297,14 @@ setLayout(null);
 		
 		JButton buyBtn3 = new JButton("구매하기");
 		buyBtn3.setBackground(new Color(240, 255, 240));
+		buyBtn3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/*
+				 * 구매하기 클릭 시 주문생성 패널로 이동
+				 */
+				frame.changePanel(ShopMainFrame.PANEL_ORDER_CREATE, null);
+			}
+		});
 		buyBtn3.setBounds(14, 274, 97, 23);
 		steakPanel_3.add(buyBtn3);
 		/***************************************************/
@@ -347,6 +371,14 @@ setLayout(null);
 		
 		JButton buyBtn4 = new JButton("구매하기");
 		buyBtn4.setBackground(new Color(240, 255, 240));
+		buyBtn4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/*
+				 * 구매하기 클릭 시 주문생성 패널로 이동
+				 */
+				frame.changePanel(ShopMainFrame.PANEL_ORDER_CREATE, null);
+			}
+		});
 		buyBtn4.setBounds(14, 274, 97, 23);
 		shabuPanel_4.add(buyBtn4);
 		/********************************/	
