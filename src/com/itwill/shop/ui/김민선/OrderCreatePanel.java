@@ -206,6 +206,26 @@ public class OrderCreatePanel extends JPanel {
 			JOptionPane.showMessageDialog(null, "장바구니가 비어있습니다.");
 		}
 	}
+	/*
+	public void orderInfo() {
+		try {
+			List<Cart> findCart = cartService.getCartItemByMemberId(frame.loginMember.getM_id());
+			for (Cart cart : findCart) {
+				cart.getProduct().getP_no()
+			}
+			
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	 */	
+	
+	
+	
+	
 	
 	
 	

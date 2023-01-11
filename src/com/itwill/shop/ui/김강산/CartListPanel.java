@@ -225,6 +225,16 @@ public class CartListPanel extends JPanel {
 		cartPanel.add(cartProductName);
 		
 		JButton deleteAllBtn = new JButton("전체삭제");
+		deleteAllBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					cartService.deleteCartItemByMemberId(frame.loginMember.getM_id());
+					refresh();
+				} catch (Exception e1) {
+					e1.getMessage();
+				}
+			}
+		});
 		deleteAllBtn.setForeground(new Color(255, 255, 255));
 		deleteAllBtn.setFont(new Font("D2Coding", Font.PLAIN, 11));
 		deleteAllBtn.setBackground(new Color(147, 112, 219));
@@ -264,7 +274,6 @@ public class CartListPanel extends JPanel {
 	 */
 	
 	public void displayCartList() throws Exception {
-		System.out.println(">>> displayCartList:"+frame.loginMember);
 		List<Cart> cartList = cartService.getCartItemByMemberId(frame.loginMember.getM_id());
 		System.out.println(cartList);
 		cartListPanel.removeAll();
