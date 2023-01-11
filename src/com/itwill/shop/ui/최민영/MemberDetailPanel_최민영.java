@@ -292,7 +292,7 @@ public class MemberDetailPanel_최민영 extends JPanel {
 		infoPassTF.setText(member.getM_pass());
 		infoNameTF.setText(member.getM_name());
 		infoPhoneTF.setText(member.getM_phone());
-		member.setM_bday(new SimpleDateFormat("yyyy/MM/dd").parse(infoBdayTF.getText()));
+		//member.setM_bday(new SimpleDateFormat("yyyy/MM/dd").parse(infoBdayTF.getText()));
 		infoMailTF.setText(member.getM_email());
 		infoAddressTF.setText(member.getM_address());	
 	}
