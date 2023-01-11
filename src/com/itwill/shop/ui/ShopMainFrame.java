@@ -37,6 +37,7 @@ import com.itwill.shop.ui.김준.ProductRecommendPanel_김준;
 import com.itwill.shop.ui.김준.ProductDetailPanel_김준;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
+import com.itwill.shop.ui.김강산.CartListPanel_김강산;
 
 public class ShopMainFrame extends JFrame {
 	
@@ -82,6 +83,7 @@ public class ShopMainFrame extends JFrame {
 	public ProductDetailPanel_김준 productDetailPanel;
 	public OrderCreatePanel_김민선 orderCreatePanel;
 	public OrderListPanel_김세영 orderListPanel;
+	public CartListPanel_김강산 cartListPanel;
 	/**
 	 * Launch the application.
 	 */
@@ -206,6 +208,9 @@ public class ShopMainFrame extends JFrame {
 		cartTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		shopTabbedPane.addTab("장바구니", null, cartTabbedPane, null);
 		
+		cartListPanel = new CartListPanel_김강산();
+		cartTabbedPane.addTab("나의 장바구니", null, cartListPanel, null);
+		
 		orderTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		shopTabbedPane.addTab("주문", null, orderTabbedPane, null);
 		
@@ -234,6 +239,7 @@ public class ShopMainFrame extends JFrame {
 		productListPanel.setFrame(this);
 		productDetailPanel.setFrame(this);
 		productRecommendPanel.setFrame(this);
+		cartListPanel.setFrame(this);
 		
 	}// 생성자 끝
 	/***************패널 변경 메소드******************/
