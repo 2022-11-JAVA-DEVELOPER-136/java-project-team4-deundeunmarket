@@ -7,7 +7,7 @@ import javax.swing.JTextField;
 
 import com.itwill.shop.member.Member;
 import com.itwill.shop.member.MemberService;
-import com.itwill.shop.ui.ProductListPanel;
+//import com.itwill.shop.ui.ProductListPanel;
 import com.itwill.shop.ui.ShopMainFrame;
 
 import javax.swing.JPasswordField;
@@ -31,8 +31,6 @@ public class MemberDetailPanel extends JPanel {
 	/*********1.MemberService 멤버필드 선언*****/
 	private MemberService memberService;
 	/************* 로그인 한 회원 ****************/
-	//private Member loginMember= new Member("sy3", "3333", "홍길동", "010-1234-5677", null, "test@gmail.com", "화성시");
-	//테스트용 --> 합치고 Member loginMember = null;로 주면된다.
 	public Member loginMember = null;
 	
 	
@@ -205,9 +203,6 @@ public class MemberDetailPanel extends JPanel {
 		this.frame = frame;
 	}
 	
-	public void setLoginMember(Member loginMember) {
-		this.loginMember = loginMember;
-	}
 
 	/************* 수정폼(수정하기) method - 회원정보 수정 가능하도록***************/
 	public void updateForm() {
@@ -216,7 +211,7 @@ public class MemberDetailPanel extends JPanel {
 			if (btnText.equals("수정하기")) {
 				updateFormEnable(true);
 			} else if (btnText.equals("수정취소")) {
-				displayMemberInfo(loginMember);
+				displayMemberInfo(frame.loginMember);
 				updateFormEnable(false);
 			}
 		} catch (Exception e1) {

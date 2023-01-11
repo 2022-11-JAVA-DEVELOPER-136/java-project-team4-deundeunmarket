@@ -144,10 +144,6 @@ public class ProductDetailPanel extends JPanel {
 	public void setFrame(ShopMainFrame frame) {
 		this.frame = frame;
 	}
-	
-	public void setLoginMember(Member loginMember) {
-		this.loginMember = loginMember;
-	}
 
 	/*
 	 * 상품 상세보기 메소드

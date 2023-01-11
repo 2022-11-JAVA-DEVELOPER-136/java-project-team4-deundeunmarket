@@ -165,7 +165,7 @@ public class OrderCreatePanel extends JPanel {
 	 * 주문 총 금액 메소드
 	 */
 	public int orderTotPrice(String m_id) throws Exception{
-		List<Cart> cartList = cartService.getCartItemByMemberId(m_id);
+		List<Cart> cartList = cartService.getCartItemByMemberId(frame.loginMember.getM_id()); // m_id
 		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 		int o_tot_price = 0;
 		if (cartList.size() >= 1) {
@@ -191,8 +191,8 @@ public class OrderCreatePanel extends JPanel {
 			String o_payment = (String) paymentCB.getSelectedItem();
 			String o_loc = (String) orderLocCB.getSelectedItem();
 
-			Order newOrder = new Order(0, o_name, null, null, 0, o_address, o_loc, o_payment, loginMember.getM_id());
-			List<Cart> findCart = cartService.getCartItemByMemberId(loginMember.getM_id());
+			Order newOrder = new Order(0, o_name, null, null, 0, o_address, o_loc, o_payment, frame.loginMember.getM_id());
+			List<Cart> findCart = cartService.getCartItemByMemberId(frame.loginMember.getM_id());
 			int isCreated;
 			isCreated = orderService.orderCreate(newOrder);
 			if (findCart.size() > 0 && isCreated >= 1) {

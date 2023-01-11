@@ -169,18 +169,13 @@ public class ProductListPanel extends JPanel {
 		productService = new ProductService();
 		cartService = new CartService();
 		
-		loginMember = new Member();
-		//loginMember = new Member("sy1", null, null, null, null, null, null);
+		//loginMember = new Member();
 		productList();
 	}// 생성자 끝
 	
 	public void setFrame(ShopMainFrame frame) throws Exception {
 		this.frame = frame;
 		productList();
-	}
-	
-	public void setLoginMember(Member loginMember) {
-		this.loginMember = loginMember;
 	}
 
 	private void productList() throws Exception {
@@ -249,7 +244,7 @@ public class ProductListPanel extends JPanel {
 											product.getP_desc())));
 						if (isAdd >= 1) {
 							JOptionPane.showMessageDialog(null,"카트에 상품이 담겼습니다.");
-							frame.changePanel(ShopMainFrame.PANEL_CART, null);
+							//frame.changePanel(ShopMainFrame.PANEL_CART, null);
 						}
 					} catch (Exception e1) {
 						e1.printStackTrace();

@@ -392,15 +392,11 @@ setLayout(null);
 		/*
 		 * loginMember 객체 생성
 		 */
-		loginMember = new Member("sy1", null, null, null, null, null, null);
+		//loginMember = new Member("sy1", null, null, null, null, null, null);
 	}// 생성자 끝
 	
 	public void setFrame(ShopMainFrame frame) {
 		this.frame = frame;
-	}
-
-	public void setLoginMember(Member loginMember) {
-		this.loginMember = loginMember;
 	}
 
 	/*	private void productList() throws Exception {

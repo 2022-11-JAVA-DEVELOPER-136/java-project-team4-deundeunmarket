@@ -234,9 +234,6 @@ public class MemberJoinPanel extends JPanel {
 	public void setFrame(ShopMainFrame frame) {
 		this.frame = frame;
 	}
-	public void setLoginMember(Member loginMember) {
-		this.loginMember = loginMember;
-	}
 	/*************회원가입 method***********/
 	public void join() {
 		
