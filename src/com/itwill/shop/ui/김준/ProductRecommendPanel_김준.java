@@ -137,7 +137,7 @@ setLayout(null);
 				 */
 				//frame.productDetailPanel.clickOrder(product);
 				try {
-					cartService.addCart(new Cart(0, 1, loginMember.getM_id(), 
+					cartService.addCart(new Cart(0, 1, frame.loginMember.getM_id(), 
 							new Product(2, "떡볶이", 10000, "/images/떡볶이_작은.jpg", "자꾸 생각나는 매콤 달콤함")));
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -203,7 +203,7 @@ setLayout(null);
 				 */
 				//frame.productDetailPanel.clickOrder(product);
 				try {
-					cartService.addCart(new Cart(0, 1, loginMember.getM_id(), 
+					cartService.addCart(new Cart(0, 1, frame.loginMember.getM_id(), 
 							new Product(10, "크림파스타", 10000, "/images/크림파스타_작은.jpg", "매콤한 매력의 크림 파스타")));
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -269,7 +269,7 @@ setLayout(null);
 				 */
 				//frame.productDetailPanel.clickOrder(product);
 				try {
-					cartService.addCart(new Cart(0, 1, loginMember.getM_id(), 
+					cartService.addCart(new Cart(0, 1, frame.loginMember.getM_id(), 
 							new Product(6, "스테이크", 10000, "/images/스테이크_작은.jpg", "쫄깃한 식감, 풍부한 육즙")));
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -335,7 +335,7 @@ setLayout(null);
 				 */
 				//frame.productDetailPanel.clickOrder(product);
 				try {
-					cartService.addCart(new Cart(0, 1, loginMember.getM_id(), 
+					cartService.addCart(new Cart(0, 1, frame.loginMember.getM_id(), 
 							new Product(5, "샤브샤브", 10000, "/images/샤브샤브_작은.jpg", "매장의 노하우로 완성")));
 				} catch (Exception e1) {
 					e1.printStackTrace();

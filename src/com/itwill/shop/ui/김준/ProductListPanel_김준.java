@@ -231,7 +231,7 @@ public class ProductListPanel_김준 extends JPanel {
 					//frame.productDetailPanel.clickOrder(product); 메소드 사용안됨
 					///*
 					try {
-						int isAdd = cartService.addCart(new Cart(0, 1, loginMember.getM_id(), 
+						int isAdd = cartService.addCart(new Cart(0, 1, frame.loginMember.getM_id(), 
 								new Product(product.getP_no(), product.getP_name(), 
 											product.getP_price(), product.getP_image(), 
 											product.getP_desc())));
