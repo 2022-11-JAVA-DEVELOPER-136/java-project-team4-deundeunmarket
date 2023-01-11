@@ -95,10 +95,11 @@ public class ShopMainFrame_김준 extends JFrame {
 		orderService = new OrderService();
 		cartService = new CartService();
 		
-		/*******ShopMainFrame참조를 Panel에 넘겨줌*******/
+		/*******ShopMainFrame참조를 Panel에 넘겨줌*******
 		productListPanel_김준.setFrame(this);
 		productDetailPanel_김준.setFrame(this);
 		productRecommendPanel_김준.setFrame(this);
+		*/
 	}
 	
 	/***********패널변경메쏘드********/

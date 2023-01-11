@@ -45,7 +45,7 @@ public class ProductDetailPanel_김준 extends JPanel {
 	/*
 	 * logInMember 객체 선언
 	 */
-	Member loginMember;
+	public Member loginMember;
 	/*
 	 * Product product
 	 */
@@ -136,13 +136,19 @@ public class ProductDetailPanel_김준 extends JPanel {
 		/*
 		 * loginMember 객체 생성
 		 */
-		loginMember = new Member("sy1",null,null,null,null,null,null);
+		//loginMember = new Member("sy1",null,null,null,null,null,null);
+		//frame.loginMember = frame.memberService.memberDetail(loginMember.getM_id());
 		
 	}// 생성자 끝
 
 	public void setFrame(ShopMainFrame frame) {
 		this.frame = frame;
 	}
+	
+	public void setLoginMember(Member loginMember) {
+		this.loginMember = loginMember;
+	}
+
 	/*
 	 * 상품 상세보기 메소드
 	 */

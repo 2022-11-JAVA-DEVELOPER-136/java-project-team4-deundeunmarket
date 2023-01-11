@@ -54,7 +54,7 @@ public class ProductRecommendPanel_김준 extends JPanel {
 	/*
 	 * logInMember 객체 선언
 	 */
-	Member loginMember;
+	public Member loginMember;
 	Product product;
 	/*****************************************/
 
@@ -137,7 +137,7 @@ setLayout(null);
 				 */
 				//frame.productDetailPanel.clickOrder(product);
 				try {
-					cartService.addCart(new Cart(0, 1, loginMember.getM_id(), 
+					cartService.addCart(new Cart(0, 1, frame.loginMember.getM_id(), 
 							new Product(2, "떡볶이", 10000, "/images/떡볶이_작은.jpg", "자꾸 생각나는 매콤 달콤함")));
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -149,6 +149,14 @@ setLayout(null);
 		
 		JButton buyBtn1 = new JButton("구매하기");
 		buyBtn1.setBackground(new Color(240, 255, 240));
+		buyBtn1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/*
+				 * 구매하기 클릭 시 주문생성 패널로 이동
+				 */
+				frame.changePanel(ShopMainFrame.PANEL_ORDER_CREATE, null);
+			}
+		});
 		buyBtn1.setBounds(14, 274, 97, 23);
 		tteokbokkiPanel.add(buyBtn1);
 		/***************************************************/
@@ -203,7 +211,7 @@ setLayout(null);
 				 */
 				//frame.productDetailPanel.clickOrder(product);
 				try {
-					cartService.addCart(new Cart(0, 1, loginMember.getM_id(), 
+					cartService.addCart(new Cart(0, 1, frame.loginMember.getM_id(), 
 							new Product(10, "크림파스타", 10000, "/images/크림파스타_작은.jpg", "매콤한 매력의 크림 파스타")));
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -215,6 +223,14 @@ setLayout(null);
 		
 		JButton buyBtn2 = new JButton("구매하기");
 		buyBtn2.setBackground(new Color(240, 255, 240));
+		buyBtn2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/*
+				 * 구매하기 클릭 시 주문생성 패널로 이동
+				 */
+				frame.changePanel(ShopMainFrame.PANEL_ORDER_CREATE, null);
+			}
+		});
 		buyBtn2.setBounds(15, 274, 97, 23);
 		creampastaPanel_2.add(buyBtn2);
 		/***************************************************/
@@ -269,7 +285,7 @@ setLayout(null);
 				 */
 				//frame.productDetailPanel.clickOrder(product);
 				try {
-					cartService.addCart(new Cart(0, 1, loginMember.getM_id(), 
+					cartService.addCart(new Cart(0, 1, frame.loginMember.getM_id(), 
 							new Product(6, "스테이크", 10000, "/images/스테이크_작은.jpg", "쫄깃한 식감, 풍부한 육즙")));
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -281,6 +297,14 @@ setLayout(null);
 		
 		JButton buyBtn3 = new JButton("구매하기");
 		buyBtn3.setBackground(new Color(240, 255, 240));
+		buyBtn3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/*
+				 * 구매하기 클릭 시 주문생성 패널로 이동
+				 */
+				frame.changePanel(ShopMainFrame.PANEL_ORDER_CREATE, null);
+			}
+		});
 		buyBtn3.setBounds(14, 274, 97, 23);
 		steakPanel_3.add(buyBtn3);
 		/***************************************************/
@@ -335,7 +359,7 @@ setLayout(null);
 				 */
 				//frame.productDetailPanel.clickOrder(product);
 				try {
-					cartService.addCart(new Cart(0, 1, loginMember.getM_id(), 
+					cartService.addCart(new Cart(0, 1, frame.loginMember.getM_id(), 
 							new Product(5, "샤브샤브", 10000, "/images/샤브샤브_작은.jpg", "매장의 노하우로 완성")));
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -347,6 +371,14 @@ setLayout(null);
 		
 		JButton buyBtn4 = new JButton("구매하기");
 		buyBtn4.setBackground(new Color(240, 255, 240));
+		buyBtn4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/*
+				 * 구매하기 클릭 시 주문생성 패널로 이동
+				 */
+				frame.changePanel(ShopMainFrame.PANEL_ORDER_CREATE, null);
+			}
+		});
 		buyBtn4.setBounds(14, 274, 97, 23);
 		shabuPanel_4.add(buyBtn4);
 		/********************************/	
@@ -365,6 +397,10 @@ setLayout(null);
 	
 	public void setFrame(ShopMainFrame frame) {
 		this.frame = frame;
+	}
+
+	public void setLoginMember(Member loginMember) {
+		this.loginMember = loginMember;
 	}
 
 	/*	private void productList() throws Exception {

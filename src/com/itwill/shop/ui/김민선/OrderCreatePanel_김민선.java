@@ -144,13 +144,15 @@ public class OrderCreatePanel_김민선 extends JPanel {
 		/*
 		 * loginMember 객체 생성
 		 */
-		loginMember = new Member("sy1",null,null,null,null,null,null);
+		//loginMember = new Member("sy1",null,null,null,null,null,null);
+		//frame.loginMember = frame.memberService.memberDetail(loginMember.getM_id());
 		/*****************************************/
 		
 		/*
 		 * 주문 총 금액 메소드 사용
 		 */
-		orderTotPriceLB.setText(""+orderTotPrice(loginMember.getM_id()));
+		//orderTotPriceLB.setText(""+orderTotPrice(loginMember.getM_id()));
+		//orderTotPriceLB.setText(""+orderTotPrice(frame.loginMember.getM_id()));
 		
 		
 	}// 생성자 끝
