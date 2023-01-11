@@ -13,7 +13,6 @@ import com.itwill.shop.cart.CartService;
 import com.itwill.shop.member.Member;
 import com.itwill.shop.order.OrderService;
 import com.itwill.shop.product.ProductService;
-import com.itwill.shop.ui.ShopMainFrame;
 
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
@@ -40,22 +39,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.event.ChangeEvent;
 
 public class CartListPanel_김강산 extends JPanel {
-	/*
-	 * 프레임 참조
-	 */
-	ShopMainFrame frame;
-	/*
-	 * Service 멤버변수 선언
-	 */
-	private CartService cartService;
-	private ProductService productService;
-	private OrderService orderService;
-	/*
-	 * login member 선언
-	 */
-	private Member loginMember;
-	
-	
 	private JLabel cartTextLB;
 	private JPanel finalPrice;
 	private JButton orderBtn;
@@ -69,6 +52,14 @@ public class CartListPanel_김강산 extends JPanel {
 	private JButton exitBtn;
 	private JLabel cartProductDesc;
 	private JLabel cartProductAddPrice;
+	/*
+	 * Service 멤버변수 선언
+	 */
+
+	private CartService cartService;
+	private ProductService productService;
+	private OrderService orderService;
+	private Member loginMember;
 	private JPanel jp;
 
 	/**
@@ -104,7 +95,8 @@ public class CartListPanel_김강산 extends JPanel {
 		finalPrice.setLayout(null);
 
 		JLabel productTotalPriceTF = new JLabel("상품금액");
-		productTotalPriceTF.setBounds(12, 10, 48, 15);
+		productTotalPriceTF.setFont(new Font("굴림", Font.PLAIN, 12));
+		productTotalPriceTF.setBounds(12, 2, 48, 25);
 		finalPrice.add(productTotalPriceTF);
 
 		JLabel baesongbiTF = new JLabel("배송비");
@@ -145,13 +137,27 @@ public class CartListPanel_김강산 extends JPanel {
 		cartTextLB.setBounds(104, 10, 134, 48);
 		northPanel.add(cartTextLB);
 		
+		allCartDelete = new JButton("전체삭제");
+		allCartDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					cartService.deleteCartItemByMemberId(loginMember.getM_id());
+					refresh();
+				} catch (Exception e1) {
+					e1.getMessage();
+				}
+			}
+		});
+		allCartDelete.setBounds(257, 51, 89, 23);
+		northPanel.add(allCartDelete);
+		
 
 		cartListScrollPane = new JScrollPane();
 		cartListScrollPane.setBounds(0, 85, 354, 310);
 		cartscrollMain.add(cartListScrollPane);
 
 		cartListPanel = new JPanel();
-		cartListPanel.setPreferredSize(new Dimension(10, 1500));
+		cartListPanel.setPreferredSize(new Dimension(10, 700));
 		cartListScrollPane.setViewportView(cartListPanel);
 
 		/**************** cart panel ******************/
@@ -178,7 +184,8 @@ public class CartListPanel_김강산 extends JPanel {
 		cartPanel.add(exitBtn);
 
 		cartProductDesc = new JLabel();
-		cartProductDesc.setBounds(128, 37, 192, 79);
+		cartProductDesc.setFont(new Font("굴림", Font.PLAIN, 10));
+		cartProductDesc.setBounds(128, 10, 192, 79);
 		cartPanel.add(cartProductDesc);
 
 		cartProductAddPrice = new JLabel("상품금액");
@@ -212,20 +219,15 @@ public class CartListPanel_김강산 extends JPanel {
 		// 메인 메소드 호출
 		displayCartList();
 
-	}// 생성자 끝
-	
-	public void setFrame(ShopMainFrame frame) {
-		this.frame = frame;
 	}
-	/*
-	 *  카트리스트 보기 메소드
-	 */
 
 	List<Cart> selectedCartList = null;
 	JCheckBox[] cartCBArray = null;
 	private JLabel cartProductName;
 	private JButton F5Btn;
+	private JButton allCartDelete;
 
+		// 메인 메소드
 
 	public void displayCartList() throws Exception {
 		List<Cart> cartList = cartService.getCartItemByMemberId(loginMember.getM_id());
@@ -234,7 +236,7 @@ public class CartListPanel_김강산 extends JPanel {
 
 		for (int i = 0; i < cartList.size(); i++) {
 			Cart cart = cartList.get(i);
-
+			
 			cartPanel = new JPanel();
 			cartPanel.setPreferredSize(new Dimension(320, 130));
 			cartPanel.setLayout(null);
@@ -275,7 +277,8 @@ public class CartListPanel_김강산 extends JPanel {
 			cartPanel.add(cartProductName);
 
 			cartProductDesc = new JLabel();
-			cartProductDesc.setBounds(128, 37, 192, 79);
+			cartProductDesc.setFont(new Font("굴림", Font.PLAIN, 11));
+			cartProductDesc.setBounds(128, 10, 192, 79);
 			cartProductDesc.setText(cart.getProduct().getP_desc());
 			cartPanel.add(cartProductDesc);
 
