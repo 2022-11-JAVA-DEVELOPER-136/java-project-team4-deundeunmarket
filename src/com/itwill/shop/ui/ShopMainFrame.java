@@ -219,8 +219,9 @@ public class ShopMainFrame extends JFrame {
 		memberLoginPanel.setFrame(this);
 		memberJoinPanel.setFrame(this);
 		memberDetailPanel.setFrame(this);
-		
-		
+		/***************수정**************/
+		productListPanel.setFrame(this);
+		productDetailPanel.setFrame(this);
 		
 		
 	}// 생성자 끝
@@ -243,11 +244,11 @@ public class ShopMainFrame extends JFrame {
 			shopTabbedPane.setSelectedIndex(1);
 			productTabbedPane.setSelectedIndex(1);
 		} else if (panel_no == PANEL_PRODUCT_DETAIL) {
-			//Product product = (Product)data;
+			Product product = (Product)data;
 			//System.out.println("recv product" + product);
 			shopTabbedPane.setSelectedIndex(1);
 			productTabbedPane.setSelectedIndex(2);
-			//productDetailPanel.displayProductDetail(product);
+			productDetailPanel.displayProductDetail(product);
 		} else if (panel_no == PANEL_CART) {
 			shopTabbedPane.setSelectedIndex(2);
 			cartTabbedPane.setSelectedIndex(0);
