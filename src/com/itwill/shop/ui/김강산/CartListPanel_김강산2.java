@@ -95,7 +95,8 @@ public class CartListPanel_김강산2 extends JPanel {
 		finalPrice.setLayout(null);
 
 		JLabel productTotalPriceTF = new JLabel("상품금액");
-		productTotalPriceTF.setBounds(12, 10, 48, 15);
+		productTotalPriceTF.setFont(new Font("굴림", Font.PLAIN, 12));
+		productTotalPriceTF.setBounds(12, 2, 48, 25);
 		finalPrice.add(productTotalPriceTF);
 
 		JLabel baesongbiTF = new JLabel("배송비");
@@ -136,6 +137,20 @@ public class CartListPanel_김강산2 extends JPanel {
 		cartTextLB.setBounds(104, 10, 134, 48);
 		northPanel.add(cartTextLB);
 		
+		allCartDelete = new JButton("전체삭제");
+		allCartDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					cartService.deleteCartItemByMemberId(loginMember.getM_id());
+					refresh();
+				} catch (Exception e1) {
+					e1.getMessage();
+				}
+			}
+		});
+		allCartDelete.setBounds(257, 51, 89, 23);
+		northPanel.add(allCartDelete);
+		
 
 		cartListScrollPane = new JScrollPane();
 		cartListScrollPane.setBounds(0, 85, 354, 310);
@@ -169,7 +184,8 @@ public class CartListPanel_김강산2 extends JPanel {
 		cartPanel.add(exitBtn);
 
 		cartProductDesc = new JLabel();
-		cartProductDesc.setBounds(128, 37, 192, 79);
+		cartProductDesc.setFont(new Font("굴림", Font.PLAIN, 10));
+		cartProductDesc.setBounds(128, 10, 192, 79);
 		cartPanel.add(cartProductDesc);
 
 		cartProductAddPrice = new JLabel("상품금액");
@@ -209,6 +225,7 @@ public class CartListPanel_김강산2 extends JPanel {
 	JCheckBox[] cartCBArray = null;
 	private JLabel cartProductName;
 	private JButton F5Btn;
+	private JButton allCartDelete;
 
 		// 메인 메소드
 
@@ -219,7 +236,7 @@ public class CartListPanel_김강산2 extends JPanel {
 
 		for (int i = 0; i < cartList.size(); i++) {
 			Cart cart = cartList.get(i);
-
+			
 			cartPanel = new JPanel();
 			cartPanel.setPreferredSize(new Dimension(320, 130));
 			cartPanel.setLayout(null);
@@ -260,7 +277,8 @@ public class CartListPanel_김강산2 extends JPanel {
 			cartPanel.add(cartProductName);
 
 			cartProductDesc = new JLabel();
-			cartProductDesc.setBounds(128, 37, 192, 79);
+			cartProductDesc.setFont(new Font("굴림", Font.PLAIN, 11));
+			cartProductDesc.setBounds(128, 10, 192, 79);
 			cartProductDesc.setText(cart.getProduct().getP_desc());
 			cartPanel.add(cartProductDesc);
 
