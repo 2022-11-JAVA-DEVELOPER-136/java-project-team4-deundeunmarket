@@ -1,9 +1,9 @@
 /*
 member insert
 */
-insert into member(m_id, m_pass, m_name, m_phone, m_bday, m_email, m_address) values('sy0', '0000', '김세영', '010-0000-0000', sysdate, 'sy0@gmail.com', '서울시 송파구');
-insert into member(m_id, m_pass, m_name, m_phone, m_bday, m_email, m_address) values('sy1', '1111', '김세일', '010-1111-1111', sysdate, 'sy1@gmail.com', '서울시 강남구');
-insert into member(m_id, m_pass, m_name, m_phone, m_bday, m_email, m_address) values('sy2', '2222', '김세이', '010-2222-2222', sysdate, 'sy2@gmail.com', '서울시 서초구');
+insert into member(m_id, m_pass, m_name, m_phone, m_bday, m_email, m_address) values('sy0', '0000', '안시홍', '010-7894-4545', sysdate, 'sy0@gmail.com', '서울시 송파구');
+insert into member(m_id, m_pass, m_name, m_phone, m_bday, m_email, m_address) values('sy1', '1111', '홍수연', '010-1647-9978', sysdate, 'sy1@gmail.com', '경기도 광주시');
+insert into member(m_id, m_pass, m_name, m_phone, m_bday, m_email, m_address) values('sy2', '2222', '김시은', '010-1254-6654', sysdate, 'sy2@gmail.com', '서울시 광진구');
 
 /*
 product insert
@@ -34,11 +34,11 @@ insert into cart(cart_no, cart_qty, m_id, p_no) values(cart_cart_no_SEQ.nextval,
 order insert
 */
 --sy0
-insert into orders(o_no, o_desc, o_date, o_price, o_address, o_loc, o_payment, m_id) values(orders_o_no_SEQ.nextval, 'o_desc', sysdate, 80000, '서울시 강남구','문 앞에 놔주세요', 'o_payment', 'sy0');
+insert into orders(o_no, o_name, o_desc, o_date, o_price, o_address, o_loc, o_payment, m_id) values(orders_o_no_SEQ.nextval, '이동근','전복버터밥 외 7개', sysdate, 80000, '서울시 강남구 대치동','문 앞에 놔주세요', '계좌이체', 'sy0');
 insert into order_item(oi_no, oi_qty, p_no, o_no) values(order_item_oi_no_SEQ.nextval, 1, 1, orders_o_no_SEQ.currval);
 insert into order_item(oi_no, oi_qty, p_no, o_no) values(order_item_oi_no_SEQ.nextval, 2, 2, orders_o_no_SEQ.currval);
 
 --sy1
-insert into orders(o_no, o_desc, o_date, o_price, o_address, o_loc, o_payment, m_id) values(orders_o_no_SEQ.nextval, 'o_desc', sysdate, 90000, '서울시 강남구','벨 울리지 말아주세요', 'o_payment', 'sy1');
+insert into orders(o_no, o_name, o_desc, o_date, o_price, o_address, o_loc, o_payment, m_id) values(orders_o_no_SEQ.nextval, '한지민','크림파스타 외 3개', sysdate, 90000, '경기도 고양시 덕양구 화정동','벨 울리지 말아주세요', '카드', 'sy1');
 insert into order_item(oi_no, oi_qty, p_no, o_no) values(order_item_oi_no_SEQ.nextval, 3, 3, orders_o_no_SEQ.currval);
 insert into order_item(oi_no, oi_qty, p_no, o_no) values(order_item_oi_no_SEQ.nextval, 4, 4, orders_o_no_SEQ.currval);
