@@ -55,8 +55,6 @@ public class CartListPanel extends JPanel {
 	/*
 	 * login member 선언
 	 */
-	public Member loginMember;
-	
 	private JPanel finalPricePanel;
 	private JButton orderBtn;
 	private JLabel finalCartListTotalLB;
@@ -103,7 +101,7 @@ public class CartListPanel extends JPanel {
 				 * 주문 생성 탭으로 이동 + 주문 총 금액 설정
 				 */
 				frame.changePanel(ShopMainFrame.PANEL_ORDER_CREATE, null);
-				frame.orderCreatePanel.orderTotPriceLB.setText(frame.orderCreatePanel.orderTotPrice(loginMember.getM_id())+"원");
+				frame.orderCreatePanel.orderTotPriceLB.setText(frame.orderCreatePanel.orderTotPrice(frame.loginMember.getM_id())+"원");
 				} catch (Exception e1) {
 					e1.getMessage();
 				}
@@ -257,6 +255,14 @@ public class CartListPanel extends JPanel {
 		productService = new ProductService();
 
 
+		// loginMember객체생성
+		
+//		loginMember = frame.memberService.memberDetail(frame.loginMember.getM_id());
+		// 메인 메소드 호출 (수정)
+	
+		displayCartList();
+
+
 	}// 생성자 끝
 	
 	public void setFrame(ShopMainFrame frame) {
@@ -386,9 +392,8 @@ public class CartListPanel extends JPanel {
 	}
 	*/
 	public String addCartListTotal() throws Exception {
-		loginMember = new Member("sy0", null, null, null, null, null, null);
-		cartService = new CartService();
-		return Integer.toString(cartService.addCartListTotal(loginMember.getM_id()));
+		frame = new ShopMainFrame();
+		return Integer.toString(cartService.addCartListTotal(frame.loginMember.getM_id()));
 
 	}
 	// 배송비 제외 카트리스트 합계
