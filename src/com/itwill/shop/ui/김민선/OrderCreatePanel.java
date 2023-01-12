@@ -171,7 +171,7 @@ public class OrderCreatePanel extends JPanel {
 	 * 주문 총 금액 메소드
 	 */
 	public int orderTotPrice(String m_id) throws Exception{
-		List<Cart> cartList = cartService.getCartItemByMemberId(frame.loginMember.getM_id()); 
+		List<Cart> cartList = cartService.getCartItemByMemberId(frame.loginMember.getM_id()); // m_id
 		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 		int o_tot_price = 0;
 		if (cartList.size() >= 1) {
