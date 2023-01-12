@@ -101,7 +101,7 @@ public class CartListPanel extends JPanel {
 				 * 주문 생성 탭으로 이동 + 주문 총 금액 설정
 				 */
 				frame.changePanel(ShopMainFrame.PANEL_ORDER_CREATE, null);
-				frame.orderCreatePanel.orderTotPriceLB.setText(frame.orderCreatePanel.orderTotPrice(loginMember.getM_id())+"원");
+				frame.orderCreatePanel.orderTotPriceLB.setText(frame.orderCreatePanel.orderTotPrice(frame.loginMember.getM_id())+"원");
 				} catch (Exception e1) {
 					e1.getMessage();
 				}
