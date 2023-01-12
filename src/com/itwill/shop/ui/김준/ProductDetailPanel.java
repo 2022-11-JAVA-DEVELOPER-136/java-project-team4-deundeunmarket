@@ -152,7 +152,7 @@ public class ProductDetailPanel extends JPanel {
 		imageLB.setIcon(new ImageIcon(ProductDetailPanel.class.getResource(product.getP_image())));
 		nameContentLB.setText("<html>" + product.getP_name() + "<html>");
 		detailContentLB.setText("<html>" + product.getP_desc() + "<html>");
-		
+		priceContentLB.setText("<html>" + product.getP_price() + "<html>");
 	}
 	/*
 	 * 클릭 -> 장바구니 담기 메소드

@@ -91,12 +91,20 @@ public class CartListPanel extends JPanel {
 		cartListMainPanel.setLayout(null);
 
 		orderBtn = new JButton("구매하기");
+		orderBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		orderBtn.setForeground(new Color(255, 255, 255));
 		orderBtn.setBackground(new Color(147, 112, 219));
 		orderBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// 오더창으로 넘어가기
+				try {
+				/*
+				 * 주문 생성 탭으로 이동 + 주문 총 금액 설정
+				 */
 				frame.changePanel(ShopMainFrame.PANEL_ORDER_CREATE, null);
+				frame.orderCreatePanel.orderTotPriceLB.setText(frame.orderCreatePanel.orderTotPrice(loginMember.getM_id())+"원");
+				} catch (Exception e1) {
+					e1.getMessage();
+				}
 			}
 		});
 		orderBtn.setFont(new Font("D2Coding", Font.PLAIN, 18));
@@ -223,6 +231,17 @@ public class CartListPanel extends JPanel {
 		cartPanel.add(cartProductName);
 		
 		JButton deleteAllBtn = new JButton("전체삭제");
+		deleteAllBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		deleteAllBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					cartService.deleteCartItemByMemberId(frame.loginMember.getM_id());
+					refresh();
+				} catch (Exception e1) {
+					e1.getMessage();
+				}
+			}
+		});
 		deleteAllBtn.setForeground(new Color(255, 255, 255));
 		deleteAllBtn.setFont(new Font("D2Coding", Font.PLAIN, 11));
 		deleteAllBtn.setBackground(new Color(147, 112, 219));
@@ -235,12 +254,15 @@ public class CartListPanel extends JPanel {
 		orderService = new OrderService();
 		productService = new ProductService();
 
+
 		// loginMember객체생성
 		
 //		loginMember = frame.memberService.memberDetail(frame.loginMember.getM_id());
 		// 메인 메소드 호출 (수정)
 	
 		displayCartList();
+
+
 	}// 생성자 끝
 	
 	public void setFrame(ShopMainFrame frame) {
@@ -254,15 +276,12 @@ public class CartListPanel extends JPanel {
 	private JButton F5Btn;
 	private JButton allCartDelete;
 
-	// 메인 메소드
-
 	
 	/*
 	 * 카트 보여주기 메소드
 	 */
 	
 	public void displayCartList() throws Exception {
-		System.out.println(">>> displayCartList:"+frame.loginMember);
 		List<Cart> cartList = cartService.getCartItemByMemberId(frame.loginMember.getM_id());
 		System.out.println(cartList);
 		cartListPanel.removeAll();

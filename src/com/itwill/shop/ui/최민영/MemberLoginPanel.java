@@ -15,6 +15,8 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.JPasswordField;
 import java.awt.Font;
+import java.awt.Cursor;
+import javax.swing.SwingConstants;
 
 public class MemberLoginPanel extends JPanel {
 	/*
@@ -25,7 +27,7 @@ public class MemberLoginPanel extends JPanel {
 	private MemberService memberService;
 	
 	/*************로그인 한 회원****************/
-	public Member loginMember=null;
+	private Member loginMember=null;
 	
 	
 	public JTextField loginIdTF;
@@ -50,24 +52,27 @@ public class MemberLoginPanel extends JPanel {
 		memberLoginPanel.setLayout(null);
 		
 		JLabel idLB = new JLabel("아이디");
-		idLB.setFont(new Font("D2Coding", Font.PLAIN, 12));
-		idLB.setBounds(69, 121, 57, 15);
+		idLB.setFont(new Font("D2Coding", Font.PLAIN, 14));
+		idLB.setBounds(58, 121, 68, 15);
 		memberLoginPanel.add(idLB);
 		
 		JLabel passLB = new JLabel("비밀번호");
-		passLB.setFont(new Font("D2Coding", Font.PLAIN, 12));
-		passLB.setBounds(69, 170, 57, 15);
+		passLB.setFont(new Font("D2Coding", Font.PLAIN, 14));
+		passLB.setBounds(58, 170, 68, 15);
 		memberLoginPanel.add(passLB);
 		
 		loginIdTF = new JTextField();
 		loginIdTF.setText("aaaa");
-		loginIdTF.setBounds(147, 117, 128, 21);
+		loginIdTF.setBounds(138, 117, 137, 21);
 		memberLoginPanel.add(loginIdTF);
 		loginIdTF.setColumns(10);
 		
 		joinBtn = new JButton("회원가입");
-		joinBtn.setFont(new Font("D2Coding", Font.PLAIN, 12));
-		joinBtn.setBackground(new Color(240, 255, 240));
+		joinBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+		joinBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		joinBtn.setForeground(new Color(255, 255, 255));
+		joinBtn.setFont(new Font("D2Coding", Font.PLAIN, 14));
+		joinBtn.setBackground(new Color(147, 112, 219));
 		joinBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/*
@@ -76,23 +81,26 @@ public class MemberLoginPanel extends JPanel {
 				frame.changePanel(ShopMainFrame.PANEL_MEMBER_JOIN, null);
 			}
 		});
-		joinBtn.setBounds(58, 245, 97, 23);
+		joinBtn.setBounds(50, 245, 109, 33);
 		memberLoginPanel.add(joinBtn);
 		
 		loginBtn = new JButton("로그인");
-		loginBtn.setFont(new Font("D2Coding", Font.PLAIN, 12));
-		loginBtn.setBackground(new Color(240, 255, 240));
+		loginBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+		loginBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		loginBtn.setForeground(new Color(255, 255, 255));
+		loginBtn.setFont(new Font("D2Coding", Font.PLAIN, 14));
+		loginBtn.setBackground(new Color(147, 112, 219));
 		loginBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				login();
 			}
 		});
-		loginBtn.setBounds(179, 245, 97, 23);
+		loginBtn.setBounds(175, 245, 115, 33);
 		memberLoginPanel.add(loginBtn);
 		
 		loginPassTF = new JPasswordField();
 		loginPassTF.setText("aaaa");
-		loginPassTF.setBounds(147, 167, 128, 21);
+		loginPassTF.setBounds(138, 167, 137, 21);
 		memberLoginPanel.add(loginPassTF);
 		
 		
@@ -105,10 +113,6 @@ public class MemberLoginPanel extends JPanel {
 	public void setFrame(ShopMainFrame frame) {
 		this.frame = frame;
 	}
-	
-	public void setLoginMember(Member loginMember) {
-		this.loginMember = loginMember;
-	}
 
 	/**************로그인 성공 시 호출할 메쏘드***************/
 
@@ -119,10 +123,13 @@ public class MemberLoginPanel extends JPanel {
 		//mainFrame.loginUser = mainFrame.userService.findUser(userId); 
 		//2.MemberMainFrame 타이틀 변경
 		frame.setTitle(id + " 님 로그인");
-		//3. 로그인 탭, 회원가입 탭 불활성화, 회원정보 탭 활성화
+		//3. 로그인 탭, 회원가입 탭 불활성화, 회원정보 탭 활성화, 장바구니,주문 활성화
 		frame.memberTabbedPane.setEnabledAt(0, false);
 		frame.memberTabbedPane.setEnabledAt(1, false);
 		frame.memberTabbedPane.setEnabledAt(2, true);
+		frame.shopTabbedPane.setEnabledAt(3, true);
+		frame.shopTabbedPane.setEnabledAt(4, true);
+		
 		// 4.상품 전체보기로 화면전환
 		frame.changePanel(ShopMainFrame.PANEL_PRODUCT_LIST, null);
 		//frame.memberDetailPanel.displayMemberInfo(loginMember);
@@ -142,7 +149,6 @@ public class MemberLoginPanel extends JPanel {
 				//로그인 성공
 				//JOptionPane.showMessageDialog(null, "로그인 성공");
 				//loginProcess(id); //로그인 멤버로 넣어줌
-				
 				loginIdTF.setText(""); 
 				loginPassTF.setText("");
 				loginProcess(id);
@@ -157,29 +163,6 @@ public class MemberLoginPanel extends JPanel {
 			// TODO: handle exception
 		}
 	}
-	/*
-	 * private int userLogin() {
-		int result=0;
-		try {
-			String id=loginIdTF.getText();
-			String password=loginPasswordTF.getText();
-			result=frame.userService.login(id, password);
-			if(result==1) {
-				//로그인 성공시
-				frame.loginUser=frame.userService.findUser(id);
-				frame.setTitle(id+"님 로그인");
-			} else {
-				JOptionPane.showMessageDialog(null,"아이디/비밀번호를 확인하세요.");
-				loginIdTF.setSelectionStart(0);
-				loginIdTF.setSelectionEnd(id.length());
-				loginIdTF.requestFocus();
-			}
-		} catch (Exception e) {
-			e.getMessage();
-		}
-		return result;
-	}
-	 */
 	
 	
 	

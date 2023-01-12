@@ -248,7 +248,7 @@ setLayout(null);
 				/*
 				 * 이미지 클릭 시 상품 상세패널로 이동
 				 */
-				frame.changePanel(ShopMainFrame.PANEL_PRODUCT_DETAIL, new Product(6, "스테이크", 10000, "/images/스테이크_작은.jpg", "쫄깃한 식감, 풍부한 육즙"));
+				frame.changePanel(ShopMainFrame.PANEL_PRODUCT_DETAIL, new Product(6, "스테이크", 20000, "/images/스테이크_작은.jpg", "쫄깃한 식감, 풍부한 육즙"));
 			}
 		});
 		productImageLB_3.setIcon(new ImageIcon(ProductRecommendPanel.class.getResource("/images/스테이크_작은.jpg")));
@@ -267,7 +267,7 @@ setLayout(null);
 		productNameLB_3.setBounds(0, 158, 125, 41);
 		steakPanel_3.add(productNameLB_3);
 		
-		JLabel productPriceLB_3 = new JLabel("<html> 가격 : 10,000 </html>");
+		JLabel productPriceLB_3 = new JLabel("<html> 가격 : 20,000 </html>");
 		productPriceLB_3.setFont(new Font("D2Coding", Font.PLAIN, 12));
 		productPriceLB_3.setHorizontalTextPosition(SwingConstants.CENTER);
 		productPriceLB_3.setHorizontalAlignment(SwingConstants.CENTER);
@@ -286,7 +286,7 @@ setLayout(null);
 				//frame.productDetailPanel.clickOrder(product);
 				try {
 					cartService.addCart(new Cart(0, 1, frame.loginMember.getM_id(), 
-							new Product(6, "스테이크", 10000, "/images/스테이크_작은.jpg", "쫄깃한 식감, 풍부한 육즙")));
+							new Product(6, "스테이크", 20000, "/images/스테이크_작은.jpg", "쫄깃한 식감, 풍부한 육즙")));
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -322,7 +322,7 @@ setLayout(null);
 				/*
 				 * 이미지 클릭 시 상품 상세패널로 이동
 				 */
-				frame.changePanel(ShopMainFrame.PANEL_PRODUCT_DETAIL, new Product(5, "샤브샤브", 10000, "/images/샤브샤브_작은.jpg", "매장의 노하우로 완성"));
+				frame.changePanel(ShopMainFrame.PANEL_PRODUCT_DETAIL, new Product(5, "샤브샤브", 14000, "/images/샤브샤브_작은.jpg", "매장의 노하우로 완성"));
 			}
 		});
 		productImageLB_4.setIcon(new ImageIcon(ProductRecommendPanel.class.getResource("/images/샤브샤브_작은.jpg")));
@@ -341,7 +341,7 @@ setLayout(null);
 		productNameLB_4.setBounds(0, 158, 125, 41);
 		shabuPanel_4.add(productNameLB_4);
 		
-		JLabel productPriceLB_4 = new JLabel("<html> 가격 : 10,000 </html>");
+		JLabel productPriceLB_4 = new JLabel("<html> 가격 : 14,000 </html>");
 		productPriceLB_4.setFont(new Font("D2Coding", Font.PLAIN, 12));
 		productPriceLB_4.setHorizontalTextPosition(SwingConstants.CENTER);
 		productPriceLB_4.setHorizontalAlignment(SwingConstants.CENTER);
@@ -360,7 +360,7 @@ setLayout(null);
 				//frame.productDetailPanel.clickOrder(product);
 				try {
 					cartService.addCart(new Cart(0, 1, frame.loginMember.getM_id(), 
-							new Product(5, "샤브샤브", 10000, "/images/샤브샤브_작은.jpg", "매장의 노하우로 완성")));
+							new Product(5, "샤브샤브", 14000, "/images/샤브샤브_작은.jpg", "매장의 노하우로 완성")));
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

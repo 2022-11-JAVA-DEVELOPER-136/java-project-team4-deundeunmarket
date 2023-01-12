@@ -22,6 +22,7 @@ import javax.swing.border.BevelBorder;
 import java.awt.SystemColor;
 import javax.swing.border.LineBorder;
 import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class MemberDetailPanel extends JPanel {
 	/*
@@ -61,37 +62,37 @@ public class MemberDetailPanel extends JPanel {
 		memberInfoPanel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("아이디");
-		lblNewLabel.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel.setFont(new Font("D2Coding", Font.PLAIN, 13));
 		lblNewLabel.setBounds(57, 53, 70, 15);
 		memberInfoPanel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("비밀번호");
-		lblNewLabel_1.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_1.setFont(new Font("D2Coding", Font.PLAIN, 13));
 		lblNewLabel_1.setBounds(57, 78, 70, 15);
 		memberInfoPanel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("이름");
-		lblNewLabel_2.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_2.setFont(new Font("D2Coding", Font.PLAIN, 13));
 		lblNewLabel_2.setBounds(57, 104, 70, 15);
 		memberInfoPanel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("전화번호");
-		lblNewLabel_3.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_3.setFont(new Font("D2Coding", Font.PLAIN, 13));
 		lblNewLabel_3.setBounds(57, 129, 70, 15);
 		memberInfoPanel.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("생일");
-		lblNewLabel_4.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_4.setFont(new Font("D2Coding", Font.PLAIN, 13));
 		lblNewLabel_4.setBounds(57, 165, 70, 15);
 		memberInfoPanel.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("이메일");
-		lblNewLabel_5.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_5.setFont(new Font("D2Coding", Font.PLAIN, 13));
 		lblNewLabel_5.setBounds(57, 190, 70, 15);
 		memberInfoPanel.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("주소");
-		lblNewLabel_6.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		lblNewLabel_6.setFont(new Font("D2Coding", Font.PLAIN, 13));
 		lblNewLabel_6.setBounds(57, 216, 70, 15);
 		memberInfoPanel.add(lblNewLabel_6);
 		
@@ -138,9 +139,10 @@ public class MemberDetailPanel extends JPanel {
 		infoAddressTF.setColumns(10);
 		
 		updateFormBtn = new JButton("수정하기");
-		updateFormBtn.setFont(new Font("D2Coding", Font.PLAIN, 12));
-		updateFormBtn.setBackground(new Color(240, 255, 240));
-		updateFormBtn.setForeground(Color.BLACK);
+		updateFormBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+		updateFormBtn.setFont(new Font("D2Coding", Font.PLAIN, 14));
+		updateFormBtn.setBackground(new Color(147, 112, 219));
+		updateFormBtn.setForeground(Color.WHITE);
 		updateFormBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				updateForm();
@@ -150,19 +152,23 @@ public class MemberDetailPanel extends JPanel {
 		memberInfoPanel.add(updateFormBtn);
 		
 		updateBtn = new JButton("수정완료");
-		updateBtn.setFont(new Font("D2Coding", Font.PLAIN, 12));
-		updateBtn.setBackground(new Color(240, 255, 240));
+		updateBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+		updateBtn.setForeground(Color.WHITE);
+		updateBtn.setFont(new Font("D2Coding", Font.PLAIN, 14));
+		updateBtn.setBackground(new Color(147, 112, 219));
 		updateBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				update();
 			}
 		});
-		updateBtn.setBounds(171, 275, 90, 23);
+		updateBtn.setBounds(171, 275, 90, 24);
 		memberInfoPanel.add(updateBtn);
 		
 		JButton deleteBtn = new JButton("회원탈퇴");
-		deleteBtn.setFont(new Font("D2Coding", Font.PLAIN, 12));
-		deleteBtn.setBackground(new Color(240, 255, 240));
+		deleteBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+		deleteBtn.setForeground(Color.WHITE);
+		deleteBtn.setFont(new Font("D2Coding", Font.PLAIN, 14));
+		deleteBtn.setBackground(new Color(147, 112, 219));
 		deleteBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				delete();
@@ -173,8 +179,10 @@ public class MemberDetailPanel extends JPanel {
 		memberInfoPanel.add(deleteBtn);
 		
 		infoMsgLB = new JLabel("");
+		infoMsgLB.setHorizontalAlignment(SwingConstants.CENTER);
+		infoMsgLB.setFont(new Font("D2Coding", Font.PLAIN, 12));
 		infoMsgLB.setForeground(Color.RED);
-		infoMsgLB.setBounds(48, 21, 222, 22);
+		infoMsgLB.setBounds(28, 21, 273, 22);
 		memberInfoPanel.add(infoMsgLB);
 		
 		memberBdayLB = new JLabel("(예)1999/01/01)");
@@ -183,13 +191,15 @@ public class MemberDetailPanel extends JPanel {
 		memberInfoPanel.add(memberBdayLB);
 		
 		JButton logoutBtn = new JButton("로그아웃");
+		logoutBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+		logoutBtn.setForeground(Color.WHITE);
 		logoutBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				logoutProcess();
 			}
 		});
-		logoutBtn.setBackground(new Color(240, 255, 240));
-		logoutBtn.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		logoutBtn.setBackground(new Color(147, 112, 219));
+		logoutBtn.setFont(new Font("D2Coding", Font.PLAIN, 14));
 		logoutBtn.setBounds(171, 304, 90, 23);
 		memberInfoPanel.add(logoutBtn);
 		
@@ -260,10 +270,12 @@ public class MemberDetailPanel extends JPanel {
 		this.loginMember = null;
 		//2. MemberMainFrame 타이틀 변경
 		frame.setTitle("든든마켓");
-		//3. 로그인 탭, 회원가입 탭 활성화, 회원정보 탭 불활성화
+		//3. 로그인 탭, 회원가입 탭 활성화, 회원정보 탭 불활성화, 장바구니,주문 탭 불활성화
 		frame.memberTabbedPane.setEnabledAt(0, true);
 		frame.memberTabbedPane.setEnabledAt(1, true);
 		frame.memberTabbedPane.setEnabledAt(2, false);
+		frame.shopTabbedPane.setEnabledAt(3, false);
+		frame.shopTabbedPane.setEnabledAt(4, false);
 		// 4. 상품 전체보기로 화면전환
 		frame.changePanel(ShopMainFrame.PANEL_MEMBER_LOGIN, null);
 		// 5. 회원 정보 빈칸 처리
